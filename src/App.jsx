@@ -703,7 +703,7 @@ const PLANS = [
   {
     name: "Growth",
     monthly: 49,
-    annual: 39,
+    annual: 44,
     desc: "For one active location managing reviews, feedback, and campaigns.",
     cta: "Start 7-Day Trial",
     highlight: true,
@@ -723,7 +723,7 @@ const PLANS = [
   {
     name: "Pro",
     monthly: 99,
-    annual: 79,
+    annual: 89,
     desc: "For growing businesses with a few locations and advanced insights.",
     cta: "Start 7-Day Trial",
     highlight: false,
@@ -744,7 +744,7 @@ const PLANS = [
   {
     name: "Business",
     monthly: 249,
-    annual: 199,
+    annual: 224,
     desc: "For multi-location brands that need organisation-wide reporting.",
     cta: "Start Business",
     highlight: false,
@@ -808,7 +808,7 @@ function Pricing() {
               <span className="tgl-knob" />
             </button>
             <span className={annual ? "tgl-active" : "tgl-dim"}>
-              Annual&nbsp;<span className="tgl-save">Save 20%</span>
+              Annual&nbsp;<span className="tgl-save">Save 10%</span>
             </span>
           </div>
         </div>
