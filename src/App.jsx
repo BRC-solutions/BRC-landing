@@ -32,7 +32,7 @@ function Nav() {
     <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="nav-inner container">
         <a href="#" className="nav-logo">
-          <img src="/logo-mark.svg" width="28" height="28" alt="" aria-hidden="true" />
+          <img src="/logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
           BRC
         </a>
         <div className="nav-links">

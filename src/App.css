@@ -209,8 +209,7 @@ img { max-width: 100%; }
 }
 
 .nav-logo img {
-  border-radius: 6px;
-  filter: drop-shadow(0 0 6px rgba(139,92,246,.55));
+  filter: drop-shadow(0 2px 8px rgba(139,92,246,.70));
 }
 
 .nav-links {
