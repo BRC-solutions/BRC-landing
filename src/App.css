@@ -209,7 +209,7 @@ img { max-width: 100%; }
 }
 
 .nav-logo img {
-  filter: drop-shadow(0 2px 8px rgba(139,92,246,.70));
+  display: block;
 }
 
 .nav-links {

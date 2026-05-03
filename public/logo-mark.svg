@@ -1,25 +1,14 @@
 <svg viewBox="140 120 740 720" xmlns="http://www.w3.org/2000/svg">
-  <!-- No blur/glow filters — stays crisp at any size -->
   <defs>
-    <linearGradient id="sf" x1="10%" y1="4%" x2="90%" y2="96%">
+    <linearGradient id="g" x1="10%" y1="4%" x2="90%" y2="96%">
       <stop offset="0%"   stop-color="#c084fc"/>
-      <stop offset="28%"  stop-color="#9333ea"/>
-      <stop offset="62%"  stop-color="#6366f1"/>
+      <stop offset="30%"  stop-color="#9333ea"/>
+      <stop offset="65%"  stop-color="#6366f1"/>
       <stop offset="100%" stop-color="#2563eb"/>
     </linearGradient>
-    <linearGradient id="sh" x1="0%" y1="0%" x2="55%" y2="100%">
-      <stop offset="0%"   stop-color="rgba(255,255,255,0.32)"/>
-      <stop offset="45%"  stop-color="rgba(255,255,255,0)"/>
-    </linearGradient>
   </defs>
-  <!-- Star fill -->
   <polygon
     points="512,142 599,392 864,398 653,558 730,811 512,660 295,811 371,558 160,398 425,392"
-    fill="url(#sf)"
-  />
-  <!-- Sheen -->
-  <polygon
-    points="512,142 599,392 864,398 653,558 730,811 512,660 295,811 371,558 160,398 425,392"
-    fill="url(#sh)"
+    fill="url(#g)"
   />
 </svg>
