@@ -970,6 +970,13 @@ function CTA() {
                   <strong>Google Play</strong>
                 </div>
               </a>
+              <a href="https://app.brcapp.io" className="store-btn" target="_blank" rel="noopener noreferrer">
+                <span className="store-os">🌐</span>
+                <div>
+                  <small>Available on</small>
+                  <strong>Web App</strong>
+                </div>
+              </a>
             </div>
           </div>
           <div className="cta-trust">
@@ -1854,7 +1861,7 @@ function Footer({ onNavigate }) {
             <a href="#" className="footer-app-link">
               🤖 Google Play
             </a>
-            <a href="#" className="footer-app-link">
+            <a href="https://app.brcapp.io" className="footer-app-link" target="_blank" rel="noopener noreferrer">
               🌐 Web App
             </a>
           </div>
