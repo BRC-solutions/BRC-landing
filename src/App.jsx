@@ -32,7 +32,7 @@ function Nav() {
     <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="nav-inner container">
         <a href="#" className="nav-logo">
-          <span className="logo-mark" />
+          <img src="/logo-mark.svg" width="28" height="28" alt="" aria-hidden="true" />
           BRC
         </a>
         <div className="nav-links">
@@ -92,7 +92,10 @@ function PhoneMockup() {
       <div className="phone-notch" />
       <div className="phone-screen">
         <div className="phone-header">
-          <div className="phone-header-logo">⬡ BRC</div>
+          <div className="phone-header-logo">
+            <img src="/logo-mark.svg" width="14" height="14" alt="" aria-hidden="true" style={{ verticalAlign: "middle", marginRight: 4 }} />
+            BRC
+          </div>
           <div className="phone-header-sub">Marco&apos;s Bistro</div>
         </div>
         <div className="phone-body">
