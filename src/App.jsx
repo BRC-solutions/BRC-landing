@@ -43,7 +43,7 @@ function Nav() {
           ))}
         </div>
         <div className="nav-actions">
-          <a href="#" className="btn btn-ghost">
+          <a href="https://app.brcapp.io" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             Sign In
           </a>
           <a href="#pricing" className="btn btn-primary">
