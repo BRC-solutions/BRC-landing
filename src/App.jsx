@@ -784,6 +784,7 @@ const PLANS = [
 
 function Pricing() {
   const [annual, setAnnual] = useState(false);
+  const appUrl = "https://app.brcapp.io";
 
   return (
     <section className="section pricing-section" id="pricing">
@@ -839,8 +840,10 @@ function Pricing() {
               )}
               <p className="plan-desc">{p.desc}</p>
               <a
-                href="#"
+                href={appUrl}
                 className={`btn ${p.highlight ? "btn-primary" : "btn-outline"} btn-block`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {p.cta}
               </a>
