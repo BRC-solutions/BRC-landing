@@ -1916,6 +1916,33 @@ function PublicAuditPage() {
       body: "Track rating gaps, review volume, and recurring complaints so the team knows what to fix first.",
     },
   ];
+  const weekPlan = [
+    {
+      day: "Day 1",
+      title: "Connect the business",
+      body: "Bring the public review profile into BRC and confirm the key platforms the team wants to monitor.",
+    },
+    {
+      day: "Day 2",
+      title: "Set up private feedback",
+      body: "Create a QR feedback flow so customers can raise problems directly before they become public reviews.",
+    },
+    {
+      day: "Day 3",
+      title: "Prioritise review replies",
+      body: "Use the audit themes to decide which low-rating reviews need a thoughtful owner response first.",
+    },
+    {
+      day: "Day 5",
+      title: "Start review follow-up",
+      body: "Send natural, honest review requests after good visits so happy customers are more likely to share.",
+    },
+    {
+      day: "Day 7",
+      title: "Review the dashboard",
+      body: "Check feedback, review movement, competitor context, and the next recommended actions for the team.",
+    },
+  ];
   const planCards = [
     {
       plan: "growth",
@@ -2134,6 +2161,55 @@ function PublicAuditPage() {
                 <div className="audit-action-num">{index + 1}</div>
                 <h3>{action.title}</h3>
                 <p>{action.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="audit-workflow">
+          <div className="audit-workflow-card before">
+            <span>Without a system</span>
+            <h2>Problems often appear publicly first</h2>
+            <p>
+              A customer has a poor visit, leaves without speaking to the team,
+              and the business only finds out when the review is already public.
+            </p>
+          </div>
+          <div className="audit-workflow-arrow">→</div>
+          <div className="audit-workflow-card after">
+            <span>With BRC</span>
+            <h2>Issues can be caught privately earlier</h2>
+            <p>
+              The customer scans a QR code, shares private feedback, the team
+              follows up, and happy customers are asked for honest public reviews.
+            </p>
+          </div>
+        </section>
+
+        <section className="audit-section">
+          <div className="audit-section-heading">
+            <div>
+              <h2>What the first 7 days would look like</h2>
+              <p>
+                This gives the owner a practical path from this audit to a working
+                feedback and review process.
+              </p>
+            </div>
+            <a
+              href={signupUrl({ ...signupBase, plan: "growth" })}
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Start the 7-day trial
+            </a>
+          </div>
+          <div className="audit-timeline">
+            {weekPlan.map((step) => (
+              <article className="audit-timeline-step" key={step.day}>
+                <span>{step.day}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
               </article>
             ))}
           </div>
