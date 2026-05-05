@@ -1883,10 +1883,62 @@ function PublicAuditPage() {
   const competitors = audit.competitors || [];
   const distribution = audit.ratingDistribution || [];
   const publicSignals = audit.publicSignals || [];
+  const oneStarCount =
+    audit.oneStarReviewCount ??
+    lowReviews.filter((review) => Number(review.rating) <= 1).length;
+  const averageSampleRating = audit.averageSampleRating || null;
+  const topCompetitor = competitors[0] || null;
+  const competitorRatingGap =
+    topCompetitor &&
+    Number.isFinite(Number(topCompetitor.rating)) &&
+    Number.isFinite(Number(place.rating))
+      ? Math.round((Number(topCompetitor.rating) - Number(place.rating)) * 10) / 10
+      : null;
   const signupBase = {
     businessName,
     placeId: audit.placeId || place.placeId || place.place_id || "",
   };
+  const recommendedActions = [
+    {
+      title: "Capture private feedback before it becomes public",
+      body: "Use QR feedback after each visit so unhappy customers can tell the team directly while there is still time to recover the experience.",
+    },
+    {
+      title: "Reply to the reviews that shape first impressions",
+      body: "Prioritise low-rating reviews with specific complaints, then use consistent replies to show future customers the business is attentive.",
+    },
+    {
+      title: "Follow up for honest reviews after good visits",
+      body: "A steady review follow-up workflow helps happy customers share their experience without pressuring them or sounding automated.",
+    },
+    {
+      title: "Watch nearby competitors and repeated themes",
+      body: "Track rating gaps, review volume, and recurring complaints so the team knows what to fix first.",
+    },
+  ];
+  const planCards = [
+    {
+      plan: "growth",
+      label: "Growth",
+      price: "$49/mo",
+      bestFor: "Best first step",
+      items: ["Private feedback capture", "Review follow-up", "Basic campaign tracking"],
+    },
+    {
+      plan: "pro",
+      label: "Pro",
+      price: "$99/mo",
+      bestFor: "For deeper monitoring",
+      items: ["More review platforms", "Competitor tracking", "Public signals"],
+    },
+    {
+      plan: "business",
+      label: "Business",
+      price: "$249/mo",
+      bestFor: "For teams and locations",
+      items: ["Scheduled campaigns", "Automations", "Brand-level workflows"],
+    },
+  ];
 
   return (
     <div className="audit-page">
@@ -1911,7 +1963,8 @@ function PublicAuditPage() {
           <h1>A few notes on {businessName}&apos;s public reviews</h1>
           <p>
             This snapshot uses public review information customers can already
-            see before they decide where to go.
+            see before they decide where to go. It highlights reputation risks,
+            review patterns, and practical next steps for the team.
           </p>
           <div className="audit-meta">
             {place.address && <span>{place.address}</span>}
@@ -1942,6 +1995,32 @@ function PublicAuditPage() {
           </div>
         </section>
 
+        <section className="audit-summary">
+          <div>
+            <span className="audit-eyebrow">Executive summary</span>
+            <h2>
+              {lowReviews.length
+                ? `${lowReviews.length} review${lowReviews.length === 1 ? "" : "s"} in this sample could affect trust before a customer visits.`
+                : "This sample is mostly positive, which makes consistency the next opportunity."}
+            </h2>
+          </div>
+          <div className="audit-summary-list">
+            <p>
+              <strong>{oneStarCount}</strong> one-star review{oneStarCount === 1 ? "" : "s"} found in the low-rating sample.
+            </p>
+            <p>
+              <strong>{themes.length || "No"}</strong> repeated theme{themes.length === 1 ? "" : "s"} detected
+              {themes.length ? `: ${themes.slice(0, 3).join(", ")}.` : " in this quick scan."}
+            </p>
+            <p>
+              <strong>{topCompetitor ? topCompetitor.name : "No benchmark"}</strong>
+              {topCompetitor
+                ? ` is the nearby comparison point in this report${competitorRatingGap !== null ? `, with a ${competitorRatingGap > 0 ? "+" : ""}${competitorRatingGap} rating gap.` : "."}`
+                : " stood out in this quick check."}
+            </p>
+          </div>
+        </section>
+
         <section className="audit-grid">
           <article className="audit-panel">
             <h2>What stood out</h2>
@@ -1961,6 +2040,11 @@ function PublicAuditPage() {
 
           <article className="audit-panel">
             <h2>Review pattern</h2>
+            {averageSampleRating && (
+              <p className="audit-note">
+                Average rating in this checked sample: {averageSampleRating}.
+              </p>
+            )}
             <div className="audit-bars">
               {distribution.length ? (
                 distribution.map((row) => (
@@ -1997,11 +2081,26 @@ function PublicAuditPage() {
         <section className="audit-grid">
           <article className="audit-panel">
             <h2>Nearby benchmark</h2>
-            {competitors[0] ? (
-              <p>
-                {competitors[0].name} shows {competitors[0].rating || "N/A"} stars
-                from {competitors[0].reviewCount || 0} reviews.
-              </p>
+            {topCompetitor ? (
+              <>
+                <p>
+                  {topCompetitor.name} shows {topCompetitor.rating || "N/A"} stars
+                  from {topCompetitor.reviewCount || 0} reviews.
+                </p>
+                {competitorRatingGap !== null && (
+                  <div className="audit-benchmark">
+                    <span>Rating gap</span>
+                    <strong>{competitorRatingGap > 0 ? "+" : ""}{competitorRatingGap}</strong>
+                    <small>
+                      {competitorRatingGap > 0
+                        ? "The benchmark currently rates higher."
+                        : competitorRatingGap < 0
+                          ? `${businessName} currently rates higher.`
+                          : "Ratings are currently level."}
+                    </small>
+                  </div>
+                )}
+              </>
             ) : (
               <p>No nearby benchmark stood out in this quick check.</p>
             )}
@@ -2014,7 +2113,58 @@ function PublicAuditPage() {
                 ? `${publicSignals.length} public web mention${publicSignals.length === 1 ? "" : "s"} appeared in this check.`
                 : "No additional public web mentions stood out in this check."}
             </p>
+            {publicSignals.length > 0 && (
+              <div className="audit-signal-list">
+                {publicSignals.slice(0, 3).map((signal, index) => (
+                  <div className="audit-signal" key={`${signal.url || signal.title}-${index}`}>
+                    <strong>{signal.platform || "Web"}</strong>
+                    <span>{signal.title || signal.snippet || "Public mention"}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </article>
+        </section>
+
+        <section className="audit-section">
+          <h2>What BRC would help the team do next</h2>
+          <div className="audit-actions-grid">
+            {recommendedActions.map((action, index) => (
+              <article className="audit-action" key={action.title}>
+                <div className="audit-action-num">{index + 1}</div>
+                <h3>{action.title}</h3>
+                <p>{action.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="audit-section">
+          <h2>Choose where to start</h2>
+          <div className="audit-plan-grid">
+            {planCards.map((plan) => (
+              <article className="audit-plan" key={plan.plan}>
+                <div className="audit-plan-top">
+                  <span>{plan.bestFor}</span>
+                  <strong>{plan.label}</strong>
+                  <b>{plan.price}</b>
+                </div>
+                <ul>
+                  {plan.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <a
+                  href={signupUrl({ ...signupBase, plan: plan.plan })}
+                  className={`btn ${plan.plan === "growth" ? "btn-primary" : "btn-outline"} btn-block`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Start {plan.label}
+                </a>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="audit-cta">
@@ -2027,13 +2177,7 @@ function PublicAuditPage() {
           </div>
           <div className="audit-plan-actions">
             <a href={signupUrl({ ...signupBase, plan: "growth" })} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              Start Growth
-            </a>
-            <a href={signupUrl({ ...signupBase, plan: "pro" })} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              Start Pro
-            </a>
-            <a href={signupUrl({ ...signupBase, plan: "business" })} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              Start Business
+              Start with Growth
             </a>
           </div>
         </section>
