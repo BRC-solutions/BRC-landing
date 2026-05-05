@@ -123,6 +123,261 @@ img { max-width: 100%; }
   background-clip: text;
 }
 
+/* ─── PUBLIC AUDIT PAGE ────────────────────────────────────────────────────── */
+
+.audit-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(59,130,246,.18), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(16,185,129,.14), transparent 30%),
+    #08080f;
+  padding: 28px 0 72px;
+}
+
+.audit-shell {
+  max-width: 1080px;
+}
+
+.audit-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 54px;
+}
+
+.audit-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.audit-hero {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.audit-hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin: 0 0 18px;
+}
+
+.audit-hero p {
+  color: var(--text-2);
+  font-size: 18px;
+  max-width: 660px;
+}
+
+.audit-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.audit-meta span,
+.audit-tags span {
+  border: 1px solid var(--border-s);
+  background: rgba(255,255,255,.05);
+  color: var(--text-2);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+}
+
+.audit-kpis,
+.audit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.audit-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.audit-kpi,
+.audit-panel,
+.audit-review,
+.audit-cta,
+.audit-error,
+.audit-loading {
+  background: rgba(255,255,255,.055);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.audit-kpi {
+  padding: 18px;
+}
+
+.audit-kpi span {
+  display: block;
+  color: var(--text-2);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.audit-kpi strong {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.audit-kpi.warning strong {
+  color: var(--orange);
+}
+
+.audit-panel {
+  padding: 22px;
+}
+
+.audit-panel h2,
+.audit-section h2,
+.audit-cta h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.audit-panel p,
+.audit-cta p,
+.audit-review p {
+  color: var(--text-2);
+}
+
+.audit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.audit-bars {
+  display: grid;
+  gap: 10px;
+}
+
+.audit-bar-row {
+  display: grid;
+  grid-template-columns: 58px 1fr 34px;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.audit-bar-row div {
+  height: 9px;
+  background: rgba(255,255,255,.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.audit-bar-row i {
+  display: block;
+  height: 100%;
+  background: var(--grad);
+}
+
+.audit-bar-row b {
+  text-align: right;
+  color: var(--text);
+}
+
+.audit-section {
+  margin: 34px 0;
+}
+
+.audit-review-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.audit-review {
+  padding: 18px;
+}
+
+.audit-stars {
+  color: var(--orange);
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.audit-review span {
+  display: block;
+  margin-top: 12px;
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+.audit-cta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 26px;
+  margin-top: 34px;
+}
+
+.audit-plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.audit-error,
+.audit-loading {
+  padding: 36px;
+  margin-top: 80px;
+}
+
+.audit-error h1 {
+  margin-bottom: 12px;
+}
+
+.audit-error p {
+  color: var(--text-2);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 760px) {
+  .audit-page {
+    padding-top: 18px;
+  }
+
+  .audit-topbar,
+  .audit-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .audit-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .audit-kpis,
+  .audit-grid,
+  .audit-review-list {
+    grid-template-columns: 1fr;
+  }
+
+  .audit-cta {
+    display: block;
+  }
+
+  .audit-plan-actions {
+    justify-content: flex-start;
+    margin-top: 18px;
+  }
+}
+
 /* ─── BUTTONS ───────────────────────────────────────────────────────────────── */
 
 .btn {

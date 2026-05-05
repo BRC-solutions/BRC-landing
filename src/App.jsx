@@ -7,7 +7,29 @@ const PAGES = {
   HOME: "home",
   TERMS: "terms",
   PRIVACY: "privacy",
+  AUDIT: "audit",
 };
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://api.brcapp.io";
+
+const WEB_APP_URL = "https://app.brcapp.io";
+
+function signupUrl({
+  businessName = "",
+  placeId = "",
+  plan = "growth",
+  billing = "monthly",
+} = {}) {
+  const url = new URL("/login", WEB_APP_URL);
+  url.searchParams.set("mode", "signup");
+  url.searchParams.set("source", "prospect_audit");
+  url.searchParams.set("plan", plan);
+  url.searchParams.set("billing", billing);
+  if (businessName) url.searchParams.set("businessName", businessName);
+  if (placeId) url.searchParams.set("googlePlaceId", placeId);
+  return url.toString();
+}
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 
@@ -784,7 +806,6 @@ const PLANS = [
 
 function Pricing() {
   const [annual, setAnnual] = useState(false);
-  const appUrl = "https://app.brcapp.io";
 
   return (
     <section className="section pricing-section" id="pricing">
@@ -840,7 +861,10 @@ function Pricing() {
               )}
               <p className="plan-desc">{p.desc}</p>
               <a
-                href={appUrl}
+                href={signupUrl({
+                  plan: p.name.toLowerCase() === "custom" ? "business" : p.name.toLowerCase(),
+                  billing: annual ? "annual" : "monthly",
+                })}
                 className={`btn ${p.highlight ? "btn-primary" : "btn-outline"} btn-block`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1780,6 +1804,244 @@ function PrivacyPolicy() {
   );
 }
 
+// ─── PUBLIC AUDIT ─────────────────────────────────────────────────────────────
+
+function PublicAuditPage() {
+  const [state, setState] = useState({
+    loading: true,
+    error: "",
+    audit: null,
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("t") || params.get("token");
+    if (!token) {
+      setState({
+        loading: false,
+        error: "This audit link is missing its access token.",
+        audit: null,
+      });
+      return;
+    }
+
+    let cancelled = false;
+    fetch(`${API_BASE_URL}/public/prospect-audit/${encodeURIComponent(token)}`)
+      .then(async (res) => {
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(json.error || "Audit not found");
+        return json.audit;
+      })
+      .then((audit) => {
+        if (!cancelled) setState({ loading: false, error: "", audit });
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          setState({
+            loading: false,
+            error: error.message || "Could not load this audit.",
+            audit: null,
+          });
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (state.loading) {
+    return (
+      <div className="audit-page">
+        <div className="container audit-shell">
+          <div className="audit-loading">Loading audit notes...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (state.error || !state.audit) {
+    return (
+      <div className="audit-page">
+        <div className="container audit-shell">
+          <div className="audit-error">
+            <h1>Audit link unavailable</h1>
+            <p>{state.error || "This audit could not be found."}</p>
+            <a href="/" className="btn btn-primary">Back to BRC</a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const audit = state.audit;
+  const place = audit.place || {};
+  const businessName = audit.businessName || place.name || "your business";
+  const reviewCount = place.reviewCount || audit.reviewsAnalyzed || 0;
+  const lowReviews = audit.lowReviews || [];
+  const themes = audit.lowReviewThemes || [];
+  const competitors = audit.competitors || [];
+  const distribution = audit.ratingDistribution || [];
+  const publicSignals = audit.publicSignals || [];
+  const signupBase = {
+    businessName,
+    placeId: audit.placeId || place.placeId || place.place_id || "",
+  };
+
+  return (
+    <div className="audit-page">
+      <div className="container audit-shell">
+        <div className="audit-topbar">
+          <a href="/" className="audit-brand">
+            <img src="/logo-mark.svg" width="34" height="34" alt="" />
+            BRC
+          </a>
+          <a
+            href={signupUrl(signupBase)}
+            className="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Start trial
+          </a>
+        </div>
+
+        <header className="audit-hero">
+          <div className="section-tag">Public Review Notes</div>
+          <h1>A few notes on {businessName}&apos;s public reviews</h1>
+          <p>
+            This snapshot uses public review information customers can already
+            see before they decide where to go.
+          </p>
+          <div className="audit-meta">
+            {place.address && <span>{place.address}</span>}
+            {audit.createdAt && (
+              <span>
+                Prepared {new Date(audit.createdAt).toLocaleDateString()}
+              </span>
+            )}
+          </div>
+        </header>
+
+        <section className="audit-kpis">
+          <div className="audit-kpi">
+            <span>Google rating</span>
+            <strong>{place.rating || "N/A"}</strong>
+          </div>
+          <div className="audit-kpi">
+            <span>Public reviews</span>
+            <strong>{Number(reviewCount || 0).toLocaleString()}</strong>
+          </div>
+          <div className="audit-kpi warning">
+            <span>Needs attention</span>
+            <strong>{lowReviews.length}</strong>
+          </div>
+          <div className="audit-kpi">
+            <span>Sample checked</span>
+            <strong>{audit.reviewsAnalyzed || 0}</strong>
+          </div>
+        </section>
+
+        <section className="audit-grid">
+          <article className="audit-panel">
+            <h2>What stood out</h2>
+            <p>
+              {lowReviews.length
+                ? `${lowReviews.length} low-rating review${lowReviews.length === 1 ? "" : "s"} stood out as worth a closer look.`
+                : "No low-rating reviews stood out in this sample."}
+            </p>
+            {themes.length > 0 && (
+              <div className="audit-tags">
+                {themes.map((theme) => (
+                  <span key={theme}>{theme}</span>
+                ))}
+              </div>
+            )}
+          </article>
+
+          <article className="audit-panel">
+            <h2>Review pattern</h2>
+            <div className="audit-bars">
+              {distribution.length ? (
+                distribution.map((row) => (
+                  <div className="audit-bar-row" key={row.star}>
+                    <span>{row.star} star</span>
+                    <div>
+                      <i style={{ width: `${row.percent || 0}%` }} />
+                    </div>
+                    <b>{row.count}</b>
+                  </div>
+                ))
+              ) : (
+                <p>No rating distribution available for this sample.</p>
+              )}
+            </div>
+          </article>
+        </section>
+
+        {lowReviews.length > 0 && (
+          <section className="audit-section">
+            <h2>Examples from the public sample</h2>
+            <div className="audit-review-list">
+              {lowReviews.slice(0, 4).map((review, index) => (
+                <article className="audit-review" key={`${review.customerName}-${index}`}>
+                  <div className="audit-stars">{review.rating || "N/A"} star</div>
+                  <p>{review.text || "No written review text available."}</p>
+                  <span>{review.customerName || "Google reviewer"}</span>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="audit-grid">
+          <article className="audit-panel">
+            <h2>Nearby benchmark</h2>
+            {competitors[0] ? (
+              <p>
+                {competitors[0].name} shows {competitors[0].rating || "N/A"} stars
+                from {competitors[0].reviewCount || 0} reviews.
+              </p>
+            ) : (
+              <p>No nearby benchmark stood out in this quick check.</p>
+            )}
+          </article>
+
+          <article className="audit-panel">
+            <h2>Public signals</h2>
+            <p>
+              {publicSignals.length
+                ? `${publicSignals.length} public web mention${publicSignals.length === 1 ? "" : "s"} appeared in this check.`
+                : "No additional public web mentions stood out in this check."}
+            </p>
+          </article>
+        </section>
+
+        <section className="audit-cta">
+          <div>
+            <h2>Want to organise feedback and reviews for {businessName}?</h2>
+            <p>
+              Start with BRC on web, connect the business, then choose the plan
+              that fits your team. The signup form will be prefilled from this audit.
+            </p>
+          </div>
+          <div className="audit-plan-actions">
+            <a href={signupUrl({ ...signupBase, plan: "growth" })} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Start Growth
+            </a>
+            <a href={signupUrl({ ...signupBase, plan: "pro" })} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+              Start Pro
+            </a>
+            <a href={signupUrl({ ...signupBase, plan: "business" })} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+              Start Business
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 
 const FOOTER_COLS = [
@@ -1877,7 +2139,9 @@ function Footer({ onNavigate }) {
 // ─── APP ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState(PAGES.HOME);
+  const initialPage =
+    window.location.pathname === "/audit" ? PAGES.AUDIT : PAGES.HOME;
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   const navigateTo = (page) => {
     setCurrentPage(page);
@@ -1899,6 +2163,10 @@ export default function App() {
 
   if (currentPage === PAGES.PRIVACY) {
     return <PrivacyPolicy />;
+  }
+
+  if (currentPage === PAGES.AUDIT) {
+    return <PublicAuditPage />;
   }
 
   return (
