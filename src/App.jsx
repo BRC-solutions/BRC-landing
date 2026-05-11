@@ -551,7 +551,7 @@ const ANALYTICS_FEATURES = [
   {
     icon: "📊",
     title: "Advanced Dashboards",
-    desc: "Interactive charts for feedback trends, campaign performance, staff ratings, and menu item popularity. Export data for deeper analysis.",
+    desc: "Interactive charts for feedback trends, campaign performance, staff ratings, and catalog item popularity. Export data for deeper analysis.",
   },
   {
     icon: "⚡",
