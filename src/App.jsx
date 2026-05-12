@@ -14,10 +14,11 @@ const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://api.brcapp.io";
 
 const WEB_APP_URL = "https://app.brcapp.io";
-const BRAND_NAME = "Business Reputation & Customer Operations";
-const BRAND_SHORT = "BRCO";
+const BRAND_NAME = "BRC";
+const BRAND_EXPANSION = "Business Reputation & Customer Operations";
+const BRAND_SHORT = "BRC";
 const BRAND_TAGLINE =
-  "Reputation, ordering, bookings, and customer follow-up in one operating system.";
+  "Business Reputation & Customer Operations for local teams.";
 
 function signupUrl({
   businessName = "",
@@ -185,7 +186,7 @@ function Hero() {
             <span className="grad-text">bookings, and customers.</span>
           </h1>
           <p className="hero-p">
-            {BRAND_NAME} gives local businesses one place to manage the full
+            BRC stands for {BRAND_EXPANSION}: one place to manage the full
             customer loop: online ordering, service bookings, private feedback,
             review growth, win-back campaigns, and customer operations. Capture
             what happened, recover problems before they go public, and turn
@@ -363,7 +364,7 @@ function Features() {
             <span className="grad-text">happens in your business</span>
           </h2>
           <p className="section-p">
-            Not a generic CRM. Not just a review monitor. {BRAND_NAME} is
+            Not a generic CRM. Not just a review monitor. BRC is
             designed around the real daily loop: orders and bookings in,
             feedback captured, issues resolved, and customers followed up at
             the right time.
@@ -520,7 +521,7 @@ function Platforms() {
             <span className="grad-text">One place to manage all of them.</span>
           </h2>
           <p className="section-p">
-            Choose where you want to grow your reviews. {BRAND_NAME} follows up with
+            Choose where you want to grow your reviews. BRC follows up with
             customers on your behalf — naturally, and on the platform that
             matters most to your business.
           </p>
@@ -596,7 +597,7 @@ function Analytics() {
             <span className="grad-text">competitive advantage</span>
           </h2>
           <p className="section-p">
-            Don&apos;t just collect reviews — understand them. {BRAND_NAME}&apos;s
+            Don&apos;t just collect reviews — understand them. BRC&apos;s
             analytics give you the full picture of your reputation, competitors,
             and customers.
           </p>
@@ -659,7 +660,7 @@ function Campaigns() {
               className="section-p"
               style={{ textAlign: "left", maxWidth: "none" }}
             >
-              {BRAND_NAME} runs the right communication at exactly the right
+              BRC runs the right communication at exactly the right
               moment: order confirmations, booking reminders, recovery,
               rewards, review requests, and win-backs without you having to
               think about it.
@@ -1072,7 +1073,7 @@ function TermsOfService() {
           <section className="legal-section">
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing and using {BRAND_NAME}, you
+              By accessing and using BRC, you
               accept and agree to be bound by the terms and provision of this
               agreement. If you do not agree to abide by the above, please do
               not use this service.
@@ -1082,7 +1083,7 @@ function TermsOfService() {
           <section className="legal-section">
             <h2>2. Description of Service</h2>
             <p>
-              {BRAND_NAME} provides business reputation and customer operations services including:
+              BRC provides Business Reputation &amp; Customer Operations services including:
             </p>
             <ul>
               <li>Private feedback collection and analysis via QR codes</li>
@@ -2186,7 +2187,7 @@ function PublicAuditPage() {
         </section>
 
         <section className="audit-section">
-          <h2>What {BRAND_NAME} would help the team do next</h2>
+          <h2>What BRC would help the team do next</h2>
           <div className="audit-actions-grid">
             {recommendedActions.map((action, index) => (
               <article className="audit-action" key={action.title}>
@@ -2280,7 +2281,7 @@ function PublicAuditPage() {
           <div>
             <h2>Want to organise feedback and reviews for {businessName}?</h2>
             <p>
-              Start with {BRAND_NAME} on web, connect the business, then choose
+              Start with BRC on web, connect the business, then choose
               the plan that fits your team. The signup form will be prefilled
               from this audit.
             </p>
@@ -2369,7 +2370,7 @@ function Footer({ onNavigate }) {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <span className="footer-copy">
-            © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
+            © {new Date().getFullYear()} BRC. All rights reserved.
           </span>
           <div className="footer-app-links">
             <a href="#" className="footer-app-link">
