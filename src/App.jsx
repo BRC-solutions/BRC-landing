@@ -14,6 +14,10 @@ const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://api.brcapp.io";
 
 const WEB_APP_URL = "https://app.brcapp.io";
+const BRAND_NAME = "Business Reputation & Customer Operations";
+const BRAND_SHORT = "BRCO";
+const BRAND_TAGLINE =
+  "Reputation, ordering, bookings, and customer follow-up in one operating system.";
 
 function signupUrl({
   businessName = "",
@@ -55,7 +59,7 @@ function Nav() {
       <div className="nav-inner container">
         <a href="#" className="nav-logo">
           <img src="/logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
-          BRC
+          <span className="nav-logo-text">{BRAND_NAME}</span>
         </a>
         <div className="nav-links">
           {links.map((l) => (
@@ -116,7 +120,7 @@ function PhoneMockup() {
         <div className="phone-header">
           <div className="phone-header-logo">
             <img src="/logo-mark.svg" width="14" height="14" alt="" aria-hidden="true" style={{ verticalAlign: "middle", marginRight: 4 }} />
-            BRC
+            {BRAND_SHORT}
           </div>
           <div className="phone-header-sub">Marco&apos;s Bistro</div>
         </div>
@@ -176,16 +180,16 @@ function Hero() {
             Available on iOS · Android · Web
           </div>
           <h1 className="hero-h1">
-            Recover bad experiences,
+            Run reputation, orders,
             <br />
-            <span className="grad-text">grow reviews, keep customers.</span>
+            <span className="grad-text">bookings, and customers.</span>
           </h1>
           <p className="hero-p">
-            BRC captures private feedback tied to each customer&apos;s order,
-            rewards them with a discount for sharing it, resolves problems
-            before they go public, and follows up naturally to grow your
-            reputation — all while providing deep analytics across Google, Yelp,
-            and TripAdvisor to keep you ahead of competitors.
+            {BRAND_NAME} gives local businesses one place to manage the full
+            customer loop: online ordering, service bookings, private feedback,
+            review growth, win-back campaigns, and customer operations. Capture
+            what happened, recover problems before they go public, and turn
+            every order or appointment into better service data.
           </p>
           <div className="hero-btns">
             <a href="#pricing" className="btn btn-primary btn-lg">
@@ -263,9 +267,9 @@ function Hero() {
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "48k+", label: "Private feedback tickets" },
+  { value: "48k+", label: "Customer feedback records" },
   { value: "18.5k+", label: "SMS win-back campaigns" },
-  { value: "9.7k+", label: "Tracked discount redemptions" },
+  { value: "9.7k+", label: "Tracked orders and redemptions" },
   { value: "+67%", label: "Average review lift" },
   { value: "2.1M+", label: "Reviews analyzed across platforms" },
   { value: "99.5%", label: "Fake review detection accuracy" },
@@ -292,9 +296,23 @@ const FEATURES = [
   {
     icon: "📋",
     accent: "var(--purple)",
-    title: "Feedback Tied to Their Order",
-    body: "Customers don't get a generic form — they get questions about what they actually ordered. Every piece of feedback is contextual, specific, and far more actionable.",
+    title: "Feedback Tied to Orders and Visits",
+    body: "Customers don't get a generic form. They get questions about what they ordered, booked, collected, or experienced, so every response is contextual and actionable.",
     tag: "Core",
+  },
+  {
+    icon: "🛒",
+    accent: "var(--cyan)",
+    title: "Ordering That Feeds Customer Ops",
+    body: "Take dine-in, pickup, retail, or service orders through branded customer pages. Each order can feed feedback, rewards, customer profiles, and performance analytics automatically.",
+    tag: "Ordering",
+  },
+  {
+    icon: "📅",
+    accent: "var(--blue)",
+    title: "Bookings Built Into the Same Flow",
+    body: "Let customers book appointments, services, staff, classes, or sessions, then use the booking record for reminders, feedback, review follow-up, and repeat-customer journeys.",
+    tag: "Bookings",
   },
   {
     icon: "🎁",
@@ -312,21 +330,21 @@ const FEATURES = [
   },
   {
     icon: "💬",
-    accent: "var(--cyan)",
+    accent: "var(--yellow)",
     title: "Natural Review Follow-Up",
-    body: "Days after the visit, BRC sends a warm, natural follow-up asking customers to share their experience publicly — on Google, Yelp, or TripAdvisor, whichever you choose.",
+    body: "Days after the visit, order, or booking, the platform sends a warm follow-up asking customers to share their experience publicly on the platform you choose.",
     tag: "Growth",
   },
   {
     icon: "📣",
-    accent: "var(--yellow)",
+    accent: "var(--orange)",
     title: "SMS Win-Back Campaigns",
-    body: "Haven't seen a customer in a while? BRC identifies who's gone quiet and automatically sends them a compelling offer to bring them back — timed right, personalised, trackable.",
+    body: "Haven't seen a customer in a while? Identify who's gone quiet and send a compelling offer to bring them back, timed around their orders, bookings, and visit history.",
     tag: "Revenue",
   },
   {
     icon: "📊",
-    accent: "var(--orange)",
+    accent: "var(--red)",
     title: "Advanced Analytics & Insights",
     body: "Track review trends across Google, Yelp, and TripAdvisor. Monitor competitor performance, analyze sentiment, detect fake reviews with AI, and get real-time alerts — all in one comprehensive dashboard.",
     tag: "Insights",
@@ -345,9 +363,10 @@ function Features() {
             <span className="grad-text">happens in your business</span>
           </h2>
           <p className="section-p">
-            Not a generic CRM. Not just a review monitor. BRC is designed around
-            the real daily loop — feedback in, issues resolved, customers
-            followed up at the right time.
+            Not a generic CRM. Not just a review monitor. {BRAND_NAME} is
+            designed around the real daily loop: orders and bookings in,
+            feedback captured, issues resolved, and customers followed up at
+            the right time.
           </p>
         </div>
         <div className="features-grid">
@@ -375,9 +394,9 @@ function Features() {
 const STEPS = [
   {
     num: "01",
-    title: "Customer Scans & Gives Feedback",
-    body: "Place QR codes on tables, receipts, or counters. Customers scan and answer questions about their specific order — food items, service, atmosphere. It's personal, not generic.",
-    tip: "Feedback forms are generated dynamically based on what the customer ordered.",
+    title: "Customers Order, Book, or Scan",
+    body: "Use branded ordering pages, booking links, QR codes, receipts, or counters. Customers can place an order, book a service, or answer questions about the exact experience they had.",
+    tip: "Feedback forms can be generated dynamically from the order, booking, staff member, service, or item involved.",
     visual: (
       <div className="step-visual sv-setup">
         <div className="sv-qr">
@@ -411,8 +430,8 @@ const STEPS = [
   },
   {
     num: "03",
-    title: "BRC Follows Up Naturally",
-    body: "Days after their visit, BRC sends a warm, well-timed message asking them to share their experience on the review platform you choose — Google, Yelp, or TripAdvisor.",
+    title: "Follow-Up Happens Naturally",
+    body: "Days after their visit, order, or booking, the system sends a warm, well-timed message asking them to share their experience on the review platform you choose.",
     tip: "Average businesses see a 67% lift in public reviews within 90 days.",
     visual: (
       <div className="step-visual sv-grow">
@@ -501,7 +520,7 @@ function Platforms() {
             <span className="grad-text">One place to manage all of them.</span>
           </h2>
           <p className="section-p">
-            Choose where you want to grow your reviews. BRC follows up with
+            Choose where you want to grow your reviews. {BRAND_NAME} follows up with
             customers on your behalf — naturally, and on the platform that
             matters most to your business.
           </p>
@@ -577,7 +596,7 @@ function Analytics() {
             <span className="grad-text">competitive advantage</span>
           </h2>
           <p className="section-p">
-            Don&apos;t just collect reviews — understand them. BRC&apos;s
+            Don&apos;t just collect reviews — understand them. {BRAND_NAME}&apos;s
             analytics give you the full picture of your reputation, competitors,
             and customers.
           </p>
@@ -640,9 +659,10 @@ function Campaigns() {
               className="section-p"
               style={{ textAlign: "left", maxWidth: "none" }}
             >
-              BRC runs the right communication at exactly the right moment —
-              recovery, rewards, review requests, and win-backs — without you
-              having to think about it.
+              {BRAND_NAME} runs the right communication at exactly the right
+              moment: order confirmations, booking reminders, recovery,
+              rewards, review requests, and win-backs without you having to
+              think about it.
             </p>
             <div className="journey-list">
               {JOURNEYS.map((j) => (
@@ -726,7 +746,7 @@ const PLANS = [
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one active location managing reviews, feedback, and campaigns.",
+    desc: "For one active location managing reviews, feedback, orders, bookings, and campaigns.",
     cta: "Start 7-Day Trial",
     highlight: true,
     badge: "Most Popular",
@@ -738,6 +758,7 @@ const PLANS = [
       "AI summaries and reply drafts",
       "Competitor tracking up to 3",
       "Private feedback and staff ratings",
+      "Basic ordering and booking workflows",
       "Campaign basics and feedback discounts",
       "SMS prompts, credits paid separately",
     ],
@@ -756,6 +777,7 @@ const PLANS = [
       "Yelp and TripAdvisor",
       "Previous review fetching included: up to 500 reviews",
       "Menu/product performance insights",
+      "Advanced ordering and booking configuration",
       "Public Signals monitoring",
       "Competitor tracking up to 10",
       "Advanced campaigns and customer segments",
@@ -778,6 +800,7 @@ const PLANS = [
       "Organisation dashboard",
       "Brand-level reputation reports",
       "Multi-location alerts and campaigns",
+      "Ordering and booking reporting",
       "Scheduled reports and exports",
       "10 manual Public Signal scans/day",
       "Higher review sync allowance",
@@ -903,7 +926,15 @@ function Pricing() {
 const FAQS = [
   {
     q: "How is the feedback form personalised to each customer?",
-    a: 'When a customer scans the QR code, BRC generates questions based on what they ordered — so instead of a generic "how was your visit?", they\'re asked specifically about their dish, the service they received, or the experience at their table. This makes the feedback far more useful and the form feel far more natural to fill in.',
+    a: 'When a customer scans a QR code, places an order, or completes a booking, the platform can generate questions based on what actually happened. Instead of a generic "how was your visit?", they can be asked about their dish, service, appointment, staff member, table, or collection experience.',
+  },
+  {
+    q: "What ordering workflows are supported?",
+    a: "The product is designed for dine-in, pickup, retail, and service ordering through branded customer pages. Orders can connect to customer profiles, rewards, feedback, redemptions, and item-level performance analytics.",
+  },
+  {
+    q: "What booking workflows are supported?",
+    a: "Bookings can support appointments, staff-and-service scheduling, classes, sessions, and other service-led flows. Booking records can power reminders, feedback, review follow-up, and repeat-customer campaigns.",
   },
   {
     q: "Do customers have to download an app to leave feedback?",
@@ -914,8 +945,8 @@ const FAQS = [
     a: "As soon as a customer submits their feedback, they receive a personalised discount code via SMS. The code is unique to them, trackable, and can be set to expire after a time of your choosing. Businesses using rewards typically see 3× more feedback submissions.",
   },
   {
-    q: "When and how does BRC ask for public reviews?",
-    a: "BRC sends a natural, well-timed follow-up message a few days after the visit — not immediately. The message feels like a genuine check-in rather than an automated prompt, and directs customers to whichever platform you want to grow: Google, Yelp, or TripAdvisor.",
+    q: "When and how are customers asked for public reviews?",
+    a: "The platform sends a natural, well-timed follow-up message a few days after the visit, order, or booking. The message feels like a genuine check-in rather than an automated prompt, and directs customers to whichever platform you want to grow: Google, Yelp, or TripAdvisor.",
   },
   {
     q: "What happens when a customer leaves negative feedback?",
@@ -975,8 +1006,9 @@ function CTA() {
             <span className="grad-text">not a setup marathon.</span>
           </h2>
           <p className="cta-p">
-            Create your account, connect your business, and start collecting
-            feedback and growing your reputation from the same app — today.
+            Create your account, connect your business, and start managing
+            ordering, bookings, feedback, reputation, and customer follow-up
+            from the same app today.
           </p>
           <div className="cta-btns">
             <a href="#pricing" className="btn btn-primary btn-xl">
@@ -1040,7 +1072,7 @@ function TermsOfService() {
           <section className="legal-section">
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing and using BRC (Business Reputation Center), you
+              By accessing and using {BRAND_NAME}, you
               accept and agree to be bound by the terms and provision of this
               agreement. If you do not agree to abide by the above, please do
               not use this service.
@@ -1050,7 +1082,7 @@ function TermsOfService() {
           <section className="legal-section">
             <h2>2. Description of Service</h2>
             <p>
-              BRC provides business reputation management services including:
+              {BRAND_NAME} provides business reputation and customer operations services including:
             </p>
             <ul>
               <li>Private feedback collection and analysis via QR codes</li>
@@ -2154,7 +2186,7 @@ function PublicAuditPage() {
         </section>
 
         <section className="audit-section">
-          <h2>What BRC would help the team do next</h2>
+          <h2>What {BRAND_NAME} would help the team do next</h2>
           <div className="audit-actions-grid">
             {recommendedActions.map((action, index) => (
               <article className="audit-action" key={action.title}>
@@ -2177,11 +2209,12 @@ function PublicAuditPage() {
           </div>
           <div className="audit-workflow-arrow">→</div>
           <div className="audit-workflow-card after">
-            <span>With BRC</span>
+            <span>With {BRAND_SHORT}</span>
             <h2>Issues can be caught privately earlier</h2>
             <p>
-              The customer scans a QR code, shares private feedback, the team
-              follows up, and happy customers are asked for honest public reviews.
+              The customer orders, books, or scans a QR code, shares private
+              feedback, the team follows up, and happy customers are asked for
+              honest public reviews.
             </p>
           </div>
         </section>
@@ -2247,8 +2280,9 @@ function PublicAuditPage() {
           <div>
             <h2>Want to organise feedback and reviews for {businessName}?</h2>
             <p>
-              Start with BRC on web, connect the business, then choose the plan
-              that fits your team. The signup form will be prefilled from this audit.
+              Start with {BRAND_NAME} on web, connect the business, then choose
+              the plan that fits your team. The signup form will be prefilled
+              from this audit.
             </p>
           </div>
           <div className="audit-plan-actions">
@@ -2298,12 +2332,10 @@ function Footer({ onNavigate }) {
         <div className="footer-brand">
           <a href="#" className="nav-logo">
             <span className="logo-mark" />
-            BRC
+            <span className="nav-logo-text">{BRAND_NAME}</span>
           </a>
           <p className="footer-tagline">
-            Recover bad experiences, grow reviews,
-            <br />
-            and bring customers back — on autopilot.
+            {BRAND_TAGLINE}
             <br />
             Available on iOS, Android &amp; Web.
           </p>
@@ -2337,7 +2369,7 @@ function Footer({ onNavigate }) {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <span className="footer-copy">
-            © {new Date().getFullYear()} BRC. All rights reserved.
+            © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
           </span>
           <div className="footer-app-links">
             <a href="#" className="footer-app-link">

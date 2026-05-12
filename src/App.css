@@ -754,6 +754,13 @@ img { max-width: 100%; }
   display: block;
 }
 
+.nav-logo-text {
+  display: inline-block;
+  max-width: min(360px, 46vw);
+  line-height: 1.05;
+  white-space: normal;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
