@@ -13,7 +13,8 @@ const PAGES = {
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://api.brcapp.io";
 
-const WEB_APP_URL = "https://app.brcapp.io";
+const WEB_APP_URL =
+  import.meta.env.VITE_APP_URL || "https://console.brcapp.io";
 const BRAND_NAME = "BRC";
 const BRAND_EXPANSION = "Business Reputation & Customer Operations";
 const BRAND_SHORT = "BRC";
@@ -70,7 +71,7 @@ function Nav() {
           ))}
         </div>
         <div className="nav-actions">
-          <a href="https://app.brcapp.io" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+          <a href={WEB_APP_URL} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             Sign In
           </a>
           <a href="#pricing" className="btn btn-primary">
@@ -1030,7 +1031,7 @@ function CTA() {
                   <strong>Google Play</strong>
                 </div>
               </a>
-              <a href="https://app.brcapp.io" className="store-btn" target="_blank" rel="noopener noreferrer">
+              <a href={WEB_APP_URL} className="store-btn" target="_blank" rel="noopener noreferrer">
                 <span className="store-os">🌐</span>
                 <div>
                   <small>Available on</small>
@@ -2379,7 +2380,7 @@ function Footer({ onNavigate }) {
             <a href="#" className="footer-app-link">
               🤖 Google Play
             </a>
-            <a href="https://app.brcapp.io" className="footer-app-link" target="_blank" rel="noopener noreferrer">
+            <a href={WEB_APP_URL} className="footer-app-link" target="_blank" rel="noopener noreferrer">
               🌐 Web App
             </a>
           </div>
