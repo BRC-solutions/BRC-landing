@@ -1522,8 +1522,10 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
           </div>
           <div className="container feature-hero-inner">
             <div className="feature-hero-copy">
-              <a href="/#features" className="feature-back">← All features</a>
-              <div className="section-tag">{feature.tag}</div>
+              <div className="feature-eyebrow-row">
+                <a href="/#features" className="feature-back">← All features</a>
+                <div className="section-tag">{feature.tag}</div>
+              </div>
               <h1 className="feature-page-title">
                 {detail.headline}
               </h1>
