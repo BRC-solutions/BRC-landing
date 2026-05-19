@@ -8,6 +8,7 @@ const PAGES = {
   TERMS: "terms",
   PRIVACY: "privacy",
   AUDIT: "audit",
+  CONTACT: "contact",
   FEATURE: "feature",
 };
 
@@ -1709,6 +1710,223 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
   );
 }
 
+// ─── CONTACT ──────────────────────────────────────────────────────────────────
+
+function ContactPage({ onNavigate, theme, onToggleTheme }) {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    businessName: "",
+    category: "general",
+    subject: "",
+    message: "",
+    companyWebsite: "",
+    captchaAnswer: "",
+  });
+  const [challenge, setChallenge] = useState(null);
+  const [startedAt] = useState(() => Date.now());
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const loadChallenge = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/contact/challenge`);
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || "Could not load CAPTCHA.");
+      setChallenge(payload);
+      setForm((current) => ({ ...current, captchaAnswer: "" }));
+    } catch (err) {
+      setStatus({
+        type: "error",
+        message: err.message || "Could not load the contact check. Please refresh and try again.",
+      });
+    }
+  };
+
+  useEffect(() => {
+    loadChallenge();
+  }, []);
+
+  const updateField = (key, value) => {
+    setForm((current) => ({ ...current, [key]: value }));
+  };
+
+  const submitContact = async (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+    setStatus({ type: "", message: "" });
+    try {
+      const response = await fetch(`${API_BASE_URL}/contact/tickets`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          captchaToken: challenge?.token,
+          startedAt,
+        }),
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || "Could not send your message.");
+      setStatus({
+        type: "success",
+        message: `Thanks. Your message is in our support queue as ticket ${payload.ticket?.id || ""}. We will reply by email.`,
+      });
+      setForm({
+        name: "",
+        email: "",
+        businessName: "",
+        category: "general",
+        subject: "",
+        message: "",
+        companyWebsite: "",
+        captchaAnswer: "",
+      });
+      await loadChallenge();
+    } catch (err) {
+      setStatus({
+        type: "error",
+        message: err.message || "Could not send your message. Please try again.",
+      });
+      await loadChallenge();
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="app">
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <main className="contact-page">
+        <section className="contact-hero">
+          <div className="hero-bg">
+            <div className="glow glow-1" />
+            <div className="glow glow-2" />
+          </div>
+          <div className="container contact-grid">
+            <div className="contact-copy">
+              <div className="section-tag">Contact BRC</div>
+              <h1 className="contact-title">
+                Talk to the team
+                <br />
+                <span className="grad-text">behind the app.</span>
+              </h1>
+              <p>
+                Ask about plans, onboarding, reputation recovery, billing,
+                partnerships, or technical support. Messages from this page go
+                into the same support queue our platform team uses for console
+                support.
+              </p>
+              <div className="contact-promises">
+                <span>Admin support inbox</span>
+                <span>Email replies threaded</span>
+                <span>Bot checks enabled</span>
+              </div>
+            </div>
+
+            <form className="contact-form" onSubmit={submitContact}>
+              <div className="contact-form-row">
+                <label>
+                  Name
+                  <input
+                    required
+                    value={form.name}
+                    onChange={(event) => updateField("name", event.target.value)}
+                    placeholder="Your name"
+                  />
+                </label>
+                <label>
+                  Email
+                  <input
+                    required
+                    type="email"
+                    value={form.email}
+                    onChange={(event) => updateField("email", event.target.value)}
+                    placeholder="you@example.com"
+                  />
+                </label>
+              </div>
+              <label>
+                Business name
+                <input
+                  value={form.businessName}
+                  onChange={(event) => updateField("businessName", event.target.value)}
+                  placeholder="Optional"
+                />
+              </label>
+              <div className="contact-form-row">
+                <label>
+                  Category
+                  <select
+                    value={form.category}
+                    onChange={(event) => updateField("category", event.target.value)}
+                  >
+                    <option value="general">General</option>
+                    <option value="billing">Billing</option>
+                    <option value="technical">Technical</option>
+                    <option value="verification">Verification</option>
+                  </select>
+                </label>
+                <label>
+                  Subject
+                  <input
+                    required
+                    value={form.subject}
+                    onChange={(event) => updateField("subject", event.target.value)}
+                    placeholder="How can we help?"
+                  />
+                </label>
+              </div>
+              <label>
+                Message
+                <textarea
+                  required
+                  rows={7}
+                  value={form.message}
+                  onChange={(event) => updateField("message", event.target.value)}
+                  placeholder="Tell us what you need help with."
+                />
+              </label>
+              <label className="contact-honeypot" aria-hidden="true">
+                Company website
+                <input
+                  tabIndex="-1"
+                  autoComplete="off"
+                  value={form.companyWebsite}
+                  onChange={(event) => updateField("companyWebsite", event.target.value)}
+                />
+              </label>
+              <div className="contact-captcha">
+                <label>
+                  Security check: what is {challenge?.question || "..."}?
+                  <input
+                    required
+                    inputMode="numeric"
+                    value={form.captchaAnswer}
+                    onChange={(event) => updateField("captchaAnswer", event.target.value)}
+                    placeholder="Answer"
+                  />
+                </label>
+                <button type="button" onClick={loadChallenge}>
+                  Refresh
+                </button>
+              </div>
+              {status.message ? (
+                <div className={`contact-status contact-status-${status.type}`}>
+                  {status.message}
+                </div>
+              ) : null}
+              <button className="btn btn-primary btn-block" type="submit" disabled={submitting || !challenge?.token}>
+                {submitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
 // ─── TERMS OF SERVICE ─────────────────────────────────────────────────────────
 
 function TermsOfService() {
@@ -2974,6 +3192,8 @@ function Footer({ onNavigate }) {
       onNavigate(PAGES.TERMS);
     } else if (link === "Privacy Policy") {
       onNavigate(PAGES.PRIVACY);
+    } else if (link === "Contact Us") {
+      onNavigate(PAGES.CONTACT);
     } else {
       // Handle other links normally
       console.log("Navigate to:", link);
@@ -3048,6 +3268,9 @@ export default function App() {
   const readRoute = () => {
     const pathname = window.location.pathname;
     if (pathname === "/audit") return { page: PAGES.AUDIT };
+    if (pathname === "/contact") return { page: PAGES.CONTACT };
+    if (pathname === "/terms") return { page: PAGES.TERMS };
+    if (pathname === "/privacy") return { page: PAGES.PRIVACY };
     if (pathname.startsWith("/features/")) {
       return {
         page: PAGES.FEATURE,
@@ -3081,6 +3304,15 @@ export default function App() {
 
   const navigateTo = (page) => {
     setRoute({ page });
+    const path =
+      page === PAGES.TERMS
+        ? "/terms"
+        : page === PAGES.PRIVACY
+          ? "/privacy"
+          : page === PAGES.CONTACT
+            ? "/contact"
+            : "/";
+    window.history.pushState({}, "", path);
     window.scrollTo(0, 0);
   };
 
@@ -3103,6 +3335,9 @@ export default function App() {
       const isLandingRoute =
         url.pathname === "/" ||
         url.pathname === "/audit" ||
+        url.pathname === "/contact" ||
+        url.pathname === "/terms" ||
+        url.pathname === "/privacy" ||
         url.pathname.startsWith("/features/");
       if (!isLandingRoute) return;
 
@@ -3132,6 +3367,16 @@ export default function App() {
 
   if (currentPage === PAGES.AUDIT) {
     return <PublicAuditPage />;
+  }
+
+  if (currentPage === PAGES.CONTACT) {
+    return (
+      <ContactPage
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
   }
 
   if (currentPage === PAGES.FEATURE) {
