@@ -1629,20 +1629,20 @@ function CTA({ trialHref = "/#pricing" } = {}) {
 const INDUSTRY_PAGES = {
   restaurants: {
     eyebrow: "For restaurants",
-    title: "Ordering, reviews, rewards, and recovery for restaurants.",
+    title: "Bookings, ordering, delivery, reviews, rewards, and recovery for restaurants.",
     subhead:
-      "BRC helps restaurants own more of the customer journey: table QR ordering, pickup, delivery, private feedback, review requests, rewards, campaigns, and owner reporting in one operating console.",
-    pain: "Restaurant teams often pay for ordering, delivery, loyalty, reviews, feedback, and campaigns separately, then still miss the moment when an unhappy customer is about to go public.",
+      "BRC helps restaurants own more of the customer journey: reservations, table QR ordering, pickup, delivery, private feedback, review requests, rewards, campaigns, and owner reporting in one operating console.",
+    pain: "Restaurant teams often pay for bookings, ordering, delivery, loyalty, reviews, feedback, and campaigns separately, then still miss the moment when an unhappy customer is about to go public.",
     primaryCta: "Start Restaurant Trial",
     secondaryCta: "Get Free Restaurant Audit",
-    proof: ["Table QR", "Pickup & delivery", "Review recovery", "Kitchen view"],
+    proof: ["Bookings", "Table QR", "Pickup & delivery", "Review recovery"],
     workflows: [
-      ["Take direct orders", "Publish a branded menu, table QR, pickup, and delivery flow from your own customer page."],
+      ["Capture bookings", "Let guests reserve tables, share contact details, receive confirmations, and create a customer record before they arrive."],
+      ["Take direct orders", "Publish a branded menu, table QR, pickup, delivery, fees, preparation expectations, and fulfilment notes from your own customer page."],
       ["Protect your rating", "Route low-rating customers into private recovery before they become public review damage."],
       ["Bring guests back", "Send rewards, review requests, and win-back campaigns connected to real orders and visits."],
-      ["Know what to fix", "Track item, staff, feedback, review, campaign, and owner-digest signals in one place."],
     ],
-    modules: ["Ordering", "Tables", "Delivery", "Feedback", "Reviews", "Rewards", "Campaigns", "Analytics"],
+    modules: ["Bookings", "Ordering", "Tables", "Pickup", "Delivery", "Feedback", "Reviews", "Rewards", "Campaigns", "Analytics"],
     objections: [
       ["We already use marketplaces", "BRC helps you build your owned customer relationship instead of giving every repeat journey to a marketplace."],
       ["We do not have time", "Start with one workflow: private feedback after orders or table QR ordering. Add campaigns later."],
@@ -1652,20 +1652,20 @@ const INDUSTRY_PAGES = {
   },
   cafes: {
     eyebrow: "For cafes and bakeries",
-    title: "Turn regular visits into feedback, rewards, reviews, and repeat orders.",
+    title: "Turn regular visits into feedback, review recovery, rewards, and repeat orders.",
     subhead:
-      "BRC gives cafes and bakeries a simple customer operations layer for pickup ordering, menus, private feedback, loyalty-style rewards, campaigns, and local reputation growth.",
+      "BRC gives cafes and bakeries a simple customer operations layer for pickup ordering, menus, private feedback, bad-review recovery, loyalty-style rewards, campaigns, and local reputation growth.",
     pain: "Cafes win through regulars, but many regular customer moments disappear without feedback, contact details, review prompts, or measurable return visits.",
     primaryCta: "Start Cafe Trial",
     secondaryCta: "Get Free Cafe Audit",
-    proof: ["Pickup orders", "Rewards", "Feedback QR", "Review requests"],
+    proof: ["Pickup orders", "Bad-review recovery", "Feedback QR", "Review requests"],
     workflows: [
       ["Launch pickup ordering", "Let customers browse, order, and collect from a branded public page."],
       ["Reward useful feedback", "Offer trackable discounts after feedback and see which rewards become return visits."],
-      ["Build more reviews", "Ask happy customers at natural moments while routing issues privately."],
+      ["Recover bad experiences", "Catch unhappy customers with private feedback, respond before they post publicly, and ask happy customers for reviews at natural moments."],
       ["Spot menu signals", "Use item, feedback, and campaign data to see what customers actually respond to."],
     ],
-    modules: ["Catalog", "Pickup", "Feedback", "Rewards", "Reviews", "Campaigns", "Owner digest"],
+    modules: ["Catalog", "Pickup", "Feedback", "Review recovery", "Reviews", "Rewards", "Campaigns", "Owner digest"],
     objections: [
       ["We are too small", "That is exactly why replacing several tools with one simple workflow matters."],
       ["We do not want complex setup", "Start with your menu, feedback QR, and one reward. The rest can grow gradually."],
@@ -1675,20 +1675,20 @@ const INDUSTRY_PAGES = {
   },
   salons: {
     eyebrow: "For salons and spas",
-    title: "Bookings, reminders, reviews, and client reactivation for salons.",
+    title: "Bookings, reminders, review recovery, and client reactivation for salons.",
     subhead:
-      "BRC helps appointment-led businesses manage services, staff, bookings, deposits, reminders, private feedback, review follow-up, and win-back campaigns from one place.",
+      "BRC helps appointment-led businesses manage services, staff, bookings, deposits, reminders, private feedback, bad-review recovery, review follow-up, and win-back campaigns from one place.",
     pain: "A salon can have full diaries and still leak revenue through no-shows, weak follow-up, missed reviews, and clients who quietly stop booking.",
     primaryCta: "Start Salon Trial",
     secondaryCta: "Get Free Salon Audit",
-    proof: ["Services", "Staff bookings", "Deposits", "Win-backs"],
+    proof: ["Services", "Staff bookings", "Review recovery", "Win-backs"],
     workflows: [
       ["Publish services", "Create services, staff, capacity, duration, prices, deposits, buffers, and booking rules."],
       ["Reduce admin", "Use confirmations, reminders, customer notes, and booking status to keep the team aligned."],
-      ["Grow reputation", "Follow up after appointments with private feedback and legitimate review requests."],
+      ["Recover bad experiences", "Follow up after appointments with private feedback, route unhappy clients to recovery, and send legitimate review requests to happy clients."],
       ["Reactivate clients", "Send win-back offers to lapsed clients with consent-aware SMS or email."],
     ],
-    modules: ["Bookings", "Services", "Staff", "Feedback", "Reviews", "Campaigns", "Rewards", "Analytics"],
+    modules: ["Bookings", "Services", "Staff", "Feedback", "Review recovery", "Reviews", "Campaigns", "Rewards", "Analytics"],
     objections: [
       ["We already have booking software", "BRC connects bookings to feedback, reputation, rewards, campaigns, and owner reporting."],
       ["Staff need simple tools", "Permissions and workflow views let staff focus on bookings and customer context without owner-only controls."],
@@ -1698,20 +1698,20 @@ const INDUSTRY_PAGES = {
   },
   retail: {
     eyebrow: "For local retail",
-    title: "Catalog, pickup, rewards, reviews, and campaigns for independent shops.",
+    title: "Catalog, pickup, review recovery, rewards, and campaigns for independent shops.",
     subhead:
-      "BRC helps local retailers publish a product catalog, accept pickup orders, collect feedback, build reviews, send rewards, and understand which customer actions bring people back.",
+      "BRC helps local retailers publish a product catalog, accept pickup orders, collect feedback, recover bad experiences, build reviews, send rewards, and understand which customer actions bring people back.",
     pain: "Independent shops often have loyal customers but no owned system for catalog browsing, pickup, feedback, rewards, review growth, and reactivation.",
     primaryCta: "Start Retail Trial",
     secondaryCta: "Get Free Retail Audit",
-    proof: ["Catalog", "Pickup", "Rewards", "Customer CRM"],
+    proof: ["Catalog", "Pickup", "Review recovery", "Customer CRM"],
     workflows: [
       ["Publish a local catalog", "Show products, categories, prices, images, variants, bundles, stock, and availability."],
       ["Take pickup orders", "Let customers reserve or buy for collection without sending every relationship to a marketplace."],
       ["Create repeat visits", "Use rewards, discount codes, and campaign follow-up tied to real customer activity."],
-      ["Improve local trust", "Collect private feedback and ask happy customers for reviews at the right moment."],
+      ["Recover bad experiences", "Collect private feedback after purchases, handle issues before they become public reviews, and ask happy customers at the right moment."],
     ],
-    modules: ["Catalog", "Inventory", "Pickup", "Feedback", "Reviews", "Rewards", "Campaigns", "CRM"],
+    modules: ["Catalog", "Inventory", "Pickup", "Feedback", "Review recovery", "Reviews", "Rewards", "Campaigns", "CRM"],
     objections: [
       ["We are not ecommerce", "BRC can start as a local catalog and pickup flow, not a full warehouse ecommerce system."],
       ["We already post on social", "Social creates attention; BRC helps capture the customer relationship and follow-up."],
