@@ -181,26 +181,26 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            Built for orders · bookings · delivery · reviews
+            One subscription for customer operations
           </div>
           <h1 className="hero-h1">
-            Turn every customer action
+            Stop paying for five tools
             <br />
-            <span className="grad-text">into the next sale.</span>
+            <span className="grad-text">to run one business.</span>
           </h1>
           <p className="hero-p">
-            BRC is the customer operations app for local businesses: branded
-            ordering, booking, delivery, private feedback, review growth,
-            rewards, campaigns, and analytics in one connected system. Capture
-            demand, recover problems privately, and bring customers back with
-            follow-up that is tied to what they actually did.
+            BRC gives local business owners ordering, booking, delivery,
+            feedback, reviews, rewards, campaigns, and analytics in one app.
+            Replace disconnected subscriptions, save admin time, protect your
+            reputation, and see which customer actions are actually bringing
+            money back.
           </p>
           <div className="hero-btns">
             <a href="#pricing" className="btn btn-primary btn-lg">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <a href="#features" className="btn btn-outline btn-lg">
-              Explore Features
+              See What You Get
             </a>
           </div>
           <div className="hero-social-proof">
@@ -294,6 +294,71 @@ function StatsBar() {
   );
 }
 
+const OWNER_REASONS = [
+  {
+    title: "Replace disconnected tools",
+    body: "Ordering, bookings, delivery, feedback, reviews, rewards, campaigns, and analytics sit in one subscription instead of separate dashboards and bills.",
+  },
+  {
+    title: "Get value in the first week",
+    body: "Start with the Growth trial, connect the business, publish the customer links, and use the first feedback, reviews, and campaign data to see where BRC pays back.",
+  },
+  {
+    title: "Know what is making money",
+    body: "BRC ties customer activity to redemptions, repeat visits, campaigns, reviews, and revenue-influenced reporting so owners can see what deserves attention.",
+  },
+];
+
+function OwnerReasons() {
+  return (
+    <section className="owner-reasons">
+      <div className="container owner-reasons-grid">
+        <div className="owner-reasons-copy">
+          <div className="section-tag">Why Owners Subscribe</div>
+          <h2>
+            Built to earn its place
+            <br />
+            on your monthly bill.
+          </h2>
+        </div>
+        {OWNER_REASONS.map((item) => (
+          <div key={item.title} className="owner-reason-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const BUSINESS_FITS = [
+  "Restaurants",
+  "Cafes",
+  "Bakeries",
+  "Retail",
+  "Salons",
+  "Spas",
+  "Gyms",
+  "Clinics",
+  "Service businesses",
+];
+
+function BusinessFitStrip() {
+  return (
+    <section className="business-fit-strip">
+      <div className="container business-fit-inner">
+        <span>Configured by business type</span>
+        <div>
+          {BUSINESS_FITS.map((item) => (
+            <b key={item}>{item}</b>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── FEATURES ─────────────────────────────────────────────────────────────────
 
 const FEATURES = [
@@ -304,7 +369,7 @@ const FEATURES = [
     title: "Online ordering",
     body: "Branded dine-in, pickup, retail, and service ordering that feeds customer profiles, rewards, feedback, and analytics.",
     tag: "Commerce",
-    outcome: "Capture more direct orders without losing the customer relationship.",
+    outcome: "Replace marketplace dependency with direct orders you own.",
   },
   {
     slug: "delivery",
@@ -313,7 +378,7 @@ const FEATURES = [
     title: "Delivery and pickup",
     body: "Delivery quotes, customer details, pickup slots, order tracking, and fulfilment workflows designed for local teams.",
     tag: "Fulfilment",
-    outcome: "Make every order easier to accept, prepare, and follow up.",
+    outcome: "Add delivery and pickup without bolting on another subscription.",
   },
   {
     slug: "bookings",
@@ -322,7 +387,7 @@ const FEATURES = [
     title: "Bookings and reservations",
     body: "Appointments, services, staff, tables, classes, and sessions connected to reminders, confirmations, feedback, and repeat visits.",
     tag: "Bookings",
-    outcome: "Turn booking intent into confirmed appointments with less admin.",
+    outcome: "Take bookings without paying for a separate scheduling tool.",
   },
   {
     slug: "feedback",
@@ -331,7 +396,7 @@ const FEATURES = [
     title: "Private feedback",
     body: "Contextual forms tied to orders, bookings, staff, tables, products, or visits so feedback is specific enough to act on.",
     tag: "Experience",
-    outcome: "Find service issues before they become public reviews.",
+    outcome: "Protect your rating before problems cost you new customers.",
   },
   {
     slug: "reputation",
@@ -340,7 +405,7 @@ const FEATURES = [
     title: "Review growth",
     body: "Monitor Google, Yelp, and TripAdvisor, draft replies with AI, and send natural review follow-ups at the right moment.",
     tag: "Reputation",
-    outcome: "Grow the public proof customers check before they buy.",
+    outcome: "Win more searches with stronger reviews and faster replies.",
   },
   {
     slug: "campaigns",
@@ -349,7 +414,7 @@ const FEATURES = [
     title: "Campaigns and automations",
     body: "SMS and email journeys for feedback rewards, review requests, win-backs, reminders, and customer reactivation.",
     tag: "Retention",
-    outcome: "Bring quiet customers back without manually chasing them.",
+    outcome: "Bring customers back without manually sending every message.",
   },
   {
     slug: "rewards",
@@ -358,7 +423,7 @@ const FEATURES = [
     title: "Rewards and loyalty",
     body: "Discount codes, redemption tracking, loyalty-style incentives, and customer return journeys linked to real activity.",
     tag: "Loyalty",
-    outcome: "Give customers a reason to return while measuring what works.",
+    outcome: "See which offers produce repeat visits instead of guessing.",
   },
   {
     slug: "analytics",
@@ -367,7 +432,7 @@ const FEATURES = [
     title: "Analytics and AI insights",
     body: "Review trends, competitor tracking, campaign performance, item insights, staff signals, and owner summaries in one console.",
     tag: "Insights",
-    outcome: "Know what to improve, promote, fix, or protect next.",
+    outcome: "Know what is worth fixing, promoting, or charging for.",
   },
   {
     slug: "team",
@@ -376,7 +441,7 @@ const FEATURES = [
     title: "Team and multi-location ops",
     body: "Staff access, permissions, location-level settings, organisation reporting, notifications, and admin controls.",
     tag: "Operations",
-    outcome: "Keep owners, managers, and staff working from the same source of truth.",
+    outcome: "Give your team one operating system instead of scattered logins.",
   },
 ];
 
@@ -393,8 +458,15 @@ const FEATURE_DETAIL = {
       "Item and category performance data for smarter offers",
     ],
     conversion:
-      "Keep customers ordering directly from you, then use that order context to drive reviews, rewards, and repeat visits.",
+      "Why subscribe: you keep more order data, reduce third-party dependency, and connect each sale to follow-up, reviews, and repeat revenue from the same plan.",
     proof: ["Direct customer data", "Mobile checkout", "Order-linked feedback"],
+    fits: [
+      "Catalog setup in the console",
+      "Branded public page on go.brcapp.io or custom domain",
+      "Orders dashboard, kitchen view, history, and status changes",
+      "Feedback, rewards, campaigns, and item performance after purchase",
+    ],
+    bestFor: "Restaurants, cafes, bakeries, retail shops, and service businesses that want owned ordering instead of scattered order channels.",
   },
   delivery: {
     headline: "Delivery and pickup workflows for real local operations.",
@@ -408,8 +480,15 @@ const FEATURE_DETAIL = {
       "Follow-up journeys after delivery or collection",
     ],
     conversion:
-      "Make fulfilment smoother while turning every delivered order into a review, reward, or repeat purchase opportunity.",
+      "Why subscribe: delivery and pickup become part of your owned customer system instead of another isolated monthly bill.",
     proof: ["Delivery quote support", "Pickup timing", "Trackable follow-up"],
+    fits: [
+      "Delivery and pickup settings on the public ordering page",
+      "Customer address, notes, fee, and fulfilment data saved to the order",
+      "Preparation, dispatch, pickup, delivered, failed, and cancelled states",
+      "Post-order review, reward, and win-back campaigns",
+    ],
+    bestFor: "Food, retail, and local operators that need pickup or delivery without turning customer data over to a marketplace.",
   },
   bookings: {
     headline: "Bookings, reservations, and appointments in the same customer loop.",
@@ -423,8 +502,15 @@ const FEATURE_DETAIL = {
       "Booking-linked analytics for services, staff, and demand",
     ],
     conversion:
-      "Remove friction from appointment capture, reduce no-shows, and bring customers back after the visit.",
+      "Why subscribe: you get scheduling, reminders, feedback, and customer follow-up together, so you can replace a standalone booking tool.",
     proof: ["Availability checks", "Calendar invites", "Reminder-ready"],
+    fits: [
+      "Booking services and resources in operations",
+      "Public booking flow for tables, services, staff, sessions, or events",
+      "Availability checks, confirmations, reschedules, and cancellations",
+      "Booking reminders, feedback, review prompts, and repeat-customer journeys",
+    ],
+    bestFor: "Restaurants, salons, spas, clinics, gyms, and service businesses that sell time, tables, or appointments.",
   },
   feedback: {
     headline: "Private feedback that is specific enough to fix.",
@@ -438,8 +524,15 @@ const FEATURE_DETAIL = {
       "Staff, item, and service signals for daily improvement",
     ],
     conversion:
-      "Protect public reputation by giving unhappy customers a private path first.",
+      "Why subscribe: one prevented public complaint can protect far more revenue than the monthly cost of the platform.",
     proof: ["Contextual questions", "Private issue capture", "Reward flow"],
+    fits: [
+      "QR sessions tied to staff, menu items, orders, bookings, or visits",
+      "Private inbox for low ratings and customer replies",
+      "Discount codes and reward timing for feedback completion",
+      "Staff, service, and item insights for daily improvements",
+    ],
+    bestFor: "Owners who want bad experiences surfaced privately before they damage the public rating.",
   },
   reputation: {
     headline: "Review growth without awkward review begging.",
@@ -453,8 +546,15 @@ const FEATURE_DETAIL = {
       "Owner alerts for urgent or low-rating reviews",
     ],
     conversion:
-      "Build more public trust, respond faster, and spend less time jumping between review sites.",
+      "Why subscribe: stronger reviews improve the trust signals buyers check before choosing you, while AI drafts save owner and manager time.",
     proof: ["AI reply drafts", "Competitor tracking", "Review alerts"],
+    fits: [
+      "Google reviews on Growth, with Yelp and TripAdvisor on higher plans",
+      "Daily review sync, AI summaries, and AI reply drafts",
+      "Competitor tracking and public signal monitoring by plan",
+      "Owner alerts and campaign follow-up after real customer activity",
+    ],
+    bestFor: "Any local business where new customers check ratings before calling, booking, ordering, or walking in.",
   },
   campaigns: {
     headline: "Automations that turn customer activity into repeat revenue.",
@@ -468,8 +568,15 @@ const FEATURE_DETAIL = {
       "Campaign reporting tied to redemptions and revenue influence",
     ],
     conversion:
-      "Stop blasting everyone and start messaging customers based on what they actually did.",
+      "Why subscribe: campaigns are tied to real orders, bookings, rewards, and consent, so offers are easier to target and measure.",
     proof: ["Win-back journeys", "Scheduled sends", "Redemption tracking"],
+    fits: [
+      "SMS and email campaigns from Boost",
+      "Review request, feedback discount, low-rating recovery, and win-back journeys",
+      "Consent and do-not-contact tracking",
+      "Campaign analytics, redemptions, and revenue-influenced reporting",
+    ],
+    bestFor: "Owners who want repeat business without manually remembering who to message and when.",
   },
   rewards: {
     headline: "Rewards that motivate feedback and measurable return visits.",
@@ -483,8 +590,15 @@ const FEATURE_DETAIL = {
       "Performance reporting for offers and redemptions",
     ],
     conversion:
-      "Customers feel thanked, your team gets better data, and every incentive is easier to measure.",
+      "Why subscribe: rewards stop being random discounts and become trackable return-visit tools you can measure.",
     proof: ["Trackable codes", "Scanner support", "Offer reporting"],
+    fits: [
+      "Feedback discounts delivered after customer responses",
+      "Camera-based discount code scanner",
+      "Campaign offer redemptions tied to customers",
+      "Revenue-influenced campaign and reward reporting",
+    ],
+    bestFor: "Businesses that already discount occasionally but want offers to be trackable instead of guesswork.",
   },
   analytics: {
     headline: "One dashboard for what customers are telling you.",
@@ -498,8 +612,15 @@ const FEATURE_DETAIL = {
       "Exports and reports for teams that need deeper analysis",
     ],
     conversion:
-      "Fewer blind spots, faster decisions, and clearer proof of what is driving revenue.",
+      "Why subscribe: owners get one place to see what is working, where revenue is leaking, and which actions deserve attention.",
     proof: ["Owner digest", "Competitor view", "Revenue-influenced reporting"],
+    fits: [
+      "Review, feedback, staff, item, campaign, competitor, and public signal analytics",
+      "Owner assistant digest with alerts and suggested actions",
+      "Location comparison and organisation rollups by plan",
+      "Scheduled reports and exports for Business plans",
+    ],
+    bestFor: "Owners and managers who want one weekly command center instead of checking reviews, orders, campaigns, and staff performance separately.",
   },
   team: {
     headline: "Built for owners, managers, staff, and multiple locations.",
@@ -513,8 +634,15 @@ const FEATURE_DETAIL = {
       "Plan gates and feature flags as the business grows",
     ],
     conversion:
-      "Start small and grow without replacing the operating system later.",
+      "Why subscribe: BRC can start with one location and grow with staff, permissions, plan gates, and multi-location reporting already built in.",
     proof: ["Staff permissions", "Location rollups", "Plan gates"],
+    fits: [
+      "Owner, manager, staff, and admin roles",
+      "Capability flags and location-level permissions",
+      "Multi-location organisation model",
+      "Plan gates, feature overrides, subscription states, and support workflows",
+    ],
+    bestFor: "Growing teams that need staff access, controlled permissions, and location reporting without losing owner visibility.",
   },
 };
 
@@ -525,14 +653,15 @@ function Features() {
         <div className="section-header">
           <div className="section-tag">Highlights</div>
           <h2 className="section-h2">
-            The main workflows your customers
+            Everything an owner needs
             <br />
-            <span className="grad-text">already expect from you</span>
+            <span className="grad-text">to justify the subscription</span>
           </h2>
           <p className="section-p">
-            The homepage gives the quick story. Each card opens a dedicated
-            page that explains how the feature works, why it converts, and how
-            it connects to the rest of BRC.
+            BRC is positioned as the business owner&apos;s operating system for
+            customer revenue, reputation, and repeat visits. Each page explains
+            the feature, the owner problem it solves, and why it is worth
+            paying for.
           </p>
         </div>
         <div className="features-grid">
@@ -1235,6 +1364,11 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
       <Nav />
       <main className="feature-page">
         <section className="feature-hero">
+          <div className="hero-bg">
+            <div className="glow glow-1" />
+            <div className="glow glow-2" />
+            <div className="grid-overlay" />
+          </div>
           <div className="container feature-hero-inner">
             <div className="feature-hero-copy">
               <a href="/#features" className="feature-back">← All features</a>
@@ -1258,6 +1392,10 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
               </div>
               <h2>{feature.title}</h2>
               <p>{feature.outcome}</p>
+              <div className="feature-best-for">
+                <span>Best for</span>
+                <p>{detail.bestFor}</p>
+              </div>
               <div className="feature-proof-list">
                 {detail.proof.map((item) => (
                   <span key={item}>{item}</span>
@@ -1272,9 +1410,9 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
             <div>
               <div className="section-tag">What You Get</div>
               <h2 className="section-h2">
-                Built to convert interest
+                Built to make the monthly cost
                 <br />
-                <span className="grad-text">into booked, ordered, returning customers</span>
+                <span className="grad-text">feel obvious</span>
               </h2>
               <p className="feature-conversion">{detail.conversion}</p>
             </div>
@@ -1292,20 +1430,20 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
         <section className="section feature-flow-section">
           <div className="container">
             <div className="section-header">
-              <div className="section-tag">Connected System</div>
+              <div className="section-tag">Inside BRC</div>
               <h2 className="section-h2">
-                One feature never works
+                Where this fits
                 <br />
-                <span className="grad-text">in isolation</span>
+                <span className="grad-text">inside the actual app</span>
               </h2>
               <p className="section-p">
-                Ordering, booking, delivery, feedback, reviews, rewards,
-                campaigns, and analytics all share customer context. That is
-                what makes BRC different from disconnected tools.
+                These pages are not describing isolated features. They map to
+                real BRC modules: public pages, QR flows, operations,
+                feedback, campaigns, analytics, subscriptions, and team access.
               </p>
             </div>
             <div className="conversion-flow">
-              {["Customer action", "BRC captures context", "Follow-up runs", "Revenue and reputation grow"].map((item, index) => (
+              {detail.fits.map((item, index) => (
                 <div key={item} className="flow-step">
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <strong>{item}</strong>
@@ -2732,6 +2870,8 @@ export default function App() {
       <main>
         <Hero />
         <StatsBar />
+        <BusinessFitStrip />
+        <OwnerReasons />
         <Features />
         <HowItWorks />
         <Platforms />
