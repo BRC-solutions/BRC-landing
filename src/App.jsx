@@ -59,6 +59,10 @@ function signupUrl({
   return url.toString();
 }
 
+function trialSignupUrl() {
+  return signupUrl({ plan: "growth", billing: "monthly" });
+}
+
 function safeStorageGet(key) {
   try {
     return window.localStorage.getItem(key);
@@ -171,6 +175,7 @@ function trackMarketingEvent(eventType, metadata = {}) {
 function Nav({ theme = "dark", onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const trialHref = trialSignupUrl();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -215,7 +220,7 @@ function Nav({ theme = "dark", onToggleTheme }) {
           <a href={WEB_APP_URL} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             Sign In
           </a>
-          <a href="/#pricing" className="btn btn-primary">
+          <a href={trialHref} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
             Start Trial
           </a>
         </div>
@@ -241,8 +246,10 @@ function Nav({ theme = "dark", onToggleTheme }) {
           </a>
         ))}
         <a
-          href="/#pricing"
+          href={trialHref}
           className="btn btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{ marginTop: 8 }}
           onClick={() => setMobileOpen(false)}
         >
@@ -319,6 +326,8 @@ function PhoneMockup() {
 }
 
 function Hero() {
+  const trialHref = trialSignupUrl();
+
   return (
     <section className="hero">
       <div className="hero-bg">
@@ -346,7 +355,7 @@ function Hero() {
             actions are actually bringing money back.
           </p>
           <div className="hero-btns">
-            <a href="/#pricing" className="btn btn-primary btn-lg">
+            <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <a href="#features" className="btn btn-outline btn-lg">
@@ -1329,7 +1338,7 @@ const PLANS = [
     name: "Pro",
     monthly: 99,
     annual: 89,
-    desc: "For growing businesses with a few locations and advanced insights.",
+    desc: "For growing teams that need advanced ordering, bookings, delivery, operations, and deeper insights.",
     cta: "Start 7-Day Trial",
     highlight: false,
     badge: null,
@@ -1341,7 +1350,9 @@ const PLANS = [
       "Review dispute context for suspicious reviews",
       "Advanced reputation recovery reporting",
       "Menu/product performance insights",
-      "Advanced ordering and booking configuration",
+      "Advanced ordering, table, pickup, and delivery configuration",
+      "Advanced booking rules, deposits, buffers, and customer lookup",
+      "Operations console for order, booking, feedback, and recovery workflows",
       "Public Signals monitoring",
       "Competitor tracking up to 10",
       "Advanced campaigns and customer segments",
@@ -1353,7 +1364,7 @@ const PLANS = [
     name: "Business",
     monthly: 249,
     annual: 224,
-    desc: "For multi-location brands that need organisation-wide reporting.",
+    desc: "For multi-location brands that need organisation-wide operations, fulfilment, and reporting.",
     cta: "Start Business",
     highlight: false,
     badge: "Multi-location",
@@ -1364,7 +1375,9 @@ const PLANS = [
       "Organisation dashboard",
       "Brand-level reputation recovery reports",
       "Multi-location alerts and campaigns",
-      "Ordering and booking reporting",
+      "Multi-location ordering, booking, pickup, and delivery reporting",
+      "Operations views for locations, teams, fulfilment, and recovery queues",
+      "Location-level menu, service, availability, and delivery controls",
       "Scheduled reports and exports",
       "10 manual Public Signal scans/day",
       "Higher review sync allowance",
@@ -1560,7 +1573,7 @@ function FAQ() {
 
 // ─── FINAL CTA ────────────────────────────────────────────────────────────────
 
-function CTA({ trialHref = "/#pricing" } = {}) {
+function CTA({ trialHref = trialSignupUrl() } = {}) {
   return (
     <section className="section cta-section">
       <div className="container">
@@ -1747,7 +1760,7 @@ const INDUSTRY_PAGES = {
 
 function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggleTheme }) {
   const page = INDUSTRY_PAGES[slug] || INDUSTRY_PAGES.restaurants;
-  const trialHref = signupUrl({ plan: "growth", billing: "monthly" });
+  const trialHref = trialSignupUrl();
 
   return (
     <div className="app">
@@ -1880,6 +1893,7 @@ function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggle
 function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme }) {
   const feature = FEATURES.find((item) => item.slug === slug) || FEATURES[0];
   const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
+  const trialHref = trialSignupUrl();
   const guide = FEATURE_GUIDES[feature.slug] || FEATURE_GUIDES.ordering;
   const surfaces = FEATURE_SURFACES[feature.slug] || FEATURE_SURFACES.ordering;
   const appLocations = FEATURE_APP_LOCATIONS[feature.slug] || FEATURE_APP_LOCATIONS.ordering;
@@ -1906,7 +1920,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
               </h1>
               <p className="feature-page-subhead">{detail.subhead}</p>
               <div className="hero-btns">
-                <a href="/#pricing" className="btn btn-primary btn-lg">
+                <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
                   Start 7-Day Trial <span className="arrow">→</span>
                 </a>
                 <a href={WEB_APP_URL} className="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">
