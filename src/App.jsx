@@ -40,7 +40,7 @@ function signupUrl({
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 
-function Nav() {
+function Nav({ theme = "dark", onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -73,6 +73,17 @@ function Nav() {
           ))}
         </div>
         <div className="nav-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+          >
+            <span className="theme-toggle-track">
+              <span className="theme-toggle-knob" />
+            </span>
+            <span>{theme === "light" ? "Light" : "Dark"}</span>
+          </button>
           <a href={WEB_APP_URL} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             Sign In
           </a>
@@ -109,6 +120,17 @@ function Nav() {
         >
           Start Trial
         </a>
+        <button
+          className="theme-toggle theme-toggle-mobile"
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+        >
+          <span className="theme-toggle-track">
+            <span className="theme-toggle-knob" />
+          </span>
+          <span>{theme === "light" ? "Light mode" : "Dark mode"}</span>
+        </button>
       </div>
     </nav>
   );
@@ -1482,7 +1504,7 @@ function CTA() {
 
 // ─── FEATURE DETAIL PAGES ────────────────────────────────────────────────────
 
-function FeatureDetailPage({ slug = "ordering", onNavigate }) {
+function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme }) {
   const feature = FEATURES.find((item) => item.slug === slug) || FEATURES[0];
   const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
   const guide = FEATURE_GUIDES[feature.slug] || FEATURE_GUIDES.ordering;
@@ -1490,7 +1512,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
 
   return (
     <div className="app">
-      <Nav />
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
       <main className="feature-page">
         <section className="feature-hero">
           <div className="hero-bg">
@@ -3013,6 +3035,26 @@ export default function App() {
   };
   const [route, setRoute] = useState(readRoute);
   const currentPage = route.page;
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem("brc-theme") || "light";
+    } catch {
+      return "light";
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem("brc-theme", theme);
+    } catch {
+      // Ignore storage failures; the visual switch still works for this visit.
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((value) => (value === "light" ? "dark" : "light"));
+  };
 
   const navigateTo = (page) => {
     setRoute({ page });
@@ -3041,12 +3083,19 @@ export default function App() {
   }
 
   if (currentPage === PAGES.FEATURE) {
-    return <FeatureDetailPage slug={route.slug} onNavigate={navigateTo} />;
+    return (
+      <FeatureDetailPage
+        slug={route.slug}
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
   }
 
   return (
     <div className="app">
-      <Nav />
+      <Nav theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />
         <OwnerReasons />
