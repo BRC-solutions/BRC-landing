@@ -8,6 +8,7 @@ const PAGES = {
   TERMS: "terms",
   PRIVACY: "privacy",
   AUDIT: "audit",
+  FEATURE: "feature",
 };
 
 const API_BASE_URL =
@@ -50,10 +51,11 @@ function Nav() {
   }, []);
 
   const links = [
-    { label: "Features", href: "#features" },
-    { label: "How It Works", href: "#how-it-works" },
+    { label: "Features", href: "/#features" },
+    { label: "Ordering", href: "/features/ordering" },
+    { label: "Bookings", href: "/features/bookings" },
+    { label: "How It Works", href: "/#how-it-works" },
     { label: "Pricing", href: "#pricing" },
-    { label: "FAQ", href: "#faq" },
   ];
 
   return (
@@ -179,26 +181,26 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            Available on iOS · Android · Web
+            Built for orders · bookings · delivery · reviews
           </div>
           <h1 className="hero-h1">
-            Run reputation, orders,
+            Turn every customer action
             <br />
-            <span className="grad-text">bookings, and customers.</span>
+            <span className="grad-text">into the next sale.</span>
           </h1>
           <p className="hero-p">
-            BRC stands for {BRAND_EXPANSION}: one place to manage the full
-            customer loop: online ordering, service bookings, private feedback,
-            review growth, win-back campaigns, and customer operations. Capture
-            what happened, recover problems before they go public, and turn
-            every order or appointment into better service data.
+            BRC is the customer operations app for local businesses: branded
+            ordering, booking, delivery, private feedback, review growth,
+            rewards, campaigns, and analytics in one connected system. Capture
+            demand, recover problems privately, and bring customers back with
+            follow-up that is tied to what they actually did.
           </p>
           <div className="hero-btns">
             <a href="#pricing" className="btn btn-primary btn-lg">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
-            <a href="#how-it-works" className="btn btn-outline btn-lg">
-              See How It Works
+            <a href="#features" className="btn btn-outline btn-lg">
+              Explore Features
             </a>
           </div>
           <div className="hero-social-proof">
@@ -296,84 +298,246 @@ function StatsBar() {
 
 const FEATURES = [
   {
-    icon: "📋",
-    accent: "var(--purple)",
-    title: "Feedback Tied to Orders and Visits",
-    body: "Customers don't get a generic form. They get questions about what they ordered, booked, collected, or experienced, so every response is contextual and actionable.",
-    tag: "Core",
-  },
-  {
+    slug: "ordering",
     icon: "🛒",
     accent: "var(--cyan)",
-    title: "Ordering That Feeds Customer Ops",
-    body: "Take dine-in, pickup, retail, or service orders through branded customer pages. Each order can feed feedback, rewards, customer profiles, and performance analytics automatically.",
-    tag: "Ordering",
+    title: "Online ordering",
+    body: "Branded dine-in, pickup, retail, and service ordering that feeds customer profiles, rewards, feedback, and analytics.",
+    tag: "Commerce",
+    outcome: "Capture more direct orders without losing the customer relationship.",
   },
   {
+    slug: "delivery",
+    icon: "🚚",
+    accent: "var(--green)",
+    title: "Delivery and pickup",
+    body: "Delivery quotes, customer details, pickup slots, order tracking, and fulfilment workflows designed for local teams.",
+    tag: "Fulfilment",
+    outcome: "Make every order easier to accept, prepare, and follow up.",
+  },
+  {
+    slug: "bookings",
     icon: "📅",
     accent: "var(--blue)",
-    title: "Bookings Built Into the Same Flow",
-    body: "Let customers book appointments, services, staff, classes, or sessions, then use the booking record for reminders, feedback, review follow-up, and repeat-customer journeys.",
+    title: "Bookings and reservations",
+    body: "Appointments, services, staff, tables, classes, and sessions connected to reminders, confirmations, feedback, and repeat visits.",
     tag: "Bookings",
+    outcome: "Turn booking intent into confirmed appointments with less admin.",
   },
   {
-    icon: "🎁",
-    accent: "var(--green)",
-    title: "Instant Discount for Honest Feedback",
-    body: "Every customer who leaves feedback gets a personalised discount code delivered immediately. They feel appreciated. You get real data. Everyone wins.",
-    tag: "Retention",
+    slug: "feedback",
+    icon: "📋",
+    accent: "var(--purple)",
+    title: "Private feedback",
+    body: "Contextual forms tied to orders, bookings, staff, tables, products, or visits so feedback is specific enough to act on.",
+    tag: "Experience",
+    outcome: "Find service issues before they become public reviews.",
   },
   {
-    icon: "🔒",
-    accent: "var(--blue)",
-    title: "Catch Problems Before They Go Public",
-    body: "Unhappy customers can raise issues privately with your business. Your team resolves it before it becomes a public complaint — protecting your reputation while the experience is still salvageable.",
-    tag: "Protection",
-  },
-  {
-    icon: "💬",
+    slug: "reputation",
+    icon: "⭐",
     accent: "var(--yellow)",
-    title: "Natural Review Follow-Up",
-    body: "Days after the visit, order, or booking, the platform sends a warm follow-up asking customers to share their experience publicly on the platform you choose.",
-    tag: "Growth",
+    title: "Review growth",
+    body: "Monitor Google, Yelp, and TripAdvisor, draft replies with AI, and send natural review follow-ups at the right moment.",
+    tag: "Reputation",
+    outcome: "Grow the public proof customers check before they buy.",
   },
   {
+    slug: "campaigns",
     icon: "📣",
     accent: "var(--orange)",
-    title: "SMS Win-Back Campaigns",
-    body: "Haven't seen a customer in a while? Identify who's gone quiet and send a compelling offer to bring them back, timed around their orders, bookings, and visit history.",
-    tag: "Revenue",
+    title: "Campaigns and automations",
+    body: "SMS and email journeys for feedback rewards, review requests, win-backs, reminders, and customer reactivation.",
+    tag: "Retention",
+    outcome: "Bring quiet customers back without manually chasing them.",
   },
   {
-    icon: "📊",
+    slug: "rewards",
+    icon: "🎁",
     accent: "var(--red)",
-    title: "Advanced Analytics & Insights",
-    body: "Track review trends across Google, Yelp, and TripAdvisor. Monitor competitor performance, analyze sentiment, detect fake reviews with AI, and get real-time alerts — all in one comprehensive dashboard.",
+    title: "Rewards and loyalty",
+    body: "Discount codes, redemption tracking, loyalty-style incentives, and customer return journeys linked to real activity.",
+    tag: "Loyalty",
+    outcome: "Give customers a reason to return while measuring what works.",
+  },
+  {
+    slug: "analytics",
+    icon: "📊",
+    accent: "var(--blue)",
+    title: "Analytics and AI insights",
+    body: "Review trends, competitor tracking, campaign performance, item insights, staff signals, and owner summaries in one console.",
     tag: "Insights",
+    outcome: "Know what to improve, promote, fix, or protect next.",
+  },
+  {
+    slug: "team",
+    icon: "👥",
+    accent: "var(--purple)",
+    title: "Team and multi-location ops",
+    body: "Staff access, permissions, location-level settings, organisation reporting, notifications, and admin controls.",
+    tag: "Operations",
+    outcome: "Keep owners, managers, and staff working from the same source of truth.",
   },
 ];
+
+const FEATURE_DETAIL = {
+  ordering: {
+    headline: "Direct ordering that becomes customer intelligence.",
+    subhead:
+      "BRC helps restaurants, cafes, retail stores, salons, and service businesses take orders through branded customer pages, then turns each transaction into feedback, repeat revenue, and better decisions.",
+    bullets: [
+      "Dine-in, pickup, retail, and service ordering flows",
+      "Mobile-first catalog, cart, checkout, and order tracking",
+      "Customer records connected to order history and redemptions",
+      "Kitchen/preparation status and fulfilment-friendly workflows",
+      "Item and category performance data for smarter offers",
+    ],
+    conversion:
+      "Keep customers ordering directly from you, then use that order context to drive reviews, rewards, and repeat visits.",
+    proof: ["Direct customer data", "Mobile checkout", "Order-linked feedback"],
+  },
+  delivery: {
+    headline: "Delivery and pickup workflows for real local operations.",
+    subhead:
+      "Let customers choose delivery or collection, capture the details your team needs, quote delivery where enabled, and keep every order connected to the same customer operations engine.",
+    bullets: [
+      "Delivery address capture and quote support",
+      "Pickup slots, preparation timing, and order notes",
+      "Delivery fees and fulfilment details stored with the order",
+      "Order status tracking for customers and staff",
+      "Follow-up journeys after delivery or collection",
+    ],
+    conversion:
+      "Make fulfilment smoother while turning every delivered order into a review, reward, or repeat purchase opportunity.",
+    proof: ["Delivery quote support", "Pickup timing", "Trackable follow-up"],
+  },
+  bookings: {
+    headline: "Bookings, reservations, and appointments in the same customer loop.",
+    subhead:
+      "BRC supports booking flows for services, staff, tables, sessions, and events, then uses each booking record for reminders, feedback, review prompts, and repeat-customer journeys.",
+    bullets: [
+      "Service, staff, table, event, and appointment booking types",
+      "Availability checks, confirmation flows, rescheduling, and cancellation",
+      "Customer lookup and calendar invite support",
+      "Booking reminders and post-visit follow-up",
+      "Booking-linked analytics for services, staff, and demand",
+    ],
+    conversion:
+      "Remove friction from appointment capture, reduce no-shows, and bring customers back after the visit.",
+    proof: ["Availability checks", "Calendar invites", "Reminder-ready"],
+  },
+  feedback: {
+    headline: "Private feedback that is specific enough to fix.",
+    subhead:
+      "Generic surveys create generic answers. BRC asks about what actually happened: the order, table, product, service, staff member, booking, or location involved.",
+    bullets: [
+      "QR and link-based feedback collection",
+      "Questions tailored to orders, bookings, staff, products, and visits",
+      "Low-rating alerts and private recovery workflows",
+      "Feedback rewards delivered by SMS where configured",
+      "Staff, item, and service signals for daily improvement",
+    ],
+    conversion:
+      "Protect public reputation by giving unhappy customers a private path first.",
+    proof: ["Contextual questions", "Private issue capture", "Reward flow"],
+  },
+  reputation: {
+    headline: "Review growth without awkward review begging.",
+    subhead:
+      "BRC monitors your public reputation, helps your team respond faster, and sends natural follow-ups after genuine customer activity.",
+    bullets: [
+      "Google, Yelp, and TripAdvisor monitoring by plan",
+      "AI review summaries and reply draft support",
+      "Review request follow-ups after orders, bookings, or visits",
+      "Competitor tracking and local benchmark signals",
+      "Owner alerts for urgent or low-rating reviews",
+    ],
+    conversion:
+      "Build more public trust, respond faster, and spend less time jumping between review sites.",
+    proof: ["AI reply drafts", "Competitor tracking", "Review alerts"],
+  },
+  campaigns: {
+    headline: "Automations that turn customer activity into repeat revenue.",
+    subhead:
+      "Run campaigns and journeys from the same place your orders, bookings, feedback, and customer profiles live.",
+    bullets: [
+      "SMS and email campaign support",
+      "Scheduled sends, automations, and win-back journeys",
+      "Feedback reward and review request follow-ups",
+      "Customer segments based on activity and consent",
+      "Campaign reporting tied to redemptions and revenue influence",
+    ],
+    conversion:
+      "Stop blasting everyone and start messaging customers based on what they actually did.",
+    proof: ["Win-back journeys", "Scheduled sends", "Redemption tracking"],
+  },
+  rewards: {
+    headline: "Rewards that motivate feedback and measurable return visits.",
+    subhead:
+      "Use discounts, incentives, and redemption tracking to encourage customers to respond, come back, and buy again.",
+    bullets: [
+      "Instant discount delivery after feedback",
+      "Unique, trackable codes and redemption scanning",
+      "Campaign-linked offers and customer reactivation",
+      "Consent-aware SMS and email reward delivery",
+      "Performance reporting for offers and redemptions",
+    ],
+    conversion:
+      "Customers feel thanked, your team gets better data, and every incentive is easier to measure.",
+    proof: ["Trackable codes", "Scanner support", "Offer reporting"],
+  },
+  analytics: {
+    headline: "One dashboard for what customers are telling you.",
+    subhead:
+      "BRC combines reputation, feedback, campaign, order, booking, customer, competitor, and operational signals so owners know what deserves attention.",
+    bullets: [
+      "Review, feedback, order, booking, and campaign dashboards",
+      "AI summaries, owner digests, and recommendation workflows",
+      "Competitor and public signal monitoring",
+      "Staff, service, item, and location-level performance views",
+      "Exports and reports for teams that need deeper analysis",
+    ],
+    conversion:
+      "Fewer blind spots, faster decisions, and clearer proof of what is driving revenue.",
+    proof: ["Owner digest", "Competitor view", "Revenue-influenced reporting"],
+  },
+  team: {
+    headline: "Built for owners, managers, staff, and multiple locations.",
+    subhead:
+      "Give the right people access to the right workflows, keep locations separated where needed, and roll up the picture for owners.",
+    bullets: [
+      "Owner, staff, admin, and location-level permissions",
+      "Multi-location organisation structure",
+      "Notification preferences for reviews, orders, bookings, and support",
+      "Admin/support tools and audit-friendly operations",
+      "Plan gates and feature flags as the business grows",
+    ],
+    conversion:
+      "Start small and grow without replacing the operating system later.",
+    proof: ["Staff permissions", "Location rollups", "Plan gates"],
+  },
+};
 
 function Features() {
   return (
     <section className="section features-section" id="features">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">Features</div>
+          <div className="section-tag">Highlights</div>
           <h2 className="section-h2">
-            Built for what actually
+            The main workflows your customers
             <br />
-            <span className="grad-text">happens in your business</span>
+            <span className="grad-text">already expect from you</span>
           </h2>
           <p className="section-p">
-            Not a generic CRM. Not just a review monitor. BRC is
-            designed around the real daily loop: orders and bookings in,
-            feedback captured, issues resolved, and customers followed up at
-            the right time.
+            The homepage gives the quick story. Each card opens a dedicated
+            page that explains how the feature works, why it converts, and how
+            it connects to the rest of BRC.
           </p>
         </div>
         <div className="features-grid">
           {FEATURES.map((f) => (
-            <div key={f.title} className="feature-card">
+            <a key={f.title} href={`/features/${f.slug}`} className="feature-card">
               <div
                 className="feature-icon-wrap"
                 style={{ "--accent": f.accent }}
@@ -383,7 +547,9 @@ function Features() {
               <div className="feature-tag">{f.tag}</div>
               <h3 className="feature-title">{f.title}</h3>
               <p className="feature-body">{f.body}</p>
-            </div>
+              <div className="feature-outcome">{f.outcome}</div>
+              <div className="feature-link">Explore {f.title} <span>→</span></div>
+            </a>
           ))}
         </div>
       </div>
@@ -1054,6 +1220,129 @@ function CTA() {
         </div>
       </div>
     </section>
+  );
+}
+
+// ─── FEATURE DETAIL PAGES ────────────────────────────────────────────────────
+
+function FeatureDetailPage({ slug = "ordering", onNavigate }) {
+  const feature = FEATURES.find((item) => item.slug === slug) || FEATURES[0];
+  const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
+  const related = FEATURES.filter((item) => item.slug !== feature.slug).slice(0, 3);
+
+  return (
+    <div className="app">
+      <Nav />
+      <main className="feature-page">
+        <section className="feature-hero">
+          <div className="container feature-hero-inner">
+            <div className="feature-hero-copy">
+              <a href="/#features" className="feature-back">← All features</a>
+              <div className="section-tag">{feature.tag}</div>
+              <h1 className="feature-page-title">
+                {detail.headline}
+              </h1>
+              <p className="feature-page-subhead">{detail.subhead}</p>
+              <div className="hero-btns">
+                <a href="#pricing" className="btn btn-primary btn-lg">
+                  Start 7-Day Trial <span className="arrow">→</span>
+                </a>
+                <a href={WEB_APP_URL} className="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">
+                  Open Web App
+                </a>
+              </div>
+            </div>
+            <div className="feature-proof-panel">
+              <div className="feature-proof-icon" style={{ "--accent": feature.accent }}>
+                {feature.icon}
+              </div>
+              <h2>{feature.title}</h2>
+              <p>{feature.outcome}</p>
+              <div className="feature-proof-list">
+                {detail.proof.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section feature-detail-section">
+          <div className="container feature-detail-grid">
+            <div>
+              <div className="section-tag">What You Get</div>
+              <h2 className="section-h2">
+                Built to convert interest
+                <br />
+                <span className="grad-text">into booked, ordered, returning customers</span>
+              </h2>
+              <p className="feature-conversion">{detail.conversion}</p>
+            </div>
+            <div className="feature-bullet-card">
+              {detail.bullets.map((item) => (
+                <div key={item} className="feature-bullet">
+                  <span>✓</span>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section feature-flow-section">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">Connected System</div>
+              <h2 className="section-h2">
+                One feature never works
+                <br />
+                <span className="grad-text">in isolation</span>
+              </h2>
+              <p className="section-p">
+                Ordering, booking, delivery, feedback, reviews, rewards,
+                campaigns, and analytics all share customer context. That is
+                what makes BRC different from disconnected tools.
+              </p>
+            </div>
+            <div className="conversion-flow">
+              {["Customer action", "BRC captures context", "Follow-up runs", "Revenue and reputation grow"].map((item, index) => (
+                <div key={item} className="flow-step">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{item}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section feature-related-section">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">Next Features</div>
+              <h2 className="section-h2">Explore the connected workflows</h2>
+            </div>
+            <div className="features-grid">
+              {related.map((item) => (
+                <a key={item.slug} href={`/features/${item.slug}`} className="feature-card compact">
+                  <div className="feature-icon-wrap" style={{ "--accent": item.accent }}>
+                    <span className="feature-emoji">{item.icon}</span>
+                  </div>
+                  <div className="feature-tag">{item.tag}</div>
+                  <h3 className="feature-title">{item.title}</h3>
+                  <p className="feature-body">{item.body}</p>
+                  <div className="feature-link">Read more <span>→</span></div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Pricing />
+        <FAQ />
+        <CTA />
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
   );
 }
 
@@ -2393,19 +2682,29 @@ function Footer({ onNavigate }) {
 // ─── APP ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const initialPage =
-    window.location.pathname === "/audit" ? PAGES.AUDIT : PAGES.HOME;
-  const [currentPage, setCurrentPage] = useState(initialPage);
+  const readRoute = () => {
+    const pathname = window.location.pathname;
+    if (pathname === "/audit") return { page: PAGES.AUDIT };
+    if (pathname.startsWith("/features/")) {
+      return {
+        page: PAGES.FEATURE,
+        slug: pathname.replace("/features/", "").replace(/\/$/, ""),
+      };
+    }
+    return { page: PAGES.HOME };
+  };
+  const [route, setRoute] = useState(readRoute);
+  const currentPage = route.page;
 
   const navigateTo = (page) => {
-    setCurrentPage(page);
+    setRoute({ page });
     window.scrollTo(0, 0);
   };
 
   // Handle browser back button
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPage(PAGES.HOME);
+      setRoute(readRoute());
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -2421,6 +2720,10 @@ export default function App() {
 
   if (currentPage === PAGES.AUDIT) {
     return <PublicAuditPage />;
+  }
+
+  if (currentPage === PAGES.FEATURE) {
+    return <FeatureDetailPage slug={route.slug} onNavigate={navigateTo} />;
   }
 
   return (
