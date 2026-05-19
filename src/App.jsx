@@ -646,7 +646,141 @@ const FEATURE_DETAIL = {
   },
 };
 
+const FEATURE_GUIDES = {
+  ordering: {
+    setup: [
+      "Create catalog categories and items, then add prices, images, variants, modifiers, availability, and hidden states where needed.",
+      "Publish the branded public page and choose the customer entry point: table QR, pickup link, retail storefront, or service ordering page.",
+      "Connect Stripe when online payment is required, then decide which order modes the business accepts.",
+      "Use the operations screen to manage live orders, kitchen/preparation work, status changes, and order history.",
+    ],
+    dailyUse: [
+      "New orders land in the operations console with customer, payment, table, pickup, delivery, and item details.",
+      "Staff can move orders from submitted to accepted, ready, completed, cancelled, or refunded.",
+      "Owners can review item performance and use order history for feedback, review requests, rewards, and campaigns.",
+    ],
+    planNote: "Basic ordering belongs in the entry story, while advanced order management, catalog pickup, and table ordering are positioned as Pro and Business value.",
+  },
+  delivery: {
+    setup: [
+      "Enable pickup and delivery options on the public page for the right business type.",
+      "Set delivery fees, preparation expectations, fulfilment rules, and customer address requirements.",
+      "Use order notes and delivery notes so staff have the information they need before accepting the order.",
+      "Track delivery status inside the same order record instead of running a separate fulfilment spreadsheet.",
+    ],
+    dailyUse: [
+      "Staff see delivery address, notes, fee, fulfilment type, dispatch status, and customer contact details.",
+      "Orders can move through preparation, dispatch, pickup, delivered, failed, or cancelled states.",
+      "After fulfilment, BRC can trigger feedback, review requests, rewards, and win-back journeys.",
+    ],
+    planNote: "Delivery strengthens the subscription by making ordering more complete without forcing the owner into another delivery-management tool.",
+  },
+  bookings: {
+    setup: [
+      "Create services, staff, tables, rooms, classes, or event resources depending on the business type.",
+      "Set availability, duration, party size, buffer expectations, and whether the flow is for services, staff, tables, or events.",
+      "Publish booking on the public page so customers can book without downloading an app.",
+      "Use confirmations, cancellation, reschedule, and calendar links to reduce manual admin.",
+    ],
+    dailyUse: [
+      "Owners and staff see upcoming bookings in operations with customer details and booking status.",
+      "Customers can manage relevant booking actions through the public flow.",
+      "Completed bookings can feed feedback, review follow-up, customer profiles, campaigns, and analytics.",
+    ],
+    planNote: "Service bookings and table ordering are strong Pro and Business plan reasons because they replace a standalone scheduling product.",
+  },
+  feedback: {
+    setup: [
+      "Create QR sessions from Boost or use order and booking events to start a feedback moment.",
+      "Tie the session to staff, selected items, services, table, order, or booking context where available.",
+      "Choose whether feedback earns an immediate or next-visit reward, and define discount rules.",
+      "Route low ratings into the private feedback inbox so the team can respond before the issue becomes public.",
+    ],
+    dailyUse: [
+      "Staff review open and resolved feedback, add internal notes, and reply to customers where needed.",
+      "Owners see staff ratings, item/service signals, low-rating patterns, and reward claims.",
+      "Happy customers can be moved into review follow-up while unhappy customers stay in private recovery.",
+    ],
+    planNote: "Private feedback is a core Growth plan reason because it gives the owner reputation protection from day one.",
+  },
+  reputation: {
+    setup: [
+      "Connect the business profile and fetch previous reviews within the plan allowance.",
+      "Choose which review platforms matter for the plan: Google first, then Yelp and TripAdvisor on higher tiers.",
+      "Set alerts for new reviews, low ratings, and owner attention.",
+      "Use AI summaries and reply drafts so managers can respond faster without starting from a blank page.",
+    ],
+    dailyUse: [
+      "Owners monitor review volume, average rating, unresolved replies, and urgent review risks.",
+      "Managers can use AI drafts, competitor context, and public signal checks to decide where to act.",
+      "Review requests can be triggered after real customer activity instead of asking everyone at random.",
+    ],
+    planNote: "Growth sells Google review management; Pro and Business expand the story with multi-platform, competitors, and public signals.",
+  },
+  campaigns: {
+    setup: [
+      "Build campaigns from Boost using SMS or email depending on customer consent and contact details.",
+      "Choose campaign type: review request, feedback discount, low-rating recovery, win-back, staff/menu-based, or scheduled send.",
+      "Set audience, offer, timing, and discount behaviour.",
+      "Track sent, clicked, redeemed, revenue-influenced results, and credit usage.",
+    ],
+    dailyUse: [
+      "Owners can see which campaigns are active, scheduled, sent, failed, clicked, or redeemed.",
+      "Customer consent and do-not-contact rules keep messaging cleaner.",
+      "Campaign results connect back to rewards, feedback, customers, and revenue-influenced reporting.",
+    ],
+    planNote: "Campaign basics support Growth; customer segments, advanced campaigns, and automations make Pro and Business easier to justify.",
+  },
+  rewards: {
+    setup: [
+      "Set maximum discount rules and decide when rewards are immediate, next visit, or disabled.",
+      "Generate unique discount codes from feedback, campaigns, or owner-created offers.",
+      "Use the scanner to redeem codes at the counter when customers return.",
+      "Review redemption reporting to understand which offers actually drive repeat visits.",
+    ],
+    dailyUse: [
+      "Staff can scan or verify discount codes and see whether they were claimed.",
+      "Owners can compare feedback discounts, campaign offers, redemptions, and estimated discount given.",
+      "Rewards become a measurable retention tool instead of an untracked giveaway.",
+    ],
+    planNote: "Rewards make the subscription feel tangible because the owner can connect customer response, offer, redemption, and repeat visit.",
+  },
+  analytics: {
+    setup: [
+      "Connect reviews, feedback, campaigns, ordering, bookings, competitors, and public signals so data lands in one owner view.",
+      "Enable owner digest and alerts for risk, review volume, campaign results, and operational issues.",
+      "Use plan-level reporting: Growth for core insights, Pro for deeper monitoring, Business for organisation reporting.",
+      "Review staff, item, location, campaign, and competitor patterns before changing operations or offers.",
+    ],
+    dailyUse: [
+      "Owners check what changed this week: reviews, low ratings, redemptions, campaign performance, and competitor movement.",
+      "Managers can identify which staff, services, menu items, or locations need attention.",
+      "Business plans can roll up location performance and scheduled reporting.",
+    ],
+    planNote: "Analytics is the subscription proof layer: it shows the owner where BRC is saving time, protecting reputation, and influencing revenue.",
+  },
+  team: {
+    setup: [
+      "Invite owners, managers, and staff with role-based permissions.",
+      "Assign capabilities and location scope so team members only access what they need.",
+      "Use subscription gates and feature overrides to control which modules are active.",
+      "Set notifications for reviews, feedback, orders, bookings, campaign events, support, and billing states.",
+    ],
+    dailyUse: [
+      "Owners keep visibility across locations while managers handle local operations.",
+      "Staff can work in the relevant module without seeing owner-only controls.",
+      "Admin/support workflows, audit logs, and plan states keep the business manageable as it grows.",
+    ],
+    planNote: "Team and multi-location controls make BRC credible for businesses that start with one location but plan to grow.",
+  },
+};
+
 function Features() {
+  const primary = FEATURES.filter((f) =>
+    ["ordering", "bookings", "feedback"].includes(f.slug),
+  );
+  const secondary = FEATURES.filter((f) => !primary.includes(f));
+
   return (
     <section className="section features-section" id="features">
       <div className="container">
@@ -665,7 +799,7 @@ function Features() {
           </p>
         </div>
         <div className="features-grid">
-          {FEATURES.map((f) => (
+          {primary.map((f) => (
             <a key={f.title} href={`/features/${f.slug}`} className="feature-card">
               <div
                 className="feature-icon-wrap"
@@ -680,6 +814,19 @@ function Features() {
               <div className="feature-link">Explore {f.title} <span>→</span></div>
             </a>
           ))}
+        </div>
+        <div className="feature-directory">
+          <div>
+            <span>All product pages</span>
+            <strong>Go deeper into each module</strong>
+          </div>
+          <div className="feature-directory-links">
+            {secondary.map((f) => (
+              <a key={f.slug} href={`/features/${f.slug}`}>
+                {f.title} <span>→</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1357,6 +1504,7 @@ function CTA() {
 function FeatureDetailPage({ slug = "ordering", onNavigate }) {
   const feature = FEATURES.find((item) => item.slug === slug) || FEATURES[0];
   const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
+  const guide = FEATURE_GUIDES[feature.slug] || FEATURE_GUIDES.ordering;
   const related = FEATURES.filter((item) => item.slug !== feature.slug).slice(0, 3);
 
   return (
@@ -1408,11 +1556,11 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
         <section className="section feature-detail-section">
           <div className="container feature-detail-grid">
             <div>
-              <div className="section-tag">What You Get</div>
+              <div className="section-tag">Owner Value</div>
               <h2 className="section-h2">
-                Built to make the monthly cost
+                What this module is
                 <br />
-                <span className="grad-text">feel obvious</span>
+                <span className="grad-text">really doing for the business</span>
               </h2>
               <p className="feature-conversion">{detail.conversion}</p>
             </div>
@@ -1423,6 +1571,57 @@ function FeatureDetailPage({ slug = "ordering", onNavigate }) {
                   <p>{item}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section feature-howto-section">
+          <div className="container">
+            <div className="section-header feature-left-header">
+              <div className="section-tag">How To Set It Up</div>
+              <h2 className="section-h2">
+                The practical setup path
+                <br />
+                <span className="grad-text">inside BRC</span>
+              </h2>
+              <p className="section-p">
+                This is the operational path an owner or manager follows after
+                starting the trial. The details change by business type, but
+                the setup logic stays consistent.
+              </p>
+            </div>
+            <div className="feature-howto-grid">
+              {guide.setup.map((item, index) => (
+                <article className="feature-howto-card" key={item}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{item}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section feature-use-section">
+          <div className="container feature-use-grid">
+            <div>
+              <div className="section-tag">Day To Day</div>
+              <h2 className="section-h2">
+                What the owner and team
+                <br />
+                <span className="grad-text">actually use</span>
+              </h2>
+            </div>
+            <div className="feature-use-list">
+              {guide.dailyUse.map((item) => (
+                <div className="feature-use-item" key={item}>
+                  <span>✓</span>
+                  <p>{item}</p>
+                </div>
+              ))}
+              <div className="feature-plan-note">
+                <strong>Subscription logic</strong>
+                <p>{guide.planNote}</p>
+              </div>
             </div>
           </div>
         </section>
@@ -2869,14 +3068,8 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <StatsBar />
-        <BusinessFitStrip />
         <OwnerReasons />
         <Features />
-        <HowItWorks />
-        <Platforms />
-        <Analytics />
-        <Campaigns />
         <Pricing />
         <FAQ />
         <CTA />
