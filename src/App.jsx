@@ -48,6 +48,14 @@ function signupUrl({
   if (attribution.source) url.searchParams.set("utm_source", attribution.source);
   if (attribution.medium) url.searchParams.set("utm_medium", attribution.medium);
   if (attribution.campaign) url.searchParams.set("utm_campaign", attribution.campaign);
+  if (attribution.term) url.searchParams.set("utm_term", attribution.term);
+  if (attribution.content) url.searchParams.set("utm_content", attribution.content);
+  if (attribution.gclid) url.searchParams.set("gclid", attribution.gclid);
+  if (attribution.fbclid) url.searchParams.set("fbclid", attribution.fbclid);
+  if (attribution.ttclid) url.searchParams.set("ttclid", attribution.ttclid);
+  if (attribution.rdt_cid) url.searchParams.set("rdt_cid", attribution.rdt_cid);
+  if (attribution.referrer) url.searchParams.set("brcReferrer", attribution.referrer);
+  if (attribution.landingPage) url.searchParams.set("brcLandingPage", attribution.landingPage);
   return url.toString();
 }
 
@@ -1552,7 +1560,7 @@ function FAQ() {
 
 // ─── FINAL CTA ────────────────────────────────────────────────────────────────
 
-function CTA() {
+function CTA({ trialHref = "/#pricing" } = {}) {
   return (
     <section className="section cta-section">
       <div className="container">
@@ -1572,7 +1580,7 @@ function CTA() {
             from the same app today.
           </p>
           <div className="cta-btns">
-            <a href="/#pricing" className="btn btn-primary btn-xl">
+            <a href={trialHref} className="btn btn-primary btn-xl" target={trialHref.startsWith("http") ? "_blank" : undefined} rel={trialHref.startsWith("http") ? "noopener noreferrer" : undefined}>
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <div className="store-btns">
@@ -1639,6 +1647,7 @@ const INDUSTRY_PAGES = {
       ["We already use marketplaces", "BRC helps you build your owned customer relationship instead of giving every repeat journey to a marketplace."],
       ["We do not have time", "Start with one workflow: private feedback after orders or table QR ordering. Add campaigns later."],
       ["We already ask for reviews", "BRC adds timing, context, private recovery, and follow-up based on real customer activity."],
+      ["We already have a POS", "BRC does not need to replace the POS on day one. It adds the customer journey layer around ordering, feedback, reviews, rewards, and follow-up."],
     ],
   },
   cafes: {
@@ -1661,6 +1670,7 @@ const INDUSTRY_PAGES = {
       ["We are too small", "That is exactly why replacing several tools with one simple workflow matters."],
       ["We do not want complex setup", "Start with your menu, feedback QR, and one reward. The rest can grow gradually."],
       ["Our customers already know us", "Regulars are the best source of reviews, referrals, feedback, and repeat campaigns."],
+      ["We already use social media", "Social posts create attention, but BRC helps turn real visits into owned customer data, reviews, rewards, and repeat orders."],
     ],
   },
   salons: {
@@ -1683,6 +1693,7 @@ const INDUSTRY_PAGES = {
       ["We already have booking software", "BRC connects bookings to feedback, reputation, rewards, campaigns, and owner reporting."],
       ["Staff need simple tools", "Permissions and workflow views let staff focus on bookings and customer context without owner-only controls."],
       ["Clients book through Instagram", "BRC gives those clients a cleaner destination and helps you keep the relationship after the booking."],
+      ["We rely on repeat clients", "That is exactly why reminders, feedback, reviews, and win-back campaigns matter: they help loyal clients keep returning and referring."],
     ],
   },
   retail: {
@@ -1705,12 +1716,14 @@ const INDUSTRY_PAGES = {
       ["We are not ecommerce", "BRC can start as a local catalog and pickup flow, not a full warehouse ecommerce system."],
       ["We already post on social", "Social creates attention; BRC helps capture the customer relationship and follow-up."],
       ["Stock changes often", "Use hidden and unavailable states so customers see what is actually ready."],
+      ["Customers prefer visiting in person", "BRC supports that by turning in-store relationships into pickup orders, feedback, rewards, reviews, and follow-up campaigns."],
     ],
   },
 };
 
 function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggleTheme }) {
   const page = INDUSTRY_PAGES[slug] || INDUSTRY_PAGES.restaurants;
+  const trialHref = signupUrl({ plan: "growth", billing: "monthly" });
 
   return (
     <div className="app">
@@ -1728,7 +1741,7 @@ function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggle
               <h1 className="industry-title">{page.title}</h1>
               <p className="industry-subhead">{page.subhead}</p>
               <div className="hero-btns">
-                <a href="/#pricing" className="btn btn-primary btn-lg">
+                <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
                   {page.primaryCta} <span className="arrow">→</span>
                 </a>
                 <a href="/contact" className="btn btn-outline btn-lg">
@@ -1803,7 +1816,7 @@ function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggle
             </div>
           </div>
         </section>
-        <CTA />
+        <CTA trialHref={trialHref} />
       </main>
       <Footer onNavigate={onNavigate} />
     </div>
