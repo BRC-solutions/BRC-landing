@@ -3070,6 +3070,35 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  useEffect(() => {
+    const handleInternalNavigation = (event) => {
+      const link = event.target.closest?.("a");
+      if (!link || link.target || link.hasAttribute("download")) return;
+
+      const url = new URL(link.href, window.location.href);
+      if (url.origin !== window.location.origin) return;
+      const isLandingRoute =
+        url.pathname === "/" ||
+        url.pathname === "/audit" ||
+        url.pathname.startsWith("/features/");
+      if (!isLandingRoute) return;
+
+      event.preventDefault();
+      window.history.pushState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      setRoute(readRoute());
+      requestAnimationFrame(() => {
+        if (url.hash) {
+          document.querySelector(url.hash)?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    };
+
+    document.addEventListener("click", handleInternalNavigation);
+    return () => document.removeEventListener("click", handleInternalNavigation);
+  }, []);
+
   if (currentPage === PAGES.TERMS) {
     return <TermsOfService />;
   }
