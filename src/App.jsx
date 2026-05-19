@@ -776,30 +776,24 @@ const FEATURE_GUIDES = {
 };
 
 function Features() {
-  const primary = FEATURES.filter((f) =>
-    ["ordering", "bookings", "feedback"].includes(f.slug),
-  );
-  const secondary = FEATURES.filter((f) => !primary.includes(f));
-
   return (
     <section className="section features-section" id="features">
       <div className="container">
         <div className="section-header">
           <div className="section-tag">Highlights</div>
           <h2 className="section-h2">
-            Everything an owner needs
+            Everything BRC gives
             <br />
-            <span className="grad-text">to justify the subscription</span>
+            <span className="grad-text">local business owners</span>
           </h2>
           <p className="section-p">
-            BRC is positioned as the business owner&apos;s operating system for
-            customer revenue, reputation, and repeat visits. Each page explains
-            the feature, the owner problem it solves, and why it is worth
-            paying for.
+            Scan the full product below. Each feature links to a dedicated
+            explanation page with setup steps, day-to-day usage, and how it
+            fits into the BRC console.
           </p>
         </div>
         <div className="features-grid">
-          {primary.map((f) => (
+          {FEATURES.map((f) => (
             <a key={f.title} href={`/features/${f.slug}`} className="feature-card">
               <div
                 className="feature-icon-wrap"
@@ -814,19 +808,6 @@ function Features() {
               <div className="feature-link">Explore {f.title} <span>→</span></div>
             </a>
           ))}
-        </div>
-        <div className="feature-directory">
-          <div>
-            <span>All product pages</span>
-            <strong>Go deeper into each module</strong>
-          </div>
-          <div className="feature-directory-links">
-            {secondary.map((f) => (
-              <a key={f.slug} href={`/features/${f.slug}`}>
-                {f.title} <span>→</span>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </section>

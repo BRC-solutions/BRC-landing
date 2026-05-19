@@ -1442,61 +1442,6 @@ img { max-width: 100%; }
   min-height: 0;
 }
 
-.feature-directory {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 18px;
-  align-items: start;
-  padding: 22px;
-  background: rgba(255,255,255,.035);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-}
-
-.feature-directory span {
-  display: block;
-  color: var(--text-3);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.feature-directory strong {
-  display: block;
-  color: var(--text);
-  font-size: 18px;
-  line-height: 1.25;
-}
-
-.feature-directory-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.feature-directory-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-2);
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.045);
-  border-radius: 999px;
-  padding: 9px 12px;
-  font-size: 13px;
-  font-weight: 700;
-  transition: color var(--ease), border-color var(--ease), background var(--ease);
-}
-
-.feature-directory-links a:hover {
-  color: var(--text);
-  border-color: var(--border-s);
-  background: rgba(255,255,255,.075);
-}
-
 /* ─── FEATURE DETAIL PAGES ─────────────────────────────────────────────────── */
 
 .feature-page {
@@ -2605,7 +2550,6 @@ img { max-width: 100%; }
   .campaigns-layout { grid-template-columns: 1fr; gap: 40px; }
   .owner-reasons-grid { grid-template-columns: 1fr 1fr; }
   .business-fit-inner { align-items: flex-start; flex-direction: column; }
-  .feature-directory,
   .feature-use-grid { grid-template-columns: 1fr; }
   .feature-howto-grid { grid-template-columns: repeat(2, 1fr); }
   .feature-hero-inner,
