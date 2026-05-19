@@ -23,6 +23,9 @@ const BRAND_EXPANSION = "Business Reputation & Customer Operations";
 const BRAND_SHORT = "BRC";
 const BRAND_TAGLINE =
   "Business Reputation & Customer Operations for local teams.";
+const LEGAL_LAST_UPDATED = "May 19, 2026";
+const LEGAL_COMPANY_ADDRESS =
+  "BRC Labs LTD, Unit A, 82 James Carter Road, Mildenhall, IP28 7DE, United Kingdom";
 
 function signupUrl({
   businessName = "",
@@ -2727,6 +2730,692 @@ function PrivacyPolicy() {
   );
 }
 
+// ─── ENHANCED LEGAL PAGES ────────────────────────────────────────────────────
+
+function LegalBackLink() {
+  return (
+    <div className="legal-back">
+      <a
+        href="/"
+        className="btn btn-outline"
+        onClick={(e) => {
+          e.preventDefault();
+          window.history.back();
+        }}
+      >
+        &larr; Back to Home
+      </a>
+    </div>
+  );
+}
+
+function EnhancedTermsOfService() {
+  return (
+    <div className="legal-page">
+      <div className="container">
+        <div className="legal-header">
+          <h1 className="legal-title">Terms of Service</h1>
+          <p className="legal-subtitle">Last updated: {LEGAL_LAST_UPDATED}</p>
+        </div>
+
+        <div className="legal-content">
+          <section className="legal-section">
+            <h2>1. Agreement and parties</h2>
+            <p>
+              These Terms of Service govern access to BRC, including brcapp.io,
+              the BRC console, go.brcapp.io customer pages, mobile apps, APIs,
+              support channels, and related services (the "Services"). "BRC",
+              "we", "us", and "our" mean BRC Labs LTD. "Customer", "you", and
+              "your" mean the business, organisation, or person using the
+              Services.
+            </p>
+            <p>
+              By creating an account, starting a trial, paying for a plan,
+              using the Services, or authorising someone to use the Services on
+              your behalf, you agree to these Terms and our Privacy Policy. If
+              you use the Services for a company, you confirm that you have
+              authority to bind that company.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>2. What BRC provides</h2>
+            <p>
+              BRC is business reputation and customer operations software for
+              local teams. Depending on your plan and enabled modules, the
+              Services may include:
+            </p>
+            <ul>
+              <li>ordering, table ordering, pickup, delivery, and payment workflows;</li>
+              <li>booking, calendar, deposit, reminder, and customer lookup workflows;</li>
+              <li>feedback collection, customer inboxes, support, and follow-up tools;</li>
+              <li>review monitoring, review request flows, reply drafting, and reputation reporting;</li>
+              <li>tools to identify suspicious, fake, or policy-breaching reviews and prepare dispute materials;</li>
+              <li>campaigns, rewards, win-back messages, SMS, email, and owner digests;</li>
+              <li>analytics, staff, menu, location, competitor, and performance insights; and</li>
+              <li>admin, billing, plan-gating, audit, and support tools.</li>
+            </ul>
+            <p>
+              BRC is a technology provider. We do not operate your business,
+              make your products, fulfil your orders, provide your services,
+              employ your staff, or control third-party review platforms.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>3. Your account and users</h2>
+            <p>
+              You must provide accurate account, business, billing, and contact
+              information and keep it up to date. You are responsible for all
+              activity under your account, including actions by owners,
+              managers, staff, contractors, and integrations you authorise.
+            </p>
+            <ul>
+              <li>Keep credentials secure and use strong access controls.</li>
+              <li>Assign user roles only to people who need that access.</li>
+              <li>Promptly remove access for staff who leave or change roles.</li>
+              <li>Notify us immediately if you suspect unauthorised access.</li>
+              <li>Do not share, sell, lease, or sublicense your account.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>4. Your responsibilities</h2>
+            <p>
+              You are responsible for your business operations and lawful use of
+              the Services. This includes:
+            </p>
+            <ul>
+              <li>all products, menus, prices, taxes, service descriptions, availability, staff assignments, policies, and fulfilment promises you publish;</li>
+              <li>all customer consents, privacy notices, refund terms, delivery terms, booking terms, and consumer disclosures you are required to provide;</li>
+              <li>all customer data, order data, booking data, feedback data, review data, and campaign data you enter, upload, import, or collect through BRC;</li>
+              <li>compliance with data protection, consumer protection, marketing, telecoms, accessibility, employment, tax, food, alcohol, health, licensing, and sector-specific laws that apply to your business; and</li>
+              <li>reviewing, approving, and supervising any automated, suggested, or AI-assisted output before you send, publish, dispute, or rely on it.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>5. Customer data and data protection</h2>
+            <p>
+              As between you and BRC, you retain ownership of the business and
+              customer data you submit to the Services. You grant BRC the rights
+              needed to host, process, transmit, analyse, secure, and display
+              that data so we can provide, protect, support, and improve the
+              Services.
+            </p>
+            <p>
+              For customer data we process on your behalf through ordering,
+              bookings, feedback, CRM, campaigns, and support workflows, you are
+              usually the controller or business, and BRC is usually your
+              processor or service provider. For account, billing, website,
+              contact, security, product analytics, and legal compliance data,
+              BRC is usually an independent controller.
+            </p>
+            <ul>
+              <li>You must have a lawful basis to collect and use personal data in BRC.</li>
+              <li>You must honour access, correction, deletion, objection, unsubscribe, and other individual rights that apply to your customers.</li>
+              <li>You must not upload sensitive data unless it is necessary, lawful, and supported by appropriate safeguards.</li>
+              <li>You must not use BRC to build unlawful marketing lists, scrape private data, or contact people without required permission.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>6. Ordering, bookings, payments, and fulfilment</h2>
+            <p>
+              BRC helps you present ordering and booking flows, collect customer
+              details, route requests, connect payments, and manage status
+              updates. Unless we expressly state otherwise in writing, you are
+              the seller, service provider, merchant, and business of record for
+              your customers.
+            </p>
+            <ul>
+              <li>You are responsible for accepting, rejecting, preparing, delivering, refunding, and supporting orders and bookings.</li>
+              <li>You must keep prices, fees, deposits, availability, delivery areas, opening hours, allergens, restrictions, and terms accurate.</li>
+              <li>Payments may be handled through Stripe, Stripe Connect, app stores, RevenueCat, or other payment providers, and their terms also apply.</li>
+              <li>Delivery quotes, driver details, tracking, or third-party fulfilment integrations are operational tools, not guarantees.</li>
+              <li>BRC may show payment, payout, refund, and fee information based on provider data, but payment providers and banks control settlement timing.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>7. Messaging, campaigns, and consent</h2>
+            <p>
+              BRC can send or help you send service messages, receipts,
+              reminders, feedback requests, review requests, reward messages,
+              SMS, email, and campaign messages. You are responsible for making
+              sure each message is lawful, accurate, non-deceptive, and sent
+              with any consent or opt-out mechanism required by law.
+            </p>
+            <ul>
+              <li>Do not send spam, harassment, deceptive offers, unlawful review incentives, or messages to people who have opted out.</li>
+              <li>Comply with TCPA, CAN-SPAM, CTIA guidance, UK PECR, GDPR, ePrivacy rules, and equivalent laws where they apply.</li>
+              <li>Use accurate sender names, business identity, offer terms, expiry dates, and unsubscribe instructions.</li>
+              <li>BRC may suspend messaging if we see abuse, excessive complaints, provider blocks, unlawful content, or platform risk.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>8. Reviews, reputation recovery, and public platforms</h2>
+            <p>
+              BRC helps you monitor reviews, collect private feedback, encourage
+              legitimate positive reviews, respond to customer concerns, recover
+              negative experiences, and prepare dispute evidence for reviews
+              that may be fake, suspicious, defamatory, abusive, irrelevant,
+              conflicted, or otherwise against platform rules.
+            </p>
+            <ul>
+              <li>BRC does not guarantee removal, suppression, ranking changes, rating changes, review publication, or platform action.</li>
+              <li>Google, Yelp, Tripadvisor, Meta, Apple, and other platforms control their own listings, reviews, APIs, policies, rankings, and moderation decisions.</li>
+              <li>You must not buy reviews, gate reviews unlawfully, pressure customers, post fake reviews, review competitors dishonestly, or offer prohibited incentives.</li>
+              <li>AI, authenticity signals, dispute templates, and reply drafts are decision-support tools and must be reviewed by a human.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>9. AI, automation, and analytics</h2>
+            <p>
+              BRC may use automated systems and AI providers to classify
+              feedback, summarise reviews, draft replies, detect themes,
+              identify suspicious review patterns, suggest actions, estimate
+              performance, or prioritise operational work. These outputs may be
+              incomplete, inaccurate, biased, out of date, or unsuitable for
+              your specific situation.
+            </p>
+            <ul>
+              <li>You are responsible for reviewing AI-assisted content before sending or publishing it.</li>
+              <li>Do not use AI output as legal, medical, financial, safety, HR, or other professional advice.</li>
+              <li>Do not submit data to BRC that you are not permitted to process with automated tools or subprocessors.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>10. Plans, trials, billing, and taxes</h2>
+            <p>
+              Paid features require an active plan, trial, add-on, or usage
+              allowance. Prices, plan limits, modules, overages, SMS credits,
+              storage limits, and included features may vary by plan, region,
+              sales channel, promotion, or written agreement.
+            </p>
+            <ul>
+              <li>Subscriptions renew automatically for the selected billing period unless cancelled before the renewal date through the BRC billing page, Stripe portal, app store, RevenueCat-managed flow, or another channel we make available.</li>
+              <li>Cancellation stops future renewals; it does not create a refund or credit for the current billing period unless required by law or expressly agreed in writing.</li>
+              <li>You authorise BRC, Stripe, RevenueCat, app stores, and other payment providers to charge fees, taxes, overages, add-ons, SMS credits, renewal amounts, and failed-payment retries.</li>
+              <li>Trials may expire, convert to paid subscriptions, be limited, or be withdrawn if abused. You are responsible for cancelling before a trial converts if you do not want paid access.</li>
+              <li>Fees, setup charges, SMS credits, add-ons, overages, and partial billing periods are non-refundable and non-transferable except where required by law or expressly stated in your plan, order form, or written agreement.</li>
+              <li>Downgrades, cancelled modules, unused credits, unused capacity, unused time, or reduced usage do not entitle you to a refund, cash credit, or carried-forward allowance unless we expressly say otherwise.</li>
+              <li>If payment fails, is reversed, charged back, disputed, or becomes overdue, we may retry payment, suspend paid features, restrict messaging, pause public checkout or booking tools, downgrade access, recover collection costs, or terminate the account.</li>
+              <li>We may change prices or plan packaging with reasonable notice for paid renewals. Continued use after the effective date means you accept the new pricing.</li>
+              <li>You are responsible for taxes, chargebacks, payment disputes, accurate billing details, and any fees charged by banks, app stores, payment processors, or card networks.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>11. Third-party services</h2>
+            <p>
+              The Services connect to or rely on third-party services such as
+              Supabase, Stripe, RevenueCat, Twilio, SendGrid, OpenAI, Sentry,
+              Cloudflare Turnstile, Google services, Maps and Places providers,
+              review platforms, app stores, analytics tools, hosting providers,
+              and other integrations. Third-party terms, privacy notices, rate
+              limits, outages, review policies, data rules, and account
+              decisions may apply.
+            </p>
+            <ul>
+              <li>We are not responsible for third-party services we do not control.</li>
+              <li>You must keep connected accounts authorised and compliant.</li>
+              <li>Features may change or stop working if a third party changes its service, terms, API, pricing, permissions, or availability.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>12. Acceptable use</h2>
+            <p>You must not misuse the Services. Prohibited activity includes:</p>
+            <ul>
+              <li>breaking the law or infringing others' rights;</li>
+              <li>uploading malware, attempting unauthorised access, probing security, bypassing limits, or disrupting the Services;</li>
+              <li>scraping, crawling, copying, reverse engineering, or benchmarking the Services except where law permits and cannot be waived;</li>
+              <li>sending spam, misleading campaigns, unlawful incentives, abusive messages, or prohibited review requests;</li>
+              <li>collecting, storing, or sharing personal data without required permission;</li>
+              <li>misrepresenting your identity, business, reviews, products, services, or customer communications; or</li>
+              <li>using the Services to compete with BRC, resell the Services, or provide a substantially similar platform without written permission.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>13. Security, uptime, and support</h2>
+            <p>
+              We use reasonable technical and organisational measures to protect
+              the Services and we strive to maintain 99.9% service uptime.
+              This is an operational target, not a warranty, service level
+              agreement, or promise of compensation unless a separate written
+              agreement signed by BRC expressly says otherwise.
+            </p>
+            <p>
+              No online service is perfectly secure or always available.
+              Maintenance, outages, provider failures, hosting issues, database
+              issues, payment provider downtime, review platform changes,
+              telecoms disruption, app store disruption, internet disruption,
+              malicious activity, data corruption, data loss, force majeure,
+              emergencies, or beta features may affect availability, data
+              freshness, deliverability, orders, bookings, messages, reports, or
+              connected workflows.
+            </p>
+            <p>
+              To the fullest extent permitted by law, BRC will not provide
+              refunds, credits, service credits, compensation, damages, or other
+              remedies for downtime, loss of data, loss of access, delayed
+              messages, missed orders, missed bookings, lost revenue, lost
+              profits, reputational impact, or business interruption caused by
+              events outside BRC's reasonable control or by third-party
+              services, networks, infrastructure, platforms, integrations, or
+              providers.
+            </p>
+            <p>
+              Support channels, response times, service levels, and onboarding
+              help depend on your plan or written agreement. We may monitor,
+              investigate, throttle, or suspend activity to protect the
+              Services, customers, third parties, or BRC.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>14. Intellectual property</h2>
+            <p>
+              BRC, its software, designs, workflows, dashboards, text, graphics,
+              logos, know-how, models, documentation, and service content are
+              owned by BRC or its licensors. We grant you a limited, revocable,
+              non-exclusive, non-transferable right to use the Services during
+              your active subscription for your internal business operations.
+            </p>
+            <p>
+              You own your business content. You grant BRC a licence to use
+              your names, logos, data, content, feedback, and configuration only
+              as needed to provide, secure, support, market, and improve the
+              Services, subject to our confidentiality and privacy obligations.
+              If you give us feedback, we may use it without restriction or
+              compensation.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>15. Confidentiality</h2>
+            <p>
+              Each party may receive non-public information from the other. The
+              receiving party must protect confidential information using
+              reasonable care, use it only for the relationship under these
+              Terms, and disclose it only to personnel, contractors,
+              subprocessors, advisers, or authorities who need it and are bound
+              by appropriate obligations. This does not apply to information
+              that is public, independently developed, lawfully received from
+              another source, or required to be disclosed by law.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>16. Suspension and termination</h2>
+            <p>
+              You may cancel according to your plan or billing provider rules.
+              We may suspend or terminate access if you breach these Terms,
+              create security or legal risk, fail to pay, misuse messaging or
+              review tools, harm the Services, or if continued service would
+              expose BRC, customers, or third parties to risk.
+            </p>
+            <p>
+              After termination, your access ends. We may retain, export, or
+              delete data according to the Privacy Policy, product settings,
+              legal obligations, backups, security needs, and any data
+              processing agreement that applies.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>17. Disclaimers</h2>
+            <p>
+              The Services are provided "as is" and "as available" to the
+              fullest extent permitted by law. BRC disclaims warranties of
+              merchantability, fitness for a particular purpose,
+              non-infringement, availability, accuracy, and uninterrupted or
+              error-free operation. We do not guarantee revenue, review removal,
+              rating improvement, customer behaviour, platform ranking, search
+              visibility, deliverability, conversion, payout timing, or legal
+              compliance outcomes.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>18. Limitation of liability</h2>
+            <p>
+              To the fullest extent permitted by law, BRC and its affiliates,
+              directors, employees, contractors, suppliers, and licensors will
+              not be liable for indirect, incidental, special, consequential,
+              exemplary, punitive, or lost-profit damages, or for loss of data,
+              goodwill, revenue, business opportunity, reputation, or business
+              interruption.
+            </p>
+            <p>
+              To the fullest extent permitted by law, BRC's total aggregate
+              liability for all claims relating to the Services or these Terms
+              will not exceed the fees you paid to BRC for the Services giving
+              rise to the claim during the three months before the event giving
+              rise to liability, or GBP 100 if you used free Services.
+            </p>
+            <p>
+              Nothing in these Terms limits liability that cannot legally be
+              limited, including liability for fraud, fraudulent
+              misrepresentation, or death or personal injury caused by
+              negligence.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>19. Indemnity</h2>
+            <p>
+              You will defend, indemnify, and hold harmless BRC and its
+              affiliates, directors, employees, contractors, suppliers, and
+              licensors from claims, losses, damages, fines, penalties, costs,
+              and expenses arising from your business, your content, your
+              customers, your products or services, your messaging or review
+              activity, your breach of these Terms, your misuse of the
+              Services, or your violation of law or third-party rights.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>20. Governing law and disputes</h2>
+            <p>
+              These Terms are governed by the laws of England and Wales,
+              excluding conflict-of-law rules. The courts of England and Wales
+              will have exclusive jurisdiction, except that BRC may seek
+              injunctive or equitable relief in any court with jurisdiction to
+              protect the Services, confidential information, security, or
+              intellectual property.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>21. Changes and contact</h2>
+            <p>
+              We may update these Terms from time to time. If changes are
+              material, we will use reasonable efforts to notify account owners
+              by email, in-app notice, or website notice before or when the
+              changes take effect. Continued use after the effective date means
+              you accept the updated Terms.
+            </p>
+            <p>
+              Legal notices should be sent to legal@brcapp.io or {LEGAL_COMPANY_ADDRESS}.
+            </p>
+          </section>
+        </div>
+
+        <LegalBackLink />
+      </div>
+    </div>
+  );
+}
+
+function EnhancedPrivacyPolicy() {
+  return (
+    <div className="legal-page">
+      <div className="container">
+        <div className="legal-header">
+          <h1 className="legal-title">Privacy Policy</h1>
+          <p className="legal-subtitle">Last updated: {LEGAL_LAST_UPDATED}</p>
+        </div>
+
+        <div className="legal-content">
+          <section className="legal-section">
+            <h2>1. Who we are</h2>
+            <p>
+              This Privacy Policy explains how BRC Labs LTD ("BRC", "we", "us",
+              and "our") collects, uses, shares, and protects personal data
+              through brcapp.io, the BRC console, go.brcapp.io customer pages,
+              mobile apps, support channels, contact forms, and related
+              services.
+            </p>
+            <p>
+              Contact: privacy@brcapp.io or {LEGAL_COMPANY_ADDRESS}. If you
+              need help with an account or support ticket, contact
+              support@brcapp.io.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>2. Our privacy roles</h2>
+            <p>
+              BRC can act in different privacy roles depending on the data and
+              purpose. For account, billing, website, contact, security,
+              analytics, support, product improvement, marketing, and legal
+              compliance data, BRC is usually an independent controller.
+            </p>
+            <p>
+              For customer data that a business collects or manages through BRC
+              ordering, bookings, feedback, CRM, campaigns, review requests,
+              receipts, and support workflows, the business is usually the
+              controller or business, and BRC is usually its processor or
+              service provider. If you are a customer of a business using BRC,
+              that business is normally the first place to exercise rights about
+              your order, booking, feedback, or marketing preferences.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>3. Personal data we collect</h2>
+            <ul>
+              <li><strong>Account and business data:</strong> name, email, phone, password or login method, business name, address, website, profile links, staff roles, permissions, verification material, plan, billing status, and settings.</li>
+              <li><strong>Customer and operational data:</strong> customer names, email addresses, phone numbers, order details, booking details, delivery addresses, table numbers, notes, receipts, feedback, rewards, campaign history, support tickets, and communication preferences.</li>
+              <li><strong>Review and public signal data:</strong> public reviews, ratings, reviewer names or handles, review text, platform metadata, public listing details, competitor signals, and dispute notes.</li>
+              <li><strong>Payment and billing data:</strong> subscription state, invoices, plan changes, credits, payment provider identifiers, payout status, Stripe Connect status, and transaction metadata. Full card details are handled by payment providers, not stored by BRC.</li>
+              <li><strong>Support and contact data:</strong> messages, attachments, requester details, admin replies, email metadata, issue history, and internal notes.</li>
+              <li><strong>Device, usage, and security data:</strong> IP address, browser, device, app version, pages viewed, feature events, logs, crash data, identifiers, cookie data, Turnstile challenge data, and fraud or abuse signals.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>4. Sources of data</h2>
+            <p>
+              We collect data directly from you, from businesses using BRC,
+              from customers interacting with BRC-powered pages, from authorised
+              users and team members, from connected payment and communication
+              providers, from support messages, from device and usage events,
+              and from public or connected review and business listing sources
+              such as Google, Yelp, Tripadvisor, Maps and Places services, and
+              similar platforms.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>5. How we use personal data</h2>
+            <ul>
+              <li>provide, operate, secure, troubleshoot, and improve the Services;</li>
+              <li>create accounts, authenticate users, manage roles, and verify businesses;</li>
+              <li>process orders, bookings, receipts, deposits, payments, payouts, refunds, and billing events;</li>
+              <li>send transactional messages, service updates, reminders, review requests, support replies, owner digests, and permitted campaigns;</li>
+              <li>collect feedback, monitor reputation, analyse reviews, identify suspicious review patterns, draft replies, and prepare dispute materials;</li>
+              <li>generate analytics, reporting, insights, recommendations, plan gates, and product diagnostics;</li>
+              <li>prevent fraud, spam, abuse, unauthorised access, and security incidents;</li>
+              <li>respond to support, legal requests, regulatory duties, disputes, chargebacks, and policy enforcement; and</li>
+              <li>send BRC marketing where permitted, with unsubscribe controls.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>6. Legal bases</h2>
+            <p>
+              Where UK GDPR, EU GDPR, or similar laws apply, we rely on one or
+              more legal bases depending on the context:
+            </p>
+            <ul>
+              <li><strong>Contract:</strong> to provide accounts, subscriptions, support, ordering, bookings, billing, and requested Services.</li>
+              <li><strong>Legitimate interests:</strong> to secure the Services, prevent abuse, improve product quality, understand usage, support customers, monitor public reputation data, and operate BRC as a business.</li>
+              <li><strong>Consent:</strong> for certain marketing, cookies, optional communications, or processing where consent is required.</li>
+              <li><strong>Legal obligation:</strong> for tax, accounting, consumer, telecoms, regulatory, sanctions, law enforcement, and dispute obligations.</li>
+              <li><strong>Vital or public interests:</strong> only where legally applicable and necessary.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>7. AI and automated tools</h2>
+            <p>
+              BRC may use automated systems and AI providers to summarise,
+              classify, translate, detect themes, draft responses, assess
+              review authenticity signals, prioritise support, and generate
+              operational insights. These tools support human decision-making;
+              BRC does not intend to make solely automated decisions that
+              produce legal or similarly significant effects about individuals.
+            </p>
+            <p>
+              Businesses remain responsible for deciding whether to send,
+              publish, dispute, refund, escalate, or rely on any AI-assisted
+              output. We do not knowingly use your customer personal data to
+              train third-party foundation models unless we say so and have a
+              valid legal basis.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>8. Cookies, Turnstile, and security checks</h2>
+            <p>
+              We use cookies, local storage, logs, and similar technologies for
+              authentication, preferences, analytics, performance, fraud
+              prevention, and security. You can control many cookies through
+              your browser, but blocking necessary cookies may break parts of
+              the Services.
+            </p>
+            <p>
+              Our public contact form uses Cloudflare Turnstile to distinguish
+              genuine users from bots. Cloudflare may process client-side
+              signals such as IP address, browser data, TLS fingerprint,
+              user-agent, site key, and origin for bot detection, security, and
+              Turnstile improvement as described in Cloudflare's notices.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>9. When we share data</h2>
+            <p>
+              We do not sell personal data. We share personal data only as
+              needed for the Services, with appropriate restrictions, or where
+              permitted or required by law.
+            </p>
+            <ul>
+              <li><strong>Service providers and subprocessors:</strong> hosting, database, authentication, email, SMS, payment, app subscription, support, analytics, monitoring, AI, fraud prevention, and security providers.</li>
+              <li><strong>Connected platforms:</strong> payment providers, app stores, review platforms, Maps and Places services, delivery or fulfilment tools, and integrations you connect or use.</li>
+              <li><strong>Businesses and their users:</strong> data shown to the business account that collected or manages it, subject to roles and permissions.</li>
+              <li><strong>Legal and safety recipients:</strong> courts, regulators, law enforcement, advisers, insurers, banks, payment networks, or others where necessary to protect rights, safety, security, or compliance.</li>
+              <li><strong>Business transfers:</strong> in connection with a merger, acquisition, financing, restructuring, or sale of assets, subject to appropriate safeguards.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>10. International transfers</h2>
+            <p>
+              We and our providers may process personal data in the United
+              Kingdom, United States, European Economic Area, and other
+              countries. Where required, we use appropriate safeguards such as
+              adequacy regulations, standard contractual clauses, data
+              processing agreements, transfer risk assessments, or equivalent
+              protections.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>11. Retention</h2>
+            <p>
+              We keep personal data for as long as needed for the purposes in
+              this Policy, including to provide the Services, keep business
+              records, resolve disputes, enforce terms, comply with legal
+              obligations, maintain backups, detect abuse, and support security.
+              Retention depends on the data type, account status, plan,
+              business settings, legal requirements, and whether data is held as
+              controller or processor.
+            </p>
+            <ul>
+              <li>Account and billing records are usually kept while the account is active and for a reasonable period after closure for tax, dispute, audit, and compliance needs.</li>
+              <li>Order, booking, feedback, campaign, and customer records follow the business's settings, our processor obligations, and operational retention needs.</li>
+              <li>Public review and listing data may be refreshed, cached, archived, or deleted as platform data changes and product needs require.</li>
+              <li>Security logs, abuse signals, and backups may be retained for limited periods after active data is removed.</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>12. Security</h2>
+            <p>
+              We use reasonable technical and organisational safeguards,
+              including access controls, encryption in transit, provider
+              security controls, monitoring, backups, permissioning, and
+              incident response processes. No service can guarantee absolute
+              security. If you believe your account or data is at risk, contact
+              support@brcapp.io immediately.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>13. Your rights and choices</h2>
+            <p>
+              Depending on your location and the context, you may have rights to
+              access, correct, delete, export, restrict, object to processing,
+              withdraw consent, opt out of marketing, or appeal certain
+              decisions. To exercise rights for BRC account, website, contact,
+              or support data, email privacy@brcapp.io. For customer data held
+              on behalf of a business using BRC, contact that business first;
+              we will support the business where required.
+            </p>
+            <p>
+              You can unsubscribe from marketing emails using the unsubscribe
+              link, opt out of SMS where an opt-out command is provided, adjust
+              available account preferences, or disconnect integrations where
+              supported. We may need to verify your identity before fulfilling a
+              request.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>14. US state privacy notices</h2>
+            <p>
+              We do not sell personal data or knowingly share personal data for
+              cross-context behavioural advertising. If a US state privacy law
+              applies to your personal data, you may have rights to access,
+              delete, correct, obtain a copy, opt out of certain processing, or
+              appeal a denial. We will not discriminate against you for
+              exercising privacy rights.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>15. Children</h2>
+            <p>
+              BRC is intended for businesses and is not directed to children. We
+              do not knowingly collect personal data from children under 13, or
+              under 16 where that higher age applies, without appropriate
+              permission. If you believe a child provided personal data to BRC,
+              contact privacy@brcapp.io.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>16. Complaints, changes, and contact</h2>
+            <p>
+              If you have a privacy concern, please contact us first at
+              privacy@brcapp.io. If UK data protection law applies, you also
+              have the right to complain to the Information Commissioner's
+              Office. If another regulator applies in your location, you may
+              contact that regulator.
+            </p>
+            <p>
+              We may update this Privacy Policy to reflect changes in law,
+              product features, providers, or data practices. If changes are
+              material, we will use reasonable efforts to notify account owners
+              by email, in-app notice, or website notice.
+            </p>
+          </section>
+        </div>
+
+        <LegalBackLink />
+      </div>
+    </div>
+  );
+}
+
 // ─── PUBLIC AUDIT ─────────────────────────────────────────────────────────────
 
 function PublicAuditPage() {
@@ -3377,11 +4066,11 @@ export default function App() {
   }, []);
 
   if (currentPage === PAGES.TERMS) {
-    return <TermsOfService />;
+    return <EnhancedTermsOfService />;
   }
 
   if (currentPage === PAGES.PRIVACY) {
-    return <PrivacyPolicy />;
+    return <EnhancedPrivacyPolicy />;
   }
 
   if (currentPage === PAGES.AUDIT) {
