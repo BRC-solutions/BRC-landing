@@ -55,14 +55,13 @@ function Nav({ theme = "dark", onToggleTheme }) {
     { label: "Ordering", href: "/features/ordering" },
     { label: "Bookings", href: "/features/bookings" },
     { label: "Reputation", href: "/features/reputation" },
-    { label: "How It Works", href: "/#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Pricing", href: "/#pricing" },
   ];
 
   return (
     <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="nav-inner container">
-        <a href="#" className="nav-logo">
+        <a href="/" className="nav-logo">
           <img src="/logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
           <span className="nav-logo-text">{BRAND_NAME}</span>
         </a>
@@ -88,7 +87,7 @@ function Nav({ theme = "dark", onToggleTheme }) {
           <a href={WEB_APP_URL} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
             Sign In
           </a>
-          <a href="#pricing" className="btn btn-primary">
+          <a href="/#pricing" className="btn btn-primary">
             Start Trial
           </a>
         </div>
@@ -114,7 +113,7 @@ function Nav({ theme = "dark", onToggleTheme }) {
           </a>
         ))}
         <a
-          href="#pricing"
+          href="/#pricing"
           className="btn btn-primary"
           style={{ marginTop: 8 }}
           onClick={() => setMobileOpen(false)}
@@ -219,7 +218,7 @@ function Hero() {
             actions are actually bringing money back.
           </p>
           <div className="hero-btns">
-            <a href="#pricing" className="btn btn-primary btn-lg">
+            <a href="/#pricing" className="btn btn-primary btn-lg">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <a href="#features" className="btn btn-outline btn-lg">
@@ -483,12 +482,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: you keep more order data, reduce third-party dependency, and connect each sale to follow-up, reviews, and repeat revenue from the same plan.",
     proof: ["Direct customer data", "Mobile checkout", "Order-linked feedback"],
-    fits: [
-      "Catalog setup in the console",
-      "Branded public page on go.brcapp.io or custom domain",
-      "Orders dashboard, kitchen view, history, and status changes",
-      "Feedback, rewards, campaigns, and item performance after purchase",
-    ],
     bestFor: "Restaurants, cafes, bakeries, retail shops, and service businesses that want owned ordering instead of scattered order channels.",
   },
   delivery: {
@@ -505,12 +498,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: delivery and pickup become part of your owned customer system instead of another isolated monthly bill.",
     proof: ["Delivery quote support", "Pickup timing", "Trackable follow-up"],
-    fits: [
-      "Delivery and pickup settings on the public ordering page",
-      "Customer address, notes, fee, and fulfilment data saved to the order",
-      "Preparation, dispatch, pickup, delivered, failed, and cancelled states",
-      "Post-order review, reward, and win-back campaigns",
-    ],
     bestFor: "Food, retail, and local operators that need pickup or delivery without turning customer data over to a marketplace.",
   },
   bookings: {
@@ -527,12 +514,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: you get scheduling, reminders, feedback, and customer follow-up together, so you can replace a standalone booking tool.",
     proof: ["Availability checks", "Calendar invites", "Reminder-ready"],
-    fits: [
-      "Booking services and resources in operations",
-      "Public booking flow for tables, services, staff, sessions, or events",
-      "Availability checks, confirmations, reschedules, and cancellations",
-      "Booking reminders, feedback, review prompts, and repeat-customer journeys",
-    ],
     bestFor: "Restaurants, salons, spas, clinics, gyms, and service businesses that sell time, tables, or appointments.",
   },
   feedback: {
@@ -549,12 +530,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: one prevented public complaint can protect far more revenue than the monthly cost of the platform.",
     proof: ["Contextual questions", "Private issue capture", "Reward flow"],
-    fits: [
-      "QR sessions tied to staff, menu items, orders, bookings, or visits",
-      "Private inbox for low ratings and customer replies",
-      "Discount codes and reward timing for feedback completion",
-      "Staff, service, and item insights for daily improvements",
-    ],
     bestFor: "Owners who want bad experiences surfaced privately before they damage the public rating.",
   },
   reputation: {
@@ -573,14 +548,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: stronger reviews improve the trust signals buyers check before choosing you, while recovery workflows help save customers who might otherwise leave for good.",
     proof: ["Review recovery", "Fake review flags", "AI reply drafts"],
-    fits: [
-      "Google reviews on Growth, with Yelp and TripAdvisor on higher plans",
-      "Daily review sync, AI summaries, and AI reply drafts",
-      "Private recovery flows for low ratings and complaint patterns",
-      "Suspicious review detection to support platform removal requests",
-      "Competitor tracking and public signal monitoring by plan",
-      "Owner alerts and campaign follow-up after real customer activity",
-    ],
     bestFor: "Any local business that needs more positive reviews, faster negative-review recovery, and a clearer process for challenging suspicious public reviews.",
   },
   campaigns: {
@@ -597,12 +564,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: campaigns are tied to real orders, bookings, rewards, and consent, so offers are easier to target and measure.",
     proof: ["Win-back journeys", "Scheduled sends", "Redemption tracking"],
-    fits: [
-      "SMS and email campaigns from Boost",
-      "Review request, feedback discount, low-rating recovery, and win-back journeys",
-      "Consent and do-not-contact tracking",
-      "Campaign analytics, redemptions, and revenue-influenced reporting",
-    ],
     bestFor: "Owners who want repeat business without manually remembering who to message and when.",
   },
   rewards: {
@@ -619,12 +580,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: rewards stop being random discounts and become trackable return-visit tools you can measure.",
     proof: ["Trackable codes", "Scanner support", "Offer reporting"],
-    fits: [
-      "Feedback discounts delivered after customer responses",
-      "Camera-based discount code scanner",
-      "Campaign offer redemptions tied to customers",
-      "Revenue-influenced campaign and reward reporting",
-    ],
     bestFor: "Businesses that already discount occasionally but want offers to be trackable instead of guesswork.",
   },
   analytics: {
@@ -641,12 +596,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: owners get one place to see what is working, where revenue is leaking, and which actions deserve attention.",
     proof: ["Owner digest", "Competitor view", "Revenue-influenced reporting"],
-    fits: [
-      "Review, feedback, staff, item, campaign, competitor, and public signal analytics",
-      "Owner assistant digest with alerts and suggested actions",
-      "Location comparison and organisation rollups by plan",
-      "Scheduled reports and exports for Business plans",
-    ],
     bestFor: "Owners and managers who want one weekly command center instead of checking reviews, orders, campaigns, and staff performance separately.",
   },
   team: {
@@ -663,12 +612,6 @@ const FEATURE_DETAIL = {
     conversion:
       "Why subscribe: BRC can start with one location and grow with staff, permissions, plan gates, and multi-location reporting already built in.",
     proof: ["Staff permissions", "Location rollups", "Plan gates"],
-    fits: [
-      "Owner, manager, staff, and admin roles",
-      "Capability flags and location-level permissions",
-      "Multi-location organisation model",
-      "Plan gates, feature overrides, subscription states, and support workflows",
-    ],
     bestFor: "Growing teams that need staff access, controlled permissions, and location reporting without losing owner visibility.",
   },
 };
@@ -861,6 +804,63 @@ const FEATURE_SURFACES = {
   ],
 };
 
+const FEATURE_APP_LOCATIONS = {
+  ordering: [
+    { area: "More → Catalog / Menu", detail: "Build categories, items, prices, variants, modifiers, bundles, labels, allergens, images, and availability." },
+    { area: "More → Public Page", detail: "Publish the branded customer page, enable ordering, connect the public URL or custom domain, and preview the go app." },
+    { area: "Operations → Orders / Kitchen / History", detail: "Manage live orders, preparation, table context, payment state, fulfilment status, and completed order history." },
+    { area: "go.brcapp.io customer page", detail: "Customers browse, search, add item options, choose dine-in or pickup, pay, receive receipts, and reorder." },
+  ],
+  delivery: [
+    { area: "More → Business Setup / Delivery", detail: "Turn delivery on as an order mode and keep it separate from pickup or dine-in where needed." },
+    { area: "go.brcapp.io checkout", detail: "Customers enter address, postcode, delivery notes, and see delivery quote or unavailable-address messaging." },
+    { area: "Operations → Orders", detail: "Staff see delivery fee, fulfilment type, driver/provider details, dispatch, pickup, delivered, failed, and cancelled states." },
+    { area: "Insights / Boost", detail: "Delivery orders can feed feedback, review follow-up, rewards, win-back journeys, and reporting." },
+  ],
+  bookings: [
+    { area: "More → Booking Services", detail: "Create services, staff, tables, resources, capacity, duration, deposits, business hours, buffers, and auto-confirm rules." },
+    { area: "Operations → Bookings", detail: "Manage upcoming bookings, customer details, booking notes, and status changes." },
+    { area: "go.brcapp.io booking flow", detail: "Customers choose booking type, resource, date, time, party size, notes, deposits, and confirmation." },
+    { area: "Customer booking link", detail: "Customers can use lookup links for management, calendar invites, rescheduling, and cancellation where enabled." },
+  ],
+  feedback: [
+    { area: "Boost → Review QR", detail: "Create personalised QR sessions tied to staff, items, discount percentage, and reward timing." },
+    { area: "Feedback tab", detail: "Open feedback tickets, review ratings/comments/metric scores, claim discount codes, add notes, and resolve issues." },
+    { area: "Feedback detail → Review request", detail: "Send review requests by SMS or email after the team decides the customer experience is ready for public follow-up." },
+    { area: "Feedback detail → Email thread", detail: "Owners can reply directly, keep recovery context, and document internal notes." },
+  ],
+  reputation: [
+    { area: "Inbox → Reviews", detail: "Handle public review tickets, original review text, rating, platform, media, status, AI support, and replies." },
+    { area: "Inbox → Report Fake Review", detail: "Flag suspicious reviews and collect context for a platform dispute or removal request." },
+    { area: "More → Review Channels", detail: "Connect and manage Google Maps, Yelp, and TripAdvisor review sources by plan." },
+    { area: "More → Competitors / Insights", detail: "Track competitor reputation, public signals, review movement, and risks that need owner attention." },
+  ],
+  campaigns: [
+    { area: "Boost → Campaigns", detail: "Create review requests, feedback discounts, low-rating recovery, win-back, staff/menu-based, and scheduled campaigns." },
+    { area: "Campaign performance", detail: "Track sent, failed, redeemed, credit usage, discount value, and revenue-influenced results." },
+    { area: "Insights → Journeys", detail: "Review low-rating recovery, high-rating thank-you, and inactive win-back journey executions." },
+    { area: "Customer records and consent", detail: "Use available SMS/email contact details and consent state to decide which follow-up channel is appropriate." },
+  ],
+  rewards: [
+    { area: "Boost → Review QR rewards", detail: "Set discount percent and choose immediate, next-visit, or no reward timing for feedback sessions." },
+    { area: "Feedback detail", detail: "View generated reward codes, whether they were claimed, and when the reward was redeemed." },
+    { area: "Redeem Discount", detail: "Staff scan or verify codes at the counter so rewards become trackable redemptions." },
+    { area: "go.brcapp.io checkout", detail: "Customers can enter eligible discount codes before payment where public checkout is enabled." },
+  ],
+  analytics: [
+    { area: "Insights tab", detail: "Review rating trends, risk, platform mix, resolved percentage, high-risk reviews, and campaign performance." },
+    { area: "Insights → Owner assistant", detail: "See digest alerts for low ratings, open replies, new reviews, redemptions, and suggested actions." },
+    { area: "Insights → Competitors / Public Signals", detail: "Monitor competitor movement, public mentions, sentiment, and external reputation context." },
+    { area: "Business reports", detail: "Use exports, scheduled reports, and location rollups on higher plans where deeper reporting is needed." },
+  ],
+  team: [
+    { area: "More → Team", detail: "Invite owners, managers, and staff, assign roles, capabilities, and location scope." },
+    { area: "More → Locations", detail: "Separate location-level settings while keeping owner visibility across the organisation." },
+    { area: "More → Notifications / Owner Digest", detail: "Choose alerts for reviews, feedback, orders, bookings, campaigns, support, billing, and daily owner summaries." },
+    { area: "Billing / Upgrade / Support", detail: "Manage trial state, plan gates, feature overrides, subscription status, and support workflows." },
+  ],
+};
+
 function Features() {
   return (
     <section className="section features-section" id="features">
@@ -893,95 +893,6 @@ function Features() {
               <div className="feature-outcome">{f.outcome}</div>
               <div className="feature-link">Explore {f.title} <span>→</span></div>
             </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── HOW IT WORKS ─────────────────────────────────────────────────────────────
-
-const STEPS = [
-  {
-    num: "01",
-    title: "Customers Order, Book, or Scan",
-    body: "Use branded ordering pages, booking links, QR codes, receipts, or counters. Customers can place an order, book a service, or answer questions about the exact experience they had.",
-    tip: "Feedback forms can be generated dynamically from the order, booking, staff member, service, or item involved.",
-    visual: (
-      <div className="step-visual sv-setup">
-        <div className="sv-qr">
-          <div className="qr-grid">
-            {Array.from({ length: 25 }).map((_, i) => (
-              <div
-                key={i}
-                className={`qr-cell ${[0, 1, 2, 5, 6, 7, 8, 9, 12, 16, 17, 19, 20, 21, 22, 24].includes(i) ? "qr-on" : ""}`}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="sv-label">Scan → Your order, your questions</div>
-      </div>
-    ),
-  },
-  {
-    num: "02",
-    title: "They Get Rewarded Instantly",
-    body: "As soon as feedback is submitted, the customer receives a personalised discount code via SMS. They feel valued — and you get genuine, honest feedback worth acting on.",
-    tip: "Businesses offering a reward see 3× more feedback submissions.",
-    visual: (
-      <div className="step-visual sv-scan">
-        <div className="sv-reward">
-          <div className="sv-reward-icon">🎁</div>
-          <div className="sv-reward-code">SAVE15</div>
-          <div className="sv-reward-label">Delivered via SMS · Instantly</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    num: "03",
-    title: "Follow-Up Happens Naturally",
-    body: "Days after their visit, order, or booking, the system sends a warm, well-timed message asking them to share their experience on the review platform you choose.",
-    tip: "Average businesses see a 67% lift in public reviews within 90 days.",
-    visual: (
-      <div className="step-visual sv-grow">
-        <div className="sv-chart">
-          {[20, 35, 30, 55, 50, 75, 70, 90].map((h, i) => (
-            <div key={i} className="sv-bar" style={{ height: `${h}%` }} />
-          ))}
-        </div>
-        <div className="sv-chart-label">Public reviews over time ↑</div>
-      </div>
-    ),
-  },
-];
-
-function HowItWorks() {
-  return (
-    <section className="section hiw-section" id="how-it-works">
-      <div className="container">
-        <div className="section-header">
-          <div className="section-tag">How It Works</div>
-          <h2 className="section-h2">
-            Three steps.
-            <br />
-            <span className="grad-text">Running before lunch.</span>
-          </h2>
-        </div>
-        <div className="hiw-grid">
-          {STEPS.map((s, i) => (
-            <div key={s.num} className="hiw-card">
-              <div className="hiw-num">{s.num}</div>
-              {s.visual}
-              <h3 className="hiw-title">{s.title}</h3>
-              <p className="hiw-body">{s.body}</p>
-              <div className="hiw-tip">
-                <span className="tip-icon">💡</span>
-                {s.tip}
-              </div>
-              {i < STEPS.length - 1 && <div className="hiw-connector" />}
-            </div>
           ))}
         </div>
       </div>
@@ -1125,7 +1036,7 @@ function Analytics() {
           ))}
         </div>
         <div className="analytics-cta">
-          <a href="#pricing" className="btn btn-primary btn-xl">
+          <a href="/#pricing" className="btn btn-primary btn-xl">
             See Analytics in Action <span className="arrow">→</span>
           </a>
         </div>
@@ -1541,7 +1452,7 @@ function CTA() {
             from the same app today.
           </p>
           <div className="cta-btns">
-            <a href="#pricing" className="btn btn-primary btn-xl">
+            <a href="/#pricing" className="btn btn-primary btn-xl">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <div className="store-btns">
@@ -1592,6 +1503,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
   const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
   const guide = FEATURE_GUIDES[feature.slug] || FEATURE_GUIDES.ordering;
   const surfaces = FEATURE_SURFACES[feature.slug] || FEATURE_SURFACES.ordering;
+  const appLocations = FEATURE_APP_LOCATIONS[feature.slug] || FEATURE_APP_LOCATIONS.ordering;
   const related = FEATURES.filter((item) => item.slug !== feature.slug).slice(0, 3);
 
   return (
@@ -1615,7 +1527,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
               </h1>
               <p className="feature-page-subhead">{detail.subhead}</p>
               <div className="hero-btns">
-                <a href="#pricing" className="btn btn-primary btn-lg">
+                <a href="/#pricing" className="btn btn-primary btn-lg">
                   Start 7-Day Trial <span className="arrow">→</span>
                 </a>
                 <a href={WEB_APP_URL} className="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">
@@ -1750,16 +1662,16 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
                 <span className="grad-text">inside the actual app</span>
               </h2>
               <p className="section-p">
-                These pages are not describing isolated features. They map to
-                real BRC modules: public pages, QR flows, operations,
-                feedback, campaigns, analytics, subscriptions, and team access.
+                Use this as the app map. It shows the console tab, settings
+                page, or customer surface where this workflow lives.
               </p>
             </div>
             <div className="conversion-flow">
-              {detail.fits.map((item, index) => (
-                <div key={item} className="flow-step">
+              {appLocations.map((item, index) => (
+                <div key={item.area} className="flow-step">
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{item}</strong>
+                  <strong>{item.area}</strong>
+                  <p>{item.detail}</p>
                 </div>
               ))}
             </div>
@@ -3072,7 +2984,7 @@ function Footer({ onNavigate }) {
     <footer className="footer">
       <div className="container footer-top">
         <div className="footer-brand">
-          <a href="#" className="nav-logo">
+          <a href="/" className="nav-logo">
             <span className="logo-mark" />
             <span className="nav-logo-text">{BRAND_NAME}</span>
           </a>
