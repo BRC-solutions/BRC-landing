@@ -54,6 +54,7 @@ function Nav({ theme = "dark", onToggleTheme }) {
     { label: "Features", href: "/#features" },
     { label: "Ordering", href: "/features/ordering" },
     { label: "Bookings", href: "/features/bookings" },
+    { label: "Reputation", href: "/features/reputation" },
     { label: "How It Works", href: "/#how-it-works" },
     { label: "Pricing", href: "#pricing" },
   ];
@@ -803,6 +804,63 @@ const FEATURE_GUIDES = {
   },
 };
 
+const FEATURE_SURFACES = {
+  ordering: [
+    "Console operations: live orders, kitchen view, order history, status changes, table context, notes, payment state, and fulfilment detail.",
+    "Catalog setup: categories, item images, variants, modifier groups, bundles, allergens, labels, stock/availability, hidden items, and currency.",
+    "Go customer page: branded menu, search, item options, dine-in/pickup mode switch, cart, Stripe checkout, receipts, and saved reorder links.",
+    "Public page settings: hero image, logo, brand copy, ordering toggles, custom domain support, legal consent copy, and payment readiness warnings.",
+  ],
+  delivery: [
+    "Go checkout captures delivery address, postcode, customer notes, delivery quote state, fees, and unavailable-address errors.",
+    "Operations stores delivery fulfilment type, provider, quote/order IDs, driver details, tracking URL, dispatch time, pickup time, delivery time, and failed/cancelled states.",
+    "Settings can enable delivery as an order mode while keeping pickup and dine-in flows separate for businesses that need both.",
+    "Completed delivery and pickup orders can feed private feedback, review follow-up, rewards, campaign segments, and revenue-influenced reporting.",
+  ],
+  bookings: [
+    "Booking services support services, staff, tables, resources, capacity, duration, deposits, full price, business hours, buffers, and auto-confirm settings.",
+    "Go booking flow shows live slots, resource choices, party-size table bookings, guest details, notes, deposits, Stripe payment, and confirmation states.",
+    "Customers can manage bookings with lookup links, calendar invites, rescheduling, and cancellation where allowed.",
+    "Operations keeps booking status, upcoming bookings, customer details, notes, and follow-up context together with the rest of the business workspace.",
+  ],
+  feedback: [
+    "Boost creates personalised QR feedback sessions tied to selected catalog/menu items, staff, discount percentage, and reward timing.",
+    "Feedback detail shows rating, comment, customer contact details, staff attribution, metric scores, reward code state, and discount claim status.",
+    "Owners can reply by email, add internal notes, mark feedback resolved, and send review requests only when the customer context makes sense.",
+    "Low ratings stay in private recovery so the team can fix the issue before pushing for a public review.",
+  ],
+  reputation: [
+    "Inbox combines public review tickets and private feedback so urgent reputation work is not split across tools.",
+    "Review detail includes original review text, rating, platform, reviewer context, media where available, status, AI support, and reply workflows.",
+    "The console includes a Report Fake Review action and suspicious-review context; BRC helps prepare platform disputes, while Google/Yelp/TripAdvisor control removals.",
+    "Review channel settings cover Google Maps, Yelp, and TripAdvisor, with competitors and public signals feeding the wider reputation picture.",
+  ],
+  campaigns: [
+    "Boost contains campaign creation and scheduled sends for review requests, feedback discounts, low-rating recovery, win-backs, and customer reactivation.",
+    "Journey analytics track low rating recovery, high rating thank-you, and inactive win-back execution states such as queued, sent, skipped, and failed.",
+    "Campaign results connect sends, recipients, redemptions, SMS credits, discounts, and revenue-influenced reporting.",
+    "Consent and contact availability decide whether SMS or email is appropriate, keeping follow-up cleaner and more defensible.",
+  ],
+  rewards: [
+    "Feedback rewards can be immediate or next-visit, with maximum discount rules and unique codes generated per customer moment.",
+    "The redeem-discount scanner lets staff validate and claim codes at the counter instead of treating offers as untracked discounts.",
+    "Public checkout can look up discount codes and apply eligible offer value before payment.",
+    "Reward reporting connects feedback, campaigns, redemptions, estimated discount given, and repeat-visit value.",
+  ],
+  analytics: [
+    "Insights cover review volume, average rating, resolved percentage, high-risk reviews, rating distribution, platform mix, and monthly movement.",
+    "Campaign analytics show recipients, sends, redemptions, redemption rate, credit usage, average discount, and revenue-influenced value.",
+    "Operational analytics can include staff ratings, menu/catalog performance, booking/order activity, competitor movement, public signals, and social mentions.",
+    "Owner digest and alerts summarise new reviews, low ratings, open replies, campaign redemptions, risks, and suggested actions.",
+  ],
+  team: [
+    "More/settings includes business connection, locations, review channels, competitors, owner digest, notifications, public page, catalog, tables, services, delivery, finance, team, and account settings.",
+    "Business type presets tailor modules for restaurants, cafes, bakeries, retail, salons, spas, gyms, clinics, and service businesses.",
+    "Team access uses roles, capabilities, and location scope so owners, managers, and staff see the right tools.",
+    "Billing, plan gates, trial states, subscription status, support, audit-friendly admin flows, and feature overrides are part of the operating layer.",
+  ],
+};
+
 function Features() {
   return (
     <section className="section features-section" id="features">
@@ -1533,6 +1591,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
   const feature = FEATURES.find((item) => item.slug === slug) || FEATURES[0];
   const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
   const guide = FEATURE_GUIDES[feature.slug] || FEATURE_GUIDES.ordering;
+  const surfaces = FEATURE_SURFACES[feature.slug] || FEATURE_SURFACES.ordering;
   const related = FEATURES.filter((item) => item.slug !== feature.slug).slice(0, 3);
 
   return (
@@ -1652,6 +1711,31 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
                 <strong>Subscription logic</strong>
                 <p>{guide.planNote}</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section feature-surface-section">
+          <div className="container">
+            <div className="section-header feature-left-header">
+              <div className="section-tag">Real Product Detail</div>
+              <h2 className="section-h2">
+                The screens and workflows
+                <br />
+                <span className="grad-text">behind the promise</span>
+              </h2>
+              <p className="section-p">
+                These are the actual BRC surfaces this feature relies on across
+                the console, customer go app, and owner workflows.
+              </p>
+            </div>
+            <div className="feature-surface-grid">
+              {surfaces.map((item, index) => (
+                <article className="feature-surface-card" key={item}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{item}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
