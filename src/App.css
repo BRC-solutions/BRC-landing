@@ -71,10 +71,7 @@ html {
 
 body {
   font-family: var(--font);
-  background:
-    radial-gradient(circle at 0% 18%, rgba(91,33,182,.22), transparent 34%),
-    radial-gradient(circle at 100% 36%, rgba(8,145,178,.16), transparent 36%),
-    linear-gradient(180deg, #f4edff 0%, #f8f5ff 58%, #f3f8fb 100%);
+  background: linear-gradient(180deg, #fbf8ff 0%, #f6fbfb 100%);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -93,10 +90,7 @@ body {
 
 :root:not([data-theme="dark"]) #root,
 :root:not([data-theme="dark"]) .app {
-  background:
-    radial-gradient(circle at 0% 18%, rgba(91,33,182,.22), transparent 34%),
-    radial-gradient(circle at 100% 36%, rgba(8,145,178,.16), transparent 36%),
-    linear-gradient(180deg, #f4edff 0%, #f8f5ff 58%, #f3f8fb 100%);
+  background: linear-gradient(180deg, #fbf8ff 0%, #f6fbfb 100%);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -964,6 +958,10 @@ img { max-width: 100%; }
   overflow: hidden;
 }
 
+:root:not([data-theme="dark"]) .hero {
+  background: linear-gradient(180deg, #fbf8ff 0%, #f6fbfb 100%);
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -979,30 +977,37 @@ img { max-width: 100%; }
 }
 .glow-1 {
   width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(91,33,182,.34) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(91,33,182,.32) 0%, transparent 70%);
   top: -200px; left: -150px;
+  opacity: .78;
 }
 
 :root[data-theme="dark"] .glow-1 {
   background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+  opacity: .55;
 }
 
 :root[data-theme="dark"] .glow-2 {
   background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+  width: 500px;
+  height: 500px;
+  top: 100px;
+  right: -100px;
+  opacity: .35;
 }
 
 :root[data-theme="dark"] .glow-3 {
   background: radial-gradient(circle, #a855f7 0%, transparent 70%);
 }
 .glow-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(8,145,178,.22) 0%, transparent 70%);
-  top: 100px; right: -100px;
-  opacity: .35;
+  width: 620px; height: 620px;
+  background: radial-gradient(circle, rgba(15,118,110,.24) 0%, transparent 70%);
+  top: 110px; right: -180px;
+  opacity: .58;
 }
 .glow-3 {
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(37,99,235,.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(37,99,235,.11) 0%, transparent 70%);
   bottom: -100px; left: 40%;
   opacity: .25;
 }
@@ -1010,9 +1015,11 @@ img { max-width: 100%; }
 .grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: none;
+  background-image:
+    linear-gradient(rgba(24,15,46,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24,15,46,.035) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 86% 66% at 50% 50%, black 0%, transparent 100%);
 }
 
 :root[data-theme="dark"] .grid-overlay {
@@ -1138,6 +1145,7 @@ img { max-width: 100%; }
   position: relative;
   width: 280px;
   background: #211338;
+  color: #f8f5ff;
   border-radius: 40px;
   border: 2px solid rgba(91,33,182,.18);
   box-shadow:
@@ -1188,11 +1196,11 @@ img { max-width: 100%; }
   font-size: 13px;
   font-weight: 800;
   letter-spacing: -.02em;
-  color: var(--purple-l);
+  color: #d8c7ff;
 }
 .phone-header-sub {
   font-size: 10px;
-  color: var(--text-3);
+  color: rgba(248,245,255,.58);
   font-weight: 500;
 }
 
@@ -1200,16 +1208,23 @@ img { max-width: 100%; }
   padding: 16px 18px;
 }
 
+.phone-order-tag {
+  color: rgba(248,245,255,.64);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
 .phone-biz {
   font-size: 14px;
   font-weight: 700;
-  color: var(--text);
+  color: #fff;
   margin-bottom: 4px;
 }
 
 .phone-prompt {
   font-size: 11px;
-  color: var(--text-2);
+  color: rgba(248,245,255,.72);
   margin-bottom: 10px;
 }
 
@@ -1235,7 +1250,7 @@ img { max-width: 100%; }
   align-items: center;
   gap: 8px;
 }
-.metric-label { font-size: 10px; color: var(--text-2); width: 74px; flex-shrink: 0; }
+.metric-label { font-size: 10px; color: rgba(248,245,255,.76); width: 74px; flex-shrink: 0; }
 .metric-track {
   flex: 1;
   height: 5px;
