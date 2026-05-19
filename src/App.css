@@ -2729,17 +2729,31 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(91,33,182,.24);
   border-radius: var(--r);
   padding: 12px 20px;
   color: var(--text);
-  transition: background var(--ease), border-color var(--ease);
+  box-shadow: 0 10px 24px rgba(28,18,51,.08);
+  transition: background var(--ease), border-color var(--ease), box-shadow var(--ease);
   min-width: 150px;
 }
 .store-btn:hover {
+  background: #fff;
+  border-color: rgba(91,33,182,.38);
+  box-shadow: 0 14px 30px rgba(28,18,51,.11);
+}
+
+:root[data-theme="dark"] .store-btn {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.15);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .store-btn:hover {
   background: rgba(255,255,255,.12);
   border-color: rgba(255,255,255,.25);
+  box-shadow: none;
 }
 .store-os { font-size: 24px; }
 .store-btn small { display: block; font-size: 10px; color: var(--text-2); }
