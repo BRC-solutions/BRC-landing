@@ -2823,8 +2823,7 @@ img { max-width: 100%; }
   .feature-detail-grid,
   .conversion-flow,
   .contact-grid,
-  .contact-form-row,
-  .contact-captcha { grid-template-columns: 1fr; }
+  .contact-form-row { grid-template-columns: 1fr; }
   .feature-hero-copy { text-align: center; }
   .feature-page-subhead,
   .feature-conversion { margin-left: auto; margin-right: auto; }
@@ -3054,24 +3053,22 @@ img { max-width: 100%; }
 }
 
 .contact-captcha {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px;
-  align-items: end;
-}
-
-.contact-captcha button {
-  height: 45px;
-  padding: 0 14px;
-  border: 1px solid var(--border-s);
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(91,33,182,.14);
   border-radius: var(--r-sm);
-  color: var(--text);
-  background: rgba(255,255,255,.72);
-  font-weight: 800;
+  background: rgba(255,255,255,.58);
 }
 
-:root[data-theme="dark"] .contact-captcha button {
-  background: rgba(255,255,255,.07);
+:root[data-theme="dark"] .contact-captcha {
+  background: rgba(0,0,0,.18);
+  border-color: var(--border);
+}
+
+.turnstile-widget {
+  min-height: 65px;
 }
 
 .contact-status {

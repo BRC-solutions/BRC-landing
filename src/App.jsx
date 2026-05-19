@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css?v=2222";
 
 // ─── ROUTING ──────────────────────────────────────────────────────────────────
@@ -14,6 +14,7 @@ const PAGES = {
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://api.brcapp.io";
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 
 const WEB_APP_URL =
   import.meta.env.VITE_APP_URL || "https://console.brcapp.io";
@@ -1721,31 +1722,62 @@ function ContactPage({ onNavigate, theme, onToggleTheme }) {
     subject: "",
     message: "",
     companyWebsite: "",
-    captchaAnswer: "",
   });
-  const [challenge, setChallenge] = useState(null);
+  const turnstileRef = useRef(null);
+  const turnstileWidgetId = useRef(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [startedAt] = useState(() => Date.now());
   const [status, setStatus] = useState({ type: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const loadChallenge = async () => {
-    try {
-      const response = await fetch(`${API_BASE_URL}/contact/challenge`);
-      const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error || "Could not load CAPTCHA.");
-      setChallenge(payload);
-      setForm((current) => ({ ...current, captchaAnswer: "" }));
-    } catch (err) {
-      setStatus({
-        type: "error",
-        message: err.message || "Could not load the contact check. Please refresh and try again.",
-      });
+  const resetTurnstile = () => {
+    setTurnstileToken("");
+    if (window.turnstile && turnstileWidgetId.current !== null) {
+      window.turnstile.reset(turnstileWidgetId.current);
     }
   };
 
   useEffect(() => {
-    loadChallenge();
-  }, []);
+    if (!TURNSTILE_SITE_KEY) {
+      setStatus({
+        type: "error",
+        message: "Contact security check is not configured.",
+      });
+      return;
+    }
+
+    const renderTurnstile = () => {
+      if (!turnstileRef.current || !window.turnstile || turnstileWidgetId.current !== null) return;
+      turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => setTurnstileToken(token),
+        "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken(""),
+        theme: theme === "dark" ? "dark" : "light",
+      });
+    };
+
+    if (window.turnstile) {
+      renderTurnstile();
+      return;
+    }
+
+    const existingScript = document.querySelector("script[data-turnstile-script]");
+    if (existingScript) {
+      existingScript.addEventListener("load", renderTurnstile, { once: true });
+      return () => existingScript.removeEventListener("load", renderTurnstile);
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    script.dataset.turnstileScript = "true";
+    script.addEventListener("load", renderTurnstile, { once: true });
+    document.head.appendChild(script);
+
+    return () => script.removeEventListener("load", renderTurnstile);
+  }, [theme]);
 
   const updateField = (key, value) => {
     setForm((current) => ({ ...current, [key]: value }));
@@ -1761,8 +1793,8 @@ function ContactPage({ onNavigate, theme, onToggleTheme }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          captchaToken: challenge?.token,
           startedAt,
+          turnstileToken,
         }),
       });
       const payload = await response.json();
@@ -1779,15 +1811,14 @@ function ContactPage({ onNavigate, theme, onToggleTheme }) {
         subject: "",
         message: "",
         companyWebsite: "",
-        captchaAnswer: "",
       });
-      await loadChallenge();
+      resetTurnstile();
     } catch (err) {
       setStatus({
         type: "error",
         message: err.message || "Could not send your message. Please try again.",
       });
-      await loadChallenge();
+      resetTurnstile();
     } finally {
       setSubmitting(false);
     }
@@ -1896,26 +1927,14 @@ function ContactPage({ onNavigate, theme, onToggleTheme }) {
                 />
               </label>
               <div className="contact-captcha">
-                <label>
-                  Security check: what is {challenge?.question || "..."}?
-                  <input
-                    required
-                    inputMode="numeric"
-                    value={form.captchaAnswer}
-                    onChange={(event) => updateField("captchaAnswer", event.target.value)}
-                    placeholder="Answer"
-                  />
-                </label>
-                <button type="button" onClick={loadChallenge}>
-                  Refresh
-                </button>
+                <div ref={turnstileRef} className="turnstile-widget" />
               </div>
               {status.message ? (
                 <div className={`contact-status contact-status-${status.type}`}>
                   {status.message}
                 </div>
               ) : null}
-              <button className="btn btn-primary btn-block" type="submit" disabled={submitting || !challenge?.token}>
+              <button className="btn btn-primary btn-block" type="submit" disabled={submitting || !turnstileToken}>
                 {submitting ? "Sending..." : "Send Message"}
               </button>
             </form>
