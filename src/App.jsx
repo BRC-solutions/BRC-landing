@@ -1629,7 +1629,7 @@ function CTA({ trialHref = "/#pricing" } = {}) {
 const INDUSTRY_PAGES = {
   restaurants: {
     eyebrow: "For restaurants",
-    title: "Bookings, ordering, delivery, reviews, rewards, and recovery for restaurants.",
+    title: "Fill tables, own more orders, and protect the reputation that brings guests back.",
     subhead:
       "BRC helps restaurants own more of the customer journey: reservations, table QR ordering, pickup, delivery, private feedback, review requests, rewards, campaigns, and owner reporting in one operating console.",
     pain: "Restaurant teams often pay for bookings, ordering, delivery, loyalty, reviews, feedback, and campaigns separately, then still miss the moment when an unhappy customer is about to go public.",
@@ -1658,7 +1658,7 @@ const INDUSTRY_PAGES = {
   },
   cafes: {
     eyebrow: "For cafes and bakeries",
-    title: "Turn regular visits into feedback, review recovery, rewards, and repeat orders.",
+    title: "Turn everyday regulars into repeat orders, better reviews, and measurable loyalty.",
     subhead:
       "BRC gives cafes and bakeries a simple customer operations layer for pickup ordering, menus, private feedback, bad-review recovery, loyalty-style rewards, campaigns, and local reputation growth.",
     pain: "Cafes win through regulars, but many regular customer moments disappear without feedback, contact details, review prompts, or measurable return visits.",
@@ -1687,7 +1687,7 @@ const INDUSTRY_PAGES = {
   },
   salons: {
     eyebrow: "For salons and spas",
-    title: "Bookings, reminders, review recovery, and client reactivation for salons.",
+    title: "Keep the diary full, recover unhappy clients, and bring lapsed customers back.",
     subhead:
       "BRC helps appointment-led businesses manage services, staff, bookings, deposits, reminders, private feedback, bad-review recovery, review follow-up, and win-back campaigns from one place.",
     pain: "A salon can have full diaries and still leak revenue through no-shows, weak follow-up, missed reviews, and clients who quietly stop booking.",
@@ -1716,7 +1716,7 @@ const INDUSTRY_PAGES = {
   },
   retail: {
     eyebrow: "For local retail",
-    title: "Catalog, pickup, review recovery, rewards, and campaigns for independent shops.",
+    title: "Bring local shoppers back with pickup, rewards, reviews, and customer follow-up you own.",
     subhead:
       "BRC helps local retailers publish a product catalog, accept pickup orders, collect feedback, recover bad experiences, build reviews, send rewards, and understand which customer actions bring people back.",
     pain: "Independent shops often have loyal customers but no owned system for catalog browsing, pickup, feedback, rewards, review growth, and reactivation.",
