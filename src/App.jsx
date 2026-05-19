@@ -4130,6 +4130,8 @@ const HELP_ARTICLES = [
     category: "Getting started",
     title: "Getting started with BRC",
     summary: "Set up your business profile, choose modules, invite your team, and publish the customer-facing page.",
+    overview:
+      "Start with the pieces customers will see first, then connect the operational workflows your team will use every day. A clean setup usually means the business profile, public Go page, team roles, notifications, and one live customer workflow are working before you add more modules.",
     steps: [
       "Create your account and confirm the business name, address, contact details, and business type.",
       "Choose the modules you want to use first: reputation, feedback, ordering, bookings, campaigns, rewards, analytics, or team operations.",
@@ -4137,24 +4139,51 @@ const HELP_ARTICLES = [
       "Invite owners, managers, and staff with the correct roles so each person only sees the tools they need.",
       "Run a small internal test: place a sample order or booking, submit feedback, check notifications, and confirm the dashboard updates.",
     ],
+    details: [
+      "Business type controls sensible defaults for menus, services, ordering, bookings, table flows, pickup, and customer wording.",
+      "Your public Go page is the customer-facing home for orders, bookings, feedback, rewards, and follow-up journeys.",
+      "Verification, billing, subscription state, and enabled modules can affect whether a feature is visible or ready to publish.",
+      "Use internal tests before sharing QR codes or links with customers, especially when payments, deposits, delivery, or staff notifications are involved.",
+    ],
+    tips: [
+      "Launch one workflow well before turning on every module.",
+      "Keep a test customer record handy so your team can rehearse the full customer journey.",
+      "Check mobile layout, consent copy, and opening hours before publishing links publicly.",
+    ],
+    related: ["Public page", "Team roles", "Notifications", "Billing"],
   },
   {
     id: "dashboard",
     category: "Dashboard",
     title: "Using the dashboard",
     summary: "The dashboard gives owners and managers a quick view of customer activity and urgent work.",
+    overview:
+      "The dashboard is the daily command view. It helps owners and managers spot work that needs attention without opening every module: unresolved feedback, review changes, orders, bookings, campaign activity, billing warnings, verification tasks, and owner digest highlights.",
     steps: [
       "Use the dashboard to scan orders, bookings, review changes, feedback, campaign activity, and owner digest highlights.",
       "Treat priority cards as the work queue for the day: unresolved feedback, negative reviews, pending replies, failed messages, and billing or verification warnings.",
       "Open a card to move into the correct workflow, then return to the dashboard to continue through the next item.",
       "Use plan and module warnings to see which features are available and what needs setup before going live.",
     ],
+    details: [
+      "Dashboard cards are designed to move you into the right workflow quickly, not replace the full detail screens.",
+      "Owner digest information is useful for a regular management rhythm: what changed, what needs a reply, and where revenue or reputation may be at risk.",
+      "If a business has several modules enabled, the dashboard helps surface the work that crosses boundaries, such as an order that led to negative feedback.",
+    ],
+    tips: [
+      "Use the dashboard at opening, mid-shift, and close of business.",
+      "Do not leave negative feedback or public review replies sitting without an owner.",
+      "Use warnings as setup prompts before assuming a workflow is broken.",
+    ],
+    related: ["Analytics", "Feedback", "Notifications", "Owner digest"],
   },
   {
     id: "reputation-recovery",
     category: "Reputation",
     title: "Recovering negative experiences",
     summary: "Use private feedback and follow-up workflows to fix customer issues before they become public damage.",
+    overview:
+      "BRC is built around the idea that many unhappy customers can be helped before they become a lasting public reputation problem. Private feedback gives your team context, a calmer place to respond, and a record of what was done.",
     steps: [
       "Ask for feedback after a real visit, order, booking, or service interaction.",
       "Route unhappy customers into private recovery instead of immediately asking for a public review.",
@@ -4162,12 +4191,26 @@ const HELP_ARTICLES = [
       "Send a calm, specific response that acknowledges the issue and offers the next practical step.",
       "Mark the case with the right status so the team knows whether it is open, waiting, resolved, or escalated.",
     ],
+    details: [
+      "Feedback records can include ratings, comments, customer contact details, metric scores, staff attribution, reward code state, and linked order or booking context.",
+      "Recovery work is strongest when the reply is specific: mention the problem, explain what happens next, and keep the tone human.",
+      "Use statuses consistently so managers can see which cases still need attention.",
+      "Private recovery should never be used to silence legitimate criticism; it is a way to resolve real problems respectfully.",
+    ],
+    tips: [
+      "Reply quickly when a customer has given contact details.",
+      "Avoid defensive language; customers usually want acknowledgement before explanation.",
+      "Use recurring feedback themes as operations signals, not just customer service tasks.",
+    ],
+    related: ["Feedback inbox", "Reviews", "Campaigns", "Analytics"],
   },
   {
     id: "positive-reviews",
     category: "Reputation",
     title: "Building positive reviews legitimately",
     summary: "Guide happy customers toward public review platforms without fake incentives or review gating.",
+    overview:
+      "Positive review growth should come from real customers and honest timing. BRC helps you ask at the right moment, track the workflow, and keep unhappy customers supported through private feedback instead of pushing everyone through the same message.",
     steps: [
       "Use genuine customer activity as the trigger, such as a completed booking, fulfilled order, or resolved support moment.",
       "Send review requests at a natural time, when the customer has actually experienced the business.",
@@ -4175,12 +4218,26 @@ const HELP_ARTICLES = [
       "Choose which review destination matters most for the business, then track lift and response quality over time.",
       "Keep private feedback enabled so unhappy customers can still be heard and recovered respectfully.",
     ],
+    details: [
+      "Review requests work best when they follow a meaningful interaction: a collected order, completed appointment, successful table visit, or resolved support moment.",
+      "BRC can help organise public review destinations and show reputation movement over time.",
+      "Different platforms have different review policies; the business is responsible for following the rules of each platform.",
+      "Neutral wording protects trust and reduces the risk of platform policy issues.",
+    ],
+    tips: [
+      "Ask soon enough that the visit is fresh, but not while the customer is still waiting for service.",
+      "Do not offer discounts in exchange for a positive review.",
+      "Track review quality as well as review volume.",
+    ],
+    related: ["Google reviews", "Feedback", "Rewards", "Analytics"],
   },
   {
     id: "fake-review-disputes",
     category: "Reputation",
     title: "Handling suspicious or fake reviews",
     summary: "Organise review context and prepare clearer dispute material for third-party platforms.",
+    overview:
+      "BRC helps your team collect context and prepare a clearer platform dispute when a review looks suspicious, abusive, irrelevant, conflicted, or unsupported by customer records. The third-party review platform always controls the final removal decision.",
     steps: [
       "Open the review detail and check the original text, rating, date, platform, reviewer context, and any linked customer history.",
       "Look for concrete signals: no matching customer record, abusive content, conflict of interest, irrelevant claims, duplicate language, or impossible timing.",
@@ -4188,12 +4245,26 @@ const HELP_ARTICLES = [
       "Use BRC’s draft support as a starting point, then have a human review the final wording.",
       "Remember that BRC helps organise and prepare the case; the third-party review platform controls the final decision.",
     ],
+    details: [
+      "Useful evidence can include order history, booking history, customer messages, timestamps, staff notes, duplicate wording, and proof that a claim does not match the business record.",
+      "A strong dispute is factual and concise. Avoid speculation, insults, or emotional wording.",
+      "If a review appears genuine but negative, treat it as a recovery opportunity rather than a fake-review case.",
+      "Keep records even if the platform rejects the removal request, because repeated patterns may matter later.",
+    ],
+    tips: [
+      "Separate policy violations from ordinary negative opinions.",
+      "Have one manager review disputes before submission.",
+      "Keep public replies professional even when a dispute is active.",
+    ],
+    related: ["Review detail", "Evidence", "Public replies", "Support"],
   },
   {
     id: "ordering",
     category: "Ordering",
     title: "Setting up ordering",
     summary: "Configure menus, item options, order modes, payments, fulfilment rules, and customer receipts.",
+    overview:
+      "Ordering connects your catalog, customer Go page, payment settings, fulfilment workflow, notifications, and staff screens. The goal is to make it easy for customers to order and easy for staff to accept, prepare, deliver, complete, or refund orders.",
     steps: [
       "Create categories and items, then add prices, descriptions, modifiers, availability, and images where needed.",
       "Choose which order modes are available: dine-in, table ordering, pickup, delivery, or a combination.",
@@ -4201,12 +4272,27 @@ const HELP_ARTICLES = [
       "Connect payment processing if online payment is required, then test checkout and receipts before publishing.",
       "Use the order dashboard to update statuses, view customer notes, and keep staff aligned.",
     ],
+    details: [
+      "Catalog items can include categories, prices, descriptions, images, SKUs, inventory tracking, availability, variants, bundles, and allergen information where configured.",
+      "Table QR ordering can link a customer session to a specific table, area, and dine-in context.",
+      "Pickup flows need clear time expectations, opening hours, preparation time, and customer contact details.",
+      "Delivery workflows can include address capture, notes, fees, fulfilment type, dispatch state, provider references, and tracking links where available.",
+      "Kitchen and order views help staff move orders through submitted, accepted, ready, completed, cancelled, or refunded states.",
+    ],
+    tips: [
+      "Keep item names short and descriptions useful on mobile.",
+      "Test every enabled order mode before adding QR codes to tables or social profiles.",
+      "Make unavailable items hidden or clearly disabled before service starts.",
+    ],
+    related: ["Catalog", "Tables", "Delivery", "Payments", "Kitchen display"],
   },
   {
     id: "bookings",
     category: "Bookings",
     title: "Setting up bookings",
     summary: "Create services, tables, resources, staff availability, deposits, reminders, and confirmation flows.",
+    overview:
+      "Bookings support appointment-led and reservation-led businesses: salons, clinics, gyms, restaurants, spas, service providers, classes, sessions, and events. The setup should make availability clear and give staff the information they need before the customer arrives.",
     steps: [
       "Add bookable services, tables, classes, sessions, or resources depending on the business type.",
       "Set duration, capacity, buffer time, availability, price, deposit rules, and auto-confirm preferences.",
@@ -4214,12 +4300,26 @@ const HELP_ARTICLES = [
       "Turn on reminders to reduce no-shows and keep confirmation messages clear.",
       "After the booking, use feedback and review follow-up to understand the customer experience.",
     ],
+    details: [
+      "Services can include duration, price, deposits, staff assignment, capacity, buffers, and business-hour constraints.",
+      "Auto-confirm works best for simple services with reliable availability. Manual confirmation is safer for complex requests.",
+      "Customer notes are useful for allergies, access needs, preferences, prior consultation details, or special occasion context.",
+      "Booking records can feed reminders, feedback requests, review prompts, rewards, and win-back campaigns.",
+    ],
+    tips: [
+      "Use buffers when staff need reset, travel, cleanup, or preparation time.",
+      "Keep cancellation and deposit wording visible before the customer submits.",
+      "Review no-show patterns in analytics before changing deposit rules.",
+    ],
+    related: ["Services", "Staff", "Reminders", "Feedback"],
   },
   {
     id: "campaigns-rewards",
     category: "Campaigns",
     title: "Campaigns, rewards, and win-back messages",
     summary: "Send customer follow-up that is connected to real activity and measurable results.",
+    overview:
+      "Campaigns and rewards are for careful follow-up, not blasting every customer. BRC helps connect messages to customer activity such as orders, bookings, reward claims, feedback, review moments, lapsed visits, and repeat-customer opportunities.",
     steps: [
       "Choose the audience carefully, such as recent visitors, lapsed customers, reward claimants, or booking customers.",
       "Write a clear offer with terms, expiry, and any restrictions.",
@@ -4227,12 +4327,26 @@ const HELP_ARTICLES = [
       "Track code usage, replies, review lift, repeat activity, and customer recovery outcomes.",
       "Avoid sending too frequently; owner trust and customer trust both depend on restraint.",
     ],
+    details: [
+      "Campaign records can include offer names, recipients, message channels, delivery state, redemption state, and linked customer history.",
+      "Rewards can be used after feedback, review requests, staff QR sessions, or specific customer journeys depending on configuration.",
+      "Consent and contact availability decide whether SMS or email is appropriate.",
+      "Good campaign reporting looks at redemption, repeat activity, customer recovery, and long-term reputation impact.",
+    ],
+    tips: [
+      "Write offers with plain terms: amount, expiry, exclusions, and redemption method.",
+      "Segment by useful behaviour instead of sending the same message to everyone.",
+      "Pause campaigns if staff cannot handle the extra demand.",
+    ],
+    related: ["Rewards", "Customer consent", "SMS", "Email", "Analytics"],
   },
   {
     id: "analytics",
     category: "Analytics",
     title: "Understanding analytics and owner digests",
     summary: "Use reporting to see what is working across reviews, feedback, orders, bookings, campaigns, and teams.",
+    overview:
+      "Analytics turns customer operations into owner-level decisions. BRC brings together reputation, feedback, orders, bookings, campaigns, rewards, staff attribution, and location signals so the business can see what is improving and what needs attention.",
     steps: [
       "Start with trend direction rather than a single day: review rating, review volume, feedback sentiment, repeat customers, and campaign response.",
       "Compare customer actions with business outcomes, such as order lift after a campaign or review lift after follow-up.",
@@ -4240,12 +4354,26 @@ const HELP_ARTICLES = [
       "Treat AI summaries as a fast briefing, then check the underlying records before making important decisions.",
       "Enable owner digests for a regular summary of what needs attention.",
     ],
+    details: [
+      "Useful signals include review movement, feedback themes, low-rating reasons, popular items, booking demand, campaign redemptions, repeat customers, and unresolved recovery cases.",
+      "Owner digests are designed to reduce dashboard checking while still surfacing meaningful changes.",
+      "Multi-location teams should compare trends carefully; one location may have different volume, staffing, hours, or customer expectations.",
+      "AI summaries help with scanning, but the source records remain the authority.",
+    ],
+    tips: [
+      "Look for repeated patterns before changing operations.",
+      "Combine quantitative metrics with customer comments.",
+      "Share simple weekly summaries with managers so insights turn into action.",
+    ],
+    related: ["Dashboard", "Owner digest", "Reviews", "Campaigns"],
   },
   {
     id: "team-roles",
     category: "Admin",
     title: "Team roles and permissions",
     summary: "Give each team member the right access without exposing unnecessary data or controls.",
+    overview:
+      "Permissions protect the business and make the console easier to use. Owners should keep financial and sensitive controls tight while giving managers and staff the workflows they need for the day.",
     steps: [
       "Owners should manage billing, modules, verification, sensitive settings, and full reporting.",
       "Managers can handle daily operations, replies, orders, bookings, campaigns, and customer recovery.",
@@ -4253,12 +4381,26 @@ const HELP_ARTICLES = [
       "Remove access promptly when a staff member leaves or changes role.",
       "Review permissions regularly, especially before adding new locations or modules.",
     ],
+    details: [
+      "Staff records can support roles, invitations, locations, capabilities, and workflow-specific access.",
+      "Sensitive areas include billing, subscription management, business verification, public page identity, customer exports, and admin overrides.",
+      "For multi-location operations, location-specific access keeps staff focused and reduces accidental changes.",
+      "Role reviews are especially important after seasonal staffing changes.",
+    ],
+    tips: [
+      "Use shared operational roles sparingly; named users are easier to audit.",
+      "Do not give billing access to staff who only need orders or bookings.",
+      "Check notification preferences when changing someone’s role.",
+    ],
+    related: ["Staff", "Locations", "Billing", "Security"],
   },
   {
     id: "billing",
     category: "Billing",
     title: "Plans, billing, trials, and cancellation",
     summary: "Understand plan access, renewals, SMS credits, add-ons, and cancellation behaviour.",
+    overview:
+      "Billing controls which modules and limits are available to the business. Trial state, subscription status, billing provider, plan level, renewal timing, add-ons, and payment health can all affect access.",
     steps: [
       "Plan access depends on the selected subscription, billing period, modules, usage limits, and add-ons.",
       "Trials may convert to paid access unless cancelled before the renewal or conversion date.",
@@ -4266,18 +4408,124 @@ const HELP_ARTICLES = [
       "SMS credits, add-ons, overages, and setup charges may be separate from the base plan.",
       "If payment fails or is disputed, paid features can be restricted until billing is resolved.",
     ],
+    details: [
+      "Growth, Pro, Business, or custom arrangements can expose different feature sets, usage levels, locations, onboarding options, and support levels.",
+      "Some features can show upgrade gates when the business is not subscribed, expired, suspended, or outside plan limits.",
+      "Billing emails and account notices should be watched by an owner or finance contact.",
+      "For app-store or external billing providers, cancellation and refund handling can depend on that provider’s terms.",
+    ],
+    tips: [
+      "Review plan access before relying on a module for a live launch.",
+      "Keep billing owner contact details current.",
+      "Contact support before a major migration or multi-location rollout if plan limits are unclear.",
+    ],
+    related: ["Plans", "Trials", "SMS credits", "Upgrade gates"],
+  },
+  {
+    id: "public-page",
+    category: "Public page",
+    title: "Configuring the public Go page",
+    summary: "Control the branded customer page for ordering, bookings, feedback, rewards, and business information.",
+    overview:
+      "The public Go page is the customer-facing layer of BRC. It should look like the business, explain what customers can do, and only show workflows that are actually ready.",
+    steps: [
+      "Upload a clear logo, hero image, and short business description.",
+      "Check address, contact details, opening hours, order modes, booking availability, delivery settings, and customer terms.",
+      "Choose which modules appear publicly: catalog, ordering, pickup, delivery, tables, bookings, services, rewards, and feedback.",
+      "Review consent wording, privacy links, refund terms, cancellation wording, allergen notices, and any required customer disclosures.",
+      "Open the page on mobile and desktop before sharing links, QR codes, or custom domains.",
+    ],
+    details: [
+      "Public slugs and custom domains affect how customers reach the page.",
+      "Hidden, unavailable, or incomplete catalog items should not appear to customers.",
+      "Payment readiness warnings should be resolved before asking customers to pay online.",
+      "The public page should stay accurate when menus, prices, staff hours, delivery areas, or services change.",
+    ],
+    tips: [
+      "Use plain, specific copy instead of marketing filler.",
+      "Preview customer flows after every major settings change.",
+      "Keep legal and allergen information visible where customers make decisions.",
+    ],
+    related: ["Ordering", "Bookings", "Catalog", "Custom domains"],
+  },
+  {
+    id: "notifications",
+    category: "Admin",
+    title: "Notifications and owner digest",
+    summary: "Choose which alerts your team receives for reviews, feedback, orders, bookings, campaigns, billing, and support.",
+    overview:
+      "Notifications keep the right people aware without overwhelming everyone. BRC supports operational alerts for time-sensitive workflows and owner digest summaries for regular management review.",
+    steps: [
+      "Open notification settings and review each event type.",
+      "Enable urgent alerts for workflows that require quick action, such as orders, bookings, low feedback, support replies, billing problems, and review changes.",
+      "Decide which users should receive owner digests and how often they should review them.",
+      "Test notification delivery after inviting new managers or changing roles.",
+      "Turn off alerts that create noise but do not lead to action.",
+    ],
+    details: [
+      "Notification events can include platform announcements, feedback alerts, public reviews, campaign updates, orders, bookings, payouts, support, billing, and owner summaries.",
+      "Push, email, and in-app behaviour may vary by platform, permissions, browser settings, and device state.",
+      "A missed notification should not be the only control for critical workflows; staff should also check the relevant queue.",
+    ],
+    tips: [
+      "Give one person clear ownership for urgent alerts each shift.",
+      "Use owner digests for trends and notifications for tasks.",
+      "Review settings after adding new modules.",
+    ],
+    related: ["Dashboard", "Support", "Orders", "Bookings"],
+  },
+  {
+    id: "security-privacy",
+    category: "Admin",
+    title: "Security, privacy, and customer data",
+    summary: "Handle customer records, consent, staff access, and business settings responsibly.",
+    overview:
+      "BRC stores operational data that may include customer contact details, order history, booking notes, feedback, support messages, campaign consent, and staff activity. Treat access and messaging rules with care.",
+    steps: [
+      "Give users the minimum access they need for their role.",
+      "Collect only the customer details needed for the workflow.",
+      "Use consent-aware SMS and email workflows for campaigns and follow-up.",
+      "Keep business privacy notices, refund terms, delivery terms, booking terms, and consent copy accurate.",
+      "Contact support immediately if you believe an account, staff login, or customer record is at risk.",
+    ],
+    details: [
+      "The business is usually responsible for how customer data is collected and used in ordering, bookings, campaigns, and feedback workflows.",
+      "BRC provides tools to support lawful operations, but the business must follow applicable privacy, consumer, marketing, and platform rules.",
+      "Sensitive notes should only be added when necessary and appropriate.",
+      "Remove staff access promptly when someone leaves.",
+    ],
+    tips: [
+      "Avoid putting payment card details or unnecessary sensitive data in notes.",
+      "Use role reviews as part of staff onboarding and offboarding.",
+      "Keep customer-facing terms aligned with how the business actually operates.",
+    ],
+    related: ["Privacy Policy", "Terms", "Team roles", "Campaign consent"],
   },
   {
     id: "support",
     category: "Support",
     title: "Getting support",
     summary: "Use the support workflow for account, billing, technical, setup, and product questions.",
+    overview:
+      "Support is most effective when the request includes the business context, the affected workflow, what happened, and what you expected instead. Signed-in support is best for account-specific issues because it carries more context.",
     steps: [
       "Signed-in users should open support from the BRC console when possible, because it includes account context.",
       "Use the public Contact Us page for sales, partnership, access, or account-recovery questions.",
       "Include the business name, affected workflow, screenshots if useful, customer/order/booking reference if relevant, and what you expected to happen.",
       "Support replies are sent through the same support workflow so your team can track the conversation.",
     ],
+    details: [
+      "Useful ticket categories include general, verification, billing, campaigns, and technical issues.",
+      "Attachments can help with screenshots, PDFs, documents, error messages, customer receipts, or platform evidence.",
+      "For urgent operational issues, include the time the problem started, whether customers are affected, and any workaround your team is using.",
+      "If the business is suspended or blocked, support can show the relevant account notice and next step.",
+    ],
+    tips: [
+      "Include IDs or links when you have them.",
+      "Keep one issue per ticket where possible so each problem can be tracked cleanly.",
+      "Reply in the existing ticket instead of opening duplicates.",
+    ],
+    related: ["Contact", "Billing", "Verification", "Technical issues"],
   },
 ];
 
@@ -4350,10 +4598,26 @@ function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const normalizedQuery = query.trim().toLowerCase();
   const categories = ["All", ...new Set(HELP_ARTICLES.map((article) => article.category))];
+  const quickStats = [
+    { label: "Guides", value: HELP_ARTICLES.length },
+    { label: "Areas", value: categories.length - 1 },
+    { label: "Support", value: "Console + web" },
+  ];
 
   const filteredArticles = HELP_ARTICLES.filter((article) => {
     const matchesCategory = activeCategory === "All" || article.category === activeCategory;
-    const searchable = `${article.title} ${article.category} ${article.summary} ${article.steps.join(" ")}`.toLowerCase();
+    const searchable = [
+      article.title,
+      article.category,
+      article.summary,
+      article.overview,
+      ...(article.steps || []),
+      ...(article.details || []),
+      ...(article.tips || []),
+      ...(article.related || []),
+    ]
+      .join(" ")
+      .toLowerCase();
     return matchesCategory && (!normalizedQuery || searchable.includes(normalizedQuery));
   });
 
@@ -4367,24 +4631,50 @@ function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
       <Nav theme={theme} onToggleTheme={onToggleTheme} />
       <main className="legal-page content-page-main">
         <div className="container">
-          <div className="legal-header">
-            <h1 className="legal-title">Help Center</h1>
-            <p className="legal-subtitle">
-              Search setup guides, workflow explainers, and support articles for BRC.
-            </p>
-          </div>
+          <header className="help-hero">
+            <div>
+              <div className="section-tag">Knowledge base</div>
+              <h1 className="legal-title">Help Center</h1>
+              <p className="legal-subtitle">
+                Learn how to set up BRC, run customer workflows, manage reputation,
+                publish ordering and booking journeys, understand analytics, and get support.
+              </p>
+              <div className="help-hero-actions">
+                <a href={WEB_APP_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                  Open Web App
+                </a>
+                <a href="/contact" className="btn btn-outline">
+                  Contact Support
+                </a>
+              </div>
+            </div>
+            <div className="help-hero-card" aria-label="Help center coverage">
+              {quickStats.map((stat) => (
+                <div key={stat.label} className="help-stat">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </header>
 
           <section className="help-search-panel">
-            <label className="help-search-label" htmlFor="help-search">
-              Search help articles
-            </label>
-            <input
-              id="help-search"
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search reputation, ordering, bookings, billing..."
-            />
+            <div className="help-search-row">
+              <label className="help-search-label" htmlFor="help-search">
+                Search help articles
+              </label>
+              <span>{filteredArticles.length} result{filteredArticles.length === 1 ? "" : "s"}</span>
+            </div>
+            <div className="help-search-input-wrap">
+              <span aria-hidden="true">⌕</span>
+              <input
+                id="help-search"
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search reputation, ordering, bookings, billing, permissions..."
+              />
+            </div>
             <div className="help-category-row" aria-label="Help categories">
               {categories.map((category) => (
                 <button
@@ -4402,7 +4692,7 @@ function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
           <section className="help-layout">
             <aside className="help-results" aria-label="Help article results">
               <div className="help-results-count">
-                {filteredArticles.length} article{filteredArticles.length === 1 ? "" : "s"}
+                Browse articles
               </div>
               {filteredArticles.length ? (
                 filteredArticles.map((article) => (
@@ -4426,14 +4716,61 @@ function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
 
             {activeArticle ? (
               <article className="help-article">
-                <div className="section-eyebrow">{activeArticle.category}</div>
-                <h2>{activeArticle.title}</h2>
-                <p>{activeArticle.summary}</p>
-                <ol>
-                  {activeArticle.steps.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ol>
+                <div className="help-article-header">
+                  <div className="section-eyebrow">{activeArticle.category}</div>
+                  <h2>{activeArticle.title}</h2>
+                  <p>{activeArticle.summary}</p>
+                </div>
+
+                {activeArticle.overview ? (
+                  <section className="help-article-section help-overview">
+                    <h3>Overview</h3>
+                    <p>{activeArticle.overview}</p>
+                  </section>
+                ) : null}
+
+                <section className="help-article-section">
+                  <h3>How to use it</h3>
+                  <ol>
+                    {activeArticle.steps.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                </section>
+
+                {activeArticle.details?.length ? (
+                  <section className="help-article-section">
+                    <h3>What to know</h3>
+                    <div className="help-detail-grid">
+                      {activeArticle.details.map((detail) => (
+                        <div key={detail} className="help-detail">
+                          <span aria-hidden="true">✓</span>
+                          <p>{detail}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                ) : null}
+
+                {activeArticle.tips?.length ? (
+                  <section className="help-article-section">
+                    <h3>Good practice</h3>
+                    <ul className="help-tip-list">
+                      {activeArticle.tips.map((tip) => (
+                        <li key={tip}>{tip}</li>
+                      ))}
+                    </ul>
+                  </section>
+                ) : null}
+
+                {activeArticle.related?.length ? (
+                  <div className="help-related" aria-label="Related topics">
+                    {activeArticle.related.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                ) : null}
+
                 <div className="content-link-row">
                   <a href="/contact" className="btn btn-outline">
                     Contact Support
