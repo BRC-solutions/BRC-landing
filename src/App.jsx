@@ -213,9 +213,9 @@ function Hero() {
           <p className="hero-p">
             BRC gives local business owners ordering, booking, delivery,
             feedback, reviews, rewards, campaigns, and analytics in one app.
-            Replace disconnected subscriptions, save admin time, protect your
-            reputation, and see which customer actions are actually bringing
-            money back.
+            Build more positive reviews, recover unhappy customers privately,
+            flag suspicious reviews for removal requests, and see which customer
+            actions are actually bringing money back.
           </p>
           <div className="hero-btns">
             <a href="#pricing" className="btn btn-primary btn-lg">
@@ -298,7 +298,7 @@ const STATS = [
   { value: "9.7k+", label: "Tracked orders and redemptions" },
   { value: "+67%", label: "Average review lift" },
   { value: "2.1M+", label: "Reviews analyzed across platforms" },
-  { value: "99.5%", label: "Fake review detection accuracy" },
+  { value: "99.5%", label: "Suspicious review detection accuracy" },
 ];
 
 function StatsBar() {
@@ -424,10 +424,10 @@ const FEATURES = [
     slug: "reputation",
     icon: "⭐",
     accent: "var(--yellow)",
-    title: "Review growth",
-    body: "Monitor Google, Yelp, and TripAdvisor, draft replies with AI, and send natural review follow-ups at the right moment.",
+    title: "Reputation recovery",
+    body: "Build positive reviews, recover low-rating experiences privately, draft replies with AI, and flag suspicious reviews for dispute workflows.",
     tag: "Reputation",
-    outcome: "Win more searches with stronger reviews and faster replies.",
+    outcome: "Win more searches while protecting your rating from avoidable damage.",
   },
   {
     slug: "campaigns",
@@ -557,26 +557,30 @@ const FEATURE_DETAIL = {
     bestFor: "Owners who want bad experiences surfaced privately before they damage the public rating.",
   },
   reputation: {
-    headline: "Review growth without awkward review begging.",
+    headline: "Recover reputation and build positive reviews.",
     subhead:
-      "BRC monitors your public reputation, helps your team respond faster, and sends natural follow-ups after genuine customer activity.",
+      "BRC monitors your public reputation, helps your team respond faster, routes unhappy customers into private recovery, and sends natural follow-ups after genuine positive activity.",
     bullets: [
       "Google, Yelp, and TripAdvisor monitoring by plan",
       "AI review summaries and reply draft support",
-      "Review request follow-ups after orders, bookings, or visits",
+      "Positive review follow-ups after orders, bookings, or visits",
+      "Low-rating recovery workflows before problems become public",
+      "Suspicious or fake review flags with dispute-ready context",
       "Competitor tracking and local benchmark signals",
       "Owner alerts for urgent or low-rating reviews",
     ],
     conversion:
-      "Why subscribe: stronger reviews improve the trust signals buyers check before choosing you, while AI drafts save owner and manager time.",
-    proof: ["AI reply drafts", "Competitor tracking", "Review alerts"],
+      "Why subscribe: stronger reviews improve the trust signals buyers check before choosing you, while recovery workflows help save customers who might otherwise leave for good.",
+    proof: ["Review recovery", "Fake review flags", "AI reply drafts"],
     fits: [
       "Google reviews on Growth, with Yelp and TripAdvisor on higher plans",
       "Daily review sync, AI summaries, and AI reply drafts",
+      "Private recovery flows for low ratings and complaint patterns",
+      "Suspicious review detection to support platform removal requests",
       "Competitor tracking and public signal monitoring by plan",
       "Owner alerts and campaign follow-up after real customer activity",
     ],
-    bestFor: "Any local business where new customers check ratings before calling, booking, ordering, or walking in.",
+    bestFor: "Any local business that needs more positive reviews, faster negative-review recovery, and a clearer process for challenging suspicious public reviews.",
   },
   campaigns: {
     headline: "Automations that turn customer activity into repeat revenue.",
@@ -729,15 +733,17 @@ const FEATURE_GUIDES = {
     setup: [
       "Connect the business profile and fetch previous reviews within the plan allowance.",
       "Choose which review platforms matter for the plan: Google first, then Yelp and TripAdvisor on higher tiers.",
-      "Set alerts for new reviews, low ratings, and owner attention.",
+      "Set alerts for new reviews, low ratings, suspicious patterns, and owner attention.",
+      "Configure private recovery steps for low-rating feedback and complaint patterns.",
       "Use AI summaries and reply drafts so managers can respond faster without starting from a blank page.",
     ],
     dailyUse: [
-      "Owners monitor review volume, average rating, unresolved replies, and urgent review risks.",
-      "Managers can use AI drafts, competitor context, and public signal checks to decide where to act.",
-      "Review requests can be triggered after real customer activity instead of asking everyone at random.",
+      "Owners monitor review volume, average rating, unresolved replies, recovery cases, and urgent review risks.",
+      "Managers can use AI drafts, competitor context, suspicious-review flags, and public signal checks to decide where to act.",
+      "Positive review requests can be triggered after real customer activity instead of asking everyone at random.",
+      "Suspicious public reviews can be gathered into dispute-ready context for the relevant platform.",
     ],
-    planNote: "Growth sells Google review management; Pro and Business expand the story with multi-platform, competitors, and public signals.",
+    planNote: "Growth sells Google review recovery and positive review building; Pro and Business expand the story with multi-platform, competitors, public signals, and dispute context.",
   },
   campaigns: {
     setup: [
@@ -950,8 +956,10 @@ const PLATFORMS = [
 
 const PLATFORM_FEATURES = [
   "You choose which platform to grow",
+  "Positive review building after real visits",
+  "Private recovery for unhappy customers",
   "Follow-ups feel natural, not automated",
-  "AI flags fake & suspicious reviews",
+  "AI flags fake and suspicious reviews for disputes",
   "Real-time notifications for new reviews",
 ];
 
@@ -968,8 +976,9 @@ function Platforms() {
           </h2>
           <p className="section-p">
             Choose where you want to grow your reviews. BRC follows up with
-            customers on your behalf — naturally, and on the platform that
-            matters most to your business.
+            happy customers naturally, routes unhappy customers into private
+            recovery, and helps your team prepare evidence when a review looks
+            fake or suspicious.
           </p>
         </div>
         <div className="platforms-grid">
@@ -1001,8 +1010,8 @@ function Platforms() {
 const ANALYTICS_FEATURES = [
   {
     icon: "📈",
-    title: "Multi-Platform Review Tracking",
-    desc: "Monitor your reputation across Google, Yelp, and TripAdvisor in real-time. See rating trends, review volume, and response times all in one place.",
+    title: "Reputation Recovery Tracking",
+    desc: "Monitor Google, Yelp, and TripAdvisor, then track rating trends, review volume, recovery status, and response times in one place.",
   },
   {
     icon: "👥",
@@ -1012,7 +1021,7 @@ const ANALYTICS_FEATURES = [
   {
     icon: "🧠",
     title: "AI-Powered Review Analysis",
-    desc: "Automatic sentiment analysis, fake review detection, and risk scoring. Get alerts for urgent reviews and insights into customer emotions.",
+    desc: "Automatic sentiment analysis, fake review detection, and risk scoring. Get alerts for urgent reviews, dispute candidates, and customer emotions.",
   },
   {
     icon: "📊",
@@ -1022,7 +1031,7 @@ const ANALYTICS_FEATURES = [
   {
     icon: "⚡",
     title: "Real-Time Notifications",
-    desc: "Instant alerts for new reviews, low ratings, or competitor changes. Never miss a chance to respond or celebrate positive feedback.",
+    desc: "Instant alerts for new reviews, low ratings, suspicious activity, or competitor changes. Never miss a chance to recover, respond, or celebrate positive feedback.",
   },
   {
     icon: "🎯",
@@ -1075,6 +1084,12 @@ const JOURNEYS = [
     color: "#ef4444",
     label: "Private Recovery",
     desc: "Unhappy customers resolve their issue privately with your team — before it ever becomes a public complaint.",
+  },
+  {
+    icon: "⭐",
+    color: "#f59e0b",
+    label: "Positive Review Builder",
+    desc: "Happy customers get a natural prompt to share their experience on the platform you want to grow.",
   },
   {
     icon: "🎁",
@@ -1193,7 +1208,7 @@ const PLANS = [
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one active location managing reviews, feedback, orders, bookings, and campaigns.",
+    desc: "For one active location building reviews, recovering customers, and managing daily operations.",
     cta: "Start 7-Day Trial",
     highlight: true,
     badge: "Most Popular",
@@ -1203,6 +1218,9 @@ const PLANS = [
       "Previous review fetching included: up to 50 reviews",
       "Daily review sync",
       "AI summaries and reply drafts",
+      "Positive review request follow-ups",
+      "Negative feedback recovery workflows",
+      "Suspicious review flags",
       "Competitor tracking up to 3",
       "Private feedback and staff ratings",
       "Basic ordering and booking workflows",
@@ -1223,6 +1241,8 @@ const PLANS = [
       "Everything in Growth",
       "Yelp and TripAdvisor",
       "Previous review fetching included: up to 500 reviews",
+      "Review dispute context for suspicious reviews",
+      "Advanced reputation recovery reporting",
       "Menu/product performance insights",
       "Advanced ordering and booking configuration",
       "Public Signals monitoring",
@@ -1245,7 +1265,7 @@ const PLANS = [
       "Everything in Pro",
       "Previous review fetching included: up to 1,000 reviews",
       "Organisation dashboard",
-      "Brand-level reputation reports",
+      "Brand-level reputation recovery reports",
       "Multi-location alerts and campaigns",
       "Ordering and booking reporting",
       "Scheduled reports and exports",
@@ -1267,6 +1287,7 @@ const PLANS = [
       "Custom Public Signal scan volume",
       "Custom review sync allowance",
       "Custom previous review fetching allowance",
+      "Custom reputation recovery and dispute reporting",
       "SLA and priority data sync",
       "White-label or custom reports",
       "Dedicated onboarding and support",
@@ -1393,11 +1414,15 @@ const FAQS = [
   },
   {
     q: "When and how are customers asked for public reviews?",
-    a: "The platform sends a natural, well-timed follow-up message a few days after the visit, order, or booking. The message feels like a genuine check-in rather than an automated prompt, and directs customers to whichever platform you want to grow: Google, Yelp, or TripAdvisor.",
+    a: "The platform sends a natural, well-timed follow-up message after genuine activity such as a visit, order, or booking. Happy customers can be guided toward the review platform you want to grow, while unhappy customers can be routed into private recovery first.",
   },
   {
     q: "What happens when a customer leaves negative feedback?",
-    a: "Unhappy customers are given a private channel to share their concerns directly with your business — before they consider posting a public review. Your team can resolve the issue, respond personally, and turn a bad experience into a reason to return.",
+    a: "Unhappy customers are given a private channel to share their concerns directly with your business before they consider posting publicly. Your team can respond personally, add notes, resolve the issue, and turn a bad experience into a reason to return.",
+  },
+  {
+    q: "Can BRC help with fake or suspicious reviews?",
+    a: "Yes. BRC can flag suspicious patterns, keep review context in one place, and help your team prepare a clearer dispute or removal request for the review platform. Final removal decisions are controlled by Google, Yelp, TripAdvisor, or the platform where the review was posted.",
   },
   {
     q: "Can I cancel my subscription at any time?",
