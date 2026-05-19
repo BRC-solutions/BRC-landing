@@ -1642,7 +1642,13 @@ const INDUSTRY_PAGES = {
       ["Protect your rating", "Route low-rating customers into private recovery before they become public review damage."],
       ["Bring guests back", "Send rewards, review requests, and win-back campaigns connected to real orders and visits."],
     ],
-    modules: ["Bookings", "Ordering", "Tables", "Pickup", "Delivery", "Feedback", "Reviews", "Rewards", "Campaigns", "Analytics"],
+    operations: [
+      ["Live order flow", "Track table, pickup, and delivery requests with status visibility for accepted, preparing, ready, completed, or cancelled work."],
+      ["Menu controls", "Manage categories, items, modifiers, bundles, allergens, availability, delivery rules, and fulfilment notes from the console."],
+      ["Team visibility", "Keep staff focused with customer context, booking details, order notes, feedback history, and owner-level controls."],
+      ["Owner reporting", "Use daily signals for orders, reviews, recovery, campaigns, rewards, and operational bottlenecks."],
+    ],
+    modules: ["Operations", "Bookings", "Ordering", "Tables", "Pickup", "Delivery", "Feedback", "Reviews", "Rewards", "Campaigns", "Analytics"],
     objections: [
       ["We already use marketplaces", "BRC helps you build your owned customer relationship instead of giving every repeat journey to a marketplace."],
       ["We do not have time", "Start with one workflow: private feedback after orders or table QR ordering. Add campaigns later."],
@@ -1665,7 +1671,13 @@ const INDUSTRY_PAGES = {
       ["Recover bad experiences", "Catch unhappy customers with private feedback, respond before they post publicly, and ask happy customers for reviews at natural moments."],
       ["Spot menu signals", "Use item, feedback, and campaign data to see what customers actually respond to."],
     ],
-    modules: ["Catalog", "Pickup", "Feedback", "Review recovery", "Reviews", "Rewards", "Campaigns", "Owner digest"],
+    operations: [
+      ["Morning-ready setup", "Control menus, item availability, pickup windows, preparation expectations, and sold-out states as the day changes."],
+      ["Order handling", "Give the team a clear flow for new, preparing, ready, collected, and cancelled pickup orders."],
+      ["Customer context", "See feedback, reward usage, repeat activity, and review history without switching tools."],
+      ["Owner digest", "Review the signals that matter: popular items, unhappy customers, reward performance, repeat visits, and campaign results."],
+    ],
+    modules: ["Operations", "Catalog", "Pickup", "Feedback", "Review recovery", "Reviews", "Rewards", "Campaigns", "Owner digest"],
     objections: [
       ["We are too small", "That is exactly why replacing several tools with one simple workflow matters."],
       ["We do not want complex setup", "Start with your menu, feedback QR, and one reward. The rest can grow gradually."],
@@ -1688,7 +1700,13 @@ const INDUSTRY_PAGES = {
       ["Recover bad experiences", "Follow up after appointments with private feedback, route unhappy clients to recovery, and send legitimate review requests to happy clients."],
       ["Reactivate clients", "Send win-back offers to lapsed clients with consent-aware SMS or email."],
     ],
-    modules: ["Bookings", "Services", "Staff", "Feedback", "Review recovery", "Reviews", "Campaigns", "Rewards", "Analytics"],
+    operations: [
+      ["Service setup", "Manage services, durations, prices, deposits, buffers, staff availability, and booking rules in one place."],
+      ["Diary visibility", "Track upcoming bookings, status, customer notes, confirmations, no-shows, cancellations, and follow-up needs."],
+      ["Staff workflows", "Give staff the booking and customer context they need while keeping sensitive owner controls separate."],
+      ["Recovery queue", "See unhappy appointment feedback, missed review opportunities, lapsed clients, and win-back actions together."],
+    ],
+    modules: ["Operations", "Bookings", "Services", "Staff", "Feedback", "Review recovery", "Reviews", "Campaigns", "Rewards", "Analytics"],
     objections: [
       ["We already have booking software", "BRC connects bookings to feedback, reputation, rewards, campaigns, and owner reporting."],
       ["Staff need simple tools", "Permissions and workflow views let staff focus on bookings and customer context without owner-only controls."],
@@ -1711,7 +1729,13 @@ const INDUSTRY_PAGES = {
       ["Create repeat visits", "Use rewards, discount codes, and campaign follow-up tied to real customer activity."],
       ["Recover bad experiences", "Collect private feedback after purchases, handle issues before they become public reviews, and ask happy customers at the right moment."],
     ],
-    modules: ["Catalog", "Inventory", "Pickup", "Feedback", "Review recovery", "Reviews", "Rewards", "Campaigns", "CRM"],
+    operations: [
+      ["Catalog controls", "Manage products, categories, variants, bundles, images, prices, visibility, and availability without a full ecommerce rebuild."],
+      ["Pickup workflow", "Track reserve, prepare, ready, collected, and cancelled orders with customer details and staff notes."],
+      ["Stock awareness", "Use hidden, unavailable, and featured states so customers see what the shop can actually fulfil."],
+      ["Owner view", "Connect orders, feedback, rewards, reviews, and campaigns to understand what drives return visits."],
+    ],
+    modules: ["Operations", "Catalog", "Inventory", "Pickup", "Feedback", "Review recovery", "Reviews", "Rewards", "Campaigns", "CRM"],
     objections: [
       ["We are not ecommerce", "BRC can start as a local catalog and pickup flow, not a full warehouse ecommerce system."],
       ["We already post on social", "Social creates attention; BRC helps capture the customer relationship and follow-up."],
@@ -1775,6 +1799,34 @@ function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggle
               {page.workflows.map(([title, body]) => (
                 <article className="industry-workflow-card" key={title}>
                   <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section industry-operations">
+          <div className="container">
+            <div className="industry-operations-header">
+              <div>
+                <div className="section-tag">Operations Console</div>
+                <h2 className="section-h2">
+                  Run the work behind
+                  <br />
+                  <span className="grad-text">every customer moment</span>
+                </h2>
+              </div>
+              <p>
+                BRC is not only a public page. It gives owners and teams the
+                controls, status views, customer context, and reporting needed
+                to keep daily work moving.
+              </p>
+            </div>
+            <div className="industry-operations-grid">
+              {page.operations.map(([title, body]) => (
+                <article className="industry-operation-card" key={title}>
+                  <span>{title}</span>
                   <p>{body}</p>
                 </article>
               ))}

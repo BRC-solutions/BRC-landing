@@ -1756,11 +1756,13 @@ img { max-width: 100%; }
 }
 
 .industry-workflows,
+.industry-operations,
 .industry-objections {
   background: rgba(255,255,255,.5);
 }
 
 :root[data-theme="dark"] .industry-workflows,
+:root[data-theme="dark"] .industry-operations,
 :root[data-theme="dark"] .industry-objections {
   background: var(--bg-1);
 }
@@ -1793,6 +1795,68 @@ img { max-width: 100%; }
 .industry-objection-card p {
   color: var(--text-2);
   font-size: 14px;
+  line-height: 1.65;
+}
+
+.industry-operations {
+  background:
+    linear-gradient(135deg, rgba(91,33,182,.1), rgba(5,150,105,.08)),
+    var(--surface);
+}
+
+:root[data-theme="dark"] .industry-operations {
+  background:
+    linear-gradient(135deg, rgba(124,58,237,.16), rgba(20,184,166,.1)),
+    var(--bg);
+}
+
+.industry-operations-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .86fr);
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.industry-operations-header p {
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.industry-operations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.industry-operation-card {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: rgba(255,255,255,.78);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+:root[data-theme="dark"] .industry-operation-card {
+  background: rgba(255,255,255,.06);
+}
+
+.industry-operation-card span {
+  display: block;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.industry-operation-card p {
+  color: var(--text);
+  font-size: 15px;
   line-height: 1.65;
 }
 
@@ -2984,6 +3048,7 @@ img { max-width: 100%; }
   .feature-hero-inner,
   .industry-hero-inner,
   .industry-stack-inner,
+  .industry-operations-header,
   .feature-detail-grid,
   .conversion-flow,
   .contact-grid,
@@ -2995,6 +3060,7 @@ img { max-width: 100%; }
   .feature-conversion { margin-left: auto; margin-right: auto; }
   .industry-hero { padding: 116px 0 60px; }
   .industry-workflow-grid,
+  .industry-operations-grid,
   .industry-objection-grid { grid-template-columns: 1fr; }
   .industry-panel,
   .industry-module-list { border-radius: 18px; }
@@ -3026,6 +3092,7 @@ img { max-width: 100%; }
   .industry-subhead { font-size: 16px; line-height: 1.65; }
   .industry-panel,
   .industry-module-list,
+  .industry-operation-card,
   .industry-workflow-card,
   .industry-objection-card { padding: 18px; }
 }
