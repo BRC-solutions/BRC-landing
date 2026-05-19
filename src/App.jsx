@@ -1790,9 +1790,9 @@ function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggle
             <div className="section-header">
               <div className="section-tag">Customer Journey</div>
               <h2 className="section-h2">
-                One page, one console,
+                Turn more customer moments
                 <br />
-                <span className="grad-text">several jobs done</span>
+                <span className="grad-text">into return visits</span>
               </h2>
             </div>
             <div className="industry-workflow-grid">
