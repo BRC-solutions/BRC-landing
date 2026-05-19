@@ -11,6 +11,7 @@ const PAGES = {
   CONTACT: "contact",
   FEATURE: "feature",
   CONTENT: "content",
+  INDUSTRY: "industry",
 };
 
 const API_BASE_URL =
@@ -41,7 +42,120 @@ function signupUrl({
   url.searchParams.set("billing", billing);
   if (businessName) url.searchParams.set("businessName", businessName);
   if (placeId) url.searchParams.set("googlePlaceId", placeId);
+  const attribution = currentMarketingAttribution();
+  if (attribution.visitorId) url.searchParams.set("brcVisitorId", attribution.visitorId);
+  if (attribution.sessionId) url.searchParams.set("brcSessionId", attribution.sessionId);
+  if (attribution.source) url.searchParams.set("utm_source", attribution.source);
+  if (attribution.medium) url.searchParams.set("utm_medium", attribution.medium);
+  if (attribution.campaign) url.searchParams.set("utm_campaign", attribution.campaign);
   return url.toString();
+}
+
+function safeStorageGet(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeStorageSet(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // Ignore blocked storage; tracking still works for this event.
+  }
+}
+
+function marketingId(prefix) {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return `${prefix}_${crypto.randomUUID()}`;
+  }
+  return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+}
+
+function currentMarketingAttribution() {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  let visitorId = safeStorageGet("brc_marketing_visitor_id");
+  if (!visitorId) {
+    visitorId = marketingId("visitor");
+    safeStorageSet("brc_marketing_visitor_id", visitorId);
+  }
+  const attribution = {
+    visitorId,
+    sessionId: safeStorageGet("brc_marketing_session_id") || "",
+    source:
+      params.get("utm_source") ||
+      safeStorageGet("brc_utm_source") ||
+      (document.referrer ? "referral" : "direct"),
+    medium:
+      params.get("utm_medium") ||
+      safeStorageGet("brc_utm_medium") ||
+      (document.referrer ? "referral" : "none"),
+    campaign: params.get("utm_campaign") || safeStorageGet("brc_utm_campaign") || "",
+    term: params.get("utm_term") || safeStorageGet("brc_utm_term") || "",
+    content: params.get("utm_content") || safeStorageGet("brc_utm_content") || "",
+    gclid: params.get("gclid") || safeStorageGet("brc_gclid") || "",
+    fbclid: params.get("fbclid") || safeStorageGet("brc_fbclid") || "",
+    ttclid: params.get("ttclid") || safeStorageGet("brc_ttclid") || "",
+    rdt_cid: params.get("rdt_cid") || safeStorageGet("brc_rdt_cid") || "",
+    referrer: safeStorageGet("brc_referrer") || document.referrer || "",
+    landingPage: safeStorageGet("brc_landing_page") || `${window.location.pathname}${window.location.search}`,
+  };
+
+  [
+    ["brc_utm_source", attribution.source],
+    ["brc_utm_medium", attribution.medium],
+    ["brc_utm_campaign", attribution.campaign],
+    ["brc_utm_term", attribution.term],
+    ["brc_utm_content", attribution.content],
+    ["brc_gclid", attribution.gclid],
+    ["brc_fbclid", attribution.fbclid],
+    ["brc_ttclid", attribution.ttclid],
+    ["brc_rdt_cid", attribution.rdt_cid],
+    ["brc_referrer", attribution.referrer],
+    ["brc_landing_page", attribution.landingPage],
+  ].forEach(([key, value]) => {
+    if (value) safeStorageSet(key, value);
+  });
+
+  return attribution;
+}
+
+function trackMarketingEvent(eventType, metadata = {}) {
+  if (typeof window === "undefined") return;
+  const attribution = currentMarketingAttribution();
+  const body = {
+    eventType,
+    visitorId: attribution.visitorId,
+    sessionId: attribution.sessionId,
+    attribution,
+    source: attribution.source,
+    medium: attribution.medium,
+    campaign: attribution.campaign,
+    pagePath: `${window.location.pathname}${window.location.search}`,
+    pageTitle: document.title,
+    target: metadata.target || "",
+    language: navigator.language || "",
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+    metadata,
+  };
+  const url = `${API_BASE_URL}/marketing/events`;
+
+  const saveSessionId = (payload) => {
+    if (payload?.sessionId) safeStorageSet("brc_marketing_session_id", payload.sessionId);
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    keepalive: true,
+  })
+    .then((response) => response.ok ? response.json() : null)
+    .then(saveSessionId)
+    .catch(() => {});
 }
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
@@ -1502,6 +1616,200 @@ function CTA() {
   );
 }
 
+// ─── INDUSTRY LANDING PAGES ──────────────────────────────────────────────────
+
+const INDUSTRY_PAGES = {
+  restaurants: {
+    eyebrow: "For restaurants",
+    title: "Ordering, reviews, rewards, and recovery for restaurants.",
+    subhead:
+      "BRC helps restaurants own more of the customer journey: table QR ordering, pickup, delivery, private feedback, review requests, rewards, campaigns, and owner reporting in one operating console.",
+    pain: "Restaurant teams often pay for ordering, delivery, loyalty, reviews, feedback, and campaigns separately, then still miss the moment when an unhappy customer is about to go public.",
+    primaryCta: "Start Restaurant Trial",
+    secondaryCta: "Get Free Restaurant Audit",
+    proof: ["Table QR", "Pickup & delivery", "Review recovery", "Kitchen view"],
+    workflows: [
+      ["Take direct orders", "Publish a branded menu, table QR, pickup, and delivery flow from your own customer page."],
+      ["Protect your rating", "Route low-rating customers into private recovery before they become public review damage."],
+      ["Bring guests back", "Send rewards, review requests, and win-back campaigns connected to real orders and visits."],
+      ["Know what to fix", "Track item, staff, feedback, review, campaign, and owner-digest signals in one place."],
+    ],
+    modules: ["Ordering", "Tables", "Delivery", "Feedback", "Reviews", "Rewards", "Campaigns", "Analytics"],
+    objections: [
+      ["We already use marketplaces", "BRC helps you build your owned customer relationship instead of giving every repeat journey to a marketplace."],
+      ["We do not have time", "Start with one workflow: private feedback after orders or table QR ordering. Add campaigns later."],
+      ["We already ask for reviews", "BRC adds timing, context, private recovery, and follow-up based on real customer activity."],
+    ],
+  },
+  cafes: {
+    eyebrow: "For cafes and bakeries",
+    title: "Turn regular visits into feedback, rewards, reviews, and repeat orders.",
+    subhead:
+      "BRC gives cafes and bakeries a simple customer operations layer for pickup ordering, menus, private feedback, loyalty-style rewards, campaigns, and local reputation growth.",
+    pain: "Cafes win through regulars, but many regular customer moments disappear without feedback, contact details, review prompts, or measurable return visits.",
+    primaryCta: "Start Cafe Trial",
+    secondaryCta: "Get Free Cafe Audit",
+    proof: ["Pickup orders", "Rewards", "Feedback QR", "Review requests"],
+    workflows: [
+      ["Launch pickup ordering", "Let customers browse, order, and collect from a branded public page."],
+      ["Reward useful feedback", "Offer trackable discounts after feedback and see which rewards become return visits."],
+      ["Build more reviews", "Ask happy customers at natural moments while routing issues privately."],
+      ["Spot menu signals", "Use item, feedback, and campaign data to see what customers actually respond to."],
+    ],
+    modules: ["Catalog", "Pickup", "Feedback", "Rewards", "Reviews", "Campaigns", "Owner digest"],
+    objections: [
+      ["We are too small", "That is exactly why replacing several tools with one simple workflow matters."],
+      ["We do not want complex setup", "Start with your menu, feedback QR, and one reward. The rest can grow gradually."],
+      ["Our customers already know us", "Regulars are the best source of reviews, referrals, feedback, and repeat campaigns."],
+    ],
+  },
+  salons: {
+    eyebrow: "For salons and spas",
+    title: "Bookings, reminders, reviews, and client reactivation for salons.",
+    subhead:
+      "BRC helps appointment-led businesses manage services, staff, bookings, deposits, reminders, private feedback, review follow-up, and win-back campaigns from one place.",
+    pain: "A salon can have full diaries and still leak revenue through no-shows, weak follow-up, missed reviews, and clients who quietly stop booking.",
+    primaryCta: "Start Salon Trial",
+    secondaryCta: "Get Free Salon Audit",
+    proof: ["Services", "Staff bookings", "Deposits", "Win-backs"],
+    workflows: [
+      ["Publish services", "Create services, staff, capacity, duration, prices, deposits, buffers, and booking rules."],
+      ["Reduce admin", "Use confirmations, reminders, customer notes, and booking status to keep the team aligned."],
+      ["Grow reputation", "Follow up after appointments with private feedback and legitimate review requests."],
+      ["Reactivate clients", "Send win-back offers to lapsed clients with consent-aware SMS or email."],
+    ],
+    modules: ["Bookings", "Services", "Staff", "Feedback", "Reviews", "Campaigns", "Rewards", "Analytics"],
+    objections: [
+      ["We already have booking software", "BRC connects bookings to feedback, reputation, rewards, campaigns, and owner reporting."],
+      ["Staff need simple tools", "Permissions and workflow views let staff focus on bookings and customer context without owner-only controls."],
+      ["Clients book through Instagram", "BRC gives those clients a cleaner destination and helps you keep the relationship after the booking."],
+    ],
+  },
+  retail: {
+    eyebrow: "For local retail",
+    title: "Catalog, pickup, rewards, reviews, and campaigns for independent shops.",
+    subhead:
+      "BRC helps local retailers publish a product catalog, accept pickup orders, collect feedback, build reviews, send rewards, and understand which customer actions bring people back.",
+    pain: "Independent shops often have loyal customers but no owned system for catalog browsing, pickup, feedback, rewards, review growth, and reactivation.",
+    primaryCta: "Start Retail Trial",
+    secondaryCta: "Get Free Retail Audit",
+    proof: ["Catalog", "Pickup", "Rewards", "Customer CRM"],
+    workflows: [
+      ["Publish a local catalog", "Show products, categories, prices, images, variants, bundles, stock, and availability."],
+      ["Take pickup orders", "Let customers reserve or buy for collection without sending every relationship to a marketplace."],
+      ["Create repeat visits", "Use rewards, discount codes, and campaign follow-up tied to real customer activity."],
+      ["Improve local trust", "Collect private feedback and ask happy customers for reviews at the right moment."],
+    ],
+    modules: ["Catalog", "Inventory", "Pickup", "Feedback", "Reviews", "Rewards", "Campaigns", "CRM"],
+    objections: [
+      ["We are not ecommerce", "BRC can start as a local catalog and pickup flow, not a full warehouse ecommerce system."],
+      ["We already post on social", "Social creates attention; BRC helps capture the customer relationship and follow-up."],
+      ["Stock changes often", "Use hidden and unavailable states so customers see what is actually ready."],
+    ],
+  },
+};
+
+function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggleTheme }) {
+  const page = INDUSTRY_PAGES[slug] || INDUSTRY_PAGES.restaurants;
+
+  return (
+    <div className="app">
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <main className="industry-page">
+        <section className="industry-hero">
+          <div className="hero-bg">
+            <div className="glow glow-1" />
+            <div className="glow glow-2" />
+            <div className="grid-overlay" />
+          </div>
+          <div className="container industry-hero-inner">
+            <div className="industry-copy">
+              <div className="section-tag">{page.eyebrow}</div>
+              <h1 className="industry-title">{page.title}</h1>
+              <p className="industry-subhead">{page.subhead}</p>
+              <div className="hero-btns">
+                <a href="/#pricing" className="btn btn-primary btn-lg">
+                  {page.primaryCta} <span className="arrow">→</span>
+                </a>
+                <a href="/contact" className="btn btn-outline btn-lg">
+                  {page.secondaryCta}
+                </a>
+              </div>
+            </div>
+            <aside className="industry-panel">
+              <span>Why it matters</span>
+              <p>{page.pain}</p>
+              <div className="industry-proof-list">
+                {page.proof.map((item) => (
+                  <strong key={item}>{item}</strong>
+                ))}
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section className="section industry-workflows">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">Customer Journey</div>
+              <h2 className="section-h2">
+                One page, one console,
+                <br />
+                <span className="grad-text">several jobs done</span>
+              </h2>
+            </div>
+            <div className="industry-workflow-grid">
+              {page.workflows.map(([title, body]) => (
+                <article className="industry-workflow-card" key={title}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section industry-stack">
+          <div className="container industry-stack-inner">
+            <div>
+              <div className="section-tag">Included Modules</div>
+              <h2 className="section-h2">
+                Built around how this
+                <br />
+                <span className="grad-text">business actually runs</span>
+              </h2>
+            </div>
+            <div className="industry-module-list">
+              {page.modules.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section industry-objections">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">Common Questions</div>
+              <h2 className="section-h2">What owners usually ask first</h2>
+            </div>
+            <div className="industry-objection-grid">
+              {page.objections.map(([question, answer]) => (
+                <article className="industry-objection-card" key={question}>
+                  <h3>{question}</h3>
+                  <p>{answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <CTA />
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
 // ─── FEATURE DETAIL PAGES ────────────────────────────────────────────────────
 
 function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme }) {
@@ -1803,6 +2111,11 @@ function ContactPage({ onNavigate, theme, onToggleTheme }) {
       });
       const payload = await response.json();
       if (!response.ok) throw new Error(payload.error || "Could not send your message.");
+      trackMarketingEvent("contact_submit", {
+        target: "contact_form",
+        category: form.category,
+        businessNameProvided: Boolean(form.businessName.trim()),
+      });
       setStatus({
         type: "success",
         message: `Thanks. Your message is in our support queue as ticket ${payload.ticket?.id || ""}. We will reply by email.`,
@@ -5326,6 +5639,9 @@ export default function App() {
     if (pathname === "/terms") return { page: PAGES.TERMS };
     if (pathname === "/privacy") return { page: PAGES.PRIVACY };
     const contentSlug = pathname.replace(/^\//, "").replace(/\/$/, "");
+    if (INDUSTRY_PAGES[contentSlug]) {
+      return { page: PAGES.INDUSTRY, slug: contentSlug };
+    }
     if (
       [
         "features",
@@ -5428,6 +5744,10 @@ export default function App() {
           "/help",
           "/status",
           "/api-docs",
+          "/restaurants",
+          "/cafes",
+          "/salons",
+          "/retail",
         ].includes(url.pathname) ||
         url.pathname.startsWith("/features/");
       if (!isLandingRoute) return;
@@ -5446,6 +5766,38 @@ export default function App() {
 
     document.addEventListener("click", handleInternalNavigation);
     return () => document.removeEventListener("click", handleInternalNavigation);
+  }, []);
+
+  useEffect(() => {
+    trackMarketingEvent("page_view", {
+      route: currentPage,
+      slug: route.slug || "",
+    });
+  }, [currentPage, route.slug]);
+
+  useEffect(() => {
+    const handleMarketingClick = (event) => {
+      const link = event.target.closest?.("a");
+      if (!link) return;
+      const href = link.getAttribute("href") || "";
+      const label = (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 140);
+      let eventType = "cta_click";
+      if (href.includes("#pricing")) eventType = "pricing_click";
+      if (href.includes("/audit")) eventType = "audit_click";
+      if (href.includes("mode=signup") || label.toLowerCase().includes("trial")) {
+        eventType = "trial_click";
+      }
+      if (link.hostname && link.hostname !== window.location.hostname) {
+        eventType = eventType === "trial_click" ? "trial_click" : "outbound_click";
+      }
+      trackMarketingEvent(eventType, {
+        target: href,
+        label,
+        location: link.closest("nav") ? "nav" : link.closest("footer") ? "footer" : "page",
+      });
+    };
+    document.addEventListener("click", handleMarketingClick, true);
+    return () => document.removeEventListener("click", handleMarketingClick, true);
   }, []);
 
   if (currentPage === PAGES.TERMS) {
@@ -5473,6 +5825,17 @@ export default function App() {
   if (currentPage === PAGES.FEATURE) {
     return (
       <FeatureDetailPage
+        slug={route.slug}
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === PAGES.INDUSTRY) {
+    return (
+      <IndustryLandingPage
         slug={route.slug}
         onNavigate={navigateTo}
         theme={theme}
