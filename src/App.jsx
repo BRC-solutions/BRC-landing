@@ -10,6 +10,7 @@ const PAGES = {
   AUDIT: "audit",
   CONTACT: "contact",
   FEATURE: "feature",
+  CONTENT: "content",
 };
 
 const API_BASE_URL =
@@ -626,7 +627,7 @@ const FEATURE_GUIDES = {
     setup: [
       "Create catalog categories and items, then add prices, images, variants, modifiers, availability, and hidden states where needed.",
       "Publish the branded public page and choose the customer entry point: table QR, pickup link, retail storefront, or service ordering page.",
-      "Connect Stripe when online payment is required, then decide which order modes the business accepts.",
+      "Connect payment processing when online payment is required, then decide which order modes the business accepts.",
       "Use the operations screen to manage live orders, kitchen/preparation work, status changes, and order history.",
     ],
     dailyUse: [
@@ -681,7 +682,7 @@ const FEATURE_GUIDES = {
   reputation: {
     setup: [
       "Connect the business profile and fetch previous reviews within the plan allowance.",
-      "Choose which review platforms matter for the plan: Google first, then Yelp and TripAdvisor on higher tiers.",
+      "Choose which review platforms matter for the plan, from the primary review profile to additional platforms on higher tiers.",
       "Set alerts for new reviews, low ratings, suspicious patterns, and owner attention.",
       "Configure private recovery steps for low-rating feedback and complaint patterns.",
       "Use AI summaries and reply drafts so managers can respond faster without starting from a blank page.",
@@ -756,7 +757,7 @@ const FEATURE_SURFACES = {
   ordering: [
     "Console operations: live orders, kitchen view, order history, status changes, table context, notes, payment state, and fulfilment detail.",
     "Catalog setup: categories, item images, variants, modifier groups, bundles, allergens, labels, stock/availability, hidden items, and currency.",
-    "Go customer page: branded menu, search, item options, dine-in/pickup mode switch, cart, Stripe checkout, receipts, and saved reorder links.",
+    "Go customer page: branded menu, search, item options, dine-in/pickup mode switch, cart, secure checkout, receipts, and saved reorder links.",
     "Public page settings: hero image, logo, brand copy, ordering toggles, custom domain support, legal consent copy, and payment readiness warnings.",
   ],
   delivery: [
@@ -767,7 +768,7 @@ const FEATURE_SURFACES = {
   ],
   bookings: [
     "Booking services support services, staff, tables, resources, capacity, duration, deposits, full price, business hours, buffers, and auto-confirm settings.",
-    "Go booking flow shows live slots, resource choices, party-size table bookings, guest details, notes, deposits, Stripe payment, and confirmation states.",
+    "Go booking flow shows live slots, resource choices, party-size table bookings, guest details, notes, deposits, payment, and confirmation states.",
     "Customers can manage bookings with lookup links, calendar invites, rescheduling, and cancellation where allowed.",
     "Operations keeps booking status, upcoming bookings, customer details, notes, and follow-up context together with the rest of the business workspace.",
   ],
@@ -1396,7 +1397,7 @@ const FAQS = [
   },
   {
     q: "Can BRC help with fake or suspicious reviews?",
-    a: "Yes. BRC can flag suspicious patterns, keep review context in one place, and help your team prepare a clearer dispute or removal request for the review platform. Final removal decisions are controlled by Google, Yelp, TripAdvisor, or the platform where the review was posted.",
+    a: "Yes. BRC can flag suspicious patterns, keep review context in one place, and help your team prepare a clearer dispute or removal request for the review platform. Final removal decisions are controlled by the third-party platform where the review was posted.",
   },
   {
     q: "Can I cancel my subscription at any time?",
@@ -2081,9 +2082,9 @@ function TermsOfService() {
                 Review platforms (Yelp, TripAdvisor) for review
                 aggregation
               </li>
-              <li>Twilio for SMS messaging services</li>
-              <li>OpenAI for AI-powered analysis</li>
-              <li>RevenueCat for subscription management</li>
+              <li>External providers for SMS messaging services</li>
+              <li>External providers for AI-powered analysis</li>
+              <li>External providers for subscription management</li>
             </ul>
             <p>
               Your use of these integrations is subject to the respective
@@ -2342,7 +2343,7 @@ function PrivacyPolicy() {
               </li>
               <li>
                 <strong>Payment Processors:</strong> Billing information and
-                transaction data from RevenueCat
+                transaction data from payment and subscription providers
               </li>
               <li>
                 <strong>Analytics Services:</strong> Usage analytics and
@@ -2402,18 +2403,18 @@ function PrivacyPolicy() {
             <h3>4.1 Service Providers</h3>
             <ul>
               <li>
-                <strong>Supabase:</strong> Database hosting and authentication
+                <strong>Infrastructure providers:</strong> Database hosting and authentication
                 services
               </li>
               <li>
-                <strong>Twilio:</strong> SMS messaging and communication
+                <strong>Communication providers:</strong> SMS messaging and communication
                 services
               </li>
               <li>
-                <strong>OpenAI:</strong> AI-powered analysis and processing
+                <strong>AI providers:</strong> AI-powered analysis and processing
               </li>
               <li>
-                <strong>RevenueCat:</strong> Subscription and payment processing
+                <strong>Payment providers:</strong> Subscription and payment processing
               </li>
               <li>
                 <strong>Google Maps API:</strong> Business verification and
@@ -2568,15 +2569,15 @@ function PrivacyPolicy() {
                 their policies
               </li>
               <li>
-                <strong>Payment Services:</strong> RevenueCat processes payment
+                <strong>Payment services:</strong> External providers process payment
                 information according to their privacy policy
               </li>
               <li>
-                <strong>Communication Services:</strong> Twilio handles SMS
+                <strong>Communication services:</strong> External providers handle SMS
                 delivery according to their privacy policy
               </li>
               <li>
-                <strong>AI Services:</strong> OpenAI processes data for analysis
+                <strong>AI services:</strong> External providers process data for analysis
                 according to their privacy policy
               </li>
             </ul>
@@ -2749,9 +2750,18 @@ function LegalBackLink() {
   );
 }
 
+function LegalCloseButton() {
+  return (
+    <a href="/" className="legal-close-button" aria-label="Close legal page">
+      x
+    </a>
+  );
+}
+
 function EnhancedTermsOfService() {
   return (
     <div className="legal-page">
+      <LegalCloseButton />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Terms of Service</h1>
@@ -2871,7 +2881,7 @@ function EnhancedTermsOfService() {
             <ul>
               <li>You are responsible for accepting, rejecting, preparing, delivering, refunding, and supporting orders and bookings.</li>
               <li>You must keep prices, fees, deposits, availability, delivery areas, opening hours, allergens, restrictions, and terms accurate.</li>
-              <li>Payments may be handled through Stripe, Stripe Connect, app stores, RevenueCat, or other payment providers, and their terms also apply.</li>
+              <li>Payments may be handled through external payment, subscription, banking, card network, marketplace, or checkout providers, and their terms also apply.</li>
               <li>Delivery quotes, driver details, tracking, or third-party fulfilment integrations are operational tools, not guarantees.</li>
               <li>BRC may show payment, payout, refund, and fee information based on provider data, but payment providers and banks control settlement timing.</li>
             </ul>
@@ -2937,28 +2947,29 @@ function EnhancedTermsOfService() {
               sales channel, promotion, or written agreement.
             </p>
             <ul>
-              <li>Subscriptions renew automatically for the selected billing period unless cancelled before the renewal date through the BRC billing page, Stripe portal, app store, RevenueCat-managed flow, or another channel we make available.</li>
+              <li>Subscriptions renew automatically for the selected billing period unless cancelled before the renewal date through the BRC billing page, an external billing portal, marketplace subscription settings, or another channel we make available.</li>
               <li>Cancellation stops future renewals; it does not create a refund or credit for the current billing period unless required by law or expressly agreed in writing.</li>
-              <li>You authorise BRC, Stripe, RevenueCat, app stores, and other payment providers to charge fees, taxes, overages, add-ons, SMS credits, renewal amounts, and failed-payment retries.</li>
+              <li>You authorise BRC and its external payment, subscription, banking, card network, and marketplace providers to charge fees, taxes, overages, add-ons, SMS credits, renewal amounts, and failed-payment retries.</li>
               <li>Trials may expire, convert to paid subscriptions, be limited, or be withdrawn if abused. You are responsible for cancelling before a trial converts if you do not want paid access.</li>
               <li>Fees, setup charges, SMS credits, add-ons, overages, and partial billing periods are non-refundable and non-transferable except where required by law or expressly stated in your plan, order form, or written agreement.</li>
               <li>Downgrades, cancelled modules, unused credits, unused capacity, unused time, or reduced usage do not entitle you to a refund, cash credit, or carried-forward allowance unless we expressly say otherwise.</li>
               <li>If payment fails, is reversed, charged back, disputed, or becomes overdue, we may retry payment, suspend paid features, restrict messaging, pause public checkout or booking tools, downgrade access, recover collection costs, or terminate the account.</li>
               <li>We may change prices or plan packaging with reasonable notice for paid renewals. Continued use after the effective date means you accept the new pricing.</li>
-              <li>You are responsible for taxes, chargebacks, payment disputes, accurate billing details, and any fees charged by banks, app stores, payment processors, or card networks.</li>
+              <li>You are responsible for taxes, chargebacks, payment disputes, accurate billing details, and any fees charged by banks, marketplaces, payment processors, subscription providers, or card networks.</li>
             </ul>
           </section>
 
           <section className="legal-section">
             <h2>11. Third-party services</h2>
             <p>
-              The Services connect to or rely on third-party services such as
-              Supabase, Stripe, RevenueCat, Twilio, SendGrid, OpenAI, Sentry,
-              Cloudflare Turnstile, Google services, Maps and Places providers,
-              review platforms, app stores, analytics tools, hosting providers,
-              and other integrations. Third-party terms, privacy notices, rate
-              limits, outages, review policies, data rules, and account
-              decisions may apply.
+              The Services connect to or rely on external providers for
+              hosting, databases, authentication, payments, subscriptions,
+              messaging, email delivery, AI processing, error monitoring,
+              security checks, maps, business listings, review platforms,
+              analytics, app marketplaces, infrastructure, and other
+              integrations. Third-party terms, privacy notices, rate limits,
+              outages, review policies, data rules, and account decisions may
+              apply.
             </p>
             <ul>
               <li>We are not responsible for third-party services we do not control.</li>
@@ -2994,7 +3005,7 @@ function EnhancedTermsOfService() {
               No online service is perfectly secure or always available.
               Maintenance, outages, provider failures, hosting issues, database
               issues, payment provider downtime, review platform changes,
-              telecoms disruption, app store disruption, internet disruption,
+              telecoms disruption, marketplace disruption, internet disruption,
               malicious activity, data corruption, data loss, force majeure,
               emergencies, or beta features may affect availability, data
               freshness, deliverability, orders, bookings, messages, reports, or
@@ -3156,6 +3167,7 @@ function EnhancedTermsOfService() {
 function EnhancedPrivacyPolicy() {
   return (
     <div className="legal-page">
+      <LegalCloseButton />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Privacy Policy</h1>
@@ -3204,9 +3216,9 @@ function EnhancedPrivacyPolicy() {
               <li><strong>Account and business data:</strong> name, email, phone, password or login method, business name, address, website, profile links, staff roles, permissions, verification material, plan, billing status, and settings.</li>
               <li><strong>Customer and operational data:</strong> customer names, email addresses, phone numbers, order details, booking details, delivery addresses, table numbers, notes, receipts, feedback, rewards, campaign history, support tickets, and communication preferences.</li>
               <li><strong>Review and public signal data:</strong> public reviews, ratings, reviewer names or handles, review text, platform metadata, public listing details, competitor signals, and dispute notes.</li>
-              <li><strong>Payment and billing data:</strong> subscription state, invoices, plan changes, credits, payment provider identifiers, payout status, Stripe Connect status, and transaction metadata. Full card details are handled by payment providers, not stored by BRC.</li>
+              <li><strong>Payment and billing data:</strong> subscription state, invoices, plan changes, credits, payment provider identifiers, payout status, connected payout account status, and transaction metadata. Full card details are handled by payment providers, not stored by BRC.</li>
               <li><strong>Support and contact data:</strong> messages, attachments, requester details, admin replies, email metadata, issue history, and internal notes.</li>
-              <li><strong>Device, usage, and security data:</strong> IP address, browser, device, app version, pages viewed, feature events, logs, crash data, identifiers, cookie data, Turnstile challenge data, and fraud or abuse signals.</li>
+              <li><strong>Device, usage, and security data:</strong> IP address, browser, device, app version, pages viewed, feature events, logs, crash data, identifiers, cookie data, bot-prevention challenge data, and fraud or abuse signals.</li>
             </ul>
           </section>
 
@@ -3217,9 +3229,8 @@ function EnhancedPrivacyPolicy() {
               from customers interacting with BRC-powered pages, from authorised
               users and team members, from connected payment and communication
               providers, from support messages, from device and usage events,
-              and from public or connected review and business listing sources
-              such as Google, Yelp, Tripadvisor, Maps and Places services, and
-              similar platforms.
+              and from public or connected review, map, place, and business
+              listing sources.
             </p>
           </section>
 
@@ -3273,7 +3284,7 @@ function EnhancedPrivacyPolicy() {
           </section>
 
           <section className="legal-section">
-            <h2>8. Cookies, Turnstile, and security checks</h2>
+            <h2>8. Cookies and security checks</h2>
             <p>
               We use cookies, local storage, logs, and similar technologies for
               authentication, preferences, analytics, performance, fraud
@@ -3282,11 +3293,12 @@ function EnhancedPrivacyPolicy() {
               the Services.
             </p>
             <p>
-              Our public contact form uses Cloudflare Turnstile to distinguish
-              genuine users from bots. Cloudflare may process client-side
-              signals such as IP address, browser data, TLS fingerprint,
-              user-agent, site key, and origin for bot detection, security, and
-              Turnstile improvement as described in Cloudflare's notices.
+              Our public contact form uses an external bot-prevention provider
+              to distinguish genuine users from automated abuse. That provider
+              may process client-side signals such as IP address, browser data,
+              TLS fingerprint, user-agent, site key, and origin for bot
+              detection, security, and service improvement as described in its
+              own notices.
             </p>
           </section>
 
@@ -3299,7 +3311,7 @@ function EnhancedPrivacyPolicy() {
             </p>
             <ul>
               <li><strong>Service providers and subprocessors:</strong> hosting, database, authentication, email, SMS, payment, app subscription, support, analytics, monitoring, AI, fraud prevention, and security providers.</li>
-              <li><strong>Connected platforms:</strong> payment providers, app stores, review platforms, Maps and Places services, delivery or fulfilment tools, and integrations you connect or use.</li>
+              <li><strong>Connected platforms:</strong> payment providers, marketplaces, review platforms, map and place services, delivery or fulfilment tools, and integrations you connect or use.</li>
               <li><strong>Businesses and their users:</strong> data shown to the business account that collected or manages it, subject to roles and permissions.</li>
               <li><strong>Legal and safety recipients:</strong> courts, regulators, law enforcement, advisers, insurers, banks, payment networks, or others where necessary to protect rights, safety, security, or compliance.</li>
               <li><strong>Business transfers:</strong> in connection with a merger, acquisition, financing, restructuring, or sale of assets, subject to appropriate safeguards.</li>
@@ -3878,6 +3890,283 @@ function PublicAuditPage() {
 
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 
+const CONTENT_PAGES = {
+  features: {
+    title: "Features",
+    subtitle: "The BRC modules built for local customer operations.",
+    sections: [
+      {
+        title: "What BRC brings together",
+        body: "BRC combines reputation recovery, positive review building, ordering, bookings, customer messaging, campaigns, rewards, analytics, and support workflows in one operating console.",
+        items: [
+          "Reputation tools for review monitoring, private feedback, reply drafts, suspicious review triage, and recovery workflows.",
+          "Ordering and booking flows for go.brcapp.io customer pages, deposits, reminders, receipts, and fulfilment status.",
+          "Campaigns, rewards, owner digests, customer follow-up, staff workflows, reporting, and admin controls.",
+        ],
+      },
+      {
+        title: "Feature pages",
+        body: "Detailed pages are available for the core workflows that are already represented on the landing site.",
+        links: [
+          { label: "Ordering", href: "/features/ordering" },
+          { label: "Bookings", href: "/features/bookings" },
+          { label: "Reputation", href: "/features/reputation" },
+        ],
+      },
+    ],
+  },
+  pricing: {
+    title: "Pricing",
+    subtitle: "Plan packaging for local teams, growing operators, and multi-location businesses.",
+    sections: [
+      {
+        title: "Current plans",
+        body: "Pricing is shown on the main landing page so the plan cards stay in one place. Plans may vary by region, trial, billing period, promotion, and enabled modules.",
+        links: [{ label: "View Pricing", href: "/#pricing" }],
+      },
+      {
+        title: "Billing notes",
+        body: "Subscriptions renew automatically unless cancelled before renewal. Add-ons such as SMS credits, higher usage, onboarding, or specialist setup may be charged separately.",
+      },
+    ],
+  },
+  changelog: {
+    title: "Changelog",
+    subtitle: "Product updates, fixes, and launch notes.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Coming soon",
+        body: "A public changelog is under construction. For now, release notes are shared directly with customers when changes affect active workflows.",
+      },
+    ],
+  },
+  roadmap: {
+    title: "Roadmap",
+    subtitle: "What BRC is working toward next.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Planned direction",
+        body: "The roadmap page is under construction. Current priorities include deeper reputation recovery, more review evidence workflows, richer owner digests, stronger public-page configuration, and smoother multi-location operations.",
+      },
+    ],
+  },
+  about: {
+    title: "About",
+    subtitle: "BRC exists to help local businesses keep customer operations and reputation in one place.",
+    sections: [
+      {
+        title: "Why BRC",
+        body: "Local businesses often pay for separate tools for ordering, bookings, feedback, reviews, rewards, campaigns, and reporting. BRC is designed to bring those workflows together so teams can act faster and protect their reputation with less admin.",
+      },
+      {
+        title: "Company details",
+        body: `${BRAND_NAME} is operated by BRC Labs LTD. Legal notices may be sent to ${LEGAL_COMPANY_ADDRESS}.`,
+      },
+    ],
+  },
+  blog: {
+    title: "Blog",
+    subtitle: "Guides and product thinking for local operators.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Under construction",
+        body: "The BRC blog is being prepared. Planned topics include review recovery, positive review building, local ordering, bookings, loyalty, and owner reporting.",
+      },
+    ],
+  },
+  careers: {
+    title: "Careers",
+    subtitle: "Work on customer operations software for local businesses.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "No open roles yet",
+        body: "The careers page is under construction and there are no public vacancies listed right now. Future roles will be posted here when hiring opens.",
+      },
+    ],
+  },
+  press: {
+    title: "Press",
+    subtitle: "Company information and media contact.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Press resources coming soon",
+        body: "The press page is under construction. For media, partnership, or company enquiries, contact the team through the contact page.",
+        links: [{ label: "Contact Us", href: "/contact" }],
+      },
+    ],
+  },
+  cookies: {
+    title: "Cookie Policy",
+    subtitle: "How BRC uses cookies and similar technologies.",
+    sections: [
+      {
+        title: "Essential cookies",
+        body: "BRC uses essential cookies, local storage, and similar technologies to keep users signed in, remember preferences, protect sessions, prevent abuse, and operate the website and console.",
+      },
+      {
+        title: "Analytics and diagnostics",
+        body: "We may use analytics, logs, error monitoring, and diagnostic tools to understand performance, improve product quality, detect problems, and protect the service.",
+      },
+      {
+        title: "Security checks",
+        body: "The contact form uses an external bot-prevention provider to help distinguish genuine users from automated abuse. The provider may process browser and device signals for security checks.",
+      },
+      {
+        title: "Your choices",
+        body: "You can control many cookies through your browser settings. Blocking essential cookies may stop parts of BRC from working correctly.",
+      },
+    ],
+  },
+  gdpr: {
+    title: "GDPR",
+    subtitle: "Data protection information for UK and EU users.",
+    sections: [
+      {
+        title: "Controller and processor roles",
+        body: "For account, billing, website, contact, support, security, analytics, and legal compliance data, BRC is usually an independent controller. For customer data that a business manages through BRC ordering, bookings, feedback, campaigns, and review workflows, BRC is usually the business's processor.",
+      },
+      {
+        title: "Rights requests",
+        body: "You may have rights to access, correct, delete, export, restrict, or object to processing. For BRC account or website data, email privacy@brcapp.io. For data held by a business using BRC, contact that business first.",
+      },
+      {
+        title: "Data processing",
+        body: "BRC uses subprocessors for hosting, database, authentication, payments, email, SMS, analytics, monitoring, AI, and security. Transfers outside the UK or EEA are handled using appropriate safeguards where required.",
+      },
+      {
+        title: "More detail",
+        body: "The Privacy Policy contains the full privacy notice and should be read together with this GDPR summary.",
+        links: [{ label: "Privacy Policy", href: "/privacy" }],
+      },
+    ],
+  },
+  help: {
+    title: "Help Center",
+    subtitle: "Support resources for BRC customers.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Help center under construction",
+        body: "A searchable help center is being built. Until then, customers can contact support from the BRC console or use the public contact page.",
+        links: [
+          { label: "Contact Us", href: "/contact" },
+          { label: "Open Web App", href: WEB_APP_URL, external: true },
+        ],
+      },
+    ],
+  },
+  status: {
+    title: "System Status",
+    subtitle: "Availability information for BRC services.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Public status page coming soon",
+        body: "A public system status page is under construction. BRC strives to maintain 99.9% service uptime, but the Terms of Service explain that this is an operational target rather than a compensation promise.",
+      },
+      {
+        title: "Need help now?",
+        body: "If you are experiencing an outage or urgent service issue, contact support so the team can investigate.",
+        links: [{ label: "Contact Us", href: "/contact" }],
+      },
+    ],
+  },
+  api: {
+    title: "API Docs",
+    subtitle: "Developer documentation for BRC integrations.",
+    underConstruction: true,
+    sections: [
+      {
+        title: "Private beta",
+        body: "Public API documentation is under construction. BRC APIs and integration endpoints are currently used for approved internal, customer, and partner workflows.",
+      },
+      {
+        title: "Integration enquiries",
+        body: "For partner or integration access, contact the BRC team with the use case, business profile, and expected data flow.",
+        links: [{ label: "Contact Us", href: "/contact" }],
+      },
+    ],
+  },
+};
+
+const FOOTER_LINKS = {
+  Features: "/features",
+  Pricing: "/pricing",
+  Changelog: "/changelog",
+  Roadmap: "/roadmap",
+  About: "/about",
+  Blog: "/blog",
+  Careers: "/careers",
+  Press: "/press",
+  "Privacy Policy": "/privacy",
+  "Terms of Service": "/terms",
+  "Cookie Policy": "/cookies",
+  GDPR: "/gdpr",
+  "Help Center": "/help",
+  "Contact Us": "/contact",
+  "System Status": "/status",
+  "API Docs": "/api-docs",
+};
+
+function MarketingContentPage({ slug, theme, onToggleTheme, onNavigate }) {
+  const normalizedSlug = slug === "api-docs" ? "api" : slug;
+  const page = CONTENT_PAGES[normalizedSlug] || CONTENT_PAGES.help;
+
+  return (
+    <div className="content-page">
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <main className="legal-page content-page-main">
+        <div className="container">
+          <div className="legal-header">
+            {page.underConstruction ? (
+              <div className="section-eyebrow">Under construction</div>
+            ) : null}
+            <h1 className="legal-title">{page.title}</h1>
+            <p className="legal-subtitle">{page.subtitle}</p>
+          </div>
+
+          <div className="legal-content">
+            {page.sections.map((section) => (
+              <section key={section.title} className="legal-section">
+                <h2>{section.title}</h2>
+                <p>{section.body}</p>
+                {section.items ? (
+                  <ul>
+                    {section.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : null}
+                {section.links ? (
+                  <div className="content-link-row">
+                    {section.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        className="btn btn-outline"
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </section>
+            ))}
+          </div>
+        </div>
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
 const FOOTER_COLS = [
   {
     heading: "Product",
@@ -3902,6 +4191,8 @@ function Footer({ onNavigate }) {
       onNavigate(PAGES.PRIVACY);
     } else if (link === "Contact Us") {
       onNavigate(PAGES.CONTACT);
+    } else if (FOOTER_LINKS[link]) {
+      onNavigate(PAGES.CONTENT, { slug: FOOTER_LINKS[link].replace(/^\//, "") });
     } else {
       // Handle other links normally
       console.log("Navigate to:", link);
@@ -3935,7 +4226,7 @@ function Footer({ onNavigate }) {
             {col.links.map((l) => (
               <a
                 key={l}
-                href="#"
+                href={FOOTER_LINKS[l] || "#"}
                 className="footer-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -3979,6 +4270,26 @@ export default function App() {
     if (pathname === "/contact") return { page: PAGES.CONTACT };
     if (pathname === "/terms") return { page: PAGES.TERMS };
     if (pathname === "/privacy") return { page: PAGES.PRIVACY };
+    const contentSlug = pathname.replace(/^\//, "").replace(/\/$/, "");
+    if (
+      [
+        "features",
+        "pricing",
+        "changelog",
+        "roadmap",
+        "about",
+        "blog",
+        "careers",
+        "press",
+        "cookies",
+        "gdpr",
+        "help",
+        "status",
+        "api-docs",
+      ].includes(contentSlug)
+    ) {
+      return { page: PAGES.CONTENT, slug: contentSlug };
+    }
     if (pathname.startsWith("/features/")) {
       return {
         page: PAGES.FEATURE,
@@ -4010,8 +4321,8 @@ export default function App() {
     setTheme((value) => (value === "light" ? "dark" : "light"));
   };
 
-  const navigateTo = (page) => {
-    setRoute({ page });
+  const navigateTo = (page, options = {}) => {
+    setRoute({ page, ...options });
     const path =
       page === PAGES.TERMS
         ? "/terms"
@@ -4019,6 +4330,8 @@ export default function App() {
           ? "/privacy"
           : page === PAGES.CONTACT
             ? "/contact"
+            : page === PAGES.CONTENT && options.slug
+              ? `/${options.slug}`
             : "/";
     window.history.pushState({}, "", path);
     window.scrollTo(0, 0);
@@ -4046,6 +4359,21 @@ export default function App() {
         url.pathname === "/contact" ||
         url.pathname === "/terms" ||
         url.pathname === "/privacy" ||
+        [
+          "/features",
+          "/pricing",
+          "/changelog",
+          "/roadmap",
+          "/about",
+          "/blog",
+          "/careers",
+          "/press",
+          "/cookies",
+          "/gdpr",
+          "/help",
+          "/status",
+          "/api-docs",
+        ].includes(url.pathname) ||
         url.pathname.startsWith("/features/");
       if (!isLandingRoute) return;
 
@@ -4090,6 +4418,17 @@ export default function App() {
   if (currentPage === PAGES.FEATURE) {
     return (
       <FeatureDetailPage
+        slug={route.slug}
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === PAGES.CONTENT) {
+    return (
+      <MarketingContentPage
         slug={route.slug}
         onNavigate={navigateTo}
         theme={theme}
