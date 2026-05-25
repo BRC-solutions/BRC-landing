@@ -336,12 +336,16 @@ function Hero() {
             One business operating system for local operators
           </div>
           <h1 className="hero-h1">
-            BRC OS
+            BRC OS for operators who
+            <br />
+            <span className="grad-text">run the whole business.</span>
           </h1>
+          <p className="hero-subtitle">
+            Stop paying for multiple tools to run one business.
+          </p>
           <p className="hero-p">
-            Stop paying for multiple tools to run one business. BRC OS brings POS,
-            orders, table tabs, tenders, table and QR code management,
-            catalog, inventory, purchasing, vendors, rota, payroll, finances,
+            BRC OS brings POS, orders, table tabs, tenders, table and QR code
+            management, catalog, inventory, purchasing, vendors, rota, payroll, finances,
             competitor tracking, social signals, brand mentions, reputation
             recovery, rewards, and analytics in one web and mobile workspace.
             Use your own hardware and add the screens your team needs.
