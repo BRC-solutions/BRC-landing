@@ -336,16 +336,16 @@ function Hero() {
             One business operating system for local operators
           </div>
           <h1 className="hero-h1">
-            BRC OS
+            Stop paying for multiple tools
             <br />
-            <span className="grad-text">runs the whole business.</span>
+            <span className="grad-text">to run one business.</span>
           </h1>
           <p className="hero-p">
-            POS, orders, tabbing, tenders, catalog, inventory, purchasing,
-            vendors, rota, payroll, finances, competitor tracking, social
-            signals, brand mentions, reputation recovery, rewards, and analytics
-            in one web and mobile workspace. Use your own hardware and add the
-            screens your team needs.
+            BRC OS brings POS, orders, table tabs, tenders, table and QR code management,
+            catalog, inventory, purchasing, vendors, rota, payroll, finances,
+            competitor tracking, social signals, brand mentions, reputation
+            recovery, rewards, and analytics in one web and mobile workspace.
+            Use your own hardware and add the screens your team needs.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -425,10 +425,10 @@ function Hero() {
 const STATS = [
   { value: "Own", label: "Use your phones, tablets, laptops, and displays" },
   { value: "Unlimited", label: "Add operator screens without per-terminal licensing" },
-  { value: "POS", label: "Orders, tabbing, tenders, KDS, and customer display" },
+  { value: "Sales", label: "Orders, table tabs, tenders, KDS, and customer display" },
+  { value: "Tables", label: "QR code management, dine-in links, and feedback scans" },
   { value: "Stock", label: "Catalog, inventory, purchasing, vendors, and availability" },
   { value: "Team", label: "Rota, staff shifts, payroll, permissions, and closeout" },
-  { value: "Signals", label: "Competitors, social presence, brand mentions, and recovery" },
 ];
 
 function StatsBar() {
@@ -449,7 +449,7 @@ function StatsBar() {
 const OWNER_REASONS = [
   {
     title: "Replace disconnected tools",
-    body: "POS, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription instead of separate dashboards and bills.",
+    body: "POS, table QR management, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription instead of separate dashboards and bills.",
   },
   {
     title: "Use the hardware you already have",
@@ -468,9 +468,9 @@ function OwnerReasons() {
         <div className="owner-reasons-copy">
           <div className="section-tag">Why Owners Subscribe</div>
           <h2>
-            Built to earn its place
+            BRC OS runs the work
             <br />
-            on your monthly bill.
+            those tools split apart.
           </h2>
         </div>
         {OWNER_REASONS.map((item) => (
@@ -514,9 +514,15 @@ function BusinessFitStrip() {
 const OPERATIONS_STACK = [
   {
     eyebrow: "Front of house",
-    title: "POS, orders, tabbing, and tenders",
+    title: "POS, orders, table tabs, and tenders",
     body: "Registers, table tabs, bills, tenders, discounts, manager overrides, cash drawer controls, customer display, closeout, and shift-ready workflows for daily service.",
     items: ["Register", "Tabs", "Tenders", "Closeout"],
+  },
+  {
+    eyebrow: "Venue flow",
+    title: "Table and QR code management",
+    body: "Create tables and areas, generate table-specific QR codes, test scan flows, manage active states, and connect dine-in orders or feedback to the right physical location.",
+    items: ["Tables", "Areas", "QR codes", "Dine-in"],
   },
   {
     eyebrow: "Back office",
@@ -559,16 +565,16 @@ function OperationsStack() {
         <div className="operations-stack-copy">
           <div className="section-tag">All-In-One Operations</div>
           <h2 className="section-h2">
-            POS, back office, finance, staff, and reputation
+            POS, tables, QR, back office, finance, staff, and reputation
             <br />
             <span className="grad-text">wired into the same workspace</span>
           </h2>
           <p className="section-p">
             BRC OS is designed for operators who want fewer subscriptions and
             less hardware lock-in. Start with the screens you need today, then
-            add ordering, inventory, vendors, payroll, finances, competitor
-            tracking, social signals, brand mentions, rewards, and reputation
-            recovery without rebuilding the stack.
+            add table QR management, ordering, inventory, vendors, payroll,
+            finances, competitor tracking, social signals, brand mentions,
+            rewards, and reputation recovery without rebuilding the stack.
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -605,10 +611,19 @@ const FEATURES = [
     slug: "pos",
     icon: "▣",
     accent: "var(--green)",
-    title: "POS, tabs, and tenders",
+    title: "POS, table tabs, and tenders",
     body: "Browser and app-based register workflows for orders, table tabs, bills, tenders, cash drawer controls, manager overrides, customer display, and closeout.",
     tag: "POS",
     outcome: "Use your own hardware and keep sales connected to the rest of the operating system.",
+  },
+  {
+    slug: "tables-qr",
+    icon: "QR",
+    accent: "var(--cyan)",
+    title: "Table and QR management",
+    body: "Table maps, areas, seat counts, active states, table-specific QR codes, scan testing, dine-in order links, and table-linked feedback.",
+    tag: "Venue",
+    outcome: "Make every table scan land in the right context for orders, service, payments, and recovery.",
   },
   {
     slug: "ordering",
@@ -738,9 +753,123 @@ const FEATURES = [
   },
 ];
 
+function FeatureGlyph({ slug }) {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 1.8,
+  };
+  const glyphs = {
+    pos: (
+      <>
+        <rect x="4" y="5" width="16" height="12" rx="2" {...common} />
+        <path d="M8 20h8M10 17v3M14 17v3M8 9h8M8 13h4" {...common} />
+      </>
+    ),
+    "tables-qr": (
+      <>
+        <path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5z" {...common} />
+        <path d="M14 14h2M19 14v2M16 19h3M14 17h2v2" {...common} />
+      </>
+    ),
+    ordering: (
+      <>
+        <path d="M4 5h2l2 10h9l2-7H8" {...common} />
+        <circle cx="10" cy="19" r="1.4" {...common} />
+        <circle cx="17" cy="19" r="1.4" {...common} />
+      </>
+    ),
+    delivery: (
+      <>
+        <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" {...common} />
+        <circle cx="7" cy="18" r="1.5" {...common} />
+        <circle cx="18" cy="18" r="1.5" {...common} />
+      </>
+    ),
+    bookings: (
+      <>
+        <rect x="4" y="5" width="16" height="15" rx="2" {...common} />
+        <path d="M8 3v4M16 3v4M4 10h16M8 14h3M14 14h2M8 17h2" {...common} />
+      </>
+    ),
+    feedback: (
+      <>
+        <path d="M5 5h14v10H9l-4 4V5zM9 9h6M9 12h4" {...common} />
+      </>
+    ),
+    reputation: (
+      <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 16.9l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z" {...common} />
+    ),
+    campaigns: (
+      <>
+        <path d="M4 13h3l9-5v10l-9-5H4zM7 13v5M19 10a4 4 0 0 1 0 6" {...common} />
+      </>
+    ),
+    rewards: (
+      <>
+        <path d="M4 10h16v10H4zM4 10l2-4h12l2 4M12 6v14M4 14h16" {...common} />
+        <path d="M10 6c-2-3-5 0-2 2M14 6c2-3 5 0 2 2" {...common} />
+      </>
+    ),
+    inventory: (
+      <>
+        <path d="M4 8 12 4l8 4-8 4-8-4zM4 8v8l8 4 8-4V8M12 12v8" {...common} />
+      </>
+    ),
+    "staff-ops": (
+      <>
+        <circle cx="9" cy="8" r="3" {...common} />
+        <path d="M3.5 20c.7-3.2 2.6-5 5.5-5s4.8 1.8 5.5 5" {...common} />
+        <path d="M15 11a2.7 2.7 0 1 0 0-5M17 15c2.1.5 3.4 2.1 3.9 5" {...common} />
+      </>
+    ),
+    finance: (
+      <>
+        <path d="M4 19h16M6 16V9M12 16V5M18 16v-4" {...common} />
+        <path d="M5 10l7-5 7 7" {...common} />
+      </>
+    ),
+    "register-controls": (
+      <>
+        <path d="M5 7h14M5 12h14M5 17h14" {...common} />
+        <circle cx="9" cy="7" r="2" {...common} />
+        <circle cx="15" cy="12" r="2" {...common} />
+        <circle cx="11" cy="17" r="2" {...common} />
+      </>
+    ),
+    "market-signals": (
+      <>
+        <circle cx="12" cy="12" r="3" {...common} />
+        <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" {...common} />
+      </>
+    ),
+    analytics: (
+      <>
+        <path d="M4 19V5M4 19h16M7 15l4-4 3 3 5-7" {...common} />
+      </>
+    ),
+    team: (
+      <>
+        <circle cx="12" cy="7" r="3" {...common} />
+        <circle cx="6" cy="12" r="2.4" {...common} />
+        <circle cx="18" cy="12" r="2.4" {...common} />
+        <path d="M4 20c.6-2.5 2.1-4 4.5-4M9 20c.7-3 2.3-4.5 3-4.5s2.3 1.5 3 4.5M15.5 16c2.4 0 3.9 1.5 4.5 4" {...common} />
+      </>
+    ),
+  };
+
+  return (
+    <svg className="feature-glyph" viewBox="0 0 24 24" aria-hidden="true">
+      {glyphs[slug] || glyphs.analytics}
+    </svg>
+  );
+}
+
 const FEATURE_DETAIL = {
   pos: {
-    headline: "POS, tabbing, and tenders inside the full business OS.",
+    headline: "POS, table tabs, and tenders inside the full business OS.",
     subhead:
       "BRC gives local teams register, order, table tab, bill, tender, customer display, kitchen, closeout, and manager-control workflows that run inside the same system as stock, staff, finance, and reputation.",
     bullets: [
@@ -754,6 +883,22 @@ const FEATURE_DETAIL = {
       "Why subscribe: POS becomes one module of BRC OS instead of a dead-end till. Every sale can connect to stock, staffing, tenders, feedback, rewards, reputation, and owner reporting.",
     proof: ["Own hardware", "Tabs and tenders", "Connected OS"],
     bestFor: "Restaurants, cafes, retail shops, and local operators that want practical POS workflows inside a broader business operating system.",
+  },
+  "tables-qr": {
+    headline: "Table and QR code management for dine-in service.",
+    subhead:
+      "BRC lets venues create tables, areas, and table-specific QR codes so customer scans connect to the correct dine-in context for ordering, feedback, payments, service visibility, and recovery.",
+    bullets: [
+      "Table and area setup with labels, seat counts, and active states",
+      "Table-specific QR codes for dine-in ordering and feedback sessions",
+      "QR scan testing before codes are printed or placed in the venue",
+      "Orders and feedback linked to table, area, staff, item, and payment context",
+      "Deactivate, rename, or replace QR codes when the floor layout changes",
+    ],
+    conversion:
+      "Why subscribe: table QR management turns the physical venue into part of BRC OS, so orders, tenders, feedback, recovery, and reporting keep the right table context.",
+    proof: ["Table QR", "Area control", "Dine-in context"],
+    bestFor: "Restaurants, cafes, bars, venues, and hospitality teams that need QR ordering, table feedback, and floor context without a separate table-link tool.",
   },
   ordering: {
     headline: "Direct ordering that becomes customer intelligence.",
@@ -986,7 +1131,7 @@ const FEATURE_DETAIL = {
 const FEATURE_GUIDES = {
   pos: {
     setup: [
-      "Choose the business modules that should be active: register, tables, catalog, KDS, customer display, closeout, and staff shifts.",
+      "Choose the business modules that should be active: register, table QR, catalog, KDS, customer display, closeout, and staff shifts.",
       "Build the catalog or menu so items, prices, modifiers, bundles, allergens, and availability are ready for sales.",
       "Set register controls, payment readiness, cash drawer expectations, manager PIN rules, and staff permissions.",
       "Open the right screens for the team: register, kitchen display, customer display, operations fullscreen, and manager closeout.",
@@ -997,6 +1142,21 @@ const FEATURE_GUIDES = {
       "Owners can review completed orders, closeout, payments, stock impact, feedback, and campaign follow-up from the same workspace.",
     ],
     planNote: "The POS story is strongest for Pro and Business operators that need multiple screens, controls, tables, stock, staff, and reporting together.",
+  },
+  "tables-qr": {
+    setup: [
+      "Create table areas such as front room, terrace, bar, counter, upstairs, or private room.",
+      "Add each table with a staff-friendly label, seat count, order mode, and active state.",
+      "Generate table-specific QR codes and test each scan with a phone before printing or placing it.",
+      "Choose whether scans open dine-in ordering, table feedback, booking context, or a public page flow.",
+      "Replace, deactivate, or regenerate QR codes when tables are renamed, removed, or rearranged.",
+    ],
+    dailyUse: [
+      "Customers scan a code and BRC keeps the table, area, order mode, and dine-in context attached.",
+      "Staff can see which table produced an order, payment, feedback response, or recovery case.",
+      "Owners can review table-linked service, item, feedback, reward, and order patterns instead of guessing where issues happened.",
+    ],
+    planNote: "Table and QR management is a strong hospitality conversion point because it connects the room itself to ordering, feedback, payments, and reputation recovery.",
   },
   ordering: {
     setup: [
@@ -1205,6 +1365,12 @@ const FEATURE_SURFACES = {
     "Customer display and KDS: separate screens for customer-facing totals and preparation visibility.",
     "Manager closeout and cash drawer controls: shift-end accountability, drawer movement, overrides, and operational audit context.",
   ],
+  "tables-qr": [
+    "Tables settings create areas, table labels, seat counts, active states, and table-specific public entry points.",
+    "QR management lets operators generate, test, print, replace, or deactivate codes tied to a physical table or area.",
+    "Go customer pages can open with table context so dine-in ordering, feedback, payment, and service workflows stay connected.",
+    "Operations screens show table context alongside order status, notes, payment state, preparation state, and recovery workflows.",
+  ],
   ordering: [
     "Console operations: live orders, kitchen view, order history, status changes, table context, notes, payment state, and fulfilment detail.",
     "Catalog setup: categories, item images, variants, modifier groups, bundles, allergens, labels, stock/availability, hidden items, and currency.",
@@ -1297,6 +1463,12 @@ const FEATURE_APP_LOCATIONS = {
     { area: "Operations → POS Surface", detail: "Manage live orders, tables, bills, payments, fulfilment state, and operational status changes." },
     { area: "Customer Display / Kitchen Display", detail: "Run customer-facing and preparation screens separately from the register where the workflow needs it." },
     { area: "Manager Closeout", detail: "Review shift-end controls, cash drawer context, order state, and closeout readiness." },
+  ],
+  "tables-qr": [
+    { area: "More → Tables", detail: "Create areas, tables, labels, seat counts, active states, and table-specific QR entry points." },
+    { area: "Public Page / Go App", detail: "Open dine-in ordering or feedback with the correct table context after a customer scans." },
+    { area: "Operations → Tables / Orders", detail: "Review table status, order notes, payment state, fulfilment state, and service context." },
+    { area: "Boost → Review QR", detail: "Use QR sessions for table-linked feedback, rewards, and private recovery where configured." },
   ],
   ordering: [
     { area: "More → Catalog / Menu", detail: "Build categories, items, prices, variants, modifiers, bundles, labels, allergens, images, and availability." },
@@ -1408,7 +1580,7 @@ function Features() {
                 className="feature-icon-wrap"
                 style={{ "--accent": f.accent }}
               >
-                <span className="feature-emoji">{f.icon}</span>
+                <FeatureGlyph slug={f.slug} />
               </div>
               <div className="feature-tag">{f.tag}</div>
               <h3 className="feature-title">{f.title}</h3>
@@ -1706,21 +1878,17 @@ const PLANS = [
     badge: "Most Popular",
     features: [
       "1 location",
-      "Google reviews only",
-      "Previous review fetching included: up to 50 reviews",
-      "Daily review sync",
-      "AI summaries and reply drafts",
-      "Positive review request follow-ups",
-      "Negative feedback recovery workflows",
-      "Suspicious review flags",
-      "Competitor tracking up to 3",
+      "Google reviews with up to 50 previous reviews fetched",
+      "Daily sync, AI summaries, and reply drafts",
+      "Positive review requests and negative feedback recovery",
+      "Suspicious review flags and competitor tracking up to 3",
       "Brand and public reputation signals",
       "Private feedback and staff ratings",
       "Basic catalog or service setup",
-      "Simple pickup ordering workflow",
-      "Simple booking or table request workflow",
-      "Use your own web and mobile hardware",
-      "Basic fulfilment status for orders and bookings",
+      "Basic table and QR code setup",
+      "Simple pickup, booking, and table request workflows",
+      "Own web and mobile hardware screens",
+      "Basic fulfilment status",
       "Campaign basics and feedback discounts",
       "SMS prompts, credits paid separately",
     ],
@@ -1736,28 +1904,20 @@ const PLANS = [
     features: [
       "Up to 3 locations",
       "Everything in Growth",
-      "Yelp and TripAdvisor",
-      "Previous review fetching included: up to 500 reviews",
-      "Review dispute context for suspicious reviews",
-      "Advanced reputation recovery reporting",
-      "Menu/product performance insights",
-      "POS register, tables, customer display, and KDS workflows",
-      "Cash drawer, tenders, manager controls, closeout, and register operations",
-      "Inventory, stock availability, recipes, vendors, and purchasing workflows",
-      "Staff rota, shifts, payroll, and permission controls",
-      "Finance, tender visibility, payouts, and profitability reporting",
-      "Unlimited operator screens on your own hardware",
-      "Offline sync queue for supported operational actions",
-      "Full ordering, table, pickup, and delivery configuration",
-      "Advanced delivery rules, fees, fulfilment notes, and availability",
-      "Advanced booking rules, deposits, buffers, staff capacity, and customer lookup",
-      "Operations console for order, booking, feedback, and recovery workflows",
-      "Public Signals monitoring",
-      "Social signal presence and brand mention monitoring",
+      "Yelp and TripAdvisor with up to 500 previous reviews fetched",
+      "Review dispute context and advanced recovery reporting",
+      "Menu, product, staff, and campaign performance insights",
+      "POS register, table tabs, tenders, customer display, and KDS",
+      "Table maps, areas, QR code management, and dine-in scan flows",
+      "Inventory, stock, recipes, vendors, and purchasing workflows",
+      "Staff rota, shifts, payroll, permissions, and closeout",
+      "Finance, payouts, tender visibility, and profitability reporting",
+      "Unlimited operator screens and supported offline sync",
+      "Full table, pickup, delivery, and advanced booking configuration",
+      "Operations console for orders, bookings, feedback, and recovery",
+      "Public signals, social presence, and brand mention monitoring",
       "Competitor tracking up to 10",
-      "Advanced campaigns and customer segments",
-      "Team notes and collaboration",
-      "Location comparison and priority support",
+      "Advanced campaigns, customer segments, and priority support",
     ],
   },
   {
@@ -1771,14 +1931,15 @@ const PLANS = [
     features: [
       "Up to 10 locations, then custom",
       "Everything in Pro",
-      "Previous review fetching included: up to 1,000 reviews",
-      "Organisation dashboard",
-      "Brand-level reputation recovery reports",
-      "Multi-location alerts and campaigns",
-      "Multi-location ordering, booking, pickup, and delivery reporting",
-      "Operations views for POS screens, locations, teams, finance, fulfilment, and recovery queues",
-      "Multi-location inventory, vendors, purchasing, rota, payroll, and closeout visibility",
-      "Brand mention, social signal, competitor, and reputation recovery reporting",
+      "Up to 1,000 previous reviews fetched",
+      "Organisation dashboard and location comparison",
+      "Brand-level reputation recovery reports and alerts",
+      "Multi-location campaigns and customer segments",
+      "Multi-location ordering, booking, pickup, and delivery views",
+      "Multi-location table, area, and QR code management",
+      "POS screen, team, finance, fulfilment, and recovery queues",
+      "Inventory, vendors, purchasing, rota, payroll, and closeout rollups",
+      "Brand mention, social signal, and competitor reporting",
       "Location-level menu, service, availability, and delivery controls",
       "Scheduled reports and exports",
       "10 manual Public Signal scans/day",
@@ -1800,7 +1961,7 @@ const PLANS = [
       "Custom brand mention and competitor monitoring",
       "Custom review sync allowance",
       "Custom previous review fetching allowance",
-      "Custom reputation recovery and dispute reporting",
+      "Custom operating, finance, and recovery reporting",
       "SLA and priority data sync",
       "White-label or custom reports",
       "Dedicated onboarding and support",
@@ -1915,7 +2076,11 @@ const FAQS = [
   },
   {
     q: "Is BRC just POS or reputation software?",
-    a: "No. POS and reputation recovery are modules inside BRC OS. The broader system also covers orders, table tabs, tenders, catalog, inventory, purchasing, vendors, rota, payroll, finance, competitor tracking, social signals, brand mentions, rewards, campaigns, analytics, and customer operations.",
+    a: "No. POS and reputation recovery are modules inside BRC OS. The broader system also covers orders, table tabs, table and QR code management, tenders, catalog, inventory, purchasing, vendors, rota, payroll, finance, competitor tracking, social signals, brand mentions, rewards, campaigns, analytics, and customer operations.",
+  },
+  {
+    q: "Can BRC manage table QR codes?",
+    a: "Yes. BRC can manage table areas, table labels, seat counts, active states, and table-specific QR codes. Scans can carry dine-in table context into ordering, payment, feedback, rewards, and recovery workflows.",
   },
   {
     q: "What happens if the internet drops during service?",
@@ -2349,7 +2514,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
             </div>
             <div className="feature-proof-panel">
               <div className="feature-proof-icon" style={{ "--accent": feature.accent }}>
-                {feature.icon}
+                <FeatureGlyph slug={feature.slug} />
               </div>
               <h2>{feature.title}</h2>
               <p>{feature.outcome}</p>
@@ -2500,7 +2665,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
               {related.map((item) => (
                 <a key={item.slug} href={`/features/${item.slug}`} className="feature-card compact">
                   <div className="feature-icon-wrap" style={{ "--accent": item.accent }}>
-                    <span className="feature-emoji">{item.icon}</span>
+                    <FeatureGlyph slug={item.slug} />
                   </div>
                   <div className="feature-tag">{item.tag}</div>
                   <h3 className="feature-title">{item.title}</h3>
@@ -4708,9 +4873,9 @@ const CONTENT_PAGES = {
     sections: [
       {
         title: "What BRC brings together",
-        body: "BRC OS combines POS, orders, table tabs, tenders, catalog, inventory, purchasing, vendors, rota, payroll, finance, competitor tracking, social signals, brand mentions, reputation recovery, campaigns, rewards, analytics, and support workflows in one operating console.",
+        body: "BRC OS combines POS, orders, table tabs, table and QR code management, tenders, catalog, inventory, purchasing, vendors, rota, payroll, finance, competitor tracking, social signals, brand mentions, reputation recovery, campaigns, rewards, analytics, and support workflows in one operating console.",
         items: [
-          "POS tools for registers, table tabs, tenders, customer display, kitchen display, cash drawer controls, manager overrides, closeout, and offline sync queues.",
+          "POS tools for registers, table tabs, table-specific QR codes, tenders, customer display, kitchen display, cash drawer controls, manager overrides, closeout, and offline sync queues.",
           "Back-office tools for catalog, inventory, vendors, purchasing, item availability, recipes, staff rota, payroll, finance, permissions, and location-aware operations.",
           "Market and reputation tools for competitor tracking, social signal presence, brand mentions, review monitoring, private feedback, suspicious review triage, and recovery workflows.",
           "Ordering and booking flows for go.brcapp.io customer pages, deposits, reminders, receipts, and fulfilment status.",
@@ -4722,6 +4887,7 @@ const CONTENT_PAGES = {
         body: "Detailed pages are available for the core workflows that are already represented on the landing site.",
         links: [
           { label: "POS", href: "/features/pos" },
+          { label: "Tables and QR", href: "/features/tables-qr" },
           { label: "Inventory", href: "/features/inventory" },
           { label: "Rota and payroll", href: "/features/staff-ops" },
           { label: "Finance", href: "/features/finance" },
