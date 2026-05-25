@@ -336,12 +336,11 @@ function Hero() {
             One business operating system for local operators
           </div>
           <h1 className="hero-h1">
-            Stop paying for multiple tools
-            <br />
-            <span className="grad-text">to run one business.</span>
+            BRC OS
           </h1>
           <p className="hero-p">
-            BRC OS brings POS, orders, table tabs, tenders, table and QR code management,
+            Stop paying for multiple tools to run one business. BRC OS brings POS,
+            orders, table tabs, tenders, table and QR code management,
             catalog, inventory, purchasing, vendors, rota, payroll, finances,
             competitor tracking, social signals, brand mentions, reputation
             recovery, rewards, and analytics in one web and mobile workspace.
@@ -1872,7 +1871,7 @@ const PLANS = [
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one active location starting with reputation recovery, simple ordering, bookings, catalog setup, competitor tracking, and daily customer operations.",
+    desc: "For one location starting with reputation recovery, ordering, bookings, catalog setup, competitor tracking, and daily operations.",
     cta: "Start 7-Day Trial",
     highlight: true,
     badge: "Most Popular",
@@ -1897,7 +1896,7 @@ const PLANS = [
     name: "Pro",
     monthly: 99,
     annual: 89,
-    desc: "For growing teams that need BRC OS across POS, ordering, bookings, delivery, inventory, vendors, staff, finance, and deeper market insights.",
+    desc: "For growing teams that need BRC OS across POS, orders, tables, inventory, vendors, staff, finance, and market insights.",
     cta: "Start 7-Day Trial",
     highlight: false,
     badge: null,
@@ -1924,7 +1923,7 @@ const PLANS = [
     name: "Business",
     monthly: 249,
     annual: 224,
-    desc: "For multi-location brands that need organisation-wide operating-system views across POS, staff, stock, finance, fulfilment, reputation, and reporting.",
+    desc: "For multi-location brands that need OS-wide views across POS, staff, stock, finance, fulfilment, reputation, and reporting.",
     cta: "Start Business",
     highlight: false,
     badge: "Multi-location",
@@ -1951,7 +1950,7 @@ const PLANS = [
     name: "Custom",
     monthly: "Custom",
     annual: "Custom",
-    desc: "For agencies, franchises, and teams with heavier operating, finance, reputation, or signal-monitoring needs.",
+    desc: "For franchises, agencies, and teams with heavier operating, finance, reputation, or signal-monitoring needs.",
     cta: "Talk to Us",
     highlight: false,
     badge: "Enterprise",

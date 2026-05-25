@@ -2865,6 +2865,7 @@ img { max-width: 100%; }
   display: flex;
   align-items: baseline;
   gap: 4px;
+  min-height: 58px;
   margin-bottom: 4px;
 }
 .plan-curr { font-size: 22px; font-weight: 700; color: var(--text-2); }
@@ -2879,8 +2880,8 @@ img { max-width: 100%; }
 .plan-desc {
   font-size: 14px;
   color: var(--text-2);
-  margin-bottom: 20px;
-  min-height: 150px;
+  margin-bottom: 12px;
+  min-height: 112px;
   line-height: 1.6;
 }
 
