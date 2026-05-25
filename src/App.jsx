@@ -185,9 +185,8 @@ function Nav({ theme = "dark", onToggleTheme }) {
 
   const links = [
     { label: "Features", href: "/#features" },
+    { label: "POS", href: "/features/pos" },
     { label: "Ordering", href: "/features/ordering" },
-    { label: "Bookings", href: "/features/bookings" },
-    { label: "Reputation", href: "/features/reputation" },
     { label: "Pricing", href: "/#pricing" },
   ];
 
@@ -286,24 +285,18 @@ function PhoneMockup() {
           <div className="phone-header-sub">Marco&apos;s Bistro</div>
         </div>
         <div className="phone-body">
-          <div className="phone-order-tag">Your order · Table 7</div>
-          <div className="phone-biz">How was your Margherita Pizza?</div>
-          <div className="phone-stars">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <span
-                key={i}
-                className={`star ${i <= 4 ? "star-on" : "star-half"}`}
-              >
-                ★
-              </span>
-            ))}
+          <div className="phone-order-tag">Register · Till 2</div>
+          <div className="phone-biz">Table 7 · 3 items · Ready</div>
+          <div className="phone-pos-total">
+            <span>Current sale</span>
+            <strong>$42.80</strong>
           </div>
           <div className="phone-divider" />
           <div className="phone-metrics">
             {[
-              ["Flavour", 95],
-              ["Temperature", 100],
-              ["Presentation", 78],
+              ["Inventory", 82],
+              ["Rota cover", 94],
+              ["Payroll", 72],
             ].map(([label, pct]) => (
               <div key={label} className="metric-row">
                 <span className="metric-label">{label}</span>
@@ -316,9 +309,9 @@ function PhoneMockup() {
           <textarea
             className="phone-comment"
             readOnly
-            value="Loved the crust, sauce was perfect!"
+            value="Offline queue: 4 actions ready to sync when the connection returns."
           />
-          <button className="phone-cta">Submit &amp; Claim My Reward →</button>
+          <button className="phone-cta">Open Register Controls →</button>
         </div>
       </div>
     </div>
@@ -340,26 +333,26 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            One subscription for customer operations
+            One business operating system for local operators
           </div>
           <h1 className="hero-h1">
-            Stop paying for five tools
+            BRC OS
             <br />
-            <span className="grad-text">to run one business.</span>
+            <span className="grad-text">runs the whole business.</span>
           </h1>
           <p className="hero-p">
-            BRC gives local business owners ordering, booking, delivery,
-            feedback, reviews, rewards, campaigns, and analytics in one app.
-            Build more positive reviews, recover unhappy customers privately,
-            flag suspicious reviews for removal requests, and see which customer
-            actions are actually bringing money back.
+            POS, orders, tabbing, tenders, catalog, inventory, purchasing,
+            vendors, rota, payroll, finances, competitor tracking, social
+            signals, brand mentions, reputation recovery, rewards, and analytics
+            in one web and mobile workspace. Use your own hardware and add the
+            screens your team needs.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <a href="#features" className="btn btn-outline btn-lg">
-              See What You Get
+              Explore BRC OS
             </a>
           </div>
           <div className="hero-social-proof">
@@ -373,7 +366,7 @@ function Hero() {
             <div className="sp-text">
               <span className="sp-stars">★★★★★</span>
               <span>
-                Trusted by <strong>2,400+</strong> local businesses
+                Built for <strong>local operators</strong>
               </span>
             </div>
           </div>
@@ -384,29 +377,29 @@ function Hero() {
 
           <div className="float-card fc-review">
             <div className="fc-platform">
-              <span className="fc-discount-tag">🎁</span>
-              <span className="fc-platform-name">Reward sent</span>
+              <span className="fc-discount-tag">OS</span>
+              <span className="fc-platform-name">Own hardware</span>
             </div>
-            <div className="fc-stars-sm">★★★★★</div>
+            <div className="fc-stars-sm">iPad · laptop · tablet · display</div>
             <div className="fc-quote">
-              Code <strong>SAVE15</strong> delivered via SMS
+              POS, back office, and reputation together
             </div>
           </div>
 
           <div className="float-card fc-sms">
-            <div className="fc-sms-icon">💬</div>
+            <div className="fc-sms-icon">SYNC</div>
             <div className="fc-sms-body">
-              <div className="fc-sms-title">Follow-up sent · 3 days later</div>
+              <div className="fc-sms-title">Operator queue ready</div>
               <div className="fc-sms-sub">
-                Review request delivered naturally
+                Orders, tenders, and stock sync back
               </div>
             </div>
             <div className="fc-sms-check">✓</div>
           </div>
 
           <div className="float-card fc-stat">
-            <div className="fc-stat-val">+67%</div>
-            <div className="fc-stat-label">Review lift this month</div>
+            <div className="fc-stat-val">5</div>
+            <div className="fc-stat-label">operator screens live</div>
             <div className="fc-stat-spark">
               {[30, 50, 40, 70, 60, 90, 80].map((h, i) => (
                 <div
@@ -430,12 +423,12 @@ function Hero() {
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "48k+", label: "Customer feedback records" },
-  { value: "18.5k+", label: "SMS win-back campaigns" },
-  { value: "9.7k+", label: "Tracked orders and redemptions" },
-  { value: "+67%", label: "Average review lift" },
-  { value: "2.1M+", label: "Reviews analyzed across platforms" },
-  { value: "99.5%", label: "Suspicious review detection accuracy" },
+  { value: "Own", label: "Use your phones, tablets, laptops, and displays" },
+  { value: "Unlimited", label: "Add operator screens without per-terminal licensing" },
+  { value: "POS", label: "Orders, tabbing, tenders, KDS, and customer display" },
+  { value: "Stock", label: "Catalog, inventory, purchasing, vendors, and availability" },
+  { value: "Team", label: "Rota, staff shifts, payroll, permissions, and closeout" },
+  { value: "Signals", label: "Competitors, social presence, brand mentions, and recovery" },
 ];
 
 function StatsBar() {
@@ -456,15 +449,15 @@ function StatsBar() {
 const OWNER_REASONS = [
   {
     title: "Replace disconnected tools",
-    body: "Ordering, bookings, delivery, feedback, reviews, rewards, campaigns, and analytics sit in one subscription instead of separate dashboards and bills.",
+    body: "POS, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription instead of separate dashboards and bills.",
   },
   {
-    title: "Get value in the first week",
-    body: "Start with the Growth trial, connect the business, publish the customer links, and use the first feedback, reviews, and campaign data to see where BRC pays back.",
+    title: "Use the hardware you already have",
+    body: "Run counter, kitchen, manager, customer display, and owner screens on the devices your team already uses, then add more screens as the operation grows.",
   },
   {
     title: "Know what is making money",
-    body: "BRC ties customer activity to redemptions, repeat visits, campaigns, reviews, and revenue-influenced reporting so owners can see what deserves attention.",
+    body: "BRC ties sales, tenders, stock, staff, finances, redemptions, repeat visits, campaigns, reviews, competitor movement, and brand mentions together so owners can see what deserves attention.",
   },
 ];
 
@@ -518,12 +511,108 @@ function BusinessFitStrip() {
   );
 }
 
+const OPERATIONS_STACK = [
+  {
+    eyebrow: "Front of house",
+    title: "POS, orders, tabbing, and tenders",
+    body: "Registers, table tabs, bills, tenders, discounts, manager overrides, cash drawer controls, customer display, closeout, and shift-ready workflows for daily service.",
+    items: ["Register", "Tabs", "Tenders", "Closeout"],
+  },
+  {
+    eyebrow: "Back office",
+    title: "Catalog, inventory, purchasing, and vendors",
+    body: "Catalog setup, stock tracking, recipes, vendor and supplier purchasing, item availability, bundles, modifiers, allergens, and menu versions.",
+    items: ["Inventory", "Vendors", "Purchasing", "Catalog"],
+  },
+  {
+    eyebrow: "Team operations",
+    title: "Staff rota, payroll, and permissions",
+    body: "Staff access, rota planning, shift records, payroll management, manager controls, owner visibility, and location-aware team operations.",
+    items: ["Rota", "Payroll", "Permissions", "Shifts"],
+  },
+  {
+    eyebrow: "Money layer",
+    title: "Finance, closeout, and controls",
+    body: "Keep tenders, payouts, closeout, ledger-style finance views, manager approvals, refunds, discounts, and operational exceptions in the same owner workspace.",
+    items: ["Finance", "Payouts", "Ledger", "Controls"],
+  },
+  {
+    eyebrow: "Market presence",
+    title: "Competitors, social signals, and mentions",
+    body: "Track competitor movement, public signals, social presence, brand mentions, review risks, and reputation opportunities from the same system that runs daily operations.",
+    items: ["Competitors", "Social signals", "Mentions", "Reviews"],
+  },
+  {
+    eyebrow: "Resilience",
+    title: "Offline sync and unlimited screens",
+    body: "Keep critical actions queued during patchy service, then sync back cleanly. Add counter, kitchen, floor, manager, and owner screens without buying a new hardware stack.",
+    items: ["Offline queue", "KDS", "Customer display", "Own devices"],
+  },
+];
+
+function OperationsStack() {
+  const trialHref = trialSignupUrl();
+
+  return (
+    <section className="section operations-stack-section">
+      <div className="container operations-stack-inner">
+        <div className="operations-stack-copy">
+          <div className="section-tag">All-In-One Operations</div>
+          <h2 className="section-h2">
+            POS, back office, finance, staff, and reputation
+            <br />
+            <span className="grad-text">wired into the same workspace</span>
+          </h2>
+          <p className="section-p">
+            BRC OS is designed for operators who want fewer subscriptions and
+            less hardware lock-in. Start with the screens you need today, then
+            add ordering, inventory, vendors, payroll, finances, competitor
+            tracking, social signals, brand mentions, rewards, and reputation
+            recovery without rebuilding the stack.
+          </p>
+          <div className="operations-stack-actions">
+            <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+              Start 7-Day Trial <span className="arrow">→</span>
+            </a>
+            <a href="/features/pos" className="btn btn-outline btn-lg">
+              Explore POS Module
+            </a>
+          </div>
+        </div>
+        <div className="operations-stack-grid">
+          {OPERATIONS_STACK.map((item) => (
+            <article className="operations-stack-card" key={item.title}>
+              <span>{item.eyebrow}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <div className="operations-chip-row">
+                {item.items.map((chip) => (
+                  <strong key={chip}>{chip}</strong>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── FEATURES ─────────────────────────────────────────────────────────────────
 
 const FEATURES = [
   {
+    slug: "pos",
+    icon: "▣",
+    accent: "var(--green)",
+    title: "POS, tabs, and tenders",
+    body: "Browser and app-based register workflows for orders, table tabs, bills, tenders, cash drawer controls, manager overrides, customer display, and closeout.",
+    tag: "POS",
+    outcome: "Use your own hardware and keep sales connected to the rest of the operating system.",
+  },
+  {
     slug: "ordering",
-    icon: "🛒",
+    icon: "ORD",
     accent: "var(--cyan)",
     title: "Online ordering",
     body: "Branded dine-in, pickup, retail, and service ordering that feeds customer profiles, rewards, feedback, and analytics.",
@@ -532,7 +621,7 @@ const FEATURES = [
   },
   {
     slug: "delivery",
-    icon: "🚚",
+    icon: "DEL",
     accent: "var(--green)",
     title: "Delivery and pickup",
     body: "Delivery quotes, customer details, pickup slots, order tracking, and fulfilment workflows designed for local teams.",
@@ -541,7 +630,7 @@ const FEATURES = [
   },
   {
     slug: "bookings",
-    icon: "📅",
+    icon: "BK",
     accent: "var(--blue)",
     title: "Bookings and reservations",
     body: "Appointments, services, staff, tables, classes, and sessions connected to reminders, confirmations, feedback, and repeat visits.",
@@ -550,7 +639,7 @@ const FEATURES = [
   },
   {
     slug: "feedback",
-    icon: "📋",
+    icon: "FB",
     accent: "var(--purple)",
     title: "Private feedback",
     body: "Contextual forms tied to orders, bookings, staff, tables, products, or visits so feedback is specific enough to act on.",
@@ -559,7 +648,7 @@ const FEATURES = [
   },
   {
     slug: "reputation",
-    icon: "⭐",
+    icon: "REV",
     accent: "var(--yellow)",
     title: "Reputation recovery",
     body: "Build positive reviews, recover low-rating experiences privately, draft replies with AI, and flag suspicious reviews for dispute workflows.",
@@ -568,7 +657,7 @@ const FEATURES = [
   },
   {
     slug: "campaigns",
-    icon: "📣",
+    icon: "SMS",
     accent: "var(--orange)",
     title: "Campaigns and automations",
     body: "SMS and email journeys for feedback rewards, review requests, win-backs, reminders, and customer reactivation.",
@@ -577,7 +666,7 @@ const FEATURES = [
   },
   {
     slug: "rewards",
-    icon: "🎁",
+    icon: "LOY",
     accent: "var(--red)",
     title: "Rewards and loyalty",
     body: "Discount codes, redemption tracking, loyalty-style incentives, and customer return journeys linked to real activity.",
@@ -585,8 +674,53 @@ const FEATURES = [
     outcome: "See which offers produce repeat visits instead of guessing.",
   },
   {
+    slug: "inventory",
+    icon: "STK",
+    accent: "var(--green)",
+    title: "Inventory, purchasing, and vendors",
+    body: "Stock, recipes, vendors, purchasing, catalog availability, bundles, variants, allergens, labels, and menu versions in one operational layer.",
+    tag: "Stock",
+    outcome: "Stop selling blind and connect what customers order to what the team needs to buy or prepare.",
+  },
+  {
+    slug: "staff-ops",
+    icon: "STA",
+    accent: "var(--purple)",
+    title: "Rota and payroll",
+    body: "Staff shifts, rota planning, payroll workflows, permissions, location scope, team notes, and manager-friendly access controls.",
+    tag: "Staff",
+    outcome: "Keep labor planning connected to the same orders, bookings, closeouts, and owner reporting.",
+  },
+  {
+    slug: "finance",
+    icon: "FIN",
+    accent: "var(--blue)",
+    title: "Finance and closeout",
+    body: "Tender visibility, payouts, ledger-style finance views, closeout context, profitability reporting, and owner-level money controls.",
+    tag: "Finance",
+    outcome: "Keep the money picture connected to sales, staff, stock, payments, refunds, and daily closeout.",
+  },
+  {
+    slug: "register-controls",
+    icon: "CTL",
+    accent: "var(--red)",
+    title: "Controls and offline sync",
+    body: "Manager PIN overrides, discounts, bill lifecycle controls, closeout, cash drawer flows, and offline sync queues for unstable service periods.",
+    tag: "Controls",
+    outcome: "Protect daily service when permissions, cash movement, or connectivity need tighter control.",
+  },
+  {
+    slug: "market-signals",
+    icon: "SIG",
+    accent: "var(--yellow)",
+    title: "Competitors and market signals",
+    body: "Competitor tracking, social signal presence, public mentions, brand mentions, review movement, and reputation risk monitoring.",
+    tag: "Signals",
+    outcome: "Know what the market is saying while you still have time to act.",
+  },
+  {
     slug: "analytics",
-    icon: "📊",
+    icon: "AI",
     accent: "var(--blue)",
     title: "Analytics and AI insights",
     body: "Review trends, competitor tracking, campaign performance, item insights, staff signals, and owner summaries in one console.",
@@ -595,7 +729,7 @@ const FEATURES = [
   },
   {
     slug: "team",
-    icon: "👥",
+    icon: "ORG",
     accent: "var(--purple)",
     title: "Team and multi-location ops",
     body: "Staff access, permissions, location-level settings, organisation reporting, notifications, and admin controls.",
@@ -605,6 +739,22 @@ const FEATURES = [
 ];
 
 const FEATURE_DETAIL = {
+  pos: {
+    headline: "POS, tabbing, and tenders inside the full business OS.",
+    subhead:
+      "BRC gives local teams register, order, table tab, bill, tender, customer display, kitchen, closeout, and manager-control workflows that run inside the same system as stock, staff, finance, and reputation.",
+    bullets: [
+      "Register surfaces for counter, table, pickup, and retail sales",
+      "Table service, tabs, bills, tenders, discounts, refunds, and closeout flows",
+      "Customer display and kitchen display surfaces for service visibility",
+      "Cash drawer controls, manager PIN overrides, and permission checks",
+      "Sales connected to catalog, inventory, purchasing, payroll, finance, and recovery workflows",
+    ],
+    conversion:
+      "Why subscribe: POS becomes one module of BRC OS instead of a dead-end till. Every sale can connect to stock, staffing, tenders, feedback, rewards, reputation, and owner reporting.",
+    proof: ["Own hardware", "Tabs and tenders", "Connected OS"],
+    bestFor: "Restaurants, cafes, retail shops, and local operators that want practical POS workflows inside a broader business operating system.",
+  },
   ordering: {
     headline: "Direct ordering that becomes customer intelligence.",
     subhead:
@@ -751,9 +901,103 @@ const FEATURE_DETAIL = {
     proof: ["Staff permissions", "Location rollups", "Plan gates"],
     bestFor: "Growing teams that need staff access, controlled permissions, and location reporting without losing owner visibility.",
   },
+  inventory: {
+    headline: "Inventory, catalog, purchasing, and vendors connected to what customers buy.",
+    subhead:
+      "BRC links catalog setup, item availability, recipes, stock movement, purchasing, vendors, suppliers, variants, bundles, allergens, and menu versions to the same operating console.",
+    bullets: [
+      "Inventory quantities, stock controls, and sold-out or hidden states",
+      "Recipes, item labels, variants, bundles, modifiers, allergens, and SKUs",
+      "Purchasing and vendor workflows for supplier-driven stock replenishment",
+      "Catalog and menu versions for cleaner updates before service",
+      "Item performance signals that connect sales, feedback, and stock decisions",
+    ],
+    conversion:
+      "Why subscribe: stock, catalog, vendors, and ordering stay connected, so teams can stop updating separate menus, spreadsheets, and purchasing notes.",
+    proof: ["Stock visibility", "Vendors", "Purchasing"],
+    bestFor: "Food, retail, and inventory-led local businesses that need the public catalog, POS, and back-office stock picture to agree.",
+  },
+  finance: {
+    headline: "Finance, tenders, closeout, and payouts in the owner view.",
+    subhead:
+      "BRC keeps the money layer close to the work that created it: sales, tenders, refunds, payouts, closeout, stock, staff, payroll, and profitability reporting.",
+    bullets: [
+      "Tender and payment context connected to order and register workflows",
+      "Closeout, cash drawer, refund, discount, and manager-control visibility",
+      "Finance ledger and accounting-style records for owner review",
+      "Payout request and connected payment provider context",
+      "Profitability reporting across orders, fees, stock, staff, and campaigns",
+    ],
+    conversion:
+      "Why subscribe: the owner gets a clearer money picture because finance is tied to operations, not exported into yet another disconnected tool.",
+    proof: ["Tenders", "Closeout", "Finance ledger"],
+    bestFor: "Operators who need daily money controls, payout visibility, closeout, and profitability signals connected to the same operating system.",
+  },
+  "staff-ops": {
+    headline: "Rota, shifts, payroll, and staff access in the operating layer.",
+    subhead:
+      "BRC keeps staff planning close to the real work: orders, bookings, closeouts, service periods, permissions, payroll, and owner reporting.",
+    bullets: [
+      "Rota planning and staff shift workflows",
+      "Payroll management surfaces for operational teams",
+      "Role, capability, and location-scoped staff access",
+      "Manager-friendly controls for sensitive actions",
+      "Owner visibility across daily service, labor, and location performance",
+    ],
+    conversion:
+      "Why subscribe: labor planning stops living in a separate tool and starts matching what happened in bookings, orders, shifts, closeouts, and customer recovery.",
+    proof: ["Rota", "Payroll", "Permissions"],
+    bestFor: "Owner-led teams and multi-location operators that need staff tools without losing control over sensitive workflows.",
+  },
+  "register-controls": {
+    headline: "Register controls and offline sync for real service conditions.",
+    subhead:
+      "BRC includes the control layer operators expect: cash drawer flows, manager PIN overrides, discounts, bill lifecycle states, closeout, permissions, and sync queues for shaky connections.",
+    bullets: [
+      "Manager PIN overrides and permission-aware register actions",
+      "Cash drawer, bill lifecycle, discount, refund, and closeout controls",
+      "Offline mutation queue for unstable network periods",
+      "Register, kitchen, customer display, and floor screens that stay coordinated",
+      "Audit-friendly state changes for managers and owners",
+    ],
+    conversion:
+      "Why subscribe: the system is not only a menu or review tool. It helps the team keep control when money, permissions, and connectivity matter.",
+    proof: ["Manager controls", "Offline queue", "Closeout"],
+    bestFor: "Busy food, retail, and counter-service teams that need reliable workflows during rushes, shift changes, and patchy Wi-Fi.",
+  },
+  "market-signals": {
+    headline: "Competitors, social presence, brand mentions, and reputation recovery.",
+    subhead:
+      "BRC watches the outside world as well as the inside operation: competitor movement, social signals, public mentions, brand mentions, review trends, suspicious reviews, and recovery opportunities.",
+    bullets: [
+      "Competitor tracking for rating, review, and public movement",
+      "Social signal presence and public mention monitoring",
+      "Brand mentions and local reputation context",
+      "Review monitoring, suspicious-review triage, and dispute-ready context",
+      "Private feedback and recovery workflows before issues become public damage",
+    ],
+    conversion:
+      "Why subscribe: owners can see what customers and the market are saying, then connect that insight to campaigns, recovery, staff coaching, and operational fixes.",
+    proof: ["Competitors", "Brand mentions", "Recovery"],
+    bestFor: "Local brands that depend on trust, search visibility, reviews, and public reputation to keep customers choosing them.",
+  },
 };
 
 const FEATURE_GUIDES = {
+  pos: {
+    setup: [
+      "Choose the business modules that should be active: register, tables, catalog, KDS, customer display, closeout, and staff shifts.",
+      "Build the catalog or menu so items, prices, modifiers, bundles, allergens, and availability are ready for sales.",
+      "Set register controls, payment readiness, cash drawer expectations, manager PIN rules, and staff permissions.",
+      "Open the right screens for the team: register, kitchen display, customer display, operations fullscreen, and manager closeout.",
+    ],
+    dailyUse: [
+      "Staff use register and order surfaces to create sales, move bills through status, apply allowed actions, and keep service moving.",
+      "Kitchen, floor, customer display, and manager screens can stay live on separate devices.",
+      "Owners can review completed orders, closeout, payments, stock impact, feedback, and campaign follow-up from the same workspace.",
+    ],
+    planNote: "The POS story is strongest for Pro and Business operators that need multiple screens, controls, tables, stock, staff, and reporting together.",
+  },
   ordering: {
     setup: [
       "Create catalog categories and items, then add prices, images, variants, modifiers, availability, and hidden states where needed.",
@@ -882,9 +1126,85 @@ const FEATURE_GUIDES = {
     ],
     planNote: "Team and multi-location controls make BRC credible for businesses that start with one location but plan to grow.",
   },
+  inventory: {
+    setup: [
+      "Create categories and catalog items with prices, images, SKUs, variants, modifiers, bundles, labels, and allergen information.",
+      "Turn on inventory tracking where stock matters, then set quantities, thresholds, recipes, and availability states.",
+      "Use purchasing and vendor workflows to capture supplier needs and replenishment activity before busy periods.",
+      "Publish menu versions or public catalog updates only when the operation is ready.",
+    ],
+    dailyUse: [
+      "Teams can mark items unavailable, update stock, review purchasing needs, and keep public ordering aligned with what can actually be fulfilled.",
+      "Owners can compare sales, item feedback, availability, and purchasing pressure before changing menus or offers.",
+      "Stock-sensitive items can flow into POS, ordering, rewards, and reporting instead of living in a separate spreadsheet.",
+    ],
+    planNote: "Inventory, purchasing, and vendors support the BRC OS promise because operators can connect sales to stock without buying another back-office product.",
+  },
+  finance: {
+    setup: [
+      "Connect payment and tender workflows to orders, bills, refunds, discounts, and closeout.",
+      "Review finance settings, payout context, and accounting-style ledger records where enabled.",
+      "Use manager controls for sensitive refund, discount, cash drawer, and closeout actions.",
+      "Connect finance reporting to orders, stock, staff, campaign results, and profitability signals.",
+    ],
+    dailyUse: [
+      "Managers can close service periods with tender, bill, cash drawer, and exception context in one place.",
+      "Owners can review payouts, fees, refunds, closeout, profitability, and revenue-influenced activity.",
+      "Finance data stays tied to operations, so disputes and reporting have better source context.",
+    ],
+    planNote: "Finance makes BRC OS credible for operators because the system connects money movement to the work that created it.",
+  },
+  "staff-ops": {
+    setup: [
+      "Invite owners, managers, and staff with the right role, location scope, and capabilities.",
+      "Configure rota and shift workflows for the business type and the daily service pattern.",
+      "Set payroll access, notification preferences, and manager controls for sensitive staff workflows.",
+      "Connect staffing expectations to bookings, orders, closeout, and owner reporting.",
+    ],
+    dailyUse: [
+      "Managers can review staff coverage, upcoming shifts, payroll context, permissions, and operational notes.",
+      "Staff work from focused screens while owner-only billing, controls, and location settings remain restricted.",
+      "Owners can see labor, service, bookings, orders, recovery, and reporting in the same operating layer.",
+    ],
+    planNote: "Rota, payroll, and team controls make Pro and Business more compelling for operators with regular staff or multiple locations.",
+  },
+  "register-controls": {
+    setup: [
+      "Set permissions for discounts, refunds, cash drawer actions, closeout, and manager PIN override flows.",
+      "Choose which register, KDS, customer display, and operations screens should be open during service.",
+      "Enable offline-ready mutation scope where unstable connectivity is a known risk.",
+      "Train managers around closeout, bill lifecycle states, and exception handling before busy service.",
+    ],
+    dailyUse: [
+      "Staff can keep serving while controlled actions require the right permission or manager confirmation.",
+      "Offline-ready actions queue locally and sync when the connection returns.",
+      "Managers can review closeout, cash movement, bill state, refunds, and exceptions with cleaner context.",
+    ],
+    planNote: "Controls and offline sync are conversion proof for serious operators because they make the product feel ready for real service conditions.",
+  },
+  "market-signals": {
+    setup: [
+      "Connect review channels and choose competitors that matter for the business type and local market.",
+      "Enable public signal and social mention workflows where plan and configuration allow.",
+      "Route low-rating reviews, suspicious reviews, and private complaints into recovery workflows.",
+      "Use owner digests and alerts to surface brand mention, competitor, and reputation risks.",
+    ],
+    dailyUse: [
+      "Owners can compare their reputation against competitors and see what changed in the market.",
+      "Managers can use review, mention, and social signal context to decide what to fix, promote, or recover.",
+      "Reputation recovery stays connected to customer activity, campaigns, staff signals, and operations.",
+    ],
+    planNote: "Market signals turn reputation into an operating workflow instead of a passive review dashboard.",
+  },
 };
 
 const FEATURE_SURFACES = {
+  pos: [
+    "Register app: sales entry, catalog item selection, table or counter context, payments, discounts, and controlled actions.",
+    "POS surface: live order flow, bills, table lifecycle, payment state, and manager-friendly status changes.",
+    "Customer display and KDS: separate screens for customer-facing totals and preparation visibility.",
+    "Manager closeout and cash drawer controls: shift-end accountability, drawer movement, overrides, and operational audit context.",
+  ],
   ordering: [
     "Console operations: live orders, kitchen view, order history, status changes, table context, notes, payment state, and fulfilment detail.",
     "Catalog setup: categories, item images, variants, modifier groups, bundles, allergens, labels, stock/availability, hidden items, and currency.",
@@ -939,9 +1259,45 @@ const FEATURE_SURFACES = {
     "Team access uses roles, capabilities, and location scope so owners, managers, and staff see the right tools.",
     "Billing, plan gates, trial states, subscription status, support, audit-friendly admin flows, and feature overrides are part of the operating layer.",
   ],
+  inventory: [
+    "Catalog setup includes categories, item images, prices, SKUs, variants, modifier groups, bundles, allergens, labels, stock/availability, hidden items, and currency.",
+    "Inventory views cover quantities, recipe-linked usage, negative quantity protections, sold-out state, and replenishment signals.",
+    "Purchasing and vendor surfaces support supplier-driven back-office work where stock needs to be received, planned, or ordered.",
+    "Menu versions and KDS routing keep customer ordering, kitchen preparation, and catalog control aligned before service.",
+  ],
+  finance: [
+    "Finance views cover ledger-style accounting records, profitability reporting, payout requests, payment provider context, and owner-facing money signals.",
+    "Tender, payment, refund, discount, and bill state are stored with order and register context.",
+    "Manager closeout and cash drawer controls help keep end-of-shift money movement reviewable.",
+    "Campaign, order, staff, stock, and fee context can feed revenue-influenced and profitability reporting.",
+  ],
+  "staff-ops": [
+    "Team settings manage owners, managers, staff, roles, capabilities, location scope, and permission gates.",
+    "Rota and staff shift surfaces support scheduling and daily team visibility.",
+    "Payroll settings and payroll pages give operators a dedicated place to manage pay-related workflow.",
+    "Operations, bookings, orders, closeout, and notifications all depend on staff context and role-aware access.",
+  ],
+  "register-controls": [
+    "Manager PIN override modal protects sensitive actions when a staff member needs approval.",
+    "Cash drawer, bill lifecycle, register flow, closeout, discount, refund, and payment states are modeled as operational controls.",
+    "Offline sync uses a scoped mutation queue so selected local actions can be retained and synced later.",
+    "Permissions and audit-friendly state changes keep controls visible to owners and managers instead of hiding them inside the till.",
+  ],
+  "market-signals": [
+    "Competitor tracking gives owners public rating, review count, movement, and benchmark context.",
+    "Public signals and social mention workflows surface brand presence and reputation risks outside the app.",
+    "Review monitoring covers Google, Yelp, and TripAdvisor by plan, with suspicious-review context for dispute preparation.",
+    "Private feedback, campaigns, rewards, and recovery workflows turn reputation signals into owner action.",
+  ],
 };
 
 const FEATURE_APP_LOCATIONS = {
+  pos: [
+    { area: "Register / Retail Scanner", detail: "Use sales screens for counter, retail, and item-based checkout workflows on compatible devices." },
+    { area: "Operations → POS Surface", detail: "Manage live orders, tables, bills, payments, fulfilment state, and operational status changes." },
+    { area: "Customer Display / Kitchen Display", detail: "Run customer-facing and preparation screens separately from the register where the workflow needs it." },
+    { area: "Manager Closeout", detail: "Review shift-end controls, cash drawer context, order state, and closeout readiness." },
+  ],
   ordering: [
     { area: "More → Catalog / Menu", detail: "Build categories, items, prices, variants, modifiers, bundles, labels, allergens, images, and availability." },
     { area: "More → Public Page", detail: "Publish the branded customer page, enable ordering, connect the public URL or custom domain, and preview the go app." },
@@ -995,6 +1351,36 @@ const FEATURE_APP_LOCATIONS = {
     { area: "More → Locations", detail: "Separate location-level settings while keeping owner visibility across the organisation." },
     { area: "More → Notifications / Owner Digest", detail: "Choose alerts for reviews, feedback, orders, bookings, campaigns, support, billing, and daily owner summaries." },
     { area: "Billing / Upgrade / Support", detail: "Manage trial state, plan gates, feature overrides, subscription status, and support workflows." },
+  ],
+  inventory: [
+    { area: "More → Catalog / Menu", detail: "Create categories, prices, items, variants, modifiers, bundles, images, labels, allergens, and availability states." },
+    { area: "More → Inventory", detail: "Track quantities, recipes, stock movement, item availability, and inventory-sensitive workflows." },
+    { area: "More → Purchasing", detail: "Plan and manage supplier purchasing activity connected to catalog and inventory needs." },
+    { area: "Operations / Go page", detail: "Keep what staff can sell and what customers can order aligned with real stock and menu readiness." },
+  ],
+  finance: [
+    { area: "More → Finance", detail: "Review ledger-style records, profitability reporting, payout context, and finance settings." },
+    { area: "Operations → POS / Orders", detail: "Keep tender, payment, refund, discount, and bill state connected to the order workflow." },
+    { area: "Manager Closeout", detail: "Review closeout, cash drawer movement, tenders, exceptions, and end-of-shift context." },
+    { area: "Billing / Payments", detail: "Connect payment readiness, subscription state, payout signals, and owner-level controls." },
+  ],
+  "staff-ops": [
+    { area: "More → Team", detail: "Invite staff, set roles, assign capabilities, and scope access by location." },
+    { area: "More → Rota", detail: "Plan staff coverage around service periods, bookings, and day-to-day operations." },
+    { area: "More → Payroll", detail: "Manage payroll workflows in the same workspace as rota, shifts, and staff permissions." },
+    { area: "Operations / Manager views", detail: "Keep staff context close to orders, bookings, closeout, and customer recovery work." },
+  ],
+  "register-controls": [
+    { area: "Register controls", detail: "Use manager PIN overrides, discounts, refunds, permissions, and controlled actions where required." },
+    { area: "Manager Closeout", detail: "Review end-of-shift state, cash drawer movement, order completion, and payment context." },
+    { area: "Offline Sync", detail: "Review queued local actions and sync status when connectivity returns." },
+    { area: "Settings → Team / Permissions", detail: "Decide who can approve sensitive actions and which screens each role can access." },
+  ],
+  "market-signals": [
+    { area: "More → Competitors", detail: "Track local competitors, rating movement, review count, and benchmark context." },
+    { area: "Insights → Public Signals", detail: "Review public signals, social mention context, and brand presence risks where enabled." },
+    { area: "Inbox → Reviews", detail: "Monitor public reviews, suspicious-review flags, reply workflows, and recovery opportunities." },
+    { area: "Feedback / Boost", detail: "Turn reputation risks into private recovery, review requests, rewards, and campaigns." },
   ],
 };
 
@@ -1314,7 +1700,7 @@ const PLANS = [
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one active location starting with reviews, recovery, simple ordering, basic bookings, and daily operations.",
+    desc: "For one active location starting with reputation recovery, simple ordering, bookings, catalog setup, competitor tracking, and daily customer operations.",
     cta: "Start 7-Day Trial",
     highlight: true,
     badge: "Most Popular",
@@ -1328,10 +1714,12 @@ const PLANS = [
       "Negative feedback recovery workflows",
       "Suspicious review flags",
       "Competitor tracking up to 3",
+      "Brand and public reputation signals",
       "Private feedback and staff ratings",
       "Basic catalog or service setup",
       "Simple pickup ordering workflow",
       "Simple booking or table request workflow",
+      "Use your own web and mobile hardware",
       "Basic fulfilment status for orders and bookings",
       "Campaign basics and feedback discounts",
       "SMS prompts, credits paid separately",
@@ -1341,7 +1729,7 @@ const PLANS = [
     name: "Pro",
     monthly: 99,
     annual: 89,
-    desc: "For growing teams that need full ordering, bookings, delivery, operations, and deeper insights.",
+    desc: "For growing teams that need BRC OS across POS, ordering, bookings, delivery, inventory, vendors, staff, finance, and deeper market insights.",
     cta: "Start 7-Day Trial",
     highlight: false,
     badge: null,
@@ -1353,11 +1741,19 @@ const PLANS = [
       "Review dispute context for suspicious reviews",
       "Advanced reputation recovery reporting",
       "Menu/product performance insights",
+      "POS register, tables, customer display, and KDS workflows",
+      "Cash drawer, tenders, manager controls, closeout, and register operations",
+      "Inventory, stock availability, recipes, vendors, and purchasing workflows",
+      "Staff rota, shifts, payroll, and permission controls",
+      "Finance, tender visibility, payouts, and profitability reporting",
+      "Unlimited operator screens on your own hardware",
+      "Offline sync queue for supported operational actions",
       "Full ordering, table, pickup, and delivery configuration",
       "Advanced delivery rules, fees, fulfilment notes, and availability",
       "Advanced booking rules, deposits, buffers, staff capacity, and customer lookup",
       "Operations console for order, booking, feedback, and recovery workflows",
       "Public Signals monitoring",
+      "Social signal presence and brand mention monitoring",
       "Competitor tracking up to 10",
       "Advanced campaigns and customer segments",
       "Team notes and collaboration",
@@ -1368,7 +1764,7 @@ const PLANS = [
     name: "Business",
     monthly: 249,
     annual: 224,
-    desc: "For multi-location brands that need organisation-wide operations, fulfilment, and reporting.",
+    desc: "For multi-location brands that need organisation-wide operating-system views across POS, staff, stock, finance, fulfilment, reputation, and reporting.",
     cta: "Start Business",
     highlight: false,
     badge: "Multi-location",
@@ -1380,7 +1776,9 @@ const PLANS = [
       "Brand-level reputation recovery reports",
       "Multi-location alerts and campaigns",
       "Multi-location ordering, booking, pickup, and delivery reporting",
-      "Operations views for locations, teams, fulfilment, and recovery queues",
+      "Operations views for POS screens, locations, teams, finance, fulfilment, and recovery queues",
+      "Multi-location inventory, vendors, purchasing, rota, payroll, and closeout visibility",
+      "Brand mention, social signal, competitor, and reputation recovery reporting",
       "Location-level menu, service, availability, and delivery controls",
       "Scheduled reports and exports",
       "10 manual Public Signal scans/day",
@@ -1392,13 +1790,14 @@ const PLANS = [
     name: "Custom",
     monthly: "Custom",
     annual: "Custom",
-    desc: "For agencies, franchises, and teams with heavier scan volumes.",
+    desc: "For agencies, franchises, and teams with heavier operating, finance, reputation, or signal-monitoring needs.",
     cta: "Talk to Us",
     highlight: false,
     badge: "Enterprise",
     features: [
       "More than 10 locations",
       "Custom Public Signal scan volume",
+      "Custom brand mention and competitor monitoring",
       "Custom review sync allowance",
       "Custom previous review fetching allowance",
       "Custom reputation recovery and dispute reporting",
@@ -1506,6 +1905,22 @@ function Pricing() {
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 
 const FAQS = [
+  {
+    q: "Do we need to buy BRC hardware?",
+    a: "No. BRC OS is designed around web, iOS, Android, tablet, and display workflows so teams can use their own compatible devices for registers, kitchen screens, manager views, customer display, and owner access.",
+  },
+  {
+    q: "Are POS screens limited per location?",
+    a: "BRC OS is positioned around unlimited operator screens rather than charging per proprietary terminal. Plan limits still apply to locations, usage, messaging, payments, and enabled modules, but the hardware strategy is to avoid per-screen lock-in.",
+  },
+  {
+    q: "Is BRC just POS or reputation software?",
+    a: "No. POS and reputation recovery are modules inside BRC OS. The broader system also covers orders, table tabs, tenders, catalog, inventory, purchasing, vendors, rota, payroll, finance, competitor tracking, social signals, brand mentions, rewards, campaigns, analytics, and customer operations.",
+  },
+  {
+    q: "What happens if the internet drops during service?",
+    a: "BRC includes offline sync queue support for selected operational actions, so supported local changes can be retained and synced when connectivity returns. Payment providers, messaging, and third-party services may still require a live connection.",
+  },
   {
     q: "How is the feedback form personalised to each customer?",
     a: 'When a customer scans a QR code, places an order, or completes a booking, the platform can generate questions based on what actually happened. Instead of a generic "how was your visit?", they can be asked about their dish, service, appointment, staff member, table, or collection experience.',
@@ -4289,21 +4704,28 @@ function PublicAuditPage() {
 const CONTENT_PAGES = {
   features: {
     title: "Features",
-    subtitle: "The BRC modules built for local customer operations.",
+    subtitle: "The BRC OS modules built for local business operations.",
     sections: [
       {
         title: "What BRC brings together",
-        body: "BRC combines reputation recovery, positive review building, ordering, bookings, customer messaging, campaigns, rewards, analytics, and support workflows in one operating console.",
+        body: "BRC OS combines POS, orders, table tabs, tenders, catalog, inventory, purchasing, vendors, rota, payroll, finance, competitor tracking, social signals, brand mentions, reputation recovery, campaigns, rewards, analytics, and support workflows in one operating console.",
         items: [
-          "Reputation tools for review monitoring, private feedback, reply drafts, suspicious review triage, and recovery workflows.",
+          "POS tools for registers, table tabs, tenders, customer display, kitchen display, cash drawer controls, manager overrides, closeout, and offline sync queues.",
+          "Back-office tools for catalog, inventory, vendors, purchasing, item availability, recipes, staff rota, payroll, finance, permissions, and location-aware operations.",
+          "Market and reputation tools for competitor tracking, social signal presence, brand mentions, review monitoring, private feedback, suspicious review triage, and recovery workflows.",
           "Ordering and booking flows for go.brcapp.io customer pages, deposits, reminders, receipts, and fulfilment status.",
-          "Campaigns, rewards, owner digests, customer follow-up, staff workflows, reporting, and admin controls.",
+          "Campaigns, rewards, owner digests, customer follow-up, reporting, and admin controls.",
         ],
       },
       {
         title: "Feature pages",
         body: "Detailed pages are available for the core workflows that are already represented on the landing site.",
         links: [
+          { label: "POS", href: "/features/pos" },
+          { label: "Inventory", href: "/features/inventory" },
+          { label: "Rota and payroll", href: "/features/staff-ops" },
+          { label: "Finance", href: "/features/finance" },
+          { label: "Market signals", href: "/features/market-signals" },
           { label: "Ordering", href: "/features/ordering" },
           { label: "Bookings", href: "/features/bookings" },
           { label: "Reputation", href: "/features/reputation" },
@@ -5943,8 +6365,14 @@ export default function App() {
       <Nav theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />
+        <StatsBar />
+        <BusinessFitStrip />
         <OwnerReasons />
+        <OperationsStack />
         <Features />
+        <Platforms />
+        <Campaigns />
+        <Analytics />
         <Pricing />
         <FAQ />
         <CTA />
