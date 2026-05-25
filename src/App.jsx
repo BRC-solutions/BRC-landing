@@ -336,12 +336,12 @@ function Hero() {
             One business operating system for local operators
           </div>
           <h1 className="hero-h1">
-            BRC OS for operators who
+            Stop Paying for
             <br />
-            <span className="grad-text">run the whole business.</span>
+            <span className="grad-text">multiple subscriptions to run one business.</span>
           </h1>
           <p className="hero-subtitle">
-            Stop paying for multiple tools to run one business.
+            BRC OS is the all-in-one system for local business operations and reputation.
           </p>
           <p className="hero-p">
             BRC OS brings POS, orders, table tabs, tenders, table and QR code
