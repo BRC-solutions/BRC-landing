@@ -2205,6 +2205,20 @@ function CTA({ trialHref = trialSignupUrl() } = {}) {
                   <strong>Web App</strong>
                 </div>
               </a>
+              <a href="#" className="store-btn">
+                <span className="store-os">⌘</span>
+                <div>
+                  <small>Available for</small>
+                  <strong>macOS</strong>
+                </div>
+              </a>
+              <a href="#" className="store-btn">
+                <span className="store-os">⊞</span>
+                <div>
+                  <small>Available for</small>
+                  <strong>Windows</strong>
+                </div>
+              </a>
             </div>
           </div>
           <div className="cta-trust">
@@ -6252,7 +6266,7 @@ function Footer({ onNavigate }) {
           <p className="footer-tagline">
             {BRAND_TAGLINE}
             <br />
-            Available on iOS, Android &amp; Web.
+            Available on iOS, Android, Web, macOS &amp; Windows.
           </p>
           <div className="footer-socials">
             {["X", "IG", "LI"].map((s) => (
@@ -6295,6 +6309,12 @@ function Footer({ onNavigate }) {
             </a>
             <a href={WEB_APP_URL} className="footer-app-link" target="_blank" rel="noopener noreferrer">
               🌐 Web App
+            </a>
+            <a href="#" className="footer-app-link">
+              ⌘ macOS
+            </a>
+            <a href="#" className="footer-app-link">
+              ⊞ Windows
             </a>
           </div>
         </div>
