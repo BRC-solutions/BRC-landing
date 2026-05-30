@@ -20,6 +20,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 
 const WEB_APP_URL =
   import.meta.env.VITE_APP_URL || "https://console.brcapp.io";
+const SITE_URL = "https://brcapp.io";
 const BRAND_NAME = "BRC";
 const BRAND_EXPANSION = "Business Reputation & Customer Operations";
 const BRAND_SHORT = "BRC";
@@ -5856,6 +5857,91 @@ const HELP_ARTICLES = [
     related: ["Finance", "Billing", "Support", "Public page"],
   },
   {
+    id: "local-hub",
+    category: "Local hub",
+    title: "Local Hub for on-premise operations",
+    summary: "Use BRC Local Hub to coordinate supported in-store devices, hardware discovery, and local network workflows.",
+    overview:
+      "BRC Local Hub is the on-premise bridge for operators who want browser, tablet, display, and hardware workflows to work together on the local network. It is designed for venues that run counter, kitchen, manager, customer display, and hardware-adjacent screens during service and need a local coordination point alongside the cloud console.",
+    steps: [
+      "Choose the device that will run Local Hub during service, such as a back-office computer, manager laptop, or supported always-on workstation.",
+      "Connect the hub device to the same trusted local network as the screens and hardware you want BRC to discover or coordinate.",
+      "Start Local Hub before service and confirm the console shows the hub as reachable for the business or location.",
+      "Open the relevant BRC screens: register, POS surface, kitchen display, customer display, manager closeout, offline sync, or device settings.",
+      "Run a discovery check, assign friendly names to devices, and confirm which workflows should use each discovered endpoint.",
+    ],
+    details: [
+      "Local Hub complements the BRC cloud service; it does not replace account login, billing, payments, review sync, messaging, or cloud reporting.",
+      "The strongest Local Hub use cases are local device discovery, hardware visibility, screen coordination, and service resilience when the venue has several operator screens.",
+      "The hub device should stay awake, connected to power, and on the same network segment as the devices it needs to discover.",
+      "Firewalls, guest Wi-Fi isolation, VPNs, captive portals, and router client-isolation settings can prevent discovery even when the internet connection works.",
+      "Use location-specific naming for hubs and devices so managers can tell which register, kitchen screen, display, or workstation they are looking at.",
+    ],
+    tips: [
+      "Run Local Hub on a stable device, not a staff phone that may leave the premises.",
+      "Keep guest Wi-Fi separate from the trusted operations network.",
+      "Do a quick discovery check before each busy service period if hardware is business-critical.",
+    ],
+    related: ["Hardware discovery", "Offline sync", "POS", "Customer display", "Kitchen display"],
+  },
+  {
+    id: "offline-sync",
+    category: "Local hub",
+    title: "Offline sync and queued local actions",
+    summary: "Understand which actions can be queued locally, how sync resumes, and what staff should check after connectivity returns.",
+    overview:
+      "Offline sync helps supported BRC workflows survive patchy Wi-Fi, temporary internet drops, or short service interruptions. The goal is to keep selected operational actions captured locally, show staff what is waiting, and sync those actions back when the device or hub can reach BRC again.",
+    steps: [
+      "Confirm the business has offline-ready workflows enabled for the relevant screens, such as register controls, order status changes, or selected operational updates.",
+      "Train staff to watch the offline sync strip or status view when the connection changes.",
+      "Continue only with supported offline actions and avoid workflows that clearly require live providers, such as online payments, messaging, review sync, or external delivery quotes.",
+      "When connectivity returns, open Offline Sync and review queued, syncing, completed, and failed actions.",
+      "Resolve conflicts or failed sync items before closeout so managers know which records reached the cloud system.",
+    ],
+    details: [
+      "Offline sync is scoped; it is not a promise that every feature works without internet.",
+      "Payment providers, bank checks, subscription state, SMS, email, review platforms, map services, delivery providers, and AI workflows may require a live connection.",
+      "Queued actions should keep enough context for managers to understand the screen, user, location, and time involved.",
+      "If two devices change the same record while offline, the final cloud state may need human review.",
+      "Closeout is the right moment to check that local actions have synced and no failed queue items need attention.",
+    ],
+    tips: [
+      "Keep a manager responsible for sync review during any known outage.",
+      "Do not repeatedly retry payments or provider actions unless the payment provider confirms the state.",
+      "Document the start and end time of a serious outage in manager notes.",
+    ],
+    related: ["Local Hub", "Register controls", "Manager closeout", "Finance", "Support"],
+  },
+  {
+    id: "hardware-discovery",
+    category: "Local hub",
+    title: "Hardware discovery and device setup",
+    summary: "Find supported local devices, name them clearly, assign workflows, and troubleshoot discovery problems.",
+    overview:
+      "Hardware discovery helps BRC find supported devices and screens on the local network so operators can attach them to practical workflows: register stations, kitchen displays, customer displays, local peripherals, and service devices. Discovery works best when the network is simple, trusted, and prepared before service.",
+    steps: [
+      "Put the hub device and supported hardware on the same trusted operations network.",
+      "Power on the devices you want BRC to discover and wait for them to join the network fully.",
+      "Open device and printer settings or the relevant hardware discovery screen in the console.",
+      "Run discovery, then assign a clear name such as Front Register 1, Kitchen Screen, Bar Display, or Manager Laptop.",
+      "Test the workflow that will use the device before relying on it with customers.",
+      "If discovery fails, check network isolation, firewall prompts, VPN state, device sleep mode, and whether the hardware is on guest Wi-Fi.",
+    ],
+    details: [
+      "Discovery depends on local network visibility; guest networks and client isolation commonly block it.",
+      "A device being online does not always mean it is discoverable by local services.",
+      "Friendly names matter because staff need to choose the right endpoint quickly during service.",
+      "Discovery should be tested after router changes, device replacements, operating-system updates, and venue network changes.",
+      "Some hardware may still require vendor drivers, firmware updates, pairing steps, or manual configuration outside BRC.",
+    ],
+    tips: [
+      "Label physical devices with the same names used in BRC.",
+      "Avoid changing router settings right before a busy shift.",
+      "Keep a simple network diagram for venues with multiple registers or screens.",
+    ],
+    related: ["Local Hub", "Offline sync", "POS", "Tables", "Support"],
+  },
+  {
     id: "public-page",
     category: "Public page",
     title: "Configuring the public Go page",
@@ -5963,11 +6049,12 @@ const HELP_ARTICLES = [
   },
 ];
 
-function MarketingContentPage({ slug, theme, onToggleTheme, onNavigate }) {
+function MarketingContentPage({ slug, articleId, theme, onToggleTheme, onNavigate }) {
   const normalizedSlug = slug === "api-docs" ? "api" : slug;
   if (normalizedSlug === "help") {
     return (
       <HelpCentrePage
+        initialArticleId={articleId}
         theme={theme}
         onToggleTheme={onToggleTheme}
         onNavigate={onNavigate}
@@ -6026,9 +6113,17 @@ function MarketingContentPage({ slug, theme, onToggleTheme, onNavigate }) {
   );
 }
 
-function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
-  const [query, setQuery] = useState("");
-  const [activeArticleId, setActiveArticleId] = useState(HELP_ARTICLES[0]?.id || "");
+function HelpCentrePage({ initialArticleId, theme, onToggleTheme, onNavigate }) {
+  const [query, setQuery] = useState(() => {
+    try {
+      return new URLSearchParams(window.location.search).get("search") || "";
+    } catch {
+      return "";
+    }
+  });
+  const [activeArticleId, setActiveArticleId] = useState(
+    initialArticleId || HELP_ARTICLES[0]?.id || ""
+  );
   const [activeCategory, setActiveCategory] = useState("All");
   const normalizedQuery = query.trim().toLowerCase();
   const categories = ["All", ...new Set(HELP_ARTICLES.map((article) => article.category))];
@@ -6057,8 +6152,17 @@ function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
 
   const activeArticle =
     filteredArticles.find((article) => article.id === activeArticleId) ||
+    HELP_ARTICLES.find((article) => article.id === initialArticleId) ||
     filteredArticles[0] ||
     HELP_ARTICLES[0];
+
+  useEffect(() => {
+    if (initialArticleId && HELP_ARTICLES.some((article) => article.id === initialArticleId)) {
+      setActiveArticleId(initialArticleId);
+      setActiveCategory("All");
+      setQuery("");
+    }
+  }, [initialArticleId]);
 
   return (
     <div className="content-page help-page">
@@ -6130,16 +6234,16 @@ function HelpCentrePage({ theme, onToggleTheme, onNavigate }) {
               </div>
               {filteredArticles.length ? (
                 filteredArticles.map((article) => (
-                  <button
+                  <a
                     key={article.id}
-                    type="button"
+                    href={`/help/${article.id}`}
                     className={`help-result ${activeArticle?.id === article.id ? "help-result-active" : ""}`}
                     onClick={() => setActiveArticleId(article.id)}
                   >
                     <span>{article.category}</span>
                     <strong>{article.title}</strong>
                     <small>{article.summary}</small>
-                  </button>
+                  </a>
                 ))
               ) : (
                 <div className="help-empty">
@@ -6323,6 +6427,268 @@ function Footer({ onNavigate }) {
   );
 }
 
+// ─── SEO ──────────────────────────────────────────────────────────────────────
+
+function absoluteUrl(path = "/") {
+  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+function upsertMeta(selector, attrs) {
+  let element = document.head.querySelector(selector);
+  if (!element) {
+    element = document.createElement("meta");
+    document.head.appendChild(element);
+  }
+  Object.entries(attrs).forEach(([key, value]) => {
+    element.setAttribute(key, value);
+  });
+}
+
+function upsertLink(rel, href) {
+  let element = document.head.querySelector(`link[rel="${rel}"]`);
+  if (!element) {
+    element = document.createElement("link");
+    element.setAttribute("rel", rel);
+    document.head.appendChild(element);
+  }
+  element.setAttribute("href", href);
+}
+
+function upsertJsonLd(id, graph) {
+  let element = document.getElementById(id);
+  if (!element) {
+    element = document.createElement("script");
+    element.id = id;
+    element.type = "application/ld+json";
+    document.head.appendChild(element);
+  }
+  element.textContent = JSON.stringify(graph);
+}
+
+function routePath(route) {
+  if (route.page === PAGES.TERMS) return "/terms";
+  if (route.page === PAGES.PRIVACY) return "/privacy";
+  if (route.page === PAGES.CONTACT) return "/contact";
+  if (route.page === PAGES.FEATURE) return `/features/${route.slug || "pos"}`;
+  if (route.page === PAGES.INDUSTRY) return `/${route.slug || "restaurants"}`;
+  if (route.page === PAGES.CONTENT) {
+    if (route.slug === "help" && route.articleId) return `/help/${route.articleId}`;
+    return `/${route.slug || "help"}`;
+  }
+  return "/";
+}
+
+function seoForRoute(route) {
+  const path = routePath(route);
+  const base = {
+    title: "BRC OS | POS, Ordering, Local Hub, Offline Sync, and Reputation Software",
+    description:
+      "BRC OS helps local businesses run POS, table QR ordering, inventory, staff, finance, local hub hardware discovery, offline sync, reputation recovery, reviews, rewards, and analytics.",
+    keywords:
+      "BRC OS, local business POS, offline sync POS, local hub, hardware discovery, table QR ordering, reputation management, review recovery, inventory, rota, payroll",
+    type: "website",
+    image: absoluteUrl("/og-image.png"),
+    path,
+  };
+
+  if (route.page === PAGES.FEATURE) {
+    const feature = FEATURES.find((item) => item.slug === route.slug) || FEATURES[0];
+    const detail = FEATURE_DETAIL[feature.slug] || FEATURE_DETAIL.ordering;
+    return {
+      ...base,
+      title: `${feature.title} | BRC OS Feature Guide`,
+      description: detail.subhead,
+      keywords: `${feature.title}, BRC ${feature.tag}, ${detail.proof.join(", ")}, local business software`,
+    };
+  }
+
+  if (route.page === PAGES.INDUSTRY) {
+    const page = INDUSTRY_PAGES[route.slug] || INDUSTRY_PAGES.restaurants;
+    return {
+      ...base,
+      title: `${page.eyebrow.replace("For ", "")} software | BRC OS`,
+      description: page.subhead,
+      keywords: `${page.modules.join(", ")}, ${page.proof.join(", ")}, BRC for ${route.slug}`,
+    };
+  }
+
+  if (route.page === PAGES.CONTENT) {
+    if (route.slug === "help") {
+      const article = HELP_ARTICLES.find((item) => item.id === route.articleId);
+      if (article) {
+        return {
+          ...base,
+          title: `${article.title} | BRC Help Center`,
+          description: article.summary,
+          keywords: `${article.category}, ${article.related.join(", ")}, BRC help, ${article.title}`,
+          type: "article",
+        };
+      }
+      return {
+        ...base,
+        title: "BRC Help Center | Setup Guides for Local Business Operations",
+        description:
+          "Search BRC help articles for Local Hub, hardware discovery, offline sync, POS, ordering, bookings, reputation recovery, campaigns, analytics, billing, and support.",
+        keywords:
+          "BRC help center, local hub setup, hardware discovery help, offline sync guide, POS help, ordering setup, reputation recovery help",
+      };
+    }
+    const normalizedSlug = route.slug === "api-docs" ? "api" : route.slug;
+    const page = CONTENT_PAGES[normalizedSlug] || CONTENT_PAGES.features;
+    return {
+      ...base,
+      title: `${page.title} | BRC`,
+      description: page.subtitle,
+      keywords: `${page.title}, BRC, local business operations, POS, reputation, ordering, bookings`,
+    };
+  }
+
+  if (route.page === PAGES.CONTACT) {
+    return {
+      ...base,
+      title: "Contact BRC | Sales, Support, Billing, and Technical Help",
+      description:
+        "Contact BRC for local business software support, onboarding, billing, verification, technical help, Local Hub setup, ordering, POS, and reputation workflows.",
+      keywords: "contact BRC, BRC support, BRC billing, BRC technical help, BRC onboarding",
+    };
+  }
+
+  if (route.page === PAGES.TERMS) {
+    return {
+      ...base,
+      title: "BRC Terms of Service",
+      description: "Read the BRC Terms of Service for business accounts, subscriptions, ordering, bookings, payments, messaging, reviews, AI, and acceptable use.",
+      keywords: "BRC terms, BRC terms of service, business software terms",
+    };
+  }
+
+  if (route.page === PAGES.PRIVACY) {
+    return {
+      ...base,
+      title: "BRC Privacy Policy",
+      description: "Read how BRC collects, uses, shares, secures, and retains account, customer, operational, review, billing, support, and device data.",
+      keywords: "BRC privacy, BRC privacy policy, customer data, business data protection",
+    };
+  }
+
+  return base;
+}
+
+function buildStructuredData(route, seo) {
+  const canonical = absoluteUrl(seo.path);
+  const breadcrumbs = seo.path
+    .split("/")
+    .filter(Boolean)
+    .reduce(
+      (items, part, index, parts) => [
+        ...items,
+        {
+          "@type": "ListItem",
+          position: index + 2,
+          name: part
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" "),
+          item: absoluteUrl(`/${parts.slice(0, index + 1).join("/")}`),
+        },
+      ],
+      [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }]
+    );
+  const graph = [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "BRC",
+      legalName: "BRC Labs LTD",
+      url: SITE_URL,
+      email: "support@brcapp.io",
+      address: LEGAL_COMPANY_ADDRESS,
+      logo: absoluteUrl("/logo-mark.svg"),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "BRC",
+      url: SITE_URL,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/help?search={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${SITE_URL}/#software`,
+      name: "BRC OS",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web, iOS, Android, macOS, Windows",
+      url: SITE_URL,
+      description: seo.description,
+      offers: PLANS.filter((plan) => typeof plan.monthly === "number").map((plan) => ({
+        "@type": "Offer",
+        name: `${plan.name} plan`,
+        price: String(plan.monthly),
+        priceCurrency: "USD",
+        url: absoluteUrl("/pricing"),
+      })),
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbs,
+    },
+  ];
+
+  if (route.page === PAGES.CONTENT && route.slug === "help" && route.articleId) {
+    const article = HELP_ARTICLES.find((item) => item.id === route.articleId);
+    if (article) {
+      graph.push({
+        "@type": "TechArticle",
+        headline: article.title,
+        description: article.summary,
+        url: canonical,
+        articleSection: article.category,
+        author: { "@id": `${SITE_URL}/#organization` },
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        mainEntityOfPage: canonical,
+      });
+    }
+  } else if (route.page === PAGES.HOME) {
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: FAQS.slice(0, 8).map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    });
+  }
+
+  return { "@context": "https://schema.org", "@graph": graph };
+}
+
+function applySeo(route) {
+  const seo = seoForRoute(route);
+  const canonical = absoluteUrl(seo.path);
+  document.title = seo.title;
+  upsertLink("canonical", canonical);
+  upsertMeta('meta[name="description"]', { name: "description", content: seo.description });
+  upsertMeta('meta[name="keywords"]', { name: "keywords", content: seo.keywords });
+  upsertMeta('meta[name="robots"]', { name: "robots", content: route.page === PAGES.AUDIT ? "noindex, nofollow" : "index, follow, max-image-preview:large" });
+  upsertMeta('meta[property="og:type"]', { property: "og:type", content: seo.type });
+  upsertMeta('meta[property="og:title"]', { property: "og:title", content: seo.title });
+  upsertMeta('meta[property="og:description"]', { property: "og:description", content: seo.description });
+  upsertMeta('meta[property="og:url"]', { property: "og:url", content: canonical });
+  upsertMeta('meta[property="og:image"]', { property: "og:image", content: seo.image });
+  upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: seo.title });
+  upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: seo.description });
+  upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: seo.image });
+  upsertJsonLd("brc-route-structured-data", buildStructuredData(route, seo));
+}
+
 // ─── APP ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -6332,6 +6698,13 @@ export default function App() {
     if (pathname === "/contact") return { page: PAGES.CONTACT };
     if (pathname === "/terms") return { page: PAGES.TERMS };
     if (pathname === "/privacy") return { page: PAGES.PRIVACY };
+    if (pathname.startsWith("/help/")) {
+      return {
+        page: PAGES.CONTENT,
+        slug: "help",
+        articleId: pathname.replace("/help/", "").replace(/\/$/, ""),
+      };
+    }
     const contentSlug = pathname.replace(/^\//, "").replace(/\/$/, "");
     if (INDUSTRY_PAGES[contentSlug]) {
       return { page: PAGES.INDUSTRY, slug: contentSlug };
@@ -6443,6 +6816,7 @@ export default function App() {
           "/salons",
           "/retail",
         ].includes(url.pathname) ||
+        url.pathname.startsWith("/help/") ||
         url.pathname.startsWith("/features/");
       if (!isLandingRoute) return;
 
@@ -6463,11 +6837,16 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    applySeo(route);
+  }, [route]);
+
+  useEffect(() => {
     trackMarketingEvent("page_view", {
       route: currentPage,
       slug: route.slug || "",
+      articleId: route.articleId || "",
     });
-  }, [currentPage, route.slug]);
+  }, [currentPage, route.slug, route.articleId]);
 
   useEffect(() => {
     const handleMarketingClick = (event) => {
@@ -6542,6 +6921,7 @@ export default function App() {
     return (
       <MarketingContentPage
         slug={route.slug}
+        articleId={route.articleId}
         onNavigate={navigateTo}
         theme={theme}
         onToggleTheme={toggleTheme}
