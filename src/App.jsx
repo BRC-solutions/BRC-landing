@@ -675,10 +675,10 @@ const FEATURES = [
   },
   {
     slug: "campaigns",
-    icon: "SMS",
+    icon: "EMAIL",
     accent: "var(--orange)",
     title: "Campaigns and automations",
-    body: "SMS and email journeys for feedback rewards, review requests, win-backs, reminders, and customer reactivation.",
+    body: "Email journeys for win-backs and customer reactivation, with SMS reserved for review and feedback prompts where configured.",
     tag: "Retention",
     outcome: "Bring customers back without manually sending every message.",
   },
@@ -990,7 +990,7 @@ const FEATURE_DETAIL = {
     subhead:
       "Run campaigns and journeys from the same place your orders, bookings, feedback, and customer profiles live.",
     bullets: [
-      "SMS and email campaign support",
+      "Email campaign and automation support",
       "Scheduled sends, automations, and win-back journeys",
       "Feedback reward and review request follow-ups",
       "Customer segments based on activity and consent",
@@ -1009,7 +1009,7 @@ const FEATURE_DETAIL = {
       "Instant discount delivery after feedback",
       "Unique, trackable codes and redemption scanning",
       "Campaign-linked offers and customer reactivation",
-      "Consent-aware SMS and email reward delivery",
+      "Consent-aware email rewards and review SMS prompts",
       "Performance reporting for offers and redemptions",
     ],
     conversion:
@@ -1235,10 +1235,10 @@ const FEATURE_GUIDES = {
   },
   campaigns: {
     setup: [
-      "Build campaigns from Boost using SMS or email depending on customer consent and contact details.",
+      "Build email campaigns from Boost using customer consent, contact details, and activity history.",
       "Choose campaign type: review request, feedback discount, low-rating recovery, win-back, staff/menu-based, or scheduled send.",
       "Set audience, offer, timing, and discount behaviour.",
-      "Track sent, clicked, redeemed, revenue-influenced results, and credit usage.",
+      "Track sent, clicked, redeemed, and revenue-influenced results.",
     ],
     dailyUse: [
       "Owners can see which campaigns are active, scheduled, sent, failed, clicked, or redeemed.",
@@ -1407,8 +1407,8 @@ const FEATURE_SURFACES = {
   campaigns: [
     "Boost contains campaign creation and scheduled sends for review requests, feedback discounts, low-rating recovery, win-backs, and customer reactivation.",
     "Journey analytics track low rating recovery, high rating thank-you, and inactive win-back execution states such as queued, sent, skipped, and failed.",
-    "Campaign results connect sends, recipients, redemptions, SMS credits, discounts, and revenue-influenced reporting.",
-    "Consent and contact availability decide whether SMS or email is appropriate, keeping follow-up cleaner and more defensible.",
+    "Campaign results connect sends, recipients, redemptions, discounts, and revenue-influenced reporting.",
+    "Consent and contact availability keep email follow-up cleaner and more defensible; SMS stays limited to review and feedback prompts.",
   ],
   rewards: [
     "Feedback rewards can be immediate or next-visit, with maximum discount rules and unique codes generated per customer moment.",
@@ -1418,7 +1418,7 @@ const FEATURE_SURFACES = {
   ],
   analytics: [
     "Insights cover review volume, average rating, resolved percentage, high-risk reviews, rating distribution, platform mix, and monthly movement.",
-    "Campaign analytics show recipients, sends, redemptions, redemption rate, credit usage, average discount, and revenue-influenced value.",
+    "Campaign analytics show recipients, sends, redemptions, redemption rate, average discount, and revenue-influenced value.",
     "Operational analytics can include staff ratings, menu/catalog performance, booking/order activity, competitor movement, public signals, and social mentions.",
     "Owner digest and alerts summarise new reviews, low ratings, open replies, campaign redemptions, risks, and suggested actions.",
   ],
@@ -1505,9 +1505,9 @@ const FEATURE_APP_LOCATIONS = {
   ],
   campaigns: [
     { area: "Boost → Campaigns", detail: "Create review requests, feedback discounts, low-rating recovery, win-back, staff/menu-based, and scheduled campaigns." },
-    { area: "Campaign performance", detail: "Track sent, failed, redeemed, credit usage, discount value, and revenue-influenced results." },
+    { area: "Campaign performance", detail: "Track sent, failed, redeemed, discount value, and revenue-influenced results." },
     { area: "Insights → Journeys", detail: "Review low-rating recovery, high-rating thank-you, and inactive win-back journey executions." },
-    { area: "Customer records and consent", detail: "Use available SMS/email contact details and consent state to decide which follow-up channel is appropriate." },
+    { area: "Customer records and consent", detail: "Use available email details and consent state for campaigns; reserve SMS details for review and feedback prompts." },
   ],
   rewards: [
     { area: "Boost → Review QR rewards", detail: "Set discount percent and choose immediate, next-visit, or no reward timing for feedback sessions." },
@@ -1821,7 +1821,7 @@ function Campaigns() {
                 <div className="cm-kpi-val" style={{ color: "#a78bfa" }}>
                   1,284
                 </div>
-                <div className="cm-kpi-label">SMS Sent</div>
+                <div className="cm-kpi-label">Emails Sent</div>
               </div>
               <div className="cm-kpi">
                 <div className="cm-kpi-val" style={{ color: "#34d399" }}>
@@ -1892,8 +1892,8 @@ const PLANS = [
       "Simple pickup, booking, and table request workflows",
       "Own web and mobile hardware screens",
       "Basic fulfilment status",
-      "Campaign basics and feedback discounts",
-      "SMS prompts, credits paid separately",
+      "Email campaign basics and feedback discounts",
+      "Review SMS prompts, credits paid separately",
     ],
   },
   {
@@ -1920,7 +1920,7 @@ const PLANS = [
       "Operations console for orders, bookings, feedback, and recovery",
       "Public signals, social presence, and brand mention monitoring",
       "Competitor tracking up to 10",
-      "Advanced campaigns, customer segments, and priority support",
+      "Advanced email campaigns, customer segments, and priority support",
     ],
   },
   {
@@ -2054,7 +2054,7 @@ function Pricing() {
         <div className="pricing-addons">
           <div className="addon-icon">💬</div>
           <div>
-            <strong>Need more SMS credits?</strong>
+            <strong>Need more review SMS credits?</strong>
             <span className="addon-text">
               {" "}
               Add-on packs: 100 credits for $9 · 500 credits for $39
@@ -2107,7 +2107,7 @@ const FAQS = [
   },
   {
     q: "How does the discount reward work?",
-    a: "As soon as a customer submits their feedback, they receive a personalised discount code via SMS. The code is unique to them, trackable, and can be set to expire after a time of your choosing. Businesses using rewards typically see 3× more feedback submissions.",
+    a: "As soon as a customer submits their feedback, they can receive a personalised discount code by SMS where review SMS is configured. The code is unique to them, trackable, and can be set to expire after a time of your choosing. Businesses using rewards typically see 3× more feedback submissions.",
   },
   {
     q: "When and how are customers asked for public reviews?",
@@ -2312,7 +2312,7 @@ const INDUSTRY_PAGES = {
       ["Publish services", "Create services, staff, capacity, duration, prices, deposits, buffers, and booking rules."],
       ["Reduce admin", "Use confirmations, reminders, customer notes, and booking status to keep the team aligned."],
       ["Recover bad experiences", "Follow up after appointments with private feedback, route unhappy clients to recovery, and send legitimate review requests to happy clients."],
-      ["Reactivate clients", "Send win-back offers to lapsed clients with consent-aware SMS or email."],
+      ["Reactivate clients", "Send win-back offers to lapsed clients by email, with SMS reserved for review and feedback prompts."],
     ],
     operations: [
       ["Service setup", "Manage services, durations, prices, deposits, buffers, staff availability, and booking rules in one place."],
@@ -2982,7 +2982,7 @@ function TermsOfService() {
                 AI-powered sentiment analysis and review authenticity detection
               </li>
               <li>Competitor intelligence and benchmarking</li>
-              <li>Automated SMS campaigns and win-back messaging</li>
+              <li>Automated email campaigns, win-back messaging, and review SMS prompts</li>
               <li>Staff performance tracking and analytics</li>
               <li>Menu item performance insights</li>
               <li>Multi-location business management</li>
@@ -3091,7 +3091,7 @@ function TermsOfService() {
             <ul>
               <li>Automated discount delivery to customers</li>
               <li>Review request follow-ups</li>
-              <li>Win-back campaigns</li>
+              <li>Review and feedback prompts</li>
               <li>Customer communication</li>
             </ul>
             <p>
@@ -3140,7 +3140,7 @@ function TermsOfService() {
               <li>Automatic billing for recurring subscriptions</li>
               <li>30-day notice for price changes</li>
               <li>No refunds for partial months except as required by law</li>
-              <li>Additional charges for SMS credits and overages</li>
+              <li>Additional charges for review SMS credits and overages</li>
             </ul>
           </section>
 
@@ -3354,7 +3354,7 @@ function PrivacyPolicy() {
               <li>Provide, maintain, and improve BRC services</li>
               <li>Process and analyze customer feedback</li>
               <li>Generate AI-powered insights and recommendations</li>
-              <li>Send automated SMS campaigns and notifications</li>
+              <li>Send review SMS prompts and operational notifications</li>
               <li>Monitor review platforms and track reputation metrics</li>
             </ul>
 
@@ -3794,7 +3794,7 @@ function EnhancedTermsOfService() {
               <li>feedback collection, customer inboxes, support, and follow-up tools;</li>
               <li>review monitoring, review request flows, reply drafting, and reputation reporting;</li>
               <li>tools to identify suspicious, fake, or policy-breaching reviews and prepare dispute materials;</li>
-              <li>campaigns, rewards, win-back messages, SMS, email, and owner digests;</li>
+              <li>email campaigns, rewards, win-back messages, review SMS prompts, and owner digests;</li>
               <li>analytics, staff, menu, location, competitor, and performance insights; and</li>
               <li>admin, billing, plan-gating, audit, and support tools.</li>
             </ul>
@@ -3885,7 +3885,7 @@ function EnhancedTermsOfService() {
             <p>
               BRC can send or help you send service messages, receipts,
               reminders, feedback requests, review requests, reward messages,
-              SMS, email, and campaign messages. You are responsible for making
+              review SMS prompts, email, and campaign messages. You are responsible for making
               sure each message is lawful, accurate, non-deceptive, and sent
               with any consent or opt-out mechanism required by law.
             </p>
@@ -3935,16 +3935,16 @@ function EnhancedTermsOfService() {
             <h2>10. Plans, trials, billing, and taxes</h2>
             <p>
               Paid features require an active plan, trial, add-on, or usage
-              allowance. Prices, plan limits, modules, overages, SMS credits,
+              allowance. Prices, plan limits, modules, overages, review SMS credits,
               storage limits, and included features may vary by plan, region,
               sales channel, promotion, or written agreement.
             </p>
             <ul>
               <li>Subscriptions renew automatically for the selected billing period unless cancelled before the renewal date through the BRC billing page, an external billing portal, marketplace subscription settings, or another channel we make available.</li>
               <li>Cancellation stops future renewals; it does not create a refund or credit for the current billing period unless required by law or expressly agreed in writing.</li>
-              <li>You authorise BRC and its external payment, subscription, banking, card network, and marketplace providers to charge fees, taxes, overages, add-ons, SMS credits, renewal amounts, and failed-payment retries.</li>
+              <li>You authorise BRC and its external payment, subscription, banking, card network, and marketplace providers to charge fees, taxes, overages, add-ons, review SMS credits, renewal amounts, and failed-payment retries.</li>
               <li>Trials may expire, convert to paid subscriptions, be limited, or be withdrawn if abused. You are responsible for cancelling before a trial converts if you do not want paid access.</li>
-              <li>Fees, setup charges, SMS credits, add-ons, overages, and partial billing periods are non-refundable and non-transferable except where required by law or expressly stated in your plan, order form, or written agreement.</li>
+              <li>Fees, setup charges, review SMS credits, add-ons, overages, and partial billing periods are non-refundable and non-transferable except where required by law or expressly stated in your plan, order form, or written agreement.</li>
               <li>Downgrades, cancelled modules, unused credits, unused capacity, unused time, or reduced usage do not entitle you to a refund, cash credit, or carried-forward allowance unless we expressly say otherwise.</li>
               <li>If payment fails, is reversed, charged back, disputed, or becomes overdue, we may retry payment, suspend paid features, restrict messaging, pause public checkout or booking tools, downgrade access, recover collection costs, or terminate the account.</li>
               <li>We may change prices or plan packaging with reasonable notice for paid renewals. Continued use after the effective date means you accept the new pricing.</li>
@@ -4927,7 +4927,7 @@ const CONTENT_PAGES = {
       },
       {
         title: "Billing notes",
-        body: "Subscriptions renew automatically unless cancelled before renewal. Add-ons such as SMS credits, higher usage, onboarding, or specialist setup may be charged separately.",
+        body: "Subscriptions renew automatically unless cancelled before renewal. Add-ons such as review SMS credits, higher usage, onboarding, or specialist setup may be charged separately.",
       },
     ],
   },
@@ -5324,14 +5324,14 @@ const HELP_ARTICLES = [
     steps: [
       "Choose the audience carefully, such as recent visitors, lapsed customers, reward claimants, or booking customers.",
       "Write a clear offer with terms, expiry, and any restrictions.",
-      "Use SMS or email only where you have the right permission and an opt-out path.",
+    "Use email campaigns and review SMS prompts only where you have the right permission and an opt-out path.",
       "Track code usage, replies, review lift, repeat activity, and customer recovery outcomes.",
       "Avoid sending too frequently; owner trust and customer trust both depend on restraint.",
     ],
     details: [
       "Campaign records can include offer names, recipients, message channels, delivery state, redemption state, and linked customer history.",
       "Rewards can be used after feedback, review requests, staff QR sessions, or specific customer journeys depending on configuration.",
-      "Consent and contact availability decide whether SMS or email is appropriate.",
+      "Consent and contact availability decide whether email campaigns or review SMS prompts are appropriate.",
       "Good campaign reporting looks at redemption, repeat activity, customer recovery, and long-term reputation impact.",
     ],
     tips: [
@@ -5399,14 +5399,14 @@ const HELP_ARTICLES = [
     id: "billing",
     category: "Billing",
     title: "Plans, billing, trials, and cancellation",
-    summary: "Understand plan access, renewals, SMS credits, add-ons, and cancellation behaviour.",
+    summary: "Understand plan access, renewals, review SMS credits, add-ons, and cancellation behaviour.",
     overview:
       "Billing controls which modules and limits are available to the business. Trial state, subscription status, billing provider, plan level, renewal timing, add-ons, and payment health can all affect access.",
     steps: [
       "Plan access depends on the selected subscription, billing period, modules, usage limits, and add-ons.",
       "Trials may convert to paid access unless cancelled before the renewal or conversion date.",
       "Cancelling stops future renewals but does not automatically refund the current billing period.",
-      "SMS credits, add-ons, overages, and setup charges may be separate from the base plan.",
+      "Review SMS credits, add-ons, overages, and setup charges may be separate from the base plan.",
       "If payment fails or is disputed, paid features can be restricted until billing is resolved.",
     ],
     details: [
@@ -5420,7 +5420,7 @@ const HELP_ARTICLES = [
       "Keep billing owner contact details current.",
       "Contact support before a major migration or multi-location rollout if plan limits are unclear.",
     ],
-    related: ["Plans", "Trials", "SMS credits", "Upgrade gates"],
+    related: ["Plans", "Trials", "Review SMS credits", "Upgrade gates"],
   },
   {
     id: "catalog-menu",
@@ -5918,7 +5918,7 @@ const HELP_ARTICLES = [
     steps: [
       "Give users the minimum access they need for their role.",
       "Collect only the customer details needed for the workflow.",
-      "Use consent-aware SMS and email workflows for campaigns and follow-up.",
+      "Use consent-aware email workflows for campaigns and review SMS prompts only for review or feedback follow-up.",
       "Keep business privacy notices, refund terms, delivery terms, booking terms, and consent copy accurate.",
       "Contact support immediately if you believe an account, staff login, or customer record is at risk.",
     ],
