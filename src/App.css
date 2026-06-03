@@ -810,9 +810,9 @@ img { max-width: 100%; }
 }
 
 .nav-logo-mark {
-  border: 1px solid rgba(124, 58, 237, .14);
-  border-radius: 9px;
-  box-shadow: 0 8px 20px rgba(91, 33, 182, .10);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .nav-logo-text {
