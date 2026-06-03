@@ -532,7 +532,7 @@ const OPERATIONS_STACK = [
   {
     eyebrow: "Back office",
     title: "Catalog, inventory, purchasing, and vendors",
-    body: "Catalog setup, stock tracking, recipes, vendor and supplier purchasing, item availability, bundles, modifiers, allergens, and menu versions.",
+    body: "AI menu import from photos or PDFs, catalog setup, stock tracking, recipes, vendor and supplier purchasing, item availability, bundles, modifiers, allergens, and menu versions.",
     items: ["Inventory", "Vendors", "Purchasing", "Catalog"],
   },
   {
@@ -698,9 +698,9 @@ const FEATURES = [
     icon: "STK",
     accent: "var(--green)",
     title: "Inventory, purchasing, and vendors",
-    body: "Stock, recipes, vendors, purchasing, catalog availability, bundles, variants, allergens, labels, and menu versions in one operational layer.",
+    body: "Stock, recipes, vendors, purchasing, catalog availability, bundles, variants, modifiers, allergens, labels, menu versions, and AI menu import from photos or PDFs.",
     tag: "Stock",
-    outcome: "Stop selling blind and connect what customers order to what the team needs to buy or prepare.",
+    outcome: "Upload a menu photo or PDF to draft items, prices, variants, and modifiers instead of entering everything one by one.",
   },
   {
     slug: "staff-ops",
@@ -1086,8 +1086,9 @@ const FEATURE_DETAIL = {
   inventory: {
     headline: "Inventory, catalog, purchasing, and vendors connected to what customers buy.",
     subhead:
-      "BRC links catalog setup, item availability, recipes, stock movement, purchasing, vendors, suppliers, variants, bundles, allergens, and menu versions to the same operating console.",
+      "BRC links catalog setup, item availability, recipes, stock movement, purchasing, vendors, suppliers, variants, bundles, allergens, and menu versions to the same operating console. AI catalogue setup can read menu photos or PDFs and draft menu items, prices, variations, modifiers, and options so teams do not have to upload every item one by one.",
     bullets: [
+      "AI menu import from photos or PDFs for draft items, prices, variations, modifiers, and options",
       "Inventory quantities, stock controls, and sold-out or hidden states",
       "Recipes, item labels, variants, bundles, modifiers, allergens, and SKUs",
       "Purchasing and vendor workflows for supplier-driven stock replenishment",
@@ -1095,8 +1096,8 @@ const FEATURE_DETAIL = {
       "Item performance signals that connect sales, feedback, and stock decisions",
     ],
     conversion:
-      "Why subscribe: stock, catalog, vendors, and ordering stay connected, so teams can stop updating separate menus, spreadsheets, and purchasing notes.",
-    proof: ["Stock visibility", "Vendors", "Purchasing"],
+      "Why subscribe: stock, catalog, vendors, and ordering stay connected, and AI setup removes the slowest first step by turning an existing menu photo or PDF into reviewed catalogue drafts.",
+    proof: ["AI menu import", "Stock visibility", "Vendors"],
     bestFor: "Food, retail, and inventory-led local businesses that need the public catalog, POS, and back-office stock picture to agree.",
   },
   finance: {
@@ -1311,17 +1312,18 @@ const FEATURE_GUIDES = {
   },
   "ai-intelligence": {
     setup: [
+      "Upload a menu photo or PDF when catalogue setup is the first job; AI can draft menu items, prices, variations, modifiers, and options before the team reviews them.",
       "Enable the Business organisation dashboard so AI operations can read the organisation scope instead of a single isolated location.",
       "Connect the signals that make the AI manager useful: orders, POS revenue, reviews, feedback sentiment, stock, recipes, rota, time off, campaigns, devices, closeout, and finance.",
       "Open the AI operations panel and review the owner brief, health score, revenue trend, forecast demand, stock alerts, labor gaps, and digital twin simulations.",
       "Use the Ask box for questions such as why sales changed, which sentiment trend may cause revenue loss, what to prep, what to reorder, or whether to adjust staffing.",
-      "Keep review summaries, reply drafts, suspicious-review analysis, and catalogue setup enabled as supporting AI workflows around the main organisation dashboard.",
+      "Keep review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup enabled as supporting AI workflows around the main organisation dashboard.",
     ],
     dailyUse: [
       "Owners ask the AI manager what needs attention, why revenue changed, what loss risk is building from sentiment or low ratings, and what the next operating move should be.",
       "Managers use the AI owner brief to clear urgent actions across stock, staffing, location health, closeout variance, offline devices, and reputation risk.",
       "Teams use demand forecasts to plan prep, reorders, and labor cover before the next rush instead of reacting after sales or sentiment has already moved.",
-      "Review summaries, reply drafts, suspicious-review analysis, and catalogue setup remain useful supporting tools, with human approval before anything customer-facing changes.",
+      "Review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup remain useful supporting tools, with human approval before anything customer-facing changes.",
     ],
     planNote: "The organisation AI manager is the Business-plan story. Growth and Pro can still benefit from AI summaries, reply drafts, and other supporting AI features, but the main loss-risk and Ask workflow belongs in the organisation dashboard.",
   },
@@ -1341,7 +1343,8 @@ const FEATURE_GUIDES = {
   },
   inventory: {
     setup: [
-      "Create categories and catalog items with prices, images, SKUs, variants, modifiers, bundles, labels, and allergen information.",
+      "Upload a clear menu photo or PDF to let AI draft categories, items, prices, variations, modifiers, and options instead of entering each item one by one.",
+      "Review the AI draft, then confirm categories and catalog items with prices, images, SKUs, variants, modifiers, bundles, labels, and allergen information.",
       "Turn on inventory tracking where stock matters, then set quantities, thresholds, recipes, and availability states.",
       "Use purchasing and vendor workflows to capture supplier needs and replenishment activity before busy periods.",
       "Publish menu versions or public catalog updates only when the operation is ready.",
@@ -1477,7 +1480,7 @@ const FEATURE_SURFACES = {
     "The Ask manager chat answers questions about why sales changed, what needs attention, what loss risk is emerging from sentiment or low ratings, what to prep, what to reorder, and whether staffing should change.",
     "Autopilot forecasts orders, revenue, prep quantities, reorder actions, and target labor hours so owners can act before the next service period.",
     "Restaurant digital twin simulations show likely operational impact from changes such as price moves, capacity changes, station workload, table turns, or service adjustments.",
-    "Supporting AI remains available around the organisation workflow: review summaries, editable reply drafts, suspicious-review analysis, and AI catalogue setup from photos or PDFs.",
+    "Supporting AI remains available around the organisation workflow: review summaries, editable reply drafts, suspicious-review analysis, and AI catalogue setup that drafts menu items, prices, variations, modifiers, and options from photos or PDFs.",
   ],
   team: [
     "More/settings includes business connection, locations, review channels, competitors, owner digest, notifications, public page, catalog, tables, services, delivery, finance, team, and account settings.",
@@ -1486,6 +1489,7 @@ const FEATURE_SURFACES = {
     "Billing, plan gates, trial states, subscription status, support, audit-friendly admin flows, and feature overrides are part of the operating layer.",
   ],
   inventory: [
+    "AI catalogue setup can read menu photos or PDFs and draft categories, items, prices, variations, modifiers, options, and descriptions before the team reviews and publishes.",
     "Catalog setup includes categories, item images, prices, SKUs, variants, modifier groups, bundles, allergens, labels, stock/availability, hidden items, and currency.",
     "Inventory views cover quantities, recipe-linked usage, negative quantity protections, sold-out state, and replenishment signals.",
     "Purchasing and vendor surfaces support supplier-driven back-office work where stock needs to be received, planned, or ordered.",
@@ -1583,7 +1587,7 @@ const FEATURE_APP_LOCATIONS = {
     { area: "Organisation dashboard → AI operations", detail: "Review health score, revenue trend, autopilot brief, inventory forecast, prep plan, reorder actions, labor forecast, and business advisor summary." },
     { area: "Organisation dashboard → Ask", detail: "Ask why sales changed, what sentiment may cause loss, what to prep, what to reorder, what staffing needs changing, or what experiment to try next." },
     { area: "Organisation dashboard → Digital twin", detail: "Inspect simulations, prep-station workload, table turns, and operational impacts before changing pricing, service, or capacity." },
-    { area: "Inbox / Catalog support", detail: "Use review summaries, reply drafts, suspicious-review context, and AI catalogue setup as supporting workflows around the main AI manager." },
+    { area: "Inbox / Catalog support", detail: "Use review summaries, reply drafts, suspicious-review context, and AI catalogue setup that drafts menu items, prices, variations, and modifiers from photos or PDFs." },
   ],
   team: [
     { area: "More → Team", detail: "Invite owners, managers, and staff, assign roles, capabilities, and location scope." },
@@ -1592,7 +1596,7 @@ const FEATURE_APP_LOCATIONS = {
     { area: "Billing / Upgrade / Support", detail: "Manage trial state, plan gates, feature overrides, subscription status, and support workflows." },
   ],
   inventory: [
-    { area: "More → Catalog / Menu", detail: "Create categories, prices, items, variants, modifiers, bundles, images, labels, allergens, and availability states." },
+    { area: "More → Catalog / Menu", detail: "Upload a menu photo or PDF for AI setup, then review drafted categories, prices, items, variations, modifiers, bundles, images, labels, allergens, and availability states." },
     { area: "More → Inventory", detail: "Track quantities, recipes, stock movement, item availability, and inventory-sensitive workflows." },
     { area: "More → Purchasing", detail: "Plan and manage supplier purchasing activity connected to catalog and inventory needs." },
     { area: "Operations / Go page", detail: "Keep what staff can sell and what customers can order aligned with real stock and menu readiness." },
@@ -5518,17 +5522,19 @@ const HELP_ARTICLES = [
     id: "catalog-menu",
     category: "Catalog",
     title: "Catalog, menu, services, variants, and bundles",
-    summary: "Build the items customers see, including categories, prices, images, variants, bundles, allergens, labels, and availability.",
+    summary: "Build or import the items customers see, including categories, prices, images, variants, modifiers, bundles, allergens, labels, and availability.",
     overview:
-      "The catalog is the source of truth for customer ordering, public menu browsing, pickup, table ordering, and many reporting views. For service businesses, the same setup discipline applies to service lists, durations, prices, and availability.",
+      "The catalog is the source of truth for customer ordering, public menu browsing, pickup, table ordering, and many reporting views. AI catalogue setup can draft menu items, prices, variations, modifiers, options, and descriptions from clear photos or PDFs so the team does not have to upload the menu one item at a time. For service businesses, the same setup discipline applies to service lists, durations, prices, and availability.",
     steps: [
-      "Create clear categories first so customers can scan the menu or service list quickly.",
+      "Start by uploading a clear menu photo or PDF when available, then review the AI-generated draft before publishing anything.",
+      "Create or confirm clear categories so customers can scan the menu or service list quickly.",
       "Add each item with a short name, useful description, price, image, SKU if needed, and availability state.",
-      "Use variants for size, style, or option changes that alter price or inventory.",
+      "Use variants and modifiers for size, style, add-ons, toppings, sides, removals, or option changes that alter price or inventory.",
       "Use bundles when one sellable item is made from multiple catalog items, such as meal deals, sets, packages, or grouped services.",
       "Add allergens, labels, hidden states, stock tracking, and sort order before publishing the public page.",
     ],
     details: [
+      "AI-imported catalogue drafts should be checked carefully for prices, spelling, variants, modifiers, allergens, tax, and availability before they go live.",
       "Categories help organise public browsing and internal reporting.",
       "Variants are best for customer choices attached to one item, while bundles are best for grouped offers or packages.",
       "Allergen and dietary information should be kept accurate and reviewed when recipes, suppliers, or preparation methods change.",
