@@ -186,6 +186,7 @@ function Nav({ theme = "dark", onToggleTheme }) {
 
   const links = [
     { label: "Features", href: "/#features" },
+    { label: "AI", href: "/features/ai-intelligence" },
     { label: "POS", href: "/features/pos" },
     { label: "Ordering", href: "/features/ordering" },
     { label: "Pricing", href: "/#pricing" },
@@ -747,6 +748,15 @@ const FEATURES = [
     outcome: "Know what is worth fixing, promoting, or charging for.",
   },
   {
+    slug: "ai-intelligence",
+    icon: "AI",
+    accent: "var(--purple)",
+    title: "AI intelligence",
+    body: "AI review summaries, reply drafts, suspicious-review risk signals, operational issue detection, owner digests, and catalogue setup support.",
+    tag: "AI",
+    outcome: "Spend less time reading every signal manually and more time fixing what matters.",
+  },
+  {
     slug: "team",
     icon: "ORG",
     accent: "var(--purple)",
@@ -852,6 +862,12 @@ function FeatureGlyph({ slug }) {
     analytics: (
       <>
         <path d="M4 19V5M4 19h16M7 15l4-4 3 3 5-7" {...common} />
+      </>
+    ),
+    "ai-intelligence": (
+      <>
+        <path d="M12 3l1.4 4.2L17.5 9l-4.1 1.8L12 15l-1.4-4.2L6.5 9l4.1-1.8L12 3z" {...common} />
+        <path d="M5 14l.8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8L5 14zM19 13l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9L19 13z" {...common} />
       </>
     ),
     team: (
@@ -1033,6 +1049,23 @@ const FEATURE_DETAIL = {
       "Why subscribe: owners get one place to see what is working, where revenue is leaking, and which actions deserve attention.",
     proof: ["Owner digest", "Competitor view", "Revenue-influenced reporting"],
     bestFor: "Owners and managers who want one weekly command center instead of checking reviews, orders, campaigns, and staff performance separately.",
+  },
+  "ai-intelligence": {
+    headline: "AI intelligence for reviews, replies, risks, and owner decisions.",
+    subhead:
+      "BRC uses AI inside the organisation dashboard and reputation workflows to summarise reviews, draft replies, highlight operational issues, surface suspicious-review signals, and support smarter catalogue and owner-insight work.",
+    bullets: [
+      "AI summaries that turn long reviews and feedback into faster owner context",
+      "Reply drafts that give managers a useful starting point while keeping final approval human",
+      "Suspicious-review risk signals, fraud probability context, and dispute-ready notes",
+      "Operational issue detection across service, staff, items, feedback, reviews, and reputation themes",
+      "AI catalogue setup support from photos or PDFs where plan and workflow allow",
+      "Owner digests and recommendation workflows that help teams decide what to fix, promote, or monitor next",
+    ],
+    conversion:
+      "Why subscribe: AI makes the dashboard more than a reporting screen. It helps owners understand what changed, respond faster, and connect reputation signals to operational action without reading every record from scratch.",
+    proof: ["Review summaries", "Reply drafts", "Risk signals"],
+    bestFor: "Owners, managers, and multi-location teams that need faster review response, clearer risk triage, and a practical summary of what needs attention.",
   },
   team: {
     headline: "Built for owners, managers, staff, and multiple locations.",
@@ -1276,6 +1309,20 @@ const FEATURE_GUIDES = {
     ],
     planNote: "Analytics is the subscription proof layer: it shows the owner where BRC is saving time, protecting reputation, and influencing revenue.",
   },
+  "ai-intelligence": {
+    setup: [
+      "Connect review channels and feedback workflows so the AI layer has real reputation and customer-experience context.",
+      "Enable AI features on the right plan, then confirm which managers or owners are allowed to view summaries, drafts, and risk analysis.",
+      "Review owner digest, alert, and organisation dashboard settings so AI-supported insights land in the places managers already check.",
+      "For catalogue setup support, prepare clear item photos or PDFs and review the generated catalogue before publishing it to customers or staff.",
+    ],
+    dailyUse: [
+      "Managers open review detail to read an AI summary, review suspicious-review risk context, and start from an AI reply draft when responding.",
+      "Owners use dashboard and digest summaries to spot low ratings, open replies, operational issues, competitor movement, and reputation risks.",
+      "Teams treat AI output as decision support: approve, edit, or reject drafts and keep human judgement in charge of customer-facing replies.",
+    ],
+    planNote: "AI summaries and reply drafts are a Growth plan reason; deeper catalogue setup, organisation dashboards, and broader insight workflows strengthen Pro and Business plans.",
+  },
   team: {
     setup: [
       "Invite owners, managers, and staff with role-based permissions.",
@@ -1423,6 +1470,12 @@ const FEATURE_SURFACES = {
     "Operational analytics can include staff ratings, menu/catalog performance, booking/order activity, competitor movement, public signals, and social mentions.",
     "Owner digest and alerts summarise new reviews, low ratings, open replies, campaign redemptions, risks, and suggested actions.",
   ],
+  "ai-intelligence": [
+    "Review detail includes AI Intelligence with a concise review summary, fraud probability context, risk category breakdowns, and analysis notes where available.",
+    "Reply workflows can use AI-generated drafts as editable starting points before the owner or manager approves, copies, or posts a public response.",
+    "Dashboard and owner digest workflows can summarise low ratings, open replies, recurring operational issues, campaign movement, and reputation risks.",
+    "Catalogue setup support can convert prepared photos or PDFs into draft item data that the team reviews before using in live ordering or POS workflows.",
+  ],
   team: [
     "More/settings includes business connection, locations, review channels, competitors, owner digest, notifications, public page, catalog, tables, services, delivery, finance, team, and account settings.",
     "Business type presets tailor modules for restaurants, cafes, bakeries, retail, salons, spas, gyms, clinics, and service businesses.",
@@ -1521,6 +1574,12 @@ const FEATURE_APP_LOCATIONS = {
     { area: "Insights → Owner assistant", detail: "See digest alerts for low ratings, open replies, new reviews, redemptions, and suggested actions." },
     { area: "Insights → Competitors / Public Signals", detail: "Monitor competitor movement, public mentions, sentiment, and external reputation context." },
     { area: "Business reports", detail: "Use exports, scheduled reports, and location rollups on higher plans where deeper reporting is needed." },
+  ],
+  "ai-intelligence": [
+    { area: "Inbox → Review detail", detail: "Read AI summaries, review risk signals, inspect fraud probability context, and use AI draft support before replying." },
+    { area: "Inbox → Report Fake Review", detail: "Use suspicious-review context and analysis notes to prepare cleaner platform dispute material." },
+    { area: "Insights / Organisation dashboard", detail: "Review owner summaries, low-rating risks, operational themes, location rollups, and recommendation-style prompts." },
+    { area: "Catalog / Menu setup", detail: "Use AI catalogue setup from photos or PDFs where enabled, then review generated item data before publishing." },
   ],
   team: [
     { area: "More → Team", detail: "Invite owners, managers, and staff, assign roles, capabilities, and location scope." },
@@ -4909,6 +4968,7 @@ const CONTENT_PAGES = {
           { label: "Inventory", href: "/features/inventory" },
           { label: "Rota and payroll", href: "/features/staff-ops" },
           { label: "Finance", href: "/features/finance" },
+          { label: "AI intelligence", href: "/features/ai-intelligence" },
           { label: "Market signals", href: "/features/market-signals" },
           { label: "Ordering", href: "/features/ordering" },
           { label: "Bookings", href: "/features/bookings" },
@@ -5178,6 +5238,33 @@ const HELP_ARTICLES = [
       "Use warnings as setup prompts before assuming a workflow is broken.",
     ],
     related: ["Analytics", "Feedback", "Notifications", "Owner digest"],
+  },
+  {
+    id: "ai-intelligence",
+    category: "AI",
+    title: "Using AI intelligence in BRC",
+    summary: "Use AI summaries, reply drafts, risk signals, and owner digests without removing human approval.",
+    overview:
+      "AI intelligence in BRC is designed to reduce busywork around reputation and operations. It can summarise reviews, prepare editable reply drafts, highlight suspicious-review risk signals, surface recurring operational issues, support owner digests, and help with catalogue setup where the plan and workflow allow.",
+    steps: [
+      "Connect review channels and feedback workflows so AI summaries and risk context have real customer activity to work from.",
+      "Open a review detail and read the AI Intelligence section before deciding whether the review needs a reply, recovery action, or suspicious-review dispute.",
+      "Use AI reply drafts as a starting point, then edit the wording so it matches the business voice and the specific customer situation.",
+      "Check risk scores, category breakdowns, and analysis notes before using the Report Fake Review workflow.",
+      "Review owner digest or organisation dashboard summaries regularly so recurring staff, service, item, or reputation issues are not missed.",
+    ],
+    details: [
+      "AI summaries are meant to help managers understand the issue faster; they do not replace reading the original review when the situation is sensitive.",
+      "Reply drafts should be approved by a human before anything customer-facing is posted or copied to a review platform.",
+      "Suspicious-review signals are decision support only. Google, Yelp, TripAdvisor, and other platforms control final moderation and removal decisions.",
+      "AI catalogue setup from photos or PDFs creates draft item data that should be checked for names, prices, allergens, modifiers, tax, and availability before publishing.",
+    ],
+    tips: [
+      "Keep replies specific, calm, and factual after editing an AI draft.",
+      "Escalate high-risk or abusive reviews to an owner before posting publicly.",
+      "Use repeated AI-highlighted themes as operations signals for staff coaching, menu changes, or service process fixes.",
+    ],
+    related: ["Reviews", "Fake review disputes", "Analytics", "Catalog"],
   },
   {
     id: "reputation-recovery",
