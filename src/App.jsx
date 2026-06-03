@@ -195,7 +195,7 @@ function Nav({ theme = "dark", onToggleTheme }) {
     <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="nav-inner container">
         <a href="/" className="nav-logo">
-          <img src="/logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
+          <img className="nav-logo-mark" src="/nav-logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
           <span className="nav-logo-text">{BRAND_NAME}</span>
         </a>
         <div className="nav-links">
@@ -6364,7 +6364,7 @@ function Footer({ onNavigate }) {
       <div className="container footer-top">
         <div className="footer-brand">
           <a href="/" className="nav-logo">
-            <span className="logo-mark" />
+            <img className="nav-logo-mark" src="/nav-logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
             <span className="nav-logo-text">{BRAND_NAME}</span>
           </a>
           <p className="footer-tagline">

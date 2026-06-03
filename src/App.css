@@ -809,6 +809,12 @@ img { max-width: 100%; }
   display: block;
 }
 
+.nav-logo-mark {
+  border: 1px solid rgba(124, 58, 237, .14);
+  border-radius: 9px;
+  box-shadow: 0 8px 20px rgba(91, 33, 182, .10);
+}
+
 .nav-logo-text {
   display: inline-block;
   max-width: min(360px, 46vw);
