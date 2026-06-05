@@ -2662,7 +2662,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
             <div className="migration-copy">
               <div className="section-tag">Switch From Your Current POS</div>
               <h1 className="migration-title">
-                Move to BRC Business OS without retyping your whole menu or buying a new hardware stack.
+                Move to BRC without retyping your whole menu or buying a new hardware stack.
               </h1>
               <p className="migration-subhead">
                 Upload your existing menu, let AI OCR prepare the catalogue draft, review every item, then run POS, QR tables, KDS, stock, staff, finance, reviews, and campaigns on the devices you already own.
