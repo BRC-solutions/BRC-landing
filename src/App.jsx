@@ -2590,6 +2590,7 @@ const MIGRATION_PROOFS = [
   ["No extra screen fees", "Add register, kitchen, floor, manager, and customer display screens without paying per screen."],
   ["Tap to Pay phones", "Compatible mobile phones can become payment terminals for card-present service."],
   ["Every system", "Use BRC on iOS, Android, web, Windows, Mac, tablets, laptops, and phones."],
+  ["No feature toll booth", "Included Business OS features keep improving inside the same subscription as BRC ships more workflows."],
 ];
 
 const MIGRATION_REPLACES = [
@@ -2621,7 +2622,11 @@ const MIGRATION_COST_TRAPS = [
   },
   {
     title: "No hidden operating-system tax",
-    body: "The pitch is simple: one Business OS for POS, tables, QR, KDS, catalogue, inventory, staff, finance, reviews, rewards, campaigns, and analytics.",
+    body: "The pitch is simple: one Business OS for POS, tables, QR, KDS, catalogue, inventory, staff, finance, reviews, rewards, campaigns, analytics, and included feature upgrades.",
+  },
+  {
+    title: "The product keeps getting better",
+    body: "You are not buying a frozen till. As BRC adds more Business OS capability to your plan, the same subscription keeps gaining long-life operational value.",
   },
 ];
 
@@ -2636,6 +2641,21 @@ const MIGRATION_PLATFORM_ITEMS = [
   "Laptops",
   "Kitchen displays",
   "Customer displays",
+];
+
+const MIGRATION_AI_OPS = [
+  {
+    title: "Tells you what is wrong",
+    body: "AI owner brief and operations cards highlight sales changes, reputation risks, stock pressure, device issues, closeout exceptions, and workflow blockers before they turn into shift problems.",
+  },
+  {
+    title: "Predicts demand and staffing gaps",
+    body: "Demand forecasts, prep plans, reorder actions, station workload, and staffing-gap signals help managers decide what to prep, who to schedule, and where the next shortage is likely to hit.",
+  },
+  {
+    title: "Advises on menu and profit",
+    body: "BRC connects menu performance with orders, discounts, stock, waste, finance, reviews, and campaigns so the advice is based on your real metrics, not generic restaurant guesses.",
+  },
 ];
 
 function MigrationMockup() {
@@ -2714,6 +2734,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 <span>AI menu setup</span>
                 <span>No extra screen fees</span>
                 <span>Tap to Pay on phones</span>
+                <span>Same subscription improves</span>
               </div>
             </div>
             <MigrationMockup />
@@ -2766,7 +2787,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 decide how your floor runs.
               </h2>
               <p className="section-p">
-                If your current setup makes you hesitate before adding a kitchen screen, customer display, manager laptop, handheld, or back-office device, it is not built like a Business OS.
+                If your current setup makes you hesitate before adding a kitchen screen, customer display, manager laptop, handheld, back-office device, or another included workflow, it is not built like a Business OS.
               </p>
             </div>
             <div className="migration-cost-grid">
@@ -2787,6 +2808,32 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                   <strong key={item}>{item}</strong>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section migration-ops-ai-section">
+          <div className="container migration-ops-ai-inner">
+            <div className="migration-ops-ai-copy">
+              <div className="section-tag">Embedded AI Operations</div>
+              <h2 className="section-h2">
+                BRC AI sits inside the business, not beside it as a generic chat box.
+              </h2>
+              <p className="migration-lede">
+                In the organisation dashboard, BRC turns trading, stock, rota, staff, devices, finance, reviews, campaigns, and menu signals into next actions. It can show what is wrong, forecast demand, warn about staffing pressure, suggest prep, and advise on menu profitability using your actual business data.
+              </p>
+              <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+                Get The AI Business OS <span className="arrow">→</span>
+              </a>
+            </div>
+            <div className="migration-ops-ai-grid">
+              {MIGRATION_AI_OPS.map((item) => (
+                <article className="migration-ops-ai-card" key={item.title}>
+                  <span />
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -2869,7 +2916,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
           <div className="container migration-final-inner">
             <div>
               <span>Ready to switch?</span>
-              <h2>Start with your menu. Keep your hardware. Move the whole operation into BRC.</h2>
+              <h2>Start with your menu. Keep your hardware. Let the same subscription keep improving your operation.</h2>
             </div>
             <div className="hero-btns">
               <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -6945,9 +6992,9 @@ function seoForRoute(route) {
       ...base,
       title: "Switch From Your Current POS to BRC Business OS | AI Menu OCR and Own Hardware",
       description:
-        "Move from your current POS to BRC Business OS with AI menu OCR, no extra screen fees, Tap to Pay on compatible phones, own hardware support, QR tables, KDS, stock, staff, and finance.",
+        "Move from your current POS to BRC Business OS with AI menu OCR, no extra screen fees, Tap to Pay on compatible phones, own hardware support, embedded AI operations, and included feature improvements.",
       keywords:
-        "switch POS, POS migration, AI menu OCR, no extra screen fees POS, Tap to Pay POS, own hardware POS, iOS Android web Windows Mac POS, replace legacy POS, BRC Business OS",
+        "switch POS, POS migration, AI menu OCR, no extra screen fees POS, Tap to Pay POS, own hardware POS, iOS Android web Windows Mac POS, embedded AI operations, AI demand forecast, AI staffing gaps, menu profit AI, replace legacy POS, BRC Business OS",
     };
   }
 
