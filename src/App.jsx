@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./App.css?v=2222";
+import "./App.css?v=2223";
 
 // ─── ROUTING ──────────────────────────────────────────────────────────────────
 
@@ -12,6 +12,7 @@ const PAGES = {
   FEATURE: "feature",
   CONTENT: "content",
   INDUSTRY: "industry",
+  MIGRATION: "migration",
 };
 
 const API_BASE_URL =
@@ -35,10 +36,11 @@ function signupUrl({
   placeId = "",
   plan = "growth",
   billing = "monthly",
+  source = "prospect_audit",
 } = {}) {
   const url = new URL("/login", WEB_APP_URL);
   url.searchParams.set("mode", "signup");
-  url.searchParams.set("source", "prospect_audit");
+  url.searchParams.set("source", source);
   url.searchParams.set("plan", plan);
   url.searchParams.set("billing", billing);
   if (businessName) url.searchParams.set("businessName", businessName);
@@ -173,7 +175,7 @@ function trackMarketingEvent(eventType, metadata = {}) {
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 
-function Nav({ theme = "dark", onToggleTheme }) {
+function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const trialHref = trialSignupUrl();
@@ -188,12 +190,13 @@ function Nav({ theme = "dark", onToggleTheme }) {
     { label: "Features", href: "/#features" },
     { label: "AI", href: "/features/ai-intelligence" },
     { label: "POS", href: "/features/pos" },
+    { label: "Switch POS", href: "/switch-pos-to-brc" },
     { label: "Ordering", href: "/features/ordering" },
     { label: "Pricing", href: "/#pricing" },
   ];
 
   return (
-    <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
+    <nav className={`nav ${onDarkHero ? "nav-on-dark" : ""} ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="nav-inner container">
         <a href="/" className="nav-logo">
           <img className="nav-logo-mark" src="/nav-logo-mark.svg" width="36" height="36" alt="" aria-hidden="true" />
@@ -2551,6 +2554,263 @@ function IndustryLandingPage({ slug = "restaurants", onNavigate, theme, onToggle
           </div>
         </section>
         <CTA trialHref={trialHref} />
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
+// ─── POS MIGRATION LANDING PAGE ──────────────────────────────────────────────
+
+const MIGRATION_STEPS = [
+  {
+    k: "01",
+    title: "Upload your current menu",
+    body: "Use photos, PDFs, or menu files. BRC AI drafts items, categories, variants, modifiers, prices, and allergen notes for human review before anything goes live.",
+  },
+  {
+    k: "02",
+    title: "Map the devices you already own",
+    body: "Run BRC on tablets, laptops, phones, kitchen screens, customer displays, scanners, and supported terminals instead of replacing your whole hardware stack.",
+  },
+  {
+    k: "03",
+    title: "Rebuild the workflows that matter",
+    body: "Set register layouts, table areas, QR codes, KDS routing, receipts, discounts, staff permissions, cash controls, closeout, stock, and finance in one Business OS.",
+  },
+  {
+    k: "04",
+    title: "Go live without losing the floor",
+    body: "Train staff with the built-in manual, test sample orders, keep manager approvals controlled, and switch the active service screens when the team is ready.",
+  },
+];
+
+const MIGRATION_PROOFS = [
+  ["AI menu OCR", "Photos and PDFs become an editable catalogue draft."],
+  ["Own hardware", "Use the screens and devices your team already has."],
+  ["No blind import", "Managers approve every AI-suggested item before publish."],
+  ["Staff ready", "Built-in training covers register, tables, KDS, stock, and closeout."],
+];
+
+const MIGRATION_REPLACES = [
+  "Legacy POS terminals",
+  "Separate menu builders",
+  "Standalone QR table tools",
+  "Kitchen ticket workarounds",
+  "Inventory spreadsheets",
+  "Rota and payroll exports",
+  "Disconnected review tools",
+  "Manual closeout checks",
+];
+
+function MigrationMockup() {
+  return (
+    <div className="migration-console" aria-label="BRC migration preview">
+      <div className="migration-console-top">
+        <span />
+        <strong>Menu import draft</strong>
+        <em>Business plan</em>
+      </div>
+      <div className="migration-upload">
+        <div>
+          <strong>Uploaded menu.pdf</strong>
+          <p>AI extracted 48 items, 9 categories, 17 modifiers</p>
+        </div>
+        <span>OCR</span>
+      </div>
+      <div className="migration-draft-list">
+        {[
+          ["Lunch mains", "12 items", "Review prices"],
+          ["Allergens", "7 notes", "Needs approval"],
+          ["KDS routing", "4 stations", "Ready to map"],
+        ].map(([title, meta, status]) => (
+          <div className="migration-draft-row" key={title}>
+            <div>
+              <strong>{title}</strong>
+              <span>{meta}</span>
+            </div>
+            <em>{status}</em>
+          </div>
+        ))}
+      </div>
+      <div className="migration-device-grid">
+        {["Register", "Kitchen", "Customer display", "Manager"].map((item) => (
+          <div key={item}>
+            <span />
+            <strong>{item}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
+  const businessTrialHref = signupUrl({
+    plan: "business",
+    billing: "monthly",
+    source: "pos_migration",
+  });
+
+  return (
+    <div className="app">
+      <Nav theme={theme} onToggleTheme={onToggleTheme} onDarkHero />
+      <main className="migration-page">
+        <section className="migration-hero">
+          <div className="migration-hero-media" aria-hidden="true" />
+          <div className="container migration-hero-inner">
+            <div className="migration-copy">
+              <div className="section-tag">Switch From Your Current POS</div>
+              <h1 className="migration-title">
+                Move to BRC Business OS without retyping your whole menu or buying a new hardware stack.
+              </h1>
+              <p className="migration-subhead">
+                Upload your existing menu, let AI OCR prepare the catalogue draft, review every item, then run POS, QR tables, KDS, stock, staff, finance, reviews, and campaigns on the devices you already own.
+              </p>
+              <div className="hero-btns">
+                <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+                  Start Business Trial <span className="arrow">→</span>
+                </a>
+                <a href="/contact" className="btn btn-outline btn-lg">
+                  Plan My Migration
+                </a>
+              </div>
+              <div className="migration-assurance">
+                <span>AI menu setup</span>
+                <span>Own hardware</span>
+                <span>Staff training included</span>
+              </div>
+            </div>
+            <MigrationMockup />
+          </div>
+        </section>
+
+        <section className="migration-proof-strip">
+          <div className="container migration-proof-grid">
+            {MIGRATION_PROOFS.map(([title, body]) => (
+              <article key={title}>
+                <strong>{title}</strong>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section migration-section">
+          <div className="container migration-split">
+            <div>
+              <div className="section-tag">Why Switch Now</div>
+              <h2 className="section-h2">
+                Your POS should be the start of the operating system, not another isolated bill.
+              </h2>
+              <p className="migration-lede">
+                BRC is built for operators who are tired of paying for POS, menu setup, QR ordering, inventory, rota, payroll, reputation, campaigns, and reporting as separate tools. Start with the migration pieces that save the most time: AI catalogue setup and hardware reuse.
+              </p>
+              <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+                Import My Menu With AI <span className="arrow">→</span>
+              </a>
+            </div>
+            <div className="migration-replace-panel">
+              <span>Replace or reduce</span>
+              <div>
+                {MIGRATION_REPLACES.map((item) => (
+                  <strong key={item}>{item}</strong>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section migration-ai-section">
+          <div className="container migration-ai-grid">
+            <div className="migration-ai-card">
+              <span>AI OCR setup</span>
+              <h2>Menu photos and PDFs become a reviewed BRC catalogue draft.</h2>
+              <p>
+                BRC AI prepares categories, items, prices, descriptions, modifiers, variants, and allergen notes. Your manager reviews the draft, selects what to apply, then tests it in Register, QR ordering, KDS routing, inventory, and receipts.
+              </p>
+            </div>
+            <div className="migration-checklist">
+              {[
+                "Import menus, retail catalogues, service lists, or PDFs.",
+                "Match existing items before creating duplicates.",
+                "Approve selected items only when prices and allergens are right.",
+                "Route items to kitchen stations and availability channels.",
+                "Keep the old POS running until the new workflow is checked.",
+              ].map((item) => (
+                <div key={item}>
+                  <span>✓</span>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section migration-steps-section">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">Migration Path</div>
+              <h2 className="section-h2">A practical switch plan for busy operators</h2>
+              <p className="section-p">
+                Start with the work that creates the most switching friction, then turn on live service workflows when the team has checked them.
+              </p>
+            </div>
+            <div className="migration-step-grid">
+              {MIGRATION_STEPS.map((step) => (
+                <article className="migration-step-card" key={step.title}>
+                  <span>{step.k}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section migration-hardware-section">
+          <div className="container migration-hardware-inner">
+            <div>
+              <div className="section-tag">Hardware Freedom</div>
+              <h2 className="section-h2">
+                Keep useful devices. Add screens where the team needs them.
+              </h2>
+              <p className="migration-lede">
+                BRC is designed for browser, tablet, mobile, kitchen, customer display, and manager workflows. Use supported printers, scanners, terminals, and local-hub device discovery where configured, without treating every new screen as a whole new POS contract.
+              </p>
+            </div>
+            <div className="migration-hardware-grid">
+              {[
+                ["Counter", "Register, cash, tender, receipt, customer display"],
+                ["Kitchen", "KDS stations, routing, recall, ready states"],
+                ["Floor", "Tables, QR orders, bills, splits, service notes"],
+                ["Back office", "Catalog, inventory, purchasing, rota, payroll, finance"],
+              ].map(([title, body]) => (
+                <article key={title}>
+                  <strong>{title}</strong>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="migration-final-cta">
+          <div className="container migration-final-inner">
+            <div>
+              <span>Ready to switch?</span>
+              <h2>Start with your menu. Keep your hardware. Move the whole operation into BRC.</h2>
+            </div>
+            <div className="hero-btns">
+              <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+                Start Business Trial <span className="arrow">→</span>
+              </a>
+              <a href="/features/inventory" className="btn btn-outline btn-lg">
+                See AI Catalogue Setup
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer onNavigate={onNavigate} />
     </div>
@@ -6568,6 +6828,7 @@ function routePath(route) {
   if (route.page === PAGES.CONTACT) return "/contact";
   if (route.page === PAGES.FEATURE) return `/features/${route.slug || "pos"}`;
   if (route.page === PAGES.INDUSTRY) return `/${route.slug || "restaurants"}`;
+  if (route.page === PAGES.MIGRATION) return "/switch-pos-to-brc";
   if (route.page === PAGES.CONTENT) {
     if (route.slug === "help" && route.articleId) return `/help/${route.articleId}`;
     return `/${route.slug || "help"}`;
@@ -6606,6 +6867,17 @@ function seoForRoute(route) {
       title: `${page.eyebrow.replace("For ", "")} software | BRC OS`,
       description: page.subhead,
       keywords: `${page.modules.join(", ")}, ${page.proof.join(", ")}, BRC for ${route.slug}`,
+    };
+  }
+
+  if (route.page === PAGES.MIGRATION) {
+    return {
+      ...base,
+      title: "Switch From Your Current POS to BRC Business OS | AI Menu OCR and Own Hardware",
+      description:
+        "Move from your current POS to BRC Business OS with AI menu OCR setup, reviewed catalogue drafts, QR tables, KDS, stock, staff, finance, and support for your own hardware.",
+      keywords:
+        "switch POS, POS migration, AI menu OCR, menu import software, own hardware POS, replace legacy POS, restaurant POS migration, BRC Business OS",
     };
   }
 
@@ -6762,6 +7034,23 @@ function buildStructuredData(route, seo) {
         },
       })),
     });
+  } else if (route.page === PAGES.MIGRATION) {
+    graph.push({
+      "@type": "WebPage",
+      name: "Switch From Your Current POS to BRC Business OS",
+      description: seo.description,
+      url: canonical,
+      mainEntity: {
+        "@type": "HowTo",
+        name: "How to migrate from your current POS to BRC Business OS",
+        step: MIGRATION_STEPS.map((step, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: step.title,
+          text: step.body,
+        })),
+      },
+    });
   }
 
   return { "@context": "https://schema.org", "@graph": graph };
@@ -6795,6 +7084,7 @@ export default function App() {
     if (pathname === "/contact") return { page: PAGES.CONTACT };
     if (pathname === "/terms") return { page: PAGES.TERMS };
     if (pathname === "/privacy") return { page: PAGES.PRIVACY };
+    if (pathname === "/switch-pos-to-brc") return { page: PAGES.MIGRATION };
     if (pathname.startsWith("/help/")) {
       return {
         page: PAGES.CONTENT,
@@ -6894,6 +7184,7 @@ export default function App() {
         url.pathname === "/contact" ||
         url.pathname === "/terms" ||
         url.pathname === "/privacy" ||
+        url.pathname === "/switch-pos-to-brc" ||
         [
           "/features",
           "/pricing",
@@ -6985,6 +7276,16 @@ export default function App() {
   if (currentPage === PAGES.CONTACT) {
     return (
       <ContactPage
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === PAGES.MIGRATION) {
+    return (
+      <PosMigrationPage
         onNavigate={navigateTo}
         theme={theme}
         onToggleTheme={toggleTheme}
