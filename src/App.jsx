@@ -2571,7 +2571,7 @@ const MIGRATION_STEPS = [
   {
     k: "02",
     title: "Map the devices you already own",
-    body: "Run BRC on tablets, laptops, phones, kitchen screens, customer displays, scanners, and supported terminals instead of replacing your whole hardware stack.",
+    body: "Run BRC on iOS, Android, web, Windows, Mac, tablets, phones, kitchen screens, customer displays, scanners, and supported payment devices instead of replacing your whole hardware stack.",
   },
   {
     k: "03",
@@ -2587,13 +2587,16 @@ const MIGRATION_STEPS = [
 
 const MIGRATION_PROOFS = [
   ["AI menu OCR", "Photos and PDFs become an editable catalogue draft."],
-  ["Own hardware", "Use the screens and devices your team already has."],
-  ["No blind import", "Managers approve every AI-suggested item before publish."],
-  ["Staff ready", "Built-in training covers register, tables, KDS, stock, and closeout."],
+  ["No extra screen fees", "Add register, kitchen, floor, manager, and customer display screens without paying per screen."],
+  ["Tap to Pay phones", "Compatible mobile phones can become payment terminals for card-present service."],
+  ["Every system", "Use BRC on iOS, Android, web, Windows, Mac, tablets, laptops, and phones."],
 ];
 
 const MIGRATION_REPLACES = [
   "Legacy POS terminals",
+  "Per-screen charges",
+  "Locked-down hardware",
+  "Surprise add-ons",
   "Separate menu builders",
   "Standalone QR table tools",
   "Kitchen ticket workarounds",
@@ -2601,6 +2604,38 @@ const MIGRATION_REPLACES = [
   "Rota and payroll exports",
   "Disconnected review tools",
   "Manual closeout checks",
+];
+
+const MIGRATION_COST_TRAPS = [
+  {
+    title: "Extra screens should not become extra rent",
+    body: "Open the register, KDS, customer display, tables, stock, manager, closeout, and owner screens your team needs without turning every screen into another terminal subscription.",
+  },
+  {
+    title: "Your phone can be the payment terminal",
+    body: "Use Tap to Pay on compatible mobile devices for flexible card-present payments, while still supporting dedicated terminals where the venue wants them.",
+  },
+  {
+    title: "No hardware hostage moment",
+    body: "BRC is built for iOS, Android, web, Windows, and Mac so operators can keep useful tablets, laptops, phones, displays, scanners, and back-office machines.",
+  },
+  {
+    title: "No hidden operating-system tax",
+    body: "The pitch is simple: one Business OS for POS, tables, QR, KDS, catalogue, inventory, staff, finance, reviews, rewards, campaigns, and analytics.",
+  },
+];
+
+const MIGRATION_PLATFORM_ITEMS = [
+  "iOS",
+  "Android",
+  "Web",
+  "Windows",
+  "Mac",
+  "Tablets",
+  "Phones",
+  "Laptops",
+  "Kitchen displays",
+  "Customer displays",
 ];
 
 function MigrationMockup() {
@@ -2665,7 +2700,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 Move to BRC without retyping your whole menu or buying a new hardware stack.
               </h1>
               <p className="migration-subhead">
-                Upload your existing menu, let AI OCR prepare the catalogue draft, review every item, then run POS, QR tables, KDS, stock, staff, finance, reviews, and campaigns on the devices you already own.
+                Upload your existing menu, let AI OCR prepare the catalogue draft, review every item, then run POS, QR tables, KDS, stock, staff, finance, reviews, payments, and campaigns on the devices you already own.
               </p>
               <div className="hero-btns">
                 <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -2677,8 +2712,8 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
               </div>
               <div className="migration-assurance">
                 <span>AI menu setup</span>
-                <span>Own hardware</span>
-                <span>Staff training included</span>
+                <span>No extra screen fees</span>
+                <span>Tap to Pay on phones</span>
               </div>
             </div>
             <MigrationMockup />
@@ -2704,7 +2739,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 Your POS should be the start of the operating system, not another isolated bill.
               </h2>
               <p className="migration-lede">
-                BRC is built for operators who are tired of paying for POS, menu setup, QR ordering, inventory, rota, payroll, reputation, campaigns, and reporting as separate tools. Start with the migration pieces that save the most time: AI catalogue setup and hardware reuse.
+                BRC is built for operators who are tired of terminal-first POS stacks that turn every screen, add-on, integration, and back-office workflow into another conversation about cost. Start with the migration pieces that save the most time and money: AI catalogue setup, hardware reuse, no extra screen fees, and mobile Tap to Pay.
               </p>
               <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
                 Import My Menu With AI <span className="arrow">→</span>
@@ -2714,6 +2749,41 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
               <span>Replace or reduce</span>
               <div>
                 {MIGRATION_REPLACES.map((item) => (
+                  <strong key={item}>{item}</strong>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section migration-cost-section">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">Beat The POS Lock-In</div>
+              <h2 className="section-h2">
+                Stop letting old POS economics
+                <br />
+                decide how your floor runs.
+              </h2>
+              <p className="section-p">
+                If your current setup makes you hesitate before adding a kitchen screen, customer display, manager laptop, handheld, or back-office device, it is not built like a Business OS.
+              </p>
+            </div>
+            <div className="migration-cost-grid">
+              {MIGRATION_COST_TRAPS.map((item) => (
+                <article className="migration-cost-card" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
+              ))}
+            </div>
+            <div className="migration-platform-panel">
+              <div>
+                <span>Runs where your team already works</span>
+                <h3>iOS, Android, web, Windows, Mac, phones, tablets, laptops, and service displays.</h3>
+              </div>
+              <div className="migration-platform-list">
+                {MIGRATION_PLATFORM_ITEMS.map((item) => (
                   <strong key={item}>{item}</strong>
                 ))}
               </div>
@@ -2776,15 +2846,15 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 Keep useful devices. Add screens where the team needs them.
               </h2>
               <p className="migration-lede">
-                BRC is designed for browser, tablet, mobile, kitchen, customer display, and manager workflows. Use supported printers, scanners, terminals, and local-hub device discovery where configured, without treating every new screen as a whole new POS contract.
+                BRC is designed for browser, tablet, mobile, kitchen, customer display, and manager workflows. Use supported printers, scanners, terminals, Tap to Pay on compatible phones, and local-hub device discovery where configured, without treating every new screen as a whole new POS contract.
               </p>
             </div>
             <div className="migration-hardware-grid">
               {[
-                ["Counter", "Register, cash, tender, receipt, customer display"],
+                ["Counter", "Register, cash, tender, receipt, Tap to Pay, customer display"],
                 ["Kitchen", "KDS stations, routing, recall, ready states"],
                 ["Floor", "Tables, QR orders, bills, splits, service notes"],
-                ["Back office", "Catalog, inventory, purchasing, rota, payroll, finance"],
+                ["Back office", "Web, Windows, Mac, catalog, inventory, rota, payroll, finance"],
               ].map(([title, body]) => (
                 <article key={title}>
                   <strong>{title}</strong>
@@ -6875,9 +6945,9 @@ function seoForRoute(route) {
       ...base,
       title: "Switch From Your Current POS to BRC Business OS | AI Menu OCR and Own Hardware",
       description:
-        "Move from your current POS to BRC Business OS with AI menu OCR setup, reviewed catalogue drafts, QR tables, KDS, stock, staff, finance, and support for your own hardware.",
+        "Move from your current POS to BRC Business OS with AI menu OCR, no extra screen fees, Tap to Pay on compatible phones, own hardware support, QR tables, KDS, stock, staff, and finance.",
       keywords:
-        "switch POS, POS migration, AI menu OCR, menu import software, own hardware POS, replace legacy POS, restaurant POS migration, BRC Business OS",
+        "switch POS, POS migration, AI menu OCR, no extra screen fees POS, Tap to Pay POS, own hardware POS, iOS Android web Windows Mac POS, replace legacy POS, BRC Business OS",
     };
   }
 
