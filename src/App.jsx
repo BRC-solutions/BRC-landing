@@ -2662,34 +2662,26 @@ function MigrationMockup() {
   return (
     <div className="migration-console" aria-label="BRC migration preview">
       <div className="migration-console-top">
-        <span />
-        <strong>Menu import draft</strong>
-        <em>Business plan</em>
+        <div>
+          <span />
+          <strong>Switch plan</strong>
+        </div>
+        <em>Business OS</em>
       </div>
       <div className="migration-upload">
         <div>
-          <strong>Uploaded menu.pdf</strong>
-          <p>AI extracted 48 items, 9 categories, 17 modifiers</p>
+          <span>AI menu import</span>
+          <strong>menu.pdf reviewed into a draft catalogue</strong>
+          <p>48 items, 9 categories, modifiers, prices, and allergen notes ready for manager approval.</p>
         </div>
-        <span>OCR</span>
+        <strong className="migration-upload-score">OCR</strong>
       </div>
-      <div className="migration-console-metrics">
+      <div className="migration-draft-list" aria-label="Migration checklist preview">
         {[
-          ["0", "extra screen fees"],
-          ["5", "systems supported"],
-          ["48", "items drafted"],
-        ].map(([value, label]) => (
-          <div key={label}>
-            <strong>{value}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
-      </div>
-      <div className="migration-draft-list">
-        {[
-          ["Lunch mains", "12 items", "Review prices"],
-          ["Allergens", "7 notes", "Needs approval"],
-          ["KDS routing", "4 stations", "Ready to map"],
+          ["Catalogue", "Items, variants, prices", "Draft ready"],
+          ["Hardware", "iOS, Android, web, Windows, Mac", "Keep devices"],
+          ["Payments", "Compatible phones can use Tap to Pay", "No new stack"],
+          ["Screens", "Register, KDS, customer display, manager", "Included"],
         ].map(([title, meta, status]) => (
           <div className="migration-draft-row" key={title}>
             <div>
@@ -2700,12 +2692,9 @@ function MigrationMockup() {
           </div>
         ))}
       </div>
-      <div className="migration-device-grid">
+      <div className="migration-device-strip">
         {["Register", "Kitchen", "Customer display", "Manager"].map((item) => (
-          <div key={item}>
-            <span />
-            <strong>{item}</strong>
-          </div>
+          <span key={item}>{item}</span>
         ))}
       </div>
     </div>
