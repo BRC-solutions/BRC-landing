@@ -2662,26 +2662,34 @@ function MigrationMockup() {
   return (
     <div className="migration-console" aria-label="BRC migration preview">
       <div className="migration-console-top">
-        <div>
-          <span />
-          <strong>Switch plan</strong>
-        </div>
-        <em>Business OS</em>
+        <span />
+        <strong>Menu import draft</strong>
+        <em>Business plan</em>
       </div>
       <div className="migration-upload">
         <div>
-          <span>AI menu import</span>
-          <strong>menu.pdf reviewed into a draft catalogue</strong>
-          <p>48 items, 9 categories, modifiers, prices, and allergen notes ready for manager approval.</p>
+          <strong>Uploaded menu.pdf</strong>
+          <p>AI extracted 48 items, 9 categories, 17 modifiers</p>
         </div>
-        <strong className="migration-upload-score">OCR</strong>
+        <span>OCR</span>
       </div>
-      <div className="migration-draft-list" aria-label="Migration checklist preview">
+      <div className="migration-console-metrics">
         {[
-          ["Catalogue", "Items, variants, prices", "Draft ready"],
-          ["Hardware", "iOS, Android, web, Windows, Mac", "Keep devices"],
-          ["Payments", "Compatible phones can use Tap to Pay", "No new stack"],
-          ["Screens", "Register, KDS, customer display, manager", "Included"],
+          ["0", "extra screen fees"],
+          ["5", "systems supported"],
+          ["48", "items drafted"],
+        ].map(([value, label]) => (
+          <div key={label}>
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+      <div className="migration-draft-list">
+        {[
+          ["Lunch mains", "12 items", "Review prices"],
+          ["Allergens", "7 notes", "Needs approval"],
+          ["KDS routing", "4 stations", "Ready to map"],
         ].map(([title, meta, status]) => (
           <div className="migration-draft-row" key={title}>
             <div>
@@ -2692,9 +2700,12 @@ function MigrationMockup() {
           </div>
         ))}
       </div>
-      <div className="migration-device-strip">
+      <div className="migration-device-grid">
         {["Register", "Kitchen", "Customer display", "Manager"].map((item) => (
-          <span key={item}>{item}</span>
+          <div key={item}>
+            <span />
+            <strong>{item}</strong>
+          </div>
         ))}
       </div>
     </div>
