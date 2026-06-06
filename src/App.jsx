@@ -2673,6 +2673,18 @@ function MigrationMockup() {
         </div>
         <span>OCR</span>
       </div>
+      <div className="migration-console-metrics">
+        {[
+          ["0", "extra screen fees"],
+          ["5", "systems supported"],
+          ["48", "items drafted"],
+        ].map(([value, label]) => (
+          <div key={label}>
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
       <div className="migration-draft-list">
         {[
           ["Lunch mains", "12 items", "Review prices"],
