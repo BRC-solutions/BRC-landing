@@ -22,11 +22,24 @@ const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 const WEB_APP_URL =
   import.meta.env.VITE_APP_URL || "https://console.brcapp.io";
 const SITE_URL = "https://brcapp.io";
+const IOS_APP_URL =
+  import.meta.env.VITE_IOS_APP_URL ||
+  "https://apps.apple.com/search?term=BRC%20Business%20Reputation%20Customer%20Operations";
+const ANDROID_APP_URL =
+  import.meta.env.VITE_ANDROID_APP_URL ||
+  "https://play.google.com/store/apps/details?id=io.brcapp.app";
 const BRAND_NAME = "BRC";
 const BRAND_EXPANSION = "Business Reputation & Customer Operations";
 const BRAND_SHORT = "BRC";
 const BRAND_TAGLINE =
   "Business Reputation & Customer Operations for local teams.";
+const BRAND_ALSO_KNOWN_AS = [
+  "BRC",
+  "BRC OS",
+  "BRC App",
+  "BRC Business OS",
+  "Business Reputation & Customer Operations",
+];
 const LEGAL_LAST_UPDATED = "May 19, 2026";
 const LEGAL_COMPANY_ADDRESS =
   "BRC Labs LTD, Unit A, 82 James Carter Road, Mildenhall, IP28 7DE, United Kingdom";
@@ -2255,14 +2268,14 @@ function CTA({ trialHref = trialSignupUrl() } = {}) {
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
             <div className="store-btns">
-              <a href="#" className="store-btn">
+              <a href={IOS_APP_URL} className="store-btn" target="_blank" rel="noopener noreferrer">
                 <span className="store-os">🍎</span>
                 <div>
                   <small>Download on the</small>
                   <strong>App Store</strong>
                 </div>
               </a>
-              <a href="#" className="store-btn">
+              <a href={ANDROID_APP_URL} className="store-btn" target="_blank" rel="noopener noreferrer">
                 <span className="store-os">🤖</span>
                 <div>
                   <small>Get it on</small>
@@ -7082,10 +7095,10 @@ function Footer({ onNavigate }) {
             © {new Date().getFullYear()} BRC. All rights reserved.
           </span>
           <div className="footer-app-links">
-            <a href="#" className="footer-app-link">
+            <a href={IOS_APP_URL} className="footer-app-link" target="_blank" rel="noopener noreferrer">
               🍎 App Store
             </a>
-            <a href="#" className="footer-app-link">
+            <a href={ANDROID_APP_URL} className="footer-app-link" target="_blank" rel="noopener noreferrer">
               🤖 Google Play
             </a>
             <a href={WEB_APP_URL} className="footer-app-link" target="_blank" rel="noopener noreferrer">
@@ -7288,11 +7301,13 @@ function buildStructuredData(route, seo) {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: "BRC",
+      alternateName: BRAND_ALSO_KNOWN_AS,
       legalName: "BRC Labs LTD",
       url: SITE_URL,
       email: "support@brcapp.io",
       address: LEGAL_COMPANY_ADDRESS,
       logo: absoluteUrl("/logo-mark.svg"),
+      sameAs: [IOS_APP_URL, ANDROID_APP_URL],
     },
     {
       "@type": "WebSite",
@@ -7309,9 +7324,12 @@ function buildStructuredData(route, seo) {
       "@type": "SoftwareApplication",
       "@id": `${SITE_URL}/#software`,
       name: "BRC OS",
+      alternateName: BRAND_ALSO_KNOWN_AS,
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web, iOS, Android, macOS, Windows",
       url: SITE_URL,
+      downloadUrl: [IOS_APP_URL, ANDROID_APP_URL, WEB_APP_URL],
+      installUrl: [IOS_APP_URL, ANDROID_APP_URL, WEB_APP_URL],
       description: seo.description,
       offers: PLANS.filter((plan) => typeof plan.monthly === "number").map((plan) => ({
         "@type": "Offer",
@@ -7320,6 +7338,32 @@ function buildStructuredData(route, seo) {
         priceCurrency: "USD",
         url: absoluteUrl("/pricing"),
       })),
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": `${SITE_URL}/#ios-app`,
+      name: "BRC",
+      alternateName: BRAND_ALSO_KNOWN_AS,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "iOS",
+      url: IOS_APP_URL,
+      downloadUrl: IOS_APP_URL,
+      installUrl: IOS_APP_URL,
+      isPartOf: { "@id": `${SITE_URL}/#software` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": `${SITE_URL}/#android-app`,
+      name: "BRC",
+      alternateName: BRAND_ALSO_KNOWN_AS,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Android",
+      url: ANDROID_APP_URL,
+      downloadUrl: ANDROID_APP_URL,
+      installUrl: ANDROID_APP_URL,
+      isPartOf: { "@id": `${SITE_URL}/#software` },
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
