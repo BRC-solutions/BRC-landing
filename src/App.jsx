@@ -191,9 +191,8 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
     { label: "Features", href: "/#features" },
     { label: "AI", href: "/features/ai-intelligence" },
     { label: "POS", href: "/features/pos" },
-    { label: "Help", href: "/help" },
-    { label: "Contact Us", href: "/contact" },
     { label: "Pricing", href: "/#pricing" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   return (
