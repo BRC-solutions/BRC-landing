@@ -2910,18 +2910,6 @@ img { max-width: 100%; }
   overflow: hidden;
 }
 
-.migration-hardware-grid article::before {
-  content: "";
-  display: block;
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(8,145,178,.18);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(8,145,178,.13), rgba(16,185,129,.1));
-  margin-bottom: 18px;
-}
-
 .migration-hardware-grid strong {
   display: block;
   font-size: 17px;

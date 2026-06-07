@@ -187,10 +187,10 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
   }, []);
 
   const links = [
+    { label: "Switch POS", href: "/switch-pos-to-brc" },
     { label: "Features", href: "/#features" },
     { label: "AI", href: "/features/ai-intelligence" },
     { label: "POS", href: "/features/pos" },
-    { label: "Switch POS", href: "/switch-pos-to-brc" },
     { label: "Ordering", href: "/features/ordering" },
     { label: "Pricing", href: "/#pricing" },
   ];
@@ -2681,6 +2681,29 @@ const MIGRATION_SETUP_ITEMS = [
   },
 ];
 
+const MIGRATION_HARDWARE_ITEMS = [
+  {
+    icon: "counter",
+    title: "Counter",
+    body: "Register, cash, tender, receipt, Tap to Pay, customer display",
+  },
+  {
+    icon: "kitchen",
+    title: "Kitchen",
+    body: "KDS stations, routing, recall, ready states",
+  },
+  {
+    icon: "floor",
+    title: "Floor",
+    body: "Tables, QR orders, bills, splits, service notes",
+  },
+  {
+    icon: "backOffice",
+    title: "Back office",
+    body: "Web, Windows, Mac, catalog, inventory, rota, payroll, finance",
+  },
+];
+
 const MIGRATION_FAQS = [
   {
     q: "Can I keep my current hardware?",
@@ -2743,6 +2766,42 @@ function MigrationSetupIcon({ name }) {
         <path {...common} d="M4.8 19.2c.5-2.8 2.2-4.2 5.2-4.2s4.7 1.4 5.2 4.2" />
         <path {...common} d="M16.6 11.2a2.4 2.4 0 1 0 0-4.8" />
         <path {...common} d="M16.6 15.2c1.9.2 3.1 1.4 3.6 3.5" />
+      </>
+    ),
+    counter: (
+      <>
+        <path {...common} d="M5 9.2h14v9.3H5z" />
+        <path {...common} d="M7.2 5.5h9.6l1.2 3.7H6z" />
+        <path {...common} d="M8.4 12.4h4.6" />
+        <path {...common} d="M15.4 12.4h1.2" />
+        <path {...common} d="M8.4 15.2h8.2" />
+      </>
+    ),
+    kitchen: (
+      <>
+        <path {...common} d="M7 4.8h10" />
+        <path {...common} d="M8.2 4.8v8.3a3.8 3.8 0 0 0 7.6 0V4.8" />
+        <path {...common} d="M10 8.6h4" />
+        <path {...common} d="M12 16.8v2.4" />
+        <path {...common} d="M8.8 19.2h6.4" />
+      </>
+    ),
+    floor: (
+      <>
+        <path {...common} d="M6.2 7.2h7.2v5.6H6.2z" />
+        <path {...common} d="M15.8 5.4h2.8v2.8h-2.8z" />
+        <path {...common} d="M15.8 15.8h2.8v2.8h-2.8z" />
+        <path {...common} d="M9.8 12.8v3.8h6" />
+        <path {...common} d="M13.4 8.2h2.4" />
+      </>
+    ),
+    backOffice: (
+      <>
+        <path {...common} d="M4.8 6.4h14.4v9.2H4.8z" />
+        <path {...common} d="M9.6 19.2h4.8" />
+        <path {...common} d="M12 15.6v3.6" />
+        <path {...common} d="M8 9.4h8" />
+        <path {...common} d="M8 12.3h5.2" />
       </>
     ),
   };
@@ -3028,15 +3087,11 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
               </p>
             </div>
             <div className="migration-hardware-grid">
-              {[
-                ["Counter", "Register, cash, tender, receipt, Tap to Pay, customer display"],
-                ["Kitchen", "KDS stations, routing, recall, ready states"],
-                ["Floor", "Tables, QR orders, bills, splits, service notes"],
-                ["Back office", "Web, Windows, Mac, catalog, inventory, rota, payroll, finance"],
-              ].map(([title, body]) => (
-                <article key={title}>
-                  <strong>{title}</strong>
-                  <p>{body}</p>
+              {MIGRATION_HARDWARE_ITEMS.map((item) => (
+                <article key={item.title}>
+                  <MigrationSetupIcon name={item.icon} />
+                  <strong>{item.title}</strong>
+                  <p>{item.body}</p>
                 </article>
               ))}
             </div>
