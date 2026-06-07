@@ -2108,6 +2108,7 @@ img { max-width: 100%; }
 .migration-page {
   background:
     linear-gradient(180deg, #f8fbff 0%, #f5f8fb 38%, #f8fafc 72%, #f2fbf7 100%);
+  max-width: 100vw;
   overflow: hidden;
 }
 
@@ -2117,7 +2118,7 @@ img { max-width: 100%; }
 
 .migration-hero {
   position: relative;
-  min-height: 94vh;
+  min-height: min(94vh, 920px);
   padding: 148px 0 112px;
   display: flex;
   align-items: center;
@@ -2225,6 +2226,8 @@ img { max-width: 100%; }
   padding: 9px 12px;
   font-size: 12px;
   font-weight: 800;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -2444,8 +2447,10 @@ img { max-width: 100%; }
 .migration-replace-panel,
 .migration-ai-card,
 .migration-checklist,
+.migration-setup-card,
 .migration-step-card,
-.migration-hardware-grid article {
+.migration-hardware-grid article,
+.migration-faq-card {
   border: 1px solid rgba(15,23,42,.08);
   border-radius: 8px;
   background: rgba(255,255,255,.88);
@@ -2458,8 +2463,10 @@ img { max-width: 100%; }
 :root[data-theme="dark"] .migration-replace-panel,
 :root[data-theme="dark"] .migration-ai-card,
 :root[data-theme="dark"] .migration-checklist,
+:root[data-theme="dark"] .migration-setup-card,
 :root[data-theme="dark"] .migration-step-card,
-:root[data-theme="dark"] .migration-hardware-grid article {
+:root[data-theme="dark"] .migration-hardware-grid article,
+:root[data-theme="dark"] .migration-faq-card {
   background: rgba(255,255,255,.045);
   box-shadow: none;
 }
@@ -2496,8 +2503,10 @@ img { max-width: 100%; }
 .migration-lede,
 .migration-ai-card p,
 .migration-checklist p,
+.migration-setup-card p,
 .migration-step-card p,
-.migration-hardware-grid p {
+.migration-hardware-grid p,
+.migration-faq-card p {
   color: var(--text-2);
   line-height: 1.68;
 }
@@ -2546,6 +2555,8 @@ img { max-width: 100%; }
   padding: 10px 12px;
   font-size: 13px;
   color: var(--text);
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .migration-cost-section {
@@ -2651,6 +2662,8 @@ img { max-width: 100%; }
   padding: 10px 13px;
   color: rgba(255,255,255,.9);
   font-size: 13px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .migration-ai-section {
@@ -2780,6 +2793,46 @@ img { max-width: 100%; }
   font-weight: 900;
 }
 
+.migration-setup-section {
+  background: linear-gradient(180deg, #f8fafc, #f5fbff);
+}
+
+:root[data-theme="dark"] .migration-setup-section {
+  background: #090d12;
+}
+
+.migration-setup-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.migration-setup-card {
+  position: relative;
+  min-height: 210px;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.migration-setup-card::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(8,145,178,.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(8,145,178,.13), rgba(16,185,129,.12));
+  margin-bottom: 20px;
+}
+
+.migration-setup-card strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.22;
+  margin-bottom: 10px;
+}
+
 .migration-step-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2903,6 +2956,41 @@ img { max-width: 100%; }
   color: #fff;
   border-color: rgba(255,255,255,.22);
   background: rgba(255,255,255,.08);
+}
+
+.migration-faq-section {
+  background: linear-gradient(180deg, #f8fafc, #eef8f5);
+}
+
+:root[data-theme="dark"] .migration-faq-section {
+  background: #090b0f;
+}
+
+.migration-faq-inner {
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(420px, 1.22fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.migration-faq-copy {
+  position: sticky;
+  top: 112px;
+}
+
+.migration-faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.migration-faq-card {
+  padding: 24px;
+}
+
+.migration-faq-card h3 {
+  font-size: 21px;
+  line-height: 1.2;
+  margin-bottom: 10px;
 }
 
 /* ─── FEATURE DETAIL PAGES ─────────────────────────────────────────────────── */
@@ -4048,12 +4136,15 @@ img { max-width: 100%; }
   .migration-hardware-inner,
   .migration-final-inner { grid-template-columns: 1fr; }
   .migration-proof-grid,
+  .migration-setup-grid,
   .migration-step-grid { grid-template-columns: repeat(2, 1fr); }
   .migration-cost-grid { grid-template-columns: repeat(2, 1fr); }
   .migration-platform-panel { grid-template-columns: 1fr; }
   .migration-ops-ai-copy { text-align: center; }
   .migration-ops-ai-copy .migration-lede { margin-left: auto; margin-right: auto; }
   .migration-ops-ai-copy .btn { margin-left: auto; margin-right: auto; }
+  .migration-faq-inner { grid-template-columns: 1fr; }
+  .migration-faq-copy { position: static; text-align: center; }
   .migration-final-inner { text-align: center; }
   .migration-final-inner .hero-btns { justify-content: center; }
   .feature-hero-inner,
@@ -4110,6 +4201,10 @@ img { max-width: 100%; }
   .feature-left-header .section-p { margin-left: auto; }
   .feature-hero { padding: 116px 0 60px; }
   .migration-hero { min-height: 0; padding: 116px 0 82px; }
+  .migration-page .container {
+    width: 100%;
+    max-width: 100%;
+  }
   .migration-page,
   .migration-hero,
   .migration-hero-inner,
@@ -4121,11 +4216,11 @@ img { max-width: 100%; }
   .migration-hero-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    max-width: 100vw;
-    padding-left: 24px;
-    padding-right: 24px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
@@ -4137,42 +4232,48 @@ img { max-width: 100%; }
   }
   .migration-copy {
     width: 100%;
-    max-width: 342px;
+    max-width: min(342px, calc(100vw - 32px));
     min-width: 0;
     text-align: center;
-    margin: 0 auto;
+    margin: 0;
   }
   .migration-copy .section-tag { max-width: 100%; white-space: normal; }
   .migration-title {
-    font-size: 32px;
+    font-size: clamp(30px, 8.4vw, 38px);
     width: 100%;
-    max-width: 342px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: min(342px, calc(100vw - 32px));
+    margin-left: 0;
+    margin-right: 0;
+    overflow-wrap: break-word;
   }
-  .migration-subhead { font-size: 16px; margin-left: auto; margin-right: auto; }
+  .migration-subhead {
+    max-width: min(342px, calc(100vw - 32px));
+    font-size: 16px;
+    margin-left: 0;
+    margin-right: 0;
+  }
   .migration-assurance,
   .migration-copy .hero-btns { justify-content: center; }
   .migration-copy .hero-btns {
     width: 100%;
-    max-width: 342px;
+    max-width: min(342px, calc(100vw - 32px));
     box-sizing: border-box;
     flex-direction: column;
     align-items: stretch;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
   .migration-assurance {
     width: 100%;
-    max-width: 342px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: min(342px, calc(100vw - 32px));
+    margin-left: 0;
+    margin-right: 0;
   }
   .migration-assurance span { flex: 1 1 100%; }
   .migration-console {
     width: 100%;
-    max-width: 342px;
-    margin: 0 auto;
+    max-width: min(342px, calc(100vw - 32px));
+    margin: 0;
     transform: none;
   }
   .migration-copy .btn { width: 100%; justify-content: center; }
@@ -4204,12 +4305,16 @@ img { max-width: 100%; }
   .industry-operations-grid,
   .industry-objection-grid,
   .migration-proof-grid,
+  .migration-setup-grid,
   .migration-step-grid,
   .migration-cost-grid,
   .migration-hardware-grid { grid-template-columns: 1fr; }
   .migration-platform-panel { padding: 20px; }
   .migration-ops-ai-card { min-height: 0; padding: 22px 20px 22px 56px; }
   .migration-ai-card { min-height: 0; }
+  .migration-setup-card { min-height: 0; }
+  .migration-faq-inner { grid-template-columns: 1fr; }
+  .migration-faq-copy { position: static; text-align: center; }
   .migration-proof-strip { margin-top: -42px; padding-bottom: 24px; }
   .migration-final-inner { padding: 24px; }
   .operations-stack-grid { grid-template-columns: 1fr; }
@@ -4252,9 +4357,11 @@ img { max-width: 100%; }
   .migration-replace-panel,
   .migration-ai-card,
   .migration-checklist,
+  .migration-setup-card,
   .migration-step-card,
   .migration-cost-card,
-  .migration-hardware-grid article { padding: 18px; }
+  .migration-hardware-grid article,
+  .migration-faq-card { padding: 18px; }
   .migration-copy,
   .migration-title,
   .migration-subhead,
@@ -4262,12 +4369,22 @@ img { max-width: 100%; }
   .migration-assurance,
   .migration-console {
     width: 100%;
-    max-width: 342px;
+    max-width: calc(100vw - 32px);
   }
-  .migration-title { font-size: 32px; overflow-wrap: normal; }
+  .migration-title { font-size: 31px; overflow-wrap: break-word; }
   .migration-subhead { font-size: 15px; }
   .migration-copy .btn { width: 100%; justify-content: center; }
   .migration-assurance { margin-left: auto; margin-right: auto; }
+  .migration-hero-inner { align-items: flex-start; }
+  .migration-copy,
+  .migration-title,
+  .migration-subhead,
+  .migration-copy .hero-btns,
+  .migration-assurance,
+  .migration-console {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .migration-assurance span { flex: 1 1 100%; }
   .migration-device-grid { grid-template-columns: 1fr; }
   .migration-draft-row { align-items: flex-start; flex-direction: column; }

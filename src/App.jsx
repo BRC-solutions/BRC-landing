@@ -2587,10 +2587,10 @@ const MIGRATION_STEPS = [
 
 const MIGRATION_PROOFS = [
   ["AI menu OCR", "Photos and PDFs become an editable catalogue draft."],
+  ["Parallel run", "Keep your old POS live while the BRC workflow is reviewed and tested."],
   ["No extra screen fees", "Add register, kitchen, floor, manager, and customer display screens without paying per screen."],
   ["Tap to Pay phones", "Compatible mobile phones can become payment terminals for card-present service."],
   ["Every system", "Use BRC on iOS, Android, web, Windows, Mac, tablets, laptops, and phones."],
-  ["No feature toll booth", "Included Business OS features keep improving inside the same subscription as BRC ships more workflows."],
 ];
 
 const MIGRATION_REPLACES = [
@@ -2655,6 +2655,32 @@ const MIGRATION_AI_OPS = [
   {
     title: "Advises on menu and profit",
     body: "BRC connects menu performance with orders, discounts, stock, waste, finance, reviews, and campaigns so the advice is based on your real metrics, not generic restaurant guesses.",
+  },
+];
+
+const MIGRATION_SETUP_ITEMS = [
+  ["Current menu", "Photos, PDFs, exported item lists, allergens, modifier groups, prices, and service notes."],
+  ["Device list", "Registers, tablets, phones, kitchen screens, customer displays, printers, scanners, and payment devices."],
+  ["Service layout", "Tables, areas, stations, fulfilment routes, pickup points, and customer QR entry points."],
+  ["Team controls", "Staff roles, manager approvals, discounts, cash controls, closeout steps, and training needs."],
+];
+
+const MIGRATION_FAQS = [
+  {
+    q: "Can I keep my current hardware?",
+    a: "BRC is designed for browser, tablet, mobile, kitchen, customer display, and back-office workflows across iOS, Android, web, Windows, and Mac. Specific printers, scanners, terminals, Tap to Pay, and local-hub device workflows still need compatibility checks before go-live.",
+  },
+  {
+    q: "Do I have to turn off my old POS immediately?",
+    a: "No. The practical migration path is to import and review the catalogue, test sample orders, map devices and staff controls, then keep the old POS running until the new service workflow has been checked.",
+  },
+  {
+    q: "How does AI menu OCR work?",
+    a: "You upload menu photos, PDFs, or files. BRC AI prepares a catalogue draft with categories, items, variants, modifiers, prices, and allergen notes. A human reviews and approves the draft before anything customer-facing goes live.",
+  },
+  {
+    q: "Do I need to switch payments?",
+    a: "BRC can support payment workflows such as Tap to Pay on compatible phones and supported dedicated terminals where configured. Payment setup, verification, tender rules, and receipt behavior should be confirmed before paid orders go live.",
   },
 ];
 
@@ -2729,7 +2755,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
             <div className="migration-copy">
               <div className="section-tag">Switch From Your Current POS</div>
               <h1 className="migration-title">
-                Move to BRC without retyping your whole menu or buying a new hardware stack.
+                Switch POS without rebuilding your menu or replacing your hardware.
               </h1>
               <p className="migration-subhead">
                 Upload your existing menu, let AI OCR prepare the catalogue draft, review every item, then run POS, QR tables, KDS, stock, staff, finance, reviews, payments, and campaigns on the devices you already own.
@@ -2744,9 +2770,9 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
               </div>
               <div className="migration-assurance">
                 <span>AI menu setup</span>
+                <span>Run both during setup</span>
                 <span>No extra screen fees</span>
                 <span>Tap to Pay on phones</span>
-                <span>Same subscription improves</span>
               </div>
             </div>
             <MigrationMockup />
@@ -2876,6 +2902,26 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
           </div>
         </section>
 
+        <section className="section migration-setup-section">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-tag">What We Need</div>
+              <h2 className="section-h2">A cleaner switch starts with the right inputs.</h2>
+              <p className="section-p">
+                Bring the pieces that usually slow POS migrations down. BRC turns them into a reviewed setup plan before the floor depends on it.
+              </p>
+            </div>
+            <div className="migration-setup-grid">
+              {MIGRATION_SETUP_ITEMS.map(([title, body]) => (
+                <article className="migration-setup-card" key={title}>
+                  <strong>{title}</strong>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section migration-steps-section">
           <div className="container">
             <div className="section-header">
@@ -2924,6 +2970,23 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
           </div>
         </section>
 
+        <section className="section migration-faq-section">
+          <div className="container migration-faq-inner">
+            <div className="migration-faq-copy">
+              <div className="section-tag">Switching POS FAQ</div>
+              <h2 className="section-h2">Answers before you move service screens.</h2>
+            </div>
+            <div className="migration-faq-list">
+              {MIGRATION_FAQS.map((item) => (
+                <article className="migration-faq-card" key={item.q}>
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="migration-final-cta">
           <div className="container migration-final-inner">
             <div>
@@ -2935,7 +2998,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 Start Business Trial <span className="arrow">→</span>
               </a>
               <a href="/features/inventory" className="btn btn-outline btn-lg">
-                See AI Catalogue Setup
+                See Inventory & Catalogue
               </a>
             </div>
           </div>
@@ -7179,6 +7242,17 @@ function buildStructuredData(route, seo) {
           text: step.body,
         })),
       },
+    });
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: MIGRATION_FAQS.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
     });
   }
 
