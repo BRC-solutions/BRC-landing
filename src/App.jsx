@@ -3,7 +3,7 @@ import "./App.css?v=2223";
 
 // ─── ROUTING ──────────────────────────────────────────────────────────────────
 
-const PAGES = {
+export const PAGES = {
   HOME: "home",
   TERMS: "terms",
   PRIVACY: "privacy",
@@ -7155,7 +7155,16 @@ function upsertJsonLd(id, graph) {
   element.textContent = JSON.stringify(graph);
 }
 
-function routePath(route) {
+function uniqueKeywords(values) {
+  return [...new Set(values.filter(Boolean).flatMap((value) =>
+    String(value)
+      .split(",")
+      .map((keyword) => keyword.trim())
+      .filter(Boolean)
+  ))].join(", ");
+}
+
+export function routePath(route) {
   if (route.page === PAGES.TERMS) return "/terms";
   if (route.page === PAGES.PRIVACY) return "/privacy";
   if (route.page === PAGES.CONTACT) return "/contact";
@@ -7169,7 +7178,7 @@ function routePath(route) {
   return "/";
 }
 
-function seoForRoute(route) {
+export function seoForRoute(route) {
   const path = routePath(route);
   const base = {
     title: "BRC OS | POS, Ordering, Local Hub, Offline Sync, and Reputation Software",
@@ -7189,7 +7198,12 @@ function seoForRoute(route) {
       ...base,
       title: `${feature.title} | BRC OS Feature Guide`,
       description: detail.subhead,
-      keywords: `${feature.title}, BRC ${feature.tag}, ${detail.proof.join(", ")}, local business software`,
+      keywords: uniqueKeywords([
+        feature.title,
+        `BRC ${feature.tag}`,
+        detail.proof.join(", "),
+        "local business software",
+      ]),
     };
   }
 
@@ -7276,7 +7290,7 @@ function seoForRoute(route) {
   return base;
 }
 
-function buildStructuredData(route, seo) {
+export function buildStructuredData(route, seo) {
   const canonical = absoluteUrl(seo.path);
   const breadcrumbs = seo.path
     .split("/")
@@ -7452,8 +7466,43 @@ function applySeo(route) {
 
 // ─── APP ──────────────────────────────────────────────────────────────────────
 
-export default function App() {
+export function getPrerenderRoutes() {
+  const contentSlugs = [
+    "features",
+    "pricing",
+    "changelog",
+    "roadmap",
+    "about",
+    "blog",
+    "careers",
+    "press",
+    "cookies",
+    "gdpr",
+    "help",
+    "status",
+    "api-docs",
+  ];
+
+  return [
+    { page: PAGES.HOME },
+    { page: PAGES.CONTACT },
+    { page: PAGES.TERMS },
+    { page: PAGES.PRIVACY },
+    { page: PAGES.MIGRATION },
+    ...Object.keys(INDUSTRY_PAGES).map((slug) => ({ page: PAGES.INDUSTRY, slug })),
+    ...FEATURES.map((feature) => ({ page: PAGES.FEATURE, slug: feature.slug })),
+    ...contentSlugs.map((slug) => ({ page: PAGES.CONTENT, slug })),
+    ...HELP_ARTICLES.map((article) => ({
+      page: PAGES.CONTENT,
+      slug: "help",
+      articleId: article.id,
+    })),
+  ];
+}
+
+export default function App({ initialRoute = null }) {
   const readRoute = () => {
+    if (typeof window === "undefined") return initialRoute || { page: PAGES.HOME };
     const pathname = window.location.pathname;
     if (pathname === "/audit") return { page: PAGES.AUDIT };
     if (pathname === "/contact") return { page: PAGES.CONTACT };
@@ -7498,9 +7547,11 @@ export default function App() {
     }
     return { page: PAGES.HOME };
   };
-  const [route, setRoute] = useState(readRoute);
+  const [route, setRoute] = useState(() => initialRoute || readRoute());
   const currentPage = route.page;
-  const [pendingHash, setPendingHash] = useState(() => window.location.hash || "");
+  const [pendingHash, setPendingHash] = useState(() =>
+    typeof window === "undefined" ? "" : window.location.hash || ""
+  );
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem("brc-theme") || "light";
