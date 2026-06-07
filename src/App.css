@@ -2814,16 +2814,30 @@ img { max-width: 100%; }
   padding: 24px;
 }
 
-.migration-setup-card::before {
-  content: "";
-  display: block;
-  width: 34px;
-  height: 34px;
+.migration-setup-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
   border: 1px solid rgba(8,145,178,.2);
   border-radius: 8px;
   background:
     linear-gradient(135deg, rgba(8,145,178,.13), rgba(16,185,129,.12));
+  color: #0f766e;
   margin-bottom: 20px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.migration-setup-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+:root[data-theme="dark"] .migration-setup-icon {
+  color: #67e8f9;
+  border-color: rgba(103,232,249,.24);
+  background:
+    linear-gradient(135deg, rgba(8,145,178,.18), rgba(16,185,129,.14));
 }
 
 .migration-setup-card strong {

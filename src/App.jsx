@@ -2659,10 +2659,26 @@ const MIGRATION_AI_OPS = [
 ];
 
 const MIGRATION_SETUP_ITEMS = [
-  ["Current menu", "Photos, PDFs, exported item lists, allergens, modifier groups, prices, and service notes."],
-  ["Device list", "Registers, tablets, phones, kitchen screens, customer displays, printers, scanners, and payment devices."],
-  ["Service layout", "Tables, areas, stations, fulfilment routes, pickup points, and customer QR entry points."],
-  ["Team controls", "Staff roles, manager approvals, discounts, cash controls, closeout steps, and training needs."],
+  {
+    icon: "menu",
+    title: "Current menu",
+    body: "Photos, PDFs, exported item lists, allergens, modifier groups, prices, and service notes.",
+  },
+  {
+    icon: "devices",
+    title: "Device list",
+    body: "Registers, tablets, phones, kitchen screens, customer displays, printers, scanners, and payment devices.",
+  },
+  {
+    icon: "layout",
+    title: "Service layout",
+    body: "Tables, areas, stations, fulfilment routes, pickup points, and customer QR entry points.",
+  },
+  {
+    icon: "team",
+    title: "Team controls",
+    body: "Staff roles, manager approvals, discounts, cash controls, closeout steps, and training needs.",
+  },
 ];
 
 const MIGRATION_FAQS = [
@@ -2683,6 +2699,62 @@ const MIGRATION_FAQS = [
     a: "BRC can support payment workflows such as Tap to Pay on compatible phones and supported dedicated terminals where configured. Payment setup, verification, tender rules, and receipt behavior should be confirmed before paid orders go live.",
   },
 ];
+
+function MigrationSetupIcon({ name }) {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+  };
+
+  const paths = {
+    menu: (
+      <>
+        <path {...common} d="M7 4.8h8.5L19 8.3v10.9H7z" />
+        <path {...common} d="M15.5 4.8v3.5H19" />
+        <path {...common} d="M10 11h6" />
+        <path {...common} d="M10 14h6" />
+        <path {...common} d="M10 17h3.4" />
+      </>
+    ),
+    devices: (
+      <>
+        <path {...common} d="M4.8 6.2h12.4v8.5H4.8z" />
+        <path {...common} d="M9.5 18.5h3" />
+        <path {...common} d="M11 14.7v3.8" />
+        <path {...common} d="M18.8 9.4h3.4v9.1h-3.4z" />
+        <path {...common} d="M20.5 16.8h.01" />
+      </>
+    ),
+    layout: (
+      <>
+        <path {...common} d="M5.2 5.4h6.2v6.2H5.2z" />
+        <path {...common} d="M14 5.4h4.8v4.8H14z" />
+        <path {...common} d="M5.2 14h4.8v4.8H5.2z" />
+        <path {...common} d="M12.6 16.4h6.2" />
+        <path {...common} d="M16.4 12.6v6.2" />
+      </>
+    ),
+    team: (
+      <>
+        <path {...common} d="M9.4 11.2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+        <path {...common} d="M4.8 19.2c.5-2.8 2.2-4.2 5.2-4.2s4.7 1.4 5.2 4.2" />
+        <path {...common} d="M16.6 11.2a2.4 2.4 0 1 0 0-4.8" />
+        <path {...common} d="M16.6 15.2c1.9.2 3.1 1.4 3.6 3.5" />
+      </>
+    ),
+  };
+
+  return (
+    <span className="migration-setup-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        {paths[name] || paths.menu}
+      </svg>
+    </span>
+  );
+}
 
 function MigrationMockup() {
   return (
@@ -2912,10 +2984,11 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
               </p>
             </div>
             <div className="migration-setup-grid">
-              {MIGRATION_SETUP_ITEMS.map(([title, body]) => (
-                <article className="migration-setup-card" key={title}>
-                  <strong>{title}</strong>
-                  <p>{body}</p>
+              {MIGRATION_SETUP_ITEMS.map((item) => (
+                <article className="migration-setup-card" key={item.title}>
+                  <MigrationSetupIcon name={item.icon} />
+                  <strong>{item.title}</strong>
+                  <p>{item.body}</p>
                 </article>
               ))}
             </div>
