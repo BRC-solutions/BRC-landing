@@ -767,8 +767,8 @@ const FEATURES = [
     slug: "ai-intelligence",
     icon: "AI",
     accent: "var(--purple)",
-    title: "Organisation AI manager",
-    body: "Ask the organisation dashboard why revenue changed, where sentiment may create loss risk, what to prep, what to reorder, and how to staff demand.",
+    title: "BRC Business AI",
+    body: "Ask BRC Business AI why revenue changed, where sentiment may create loss risk, what to prep, what to reorder, and how to staff demand.",
     tag: "AI",
     outcome: "Turn organisation-wide trading, sentiment, stock, staff, finance, and reputation signals into next actions.",
   },
@@ -1067,9 +1067,9 @@ const FEATURE_DETAIL = {
     bestFor: "Owners and managers who want one weekly command center instead of checking reviews, orders, campaigns, and staff performance separately.",
   },
   "ai-intelligence": {
-    headline: "Ask the organisation dashboard what is putting revenue at risk.",
+    headline: "Ask BRC Business AI what is putting revenue at risk.",
     subhead:
-      "BRC’s main AI layer lives in the organisation dashboard: an AI operations manager that reads trading, sentiment, review, stock, rota, POS, finance, and location signals so owners can ask why performance changed, predict loss risk, and decide what to do next.",
+      "BRC’s main AI layer lives in BRC Business AI: an AI operations manager that reads trading, sentiment, review, stock, rota, POS, finance, and location signals so owners can ask why performance changed, predict loss risk, and decide what to do next.",
     bullets: [
       "Ask why revenue dropped, which location is at risk, or what sentiment is likely to cost the business next",
       "AI owner brief that turns organisation signals into urgent manager actions",
@@ -1079,7 +1079,7 @@ const FEATURE_DETAIL = {
       "Supporting AI tools for review summaries, reply drafts, suspicious-review context, and catalogue setup",
     ],
     conversion:
-      "Why subscribe: the organisation dashboard becomes an owner command room, not another report. BRC helps predict where sentiment, reputation, staffing, stock, and trading movement may turn into lost revenue, then gives the manager a practical next action.",
+      "Why subscribe: BRC Business AI becomes an owner command room, not another report. BRC helps predict where sentiment, reputation, staffing, stock, and trading movement may turn into lost revenue, then gives the manager a practical next action.",
     proof: ["Ask AI manager", "Predict loss risk", "Forecast demand"],
     bestFor: "Owners and multi-location operators who need to know which location, service issue, stock gap, rota problem, review trend, or sentiment shift is most likely to hurt revenue next.",
   },
@@ -1329,11 +1329,11 @@ const FEATURE_GUIDES = {
   "ai-intelligence": {
     setup: [
       "Upload a menu photo or PDF when catalogue setup is the first job; AI can draft menu items, prices, variations, modifiers, and options before the team reviews them.",
-      "Enable the Business organisation dashboard so AI operations can read the organisation scope instead of a single isolated location.",
+      "Enable BRC Business AI on the Business plan so AI operations can read the organisation scope instead of a single isolated location.",
       "Connect the signals that make the AI manager useful: orders, POS revenue, reviews, feedback sentiment, stock, recipes, rota, time off, campaigns, devices, closeout, and finance.",
       "Open the AI operations panel and review the owner brief, health score, revenue trend, forecast demand, stock alerts, labor gaps, and digital twin simulations.",
       "Use the Ask box for questions such as why sales changed, which sentiment trend may cause revenue loss, what to prep, what to reorder, or whether to adjust staffing.",
-      "Keep review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup enabled as supporting AI workflows around the main organisation dashboard.",
+      "Keep review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup enabled as supporting AI workflows around the main BRC Business AI.",
     ],
     dailyUse: [
       "Owners ask the AI manager what needs attention, why revenue changed, what loss risk is building from sentiment or low ratings, and what the next operating move should be.",
@@ -1341,7 +1341,7 @@ const FEATURE_GUIDES = {
       "Teams use demand forecasts to plan prep, reorders, and labor cover before the next rush instead of reacting after sales or sentiment has already moved.",
       "Review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup remain useful supporting tools, with human approval before anything customer-facing changes.",
     ],
-    planNote: "The organisation AI manager is the Business-plan story. Growth and Pro can still benefit from AI summaries, reply drafts, and other supporting AI features, but the main loss-risk and Ask workflow belongs in the organisation dashboard.",
+    planNote: "BRC Business AI is the Business-plan story. Growth and Pro can still benefit from AI summaries, reply drafts, and other supporting AI features, but the main loss-risk and Ask workflow belongs in BRC Business AI.",
   },
   team: {
     setup: [
@@ -1492,11 +1492,11 @@ const FEATURE_SURFACES = {
     "Owner digest and alerts summarise new reviews, low ratings, open replies, campaign redemptions, risks, and suggested actions.",
   ],
   "ai-intelligence": [
-    "Organisation dashboard AI operations combines revenue trend, health score, owner brief, manager priorities, forecast demand, stock alerts, labor gaps, device health, closeout variance, reviews, campaigns, and location risk.",
+    "BRC Business AI operations combines revenue trend, health score, owner brief, manager priorities, forecast demand, stock alerts, labor gaps, device health, closeout variance, reviews, campaigns, and location risk.",
     "The Ask manager chat answers questions about why sales changed, what needs attention, what loss risk is emerging from sentiment or low ratings, what to prep, what to reorder, and whether staffing should change.",
     "Autopilot forecasts orders, revenue, prep quantities, reorder actions, and target labor hours so owners can act before the next service period.",
     "Restaurant digital twin simulations show likely operational impact from changes such as price moves, capacity changes, station workload, table turns, or service adjustments.",
-    "Supporting AI remains available around the organisation workflow: review summaries, editable reply drafts, suspicious-review analysis, and AI catalogue setup that drafts menu items, prices, variations, modifiers, and options from photos or PDFs.",
+    "Supporting AI remains available around BRC Business AI workflows: review summaries, editable reply drafts, suspicious-review analysis, and AI catalogue setup that drafts menu items, prices, variations, modifiers, and options from photos or PDFs.",
   ],
   team: [
     "More/settings includes business connection, locations, review channels, competitors, owner digest, notifications, public page, catalog, tables, services, delivery, finance, team, and account settings.",
@@ -1599,10 +1599,10 @@ const FEATURE_APP_LOCATIONS = {
     { area: "Business reports", detail: "Use exports, scheduled reports, and location rollups on higher plans where deeper reporting is needed." },
   ],
   "ai-intelligence": [
-    { area: "Organisation dashboard → AI owner brief", detail: "See what needs doing now across location risk, revenue movement, stock, staffing, devices, closeout, campaigns, and reputation." },
-    { area: "Organisation dashboard → AI operations", detail: "Review health score, revenue trend, autopilot brief, inventory forecast, prep plan, reorder actions, labor forecast, and business advisor summary." },
-    { area: "Organisation dashboard → Ask", detail: "Ask why sales changed, what sentiment may cause loss, what to prep, what to reorder, what staffing needs changing, or what experiment to try next." },
-    { area: "Organisation dashboard → Digital twin", detail: "Inspect simulations, prep-station workload, table turns, and operational impacts before changing pricing, service, or capacity." },
+    { area: "BRC Business AI → AI owner brief", detail: "See what needs doing now across location risk, revenue movement, stock, staffing, devices, closeout, campaigns, and reputation." },
+    { area: "BRC Business AI → AI operations", detail: "Review health score, revenue trend, autopilot brief, inventory forecast, prep plan, reorder actions, labor forecast, and business advisor summary." },
+    { area: "BRC Business AI → Ask", detail: "Ask why sales changed, what sentiment may cause loss, what to prep, what to reorder, what staffing needs changing, or what experiment to try next." },
+    { area: "BRC Business AI → Digital twin", detail: "Inspect simulations, prep-station workload, table turns, and operational impacts before changing pricing, service, or capacity." },
     { area: "Inbox / Catalog support", detail: "Use review summaries, reply drafts, suspicious-review context, and AI catalogue setup that drafts menu items, prices, variations, and modifiers from photos or PDFs." },
   ],
   team: [
@@ -2019,7 +2019,7 @@ const PLANS = [
       "Up to 10 locations, then custom",
       "Everything in Pro",
       "Up to 1,000 previous reviews fetched",
-      "Organisation dashboard and location comparison",
+      "BRC Business AI and location comparison",
       "Brand-level reputation recovery reports and alerts",
       "Multi-location campaigns and customer segments",
       "Multi-location ordering, booking, pickup, and delivery views",
@@ -3002,7 +3002,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
                 BRC AI sits inside the business, not beside it as a generic chat box.
               </h2>
               <p className="migration-lede">
-                In the organisation dashboard, BRC turns trading, stock, rota, staff, devices, finance, reviews, campaigns, and menu signals into next actions. It can show what is wrong, forecast demand, warn about staffing pressure, suggest prep, and advise on menu profitability using your actual business data.
+                In BRC Business AI, BRC turns trading, stock, rota, staff, devices, finance, reviews, campaigns, and menu signals into next actions. It can show what is wrong, forecast demand, warn about staffing pressure, suggest prep, and advise on menu profitability using your actual business data.
               </p>
               <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
                 Get The AI Business OS <span className="arrow">→</span>
@@ -5843,14 +5843,14 @@ const HELP_ARTICLES = [
   {
     id: "ai-intelligence",
     category: "AI",
-    title: "Using the organisation AI manager",
-    summary: "Ask the organisation dashboard about revenue changes, sentiment loss risk, forecasts, stock, staffing, and next actions.",
+    title: "Using BRC Business AI",
+    summary: "Ask BRC Business AI about revenue changes, sentiment loss risk, forecasts, stock, staffing, and next actions.",
     overview:
-      "The main BRC AI experience sits inside the organisation dashboard. The AI operations manager turns trading, POS, sentiment, review, stock, rota, campaign, finance, device, and location signals into an owner brief, forecasts, digital twin simulations, and an Ask box for questions about what changed and what to do next.",
+      "The main BRC AI experience sits inside BRC Business AI. The AI operations manager turns trading, POS, sentiment, review, stock, rota, campaign, finance, device, and location signals into an owner brief, forecasts, digital twin simulations, and an Ask box for questions about what changed and what to do next.",
     steps: [
-      "Open the organisation dashboard and review the AI owner brief for urgent actions across locations, stock, staffing, devices, closeout, campaigns, and reputation.",
+      "Open BRC Business AI and review the AI owner brief for urgent actions across locations, stock, staffing, devices, closeout, campaigns, and reputation.",
       "Check the AI operations panel for health score, revenue trend, sales forecast, prep plan, reorder actions, labor forecast, and business advisor summary.",
-      "Use Ask to question the dashboard: why sales changed, what sentiment may cause loss, which location needs attention, what to prep, what to reorder, or whether staffing should change.",
+      "Use Ask to question BRC Business AI: why sales changed, what sentiment may cause loss, which location needs attention, what to prep, what to reorder, or whether staffing should change.",
       "Review digital twin simulations before changing prices, service periods, capacity, prep stations, or table strategy.",
       "Use supporting AI features such as review summaries, reply drafts, suspicious-review context, and catalogue setup when the dashboard points to a reputation or catalogue action.",
     ],
@@ -5865,7 +5865,7 @@ const HELP_ARTICLES = [
       "Compare the AI brief with the dashboard metrics before acting on a staffing, stock, or pricing recommendation.",
       "Use repeated sentiment or review themes as operations signals for staff coaching, menu changes, recovery campaigns, or service process fixes.",
     ],
-    related: ["Organisation dashboard", "Ask AI manager", "Forecasts", "Sentiment risk"],
+    related: ["BRC Business AI", "Ask AI manager", "Forecasts", "Sentiment risk"],
   },
   {
     id: "reputation-recovery",
