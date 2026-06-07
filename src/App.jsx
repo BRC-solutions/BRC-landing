@@ -7500,6 +7500,7 @@ export default function App() {
   };
   const [route, setRoute] = useState(readRoute);
   const currentPage = route.page;
+  const [pendingHash, setPendingHash] = useState(() => window.location.hash || "");
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem("brc-theme") || "light";
@@ -7534,6 +7535,7 @@ export default function App() {
               ? `/${options.slug}`
             : "/";
     window.history.pushState({}, "", path);
+    setPendingHash("");
     window.scrollTo(0, 0);
   };
 
@@ -7541,6 +7543,7 @@ export default function App() {
   useEffect(() => {
     const handlePopState = () => {
       setRoute(readRoute());
+      setPendingHash(window.location.hash || "");
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -7586,18 +7589,35 @@ export default function App() {
       event.preventDefault();
       window.history.pushState({}, "", `${url.pathname}${url.search}${url.hash}`);
       setRoute(readRoute());
-      requestAnimationFrame(() => {
-        if (url.hash) {
-          document.querySelector(url.hash)?.scrollIntoView({ behavior: "smooth" });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      });
+      setPendingHash(url.hash || "");
+      if (!url.hash) window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     document.addEventListener("click", handleInternalNavigation);
     return () => document.removeEventListener("click", handleInternalNavigation);
   }, []);
+
+  useEffect(() => {
+    if (!pendingHash) return;
+    let cancelled = false;
+    let attempts = 0;
+    const scrollToHash = () => {
+      if (cancelled) return;
+      const target = document.querySelector(pendingHash);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+        setPendingHash("");
+        return;
+      }
+      attempts += 1;
+      if (attempts < 6) requestAnimationFrame(scrollToHash);
+      else setPendingHash("");
+    };
+    requestAnimationFrame(scrollToHash);
+    return () => {
+      cancelled = true;
+    };
+  }, [route, pendingHash]);
 
   useEffect(() => {
     applySeo(route);
