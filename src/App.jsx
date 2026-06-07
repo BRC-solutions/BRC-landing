@@ -187,11 +187,12 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
   }, []);
 
   const links = [
-    { label: "Switch POS", href: "/switch-pos-to-brc" },
+    { label: "Switch to BRC", href: "/switch-pos-to-brc" },
     { label: "Features", href: "/#features" },
     { label: "AI", href: "/features/ai-intelligence" },
     { label: "POS", href: "/features/pos" },
-    { label: "Ordering", href: "/features/ordering" },
+    { label: "Help", href: "/help" },
+    { label: "Contact Us", href: "/contact" },
     { label: "Pricing", href: "/#pricing" },
   ];
 
