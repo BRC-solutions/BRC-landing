@@ -443,40 +443,87 @@ function Hero() {
   );
 }
 
-const DIFFERENCE_CARDS = [
+// ─── STATS BAR ────────────────────────────────────────────────────────────────
+
+const STATS = [
+  { value: "Profit", label: "See which sales, items, offers, and service periods deserve attention" },
+  { value: "Loss", label: "Spot review, stock, staffing, closeout, and campaign risks earlier" },
+  { value: "Demand", label: "Forecast orders, prep, reorders, and target labor cover" },
+  { value: "Context", label: "Connect POS, payments, reputation, staff, stock, and finance" },
+  { value: "Actions", label: "Ask BRC AI what changed, why it changed, and what to do next" },
+  { value: "Hardware", label: "Use your phones, tablets, laptops, and displays" },
+];
+
+function StatsBar() {
+  return (
+    <div className="stats-bar">
+      <div className="container stats-inner">
+        {STATS.map((s) => (
+          <div key={s.label} className="stat-item">
+            <div className="stat-value">{s.value}</div>
+            <div className="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const AI_OS_PILLARS = [
   {
-    kicker: "Complete OS",
-    title: "One system for the work",
-    body: "POS, reviews, reputation, catalogues, orders, stock, purchasing, rota, payroll, finance, loyalty, campaigns, analytics, and hardware screens in one connected subscription.",
+    title: "Make profit visible",
+    body: "BRC connects sales, tenders, stock, staffing, finance, rewards, campaigns, and item performance so owners can see what is actually driving margin, repeat visits, and wasted spend.",
   },
   {
-    kicker: "BRC AI",
-    title: "One AI for the decisions",
-    body: "Ask why profit dropped, what needs reordering, which service issue is hurting reviews, or what should change before tomorrow's rush.",
+    title: "Prevent avoidable losses",
+    body: "Low ratings, negative feedback, slow-service themes, stock gaps, closeout variance, offline devices, failed campaigns, and suspicious reviews become owner actions before they quietly damage revenue.",
   },
   {
-    kicker: "Owner view",
-    title: "One view of what costs money",
-    body: "BRC connects sales, staff, stock, reputation, payments, and customer activity so owners can see where profit is leaking and what deserves attention.",
+    title: "Predict shortages and demand",
+    body: "The AI operations layer forecasts orders, prep needs, reorder pressure, and labor cover from real business signals so managers can plan before the rush instead of reacting after it.",
+  },
+  {
+    title: "Advise like a business operator",
+    body: "Instead of only saying revenue is down, BRC AI can connect the drop to reviews, lunch traffic, item performance, rota cover, stock movement, competitor changes, and the next practical move.",
   },
 ];
 
-function WhyBrcDifferent() {
+function AiBusinessOS() {
+  const trialHref = trialSignupUrl();
+
   return (
-    <section className="why-brc-section">
-      <div className="container why-brc-inner">
-        <div className="why-brc-header">
-          <div className="section-tag">Why BRC is different</div>
+    <section className="ai-os-section">
+      <div className="container ai-os-inner">
+        <div className="ai-os-copy">
+          <div className="section-tag">What makes BRC different</div>
           <h2>
-            The tools run the business.
+            Not another POS.
             <br />
-            <span className="grad-text">The AI explains what to do next.</span>
+            <span className="grad-text">An AI business OS that understands your operation.</span>
           </h2>
+          <p>
+            Traditional POS systems, review tools, campaign tools, stock tools,
+            payroll tools, and finance tools all show pieces of the business.
+            BRC&apos;s edge is connecting those pieces into one owner brain: what is
+            making money, what is leaking money, what will run short, and what
+            needs action today.
+          </p>
+          <div className="ai-os-example">
+            <span>Example BRC AI answer</span>
+            <strong>
+              Revenue is down because lunch traffic dipped after three slow-service
+              reviews. Reduce tomorrow&apos;s prep on low-demand items, add one
+              staff member Friday lunch, and run a win-back campaign for customers
+              who have not returned in 30 days.
+            </strong>
+          </div>
+          <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+            Start with BRC AI <span className="arrow">→</span>
+          </a>
         </div>
-        <div className="why-brc-grid">
-          {DIFFERENCE_CARDS.map((item) => (
-            <article className="why-brc-card" key={item.title}>
-              <span>{item.kicker}</span>
+        <div className="ai-os-grid">
+          {AI_OS_PILLARS.map((item) => (
+            <article className="ai-os-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </article>
@@ -580,6 +627,44 @@ function AskBrcDemo() {
   );
 }
 
+const OWNER_REASONS = [
+  {
+    title: "Replace disconnected tools with context",
+    body: "POS, table QR management, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription so AI can read the whole business picture.",
+  },
+  {
+    title: "Let AI explain what changed",
+    body: "Ask why sales moved, what sentiment may create loss, which items need reordering, whether rota cover is right, and what campaign or operating change should happen next.",
+  },
+  {
+    title: "Use your own hardware",
+    body: "Run counter, kitchen, manager, customer display, and owner screens on the devices your team already uses, then add more screens as the operation grows.",
+  },
+];
+
+function OwnerReasons() {
+  return (
+    <section className="owner-reasons">
+      <div className="container owner-reasons-grid">
+        <div className="owner-reasons-copy">
+          <div className="section-tag">Why Owners Subscribe</div>
+          <h2>
+            BRC OS turns daily work
+            <br />
+            into business decisions.
+          </h2>
+        </div>
+        {OWNER_REASONS.map((item) => (
+          <div key={item.title} className="owner-reason-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 const BUSINESS_FITS = [
   "Restaurants",
   "Cafes",
@@ -656,19 +741,23 @@ function OperationsStack() {
   const trialHref = trialSignupUrl();
 
   return (
-    <section className="section operations-stack-section" id="features">
+    <section className="section operations-stack-section">
       <div className="container operations-stack-inner">
         <div className="operations-stack-copy">
           <div className="section-tag">All-In-One Operations</div>
           <h2 className="section-h2">
-            The complete OS behind the AI.
+            Every feature still matters.
             <br />
-            <span className="grad-text">Built for daily service, not separate dashboards.</span>
+            <span className="grad-text">AI is what makes the stack smarter.</span>
           </h2>
           <p className="section-p">
-            Run the workflows your team needs, then let BRC AI read across them.
-            Sales, tables, stock, staff, finance, reputation, and market signals
-            stay connected instead of becoming separate bills and separate logins.
+            BRC OS is designed for operators who want fewer subscriptions and
+            less hardware lock-in. Start with the screens you need today, then
+            add table QR management, ordering, inventory, vendors, payroll,
+            finances, competitor tracking, social signals, brand mentions,
+            rewards, and reputation recovery. BRC AI sits above those modules
+            to find profit opportunities, loss risks, stock shortages, staffing
+            gaps, and customer issues before they become expensive.
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -1718,12 +1807,12 @@ const FEATURE_APP_LOCATIONS = {
 
 function Features() {
   return (
-    <section className="section features-section" id="feature-library">
+    <section className="section features-section" id="features">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">Feature Library</div>
+          <div className="section-tag">Highlights</div>
           <h2 className="section-h2">
-            Explore BRC modules
+            Everything BRC gives
             <br />
             <span className="grad-text">local business owners</span>
           </h2>
@@ -1779,12 +1868,12 @@ const PLATFORMS = [
 ];
 
 const PLATFORM_FEATURES = [
-  "Reviews connected to orders, visits, tables, and staff context",
-  "Private recovery before issues become public rating damage",
-  "Positive review requests after real customer activity",
-  "AI support for reply drafts and suspicious-review context",
-  "Signals feed owner actions, campaigns, and service fixes",
-  "Alerts for reviews that may affect revenue or trust",
+  "You choose which platform to grow",
+  "Positive review building after real visits",
+  "Private recovery for unhappy customers",
+  "Follow-ups feel natural, not automated",
+  "AI flags fake and suspicious reviews for disputes",
+  "Real-time notifications for new reviews",
 ];
 
 function Platforms() {
@@ -1792,16 +1881,17 @@ function Platforms() {
     <section className="section platforms-section">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">Reputation Inside The OS</div>
+          <div className="section-tag">Review Monitoring</div>
           <h2 className="section-h2">
-            Reviews are not just marketing.
+            Your choice of platform.
             <br />
-            <span className="grad-text">They are operating signals.</span>
+            <span className="grad-text">One place to manage all of them.</span>
           </h2>
           <p className="section-p">
-            BRC keeps review growth, private recovery, reply support, suspicious
-            review context, and customer follow-up connected to the same sales,
-            staff, table, and service data that runs the business.
+            Choose where you want to grow your reviews. BRC follows up with
+            happy customers naturally, routes unhappy customers into private
+            recovery, and helps your team prepare evidence when a review looks
+            fake or suspicious.
           </p>
         </div>
         <div className="platforms-grid">
@@ -1832,19 +1922,34 @@ function Platforms() {
 
 const ANALYTICS_FEATURES = [
   {
-    icon: "MON",
-    title: "Monitor",
-    desc: "Track reviews, feedback, orders, campaigns, competitors, stock, staff, and money signals from one owner view.",
+    icon: "📈",
+    title: "Reputation Recovery Tracking",
+    desc: "Monitor Google, Yelp, and TripAdvisor, then track rating trends, review volume, recovery status, and response times in one place.",
   },
   {
-    icon: "AI",
-    title: "Analyze",
-    desc: "Use AI summaries, risk scoring, sentiment patterns, item performance, and location context to understand what changed.",
+    icon: "👥",
+    title: "Competitor Intelligence",
+    desc: "Track competitor ratings, review counts, and sentiment. Identify market opportunities and benchmark your performance against local rivals.",
   },
   {
-    icon: "ACT",
-    title: "Act",
-    desc: "Turn signals into next moves: recover customers, adjust staffing, reorder stock, promote winners, or fix service issues.",
+    icon: "🧠",
+    title: "AI-Powered Review Analysis",
+    desc: "Automatic sentiment analysis, fake review detection, and risk scoring. Get alerts for urgent reviews, dispute candidates, and customer emotions.",
+  },
+  {
+    icon: "📊",
+    title: "Advanced Dashboards",
+    desc: "Interactive charts for feedback trends, campaign performance, staff ratings, and catalog item popularity. Export data for deeper analysis.",
+  },
+  {
+    icon: "⚡",
+    title: "Real-Time Notifications",
+    desc: "Instant alerts for new reviews, low ratings, suspicious activity, or competitor changes. Never miss a chance to recover, respond, or celebrate positive feedback.",
+  },
+  {
+    icon: "🎯",
+    title: "Actionable Insights",
+    desc: "Identify top-performing staff, best-selling items, and successful campaigns. Make data-driven decisions to improve your business.",
   },
 ];
 
@@ -1855,13 +1960,14 @@ function Analytics() {
         <div className="section-header">
           <div className="section-tag">Analytics & Intelligence</div>
           <h2 className="section-h2">
-            Monitor, analyze,
+            Turn data into
             <br />
-            <span className="grad-text">then act.</span>
+            <span className="grad-text">competitive advantage</span>
           </h2>
           <p className="section-p">
-            BRC analytics are not another wall of charts. They help owners see
-            what changed, why it matters, and which action deserves attention.
+            Don&apos;t just collect reviews — understand them. BRC&apos;s
+            analytics give you the full picture of your reputation, competitors,
+            and customers.
           </p>
         </div>
         <div className="analytics-grid">
@@ -7835,9 +7941,12 @@ export default function App({ initialRoute = null }) {
       <main>
         <Hero />
         <AskBrcDemo />
-        <WhyBrcDifferent />
+        <AiBusinessOS />
         <BusinessFitStrip />
+        <OwnerReasons />
+        <StatsBar />
         <OperationsStack />
+        <Features />
         <Platforms />
         <Campaigns />
         <Analytics />
