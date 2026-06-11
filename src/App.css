@@ -2118,6 +2118,22 @@ img { max-width: 100%; }
   background: rgba(255,255,255,.07);
 }
 
+.operations-card-link {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+.operations-card-link span {
+  display: inline-block;
+  transition: transform var(--ease);
+}
+
+.operations-stack-card:hover .operations-card-link span {
+  transform: translateX(4px);
+}
+
 .features-section {
   background:
     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(91,33,182,.08) 0%, transparent 60%),

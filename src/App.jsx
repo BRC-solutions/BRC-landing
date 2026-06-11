@@ -9,6 +9,7 @@ export const PAGES = {
   PRIVACY: "privacy",
   AUDIT: "audit",
   CONTACT: "contact",
+  FEATURES: "features",
   FEATURE: "feature",
   CONTENT: "content",
   INDUSTRY: "industry",
@@ -201,7 +202,7 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
 
   const links = [
     { label: "Switch to BRC", href: "/switch-pos-to-brc" },
-    { label: "Features", href: "/#features" },
+    { label: "Features", href: "/features" },
     { label: "AI", href: "/features/ai-intelligence" },
     { label: "POS", href: "/features/pos" },
     { label: "Pricing", href: "/#pricing" },
@@ -794,6 +795,9 @@ function OperationsStack() {
                   <strong key={chip}>{chip}</strong>
                 ))}
               </div>
+              <a href="/features" className="operations-card-link">
+                View full features <span>→</span>
+              </a>
             </article>
           ))}
         </div>
@@ -1856,6 +1860,19 @@ function Features() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FeatureIndexPage({ onNavigate, theme, onToggleTheme }) {
+  return (
+    <div className="app">
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <main className="feature-page">
+        <Features />
+        <CTA />
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
   );
 }
 
@@ -3351,7 +3368,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
           <div className="container feature-hero-inner">
             <div className="feature-hero-copy">
               <div className="feature-eyebrow-row">
-                <a href="/#features" className="feature-back">← All features</a>
+                <a href="/features" className="feature-back">← All features</a>
                 <div className="section-tag">{feature.tag}</div>
               </div>
               <h1 className="feature-page-title">
@@ -7345,6 +7362,7 @@ export function routePath(route) {
   if (route.page === PAGES.TERMS) return "/terms";
   if (route.page === PAGES.PRIVACY) return "/privacy";
   if (route.page === PAGES.CONTACT) return "/contact";
+  if (route.page === PAGES.FEATURES) return "/features";
   if (route.page === PAGES.FEATURE) return `/features/${route.slug || "pos"}`;
   if (route.page === PAGES.INDUSTRY) return `/${route.slug || "restaurants"}`;
   if (route.page === PAGES.MIGRATION) return "/switch-pos-to-brc";
@@ -7381,6 +7399,17 @@ export function seoForRoute(route) {
         detail.proof.join(", "),
         "local business software",
       ]),
+    };
+  }
+
+  if (route.page === PAGES.FEATURES) {
+    return {
+      ...base,
+      title: "BRC OS Features | POS, Reviews, Stock, Staff, Finance, AI",
+      description:
+        "Explore every BRC OS module across POS, table QR, ordering, bookings, reviews, reputation, campaigns, rewards, inventory, rota, payroll, finance, analytics, and BRC AI.",
+      keywords:
+        "BRC features, BRC OS modules, POS features, reputation management features, inventory software, rota payroll finance AI",
     };
   }
 
@@ -7666,6 +7695,7 @@ export function getPrerenderRoutes() {
     { page: PAGES.TERMS },
     { page: PAGES.PRIVACY },
     { page: PAGES.MIGRATION },
+    { page: PAGES.FEATURES },
     ...Object.keys(INDUSTRY_PAGES).map((slug) => ({ page: PAGES.INDUSTRY, slug })),
     ...FEATURES.map((feature) => ({ page: PAGES.FEATURE, slug: feature.slug })),
     ...contentSlugs.map((slug) => ({ page: PAGES.CONTENT, slug })),
@@ -7715,6 +7745,9 @@ export default function App({ initialRoute = null }) {
       ].includes(contentSlug)
     ) {
       return { page: PAGES.CONTENT, slug: contentSlug };
+    }
+    if (pathname === "/features" || pathname === "/features/") {
+      return { page: PAGES.FEATURES };
     }
     if (pathname.startsWith("/features/")) {
       return {
@@ -7927,6 +7960,16 @@ export default function App({ initialRoute = null }) {
     );
   }
 
+  if (currentPage === PAGES.FEATURES) {
+    return (
+      <FeatureIndexPage
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
+  }
+
   if (currentPage === PAGES.INDUSTRY) {
     return (
       <IndustryLandingPage
@@ -7961,7 +8004,6 @@ export default function App({ initialRoute = null }) {
         <OwnerReasons />
         <StatsBar />
         <OperationsStack />
-        <Features />
         <Platforms />
         <Campaigns />
         <Analytics />
