@@ -351,22 +351,37 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            AI business OS for operators who need decisions, not dashboards
+            AI business OS plus one complete operating system
           </div>
           <h1 className="hero-h1">
-            BRC helps you run
+            BRC replaces scattered tools with
             <br />
-            <span className="grad-text">a more profitable local business.</span>
+            <span className="grad-text">one AI business OS.</span>
           </h1>
           <p className="hero-subtitle">
-            BRC learns your business context, connects the signals, and tells you where profit is being made, where loss is building, and what your team should do next.
+            Manage reviews, reputation, catalogues, orders, purchasing, staff rota, payroll, finance, POS, payments, loyalty, and customer follow-up without paying for a stack of separate subscriptions.
           </p>
+          <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
+            {[
+              "Reviews",
+              "Reputation",
+              "Catalogues",
+              "Orders",
+              "Purchasing",
+              "Staff rota",
+              "Payroll",
+              "Finance",
+            ].map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
           <p className="hero-p">
-            Keep the full operating stack: POS, payments, orders, table tabs, table
-            and QR code management, catalog, inventory, purchasing, vendors, rota,
-            payroll, finance, reviews, feedback, loyalty, campaigns, competitors,
-            social signals, brand mentions, rewards, and analytics. The difference
-            is that BRC AI turns those moving parts into plain owner actions.
+            BRC learns your business context across the full operating stack:
+            POS, payments, table tabs, table and QR code management, catalog,
+            inventory, vendors, feedback, campaigns, competitors, social signals,
+            brand mentions, rewards, and analytics. Then BRC AI turns those moving
+            parts into plain owner actions: make profit, prevent avoidable losses,
+            and predict shortages before they hurt service.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -387,7 +402,7 @@ function Hero() {
             <div className="sp-text">
               <span className="sp-stars">★★★★★</span>
               <span>
-                Built to <strong>make money, prevent avoidable loss, and predict demand</strong>
+                One subscription to <strong>manage the business and guide the next move</strong>
               </span>
             </div>
           </div>
@@ -500,11 +515,11 @@ function AiBusinessOS() {
             <span className="grad-text">An AI business OS that understands your operation.</span>
           </h2>
           <p>
-            Toast, Square, Clover, review tools, campaign tools, stock tools,
-            and payroll tools all show pieces of the business. BRC&apos;s edge is
-            connecting those pieces into one owner brain: what is making money,
-            what is leaking money, what will run short, and what needs action
-            today.
+            Traditional POS systems, review tools, campaign tools, stock tools,
+            payroll tools, and finance tools all show pieces of the business.
+            BRC&apos;s edge is connecting those pieces into one owner brain: what is
+            making money, what is leaking money, what will run short, and what
+            needs action today.
           </p>
           <div className="ai-os-example">
             <span>Example BRC AI answer</span>
