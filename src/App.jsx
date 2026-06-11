@@ -3379,6 +3379,8 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
         </section>
 
         {feature.slug === "analytics" ? <Analytics /> : null}
+        {feature.slug === "campaigns" ? <Campaigns /> : null}
+        {feature.slug === "reputation" ? <Platforms /> : null}
 
         <section className="section feature-howto-section">
           <div className="container">
@@ -7958,8 +7960,6 @@ export default function App({ initialRoute = null }) {
         <BusinessFitStrip />
         <OperationsStack />
         <StatsBar />
-        <Platforms />
-        <Campaigns />
         <Pricing />
         <FAQ />
         <CTA />
