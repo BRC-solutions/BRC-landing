@@ -3387,6 +3387,8 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
           </div>
         </section>
 
+        {feature.slug === "analytics" ? <Analytics /> : null}
+
         <section className="section feature-howto-section">
           <div className="container">
             <div className="section-header feature-left-header">
@@ -7636,7 +7638,6 @@ function applySeo(route) {
 
 export function getPrerenderRoutes() {
   const contentSlugs = [
-    "features",
     "pricing",
     "changelog",
     "roadmap",
@@ -7689,9 +7690,11 @@ export default function App({ initialRoute = null }) {
     if (INDUSTRY_PAGES[contentSlug]) {
       return { page: PAGES.INDUSTRY, slug: contentSlug };
     }
+    if (pathname === "/features" || pathname === "/features/") {
+      return { page: PAGES.FEATURES };
+    }
     if (
       [
-        "features",
         "pricing",
         "changelog",
         "roadmap",
@@ -7707,9 +7710,6 @@ export default function App({ initialRoute = null }) {
       ].includes(contentSlug)
     ) {
       return { page: PAGES.CONTENT, slug: contentSlug };
-    }
-    if (pathname === "/features" || pathname === "/features/") {
-      return { page: PAGES.FEATURES };
     }
     if (pathname.startsWith("/features/")) {
       return {
@@ -7754,6 +7754,8 @@ export default function App({ initialRoute = null }) {
           ? "/privacy"
           : page === PAGES.CONTACT
             ? "/contact"
+            : page === PAGES.FEATURES
+              ? "/features"
             : page === PAGES.CONTENT && options.slug
               ? `/${options.slug}`
             : "/";
@@ -7967,7 +7969,6 @@ export default function App({ initialRoute = null }) {
         <StatsBar />
         <Platforms />
         <Campaigns />
-        <Analytics />
         <Pricing />
         <FAQ />
         <CTA />
