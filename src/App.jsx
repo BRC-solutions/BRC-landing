@@ -656,23 +656,19 @@ function OperationsStack() {
   const trialHref = trialSignupUrl();
 
   return (
-    <section className="section operations-stack-section">
+    <section className="section operations-stack-section" id="features">
       <div className="container operations-stack-inner">
         <div className="operations-stack-copy">
           <div className="section-tag">All-In-One Operations</div>
           <h2 className="section-h2">
-            Every feature still matters.
+            The complete OS behind the AI.
             <br />
-            <span className="grad-text">AI is what makes the stack smarter.</span>
+            <span className="grad-text">Built for daily service, not separate dashboards.</span>
           </h2>
           <p className="section-p">
-            BRC OS is designed for operators who want fewer subscriptions and
-            less hardware lock-in. Start with the screens you need today, then
-            add table QR management, ordering, inventory, vendors, payroll,
-            finances, competitor tracking, social signals, brand mentions,
-            rewards, and reputation recovery. BRC AI sits above those modules
-            to find profit opportunities, loss risks, stock shortages, staffing
-            gaps, and customer issues before they become expensive.
+            Run the workflows your team needs, then let BRC AI read across them.
+            Sales, tables, stock, staff, finance, reputation, and market signals
+            stay connected instead of becoming separate bills and separate logins.
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -1722,12 +1718,12 @@ const FEATURE_APP_LOCATIONS = {
 
 function Features() {
   return (
-    <section className="section features-section" id="features">
+    <section className="section features-section" id="feature-library">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">Highlights</div>
+          <div className="section-tag">Feature Library</div>
           <h2 className="section-h2">
-            Everything BRC gives
+            Explore BRC modules
             <br />
             <span className="grad-text">local business owners</span>
           </h2>
@@ -1783,12 +1779,12 @@ const PLATFORMS = [
 ];
 
 const PLATFORM_FEATURES = [
-  "You choose which platform to grow",
-  "Positive review building after real visits",
-  "Private recovery for unhappy customers",
-  "Follow-ups feel natural, not automated",
-  "AI flags fake and suspicious reviews for disputes",
-  "Real-time notifications for new reviews",
+  "Reviews connected to orders, visits, tables, and staff context",
+  "Private recovery before issues become public rating damage",
+  "Positive review requests after real customer activity",
+  "AI support for reply drafts and suspicious-review context",
+  "Signals feed owner actions, campaigns, and service fixes",
+  "Alerts for reviews that may affect revenue or trust",
 ];
 
 function Platforms() {
@@ -1796,17 +1792,16 @@ function Platforms() {
     <section className="section platforms-section">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">Review Monitoring</div>
+          <div className="section-tag">Reputation Inside The OS</div>
           <h2 className="section-h2">
-            Your choice of platform.
+            Reviews are not just marketing.
             <br />
-            <span className="grad-text">One place to manage all of them.</span>
+            <span className="grad-text">They are operating signals.</span>
           </h2>
           <p className="section-p">
-            Choose where you want to grow your reviews. BRC follows up with
-            happy customers naturally, routes unhappy customers into private
-            recovery, and helps your team prepare evidence when a review looks
-            fake or suspicious.
+            BRC keeps review growth, private recovery, reply support, suspicious
+            review context, and customer follow-up connected to the same sales,
+            staff, table, and service data that runs the business.
           </p>
         </div>
         <div className="platforms-grid">
@@ -1837,34 +1832,19 @@ function Platforms() {
 
 const ANALYTICS_FEATURES = [
   {
-    icon: "📈",
-    title: "Reputation Recovery Tracking",
-    desc: "Monitor Google, Yelp, and TripAdvisor, then track rating trends, review volume, recovery status, and response times in one place.",
+    icon: "MON",
+    title: "Monitor",
+    desc: "Track reviews, feedback, orders, campaigns, competitors, stock, staff, and money signals from one owner view.",
   },
   {
-    icon: "👥",
-    title: "Competitor Intelligence",
-    desc: "Track competitor ratings, review counts, and sentiment. Identify market opportunities and benchmark your performance against local rivals.",
+    icon: "AI",
+    title: "Analyze",
+    desc: "Use AI summaries, risk scoring, sentiment patterns, item performance, and location context to understand what changed.",
   },
   {
-    icon: "🧠",
-    title: "AI-Powered Review Analysis",
-    desc: "Automatic sentiment analysis, fake review detection, and risk scoring. Get alerts for urgent reviews, dispute candidates, and customer emotions.",
-  },
-  {
-    icon: "📊",
-    title: "Advanced Dashboards",
-    desc: "Interactive charts for feedback trends, campaign performance, staff ratings, and catalog item popularity. Export data for deeper analysis.",
-  },
-  {
-    icon: "⚡",
-    title: "Real-Time Notifications",
-    desc: "Instant alerts for new reviews, low ratings, suspicious activity, or competitor changes. Never miss a chance to recover, respond, or celebrate positive feedback.",
-  },
-  {
-    icon: "🎯",
-    title: "Actionable Insights",
-    desc: "Identify top-performing staff, best-selling items, and successful campaigns. Make data-driven decisions to improve your business.",
+    icon: "ACT",
+    title: "Act",
+    desc: "Turn signals into next moves: recover customers, adjust staffing, reorder stock, promote winners, or fix service issues.",
   },
 ];
 
@@ -1875,14 +1855,13 @@ function Analytics() {
         <div className="section-header">
           <div className="section-tag">Analytics & Intelligence</div>
           <h2 className="section-h2">
-            Turn data into
+            Monitor, analyze,
             <br />
-            <span className="grad-text">competitive advantage</span>
+            <span className="grad-text">then act.</span>
           </h2>
           <p className="section-p">
-            Don&apos;t just collect reviews — understand them. BRC&apos;s
-            analytics give you the full picture of your reputation, competitors,
-            and customers.
+            BRC analytics are not another wall of charts. They help owners see
+            what changed, why it matters, and which action deserves attention.
           </p>
         </div>
         <div className="analytics-grid">
@@ -7859,7 +7838,6 @@ export default function App({ initialRoute = null }) {
         <WhyBrcDifferent />
         <BusinessFitStrip />
         <OperationsStack />
-        <Features />
         <Platforms />
         <Campaigns />
         <Analytics />
