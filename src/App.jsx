@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./App.css?v=2223";
+import "./App.css?v=2224";
 
 // ─── ROUTING ──────────────────────────────────────────────────────────────────
 
@@ -32,7 +32,7 @@ const BRAND_NAME = "BRC";
 const BRAND_EXPANSION = "Business Reputation & Customer Operations";
 const BRAND_SHORT = "BRC";
 const BRAND_TAGLINE =
-  "Business Reputation & Customer Operations for local teams.";
+  "AI Business OS for local operators.";
 const BRAND_ALSO_KNOWN_AS = [
   "BRC",
   "BRC OS",
@@ -298,23 +298,23 @@ function PhoneMockup() {
         <div className="phone-header">
           <div className="phone-header-logo">
             <img src="/logo-mark.svg" width="14" height="14" alt="" aria-hidden="true" style={{ verticalAlign: "middle", marginRight: 4 }} />
-            {BRAND_SHORT}
+            {BRAND_SHORT} AI
           </div>
           <div className="phone-header-sub">Marco&apos;s Bistro</div>
         </div>
         <div className="phone-body">
-          <div className="phone-order-tag">Register · Till 2</div>
-          <div className="phone-biz">Table 7 · 3 items · Ready</div>
+          <div className="phone-order-tag">AI owner brief</div>
+          <div className="phone-biz">Protect Friday profit</div>
           <div className="phone-pos-total">
-            <span>Current sale</span>
-            <strong>$42.80</strong>
+            <span>Forecast revenue</span>
+            <strong>$4,280</strong>
           </div>
           <div className="phone-divider" />
           <div className="phone-metrics">
             {[
-              ["Inventory", 82],
-              ["Rota cover", 94],
-              ["Payroll", 72],
+              ["Stock cover", 46],
+              ["Rota cover", 74],
+              ["Review risk", 68],
             ].map(([label, pct]) => (
               <div key={label} className="metric-row">
                 <span className="metric-label">{label}</span>
@@ -327,9 +327,9 @@ function PhoneMockup() {
           <textarea
             className="phone-comment"
             readOnly
-            value="Offline queue: 4 actions ready to sync when the connection returns."
+            value="Sales risk: lunch traffic dipped after slow-service reviews. Prep less dough, add one server, and reorder mozzarella before noon."
           />
-          <button className="phone-cta">Open Register Controls →</button>
+          <button className="phone-cta">Ask what to do next →</button>
         </div>
       </div>
     </div>
@@ -351,22 +351,22 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            One business operating system for local operators
+            AI business OS for operators who need decisions, not dashboards
           </div>
           <h1 className="hero-h1">
-            Stop Paying for
+            BRC helps you run
             <br />
-            <span className="grad-text">multiple subscriptions to run one business.</span>
+            <span className="grad-text">a more profitable local business.</span>
           </h1>
           <p className="hero-subtitle">
-            BRC OS is the all-in-one system for local business operations and reputation.
+            BRC learns your business context, connects the signals, and tells you where profit is being made, where loss is building, and what your team should do next.
           </p>
           <p className="hero-p">
-            BRC OS brings POS, orders, table tabs, tenders, table and QR code
-            management, catalog, inventory, purchasing, vendors, rota, payroll, finances,
-            competitor tracking, social signals, brand mentions, reputation
-            recovery, rewards, and analytics in one web and mobile workspace.
-            Use your own hardware and add the screens your team needs.
+            Keep the full operating stack: POS, payments, orders, table tabs, table
+            and QR code management, catalog, inventory, purchasing, vendors, rota,
+            payroll, finance, reviews, feedback, loyalty, campaigns, competitors,
+            social signals, brand mentions, rewards, and analytics. The difference
+            is that BRC AI turns those moving parts into plain owner actions.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -387,7 +387,7 @@ function Hero() {
             <div className="sp-text">
               <span className="sp-stars">★★★★★</span>
               <span>
-                Built for <strong>local operators</strong>
+                Built to <strong>make money, prevent avoidable loss, and predict demand</strong>
               </span>
             </div>
           </div>
@@ -398,29 +398,29 @@ function Hero() {
 
           <div className="float-card fc-review">
             <div className="fc-platform">
-              <span className="fc-discount-tag">OS</span>
-              <span className="fc-platform-name">Own hardware</span>
+              <span className="fc-discount-tag">AI</span>
+              <span className="fc-platform-name">Business context</span>
             </div>
-            <div className="fc-stars-sm">iPad · laptop · tablet · display</div>
+            <div className="fc-stars-sm">Orders · reviews · stock · staff</div>
             <div className="fc-quote">
-              POS, back office, and reputation together
+              "Revenue changed because the business changed. Here is why."
             </div>
           </div>
 
           <div className="float-card fc-sms">
-            <div className="fc-sms-icon">SYNC</div>
+            <div className="fc-sms-icon">RISK</div>
             <div className="fc-sms-body">
-              <div className="fc-sms-title">Operator queue ready</div>
+              <div className="fc-sms-title">Loss prevention</div>
               <div className="fc-sms-sub">
-                Orders, tenders, and stock sync back
+                Slow service trend before it hits rating
               </div>
             </div>
             <div className="fc-sms-check">✓</div>
           </div>
 
           <div className="float-card fc-stat">
-            <div className="fc-stat-val">5</div>
-            <div className="fc-stat-label">operator screens live</div>
+            <div className="fc-stat-val">15%</div>
+            <div className="fc-stat-label">stock reduction suggested</div>
             <div className="fc-stat-spark">
               {[30, 50, 40, 70, 60, 90, 80].map((h, i) => (
                 <div
@@ -444,12 +444,12 @@ function Hero() {
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "Own", label: "Use your phones, tablets, laptops, and displays" },
-  { value: "Unlimited", label: "Add operator screens without per-terminal licensing" },
-  { value: "Sales", label: "Orders, table tabs, tenders, KDS, and customer display" },
-  { value: "Tables", label: "QR code management, dine-in links, and feedback scans" },
-  { value: "Stock", label: "Catalog, inventory, purchasing, vendors, and availability" },
-  { value: "Team", label: "Rota, staff shifts, payroll, permissions, and closeout" },
+  { value: "Profit", label: "See which sales, items, offers, and service periods deserve attention" },
+  { value: "Loss", label: "Spot review, stock, staffing, closeout, and campaign risks earlier" },
+  { value: "Demand", label: "Forecast orders, prep, reorders, and target labor cover" },
+  { value: "Context", label: "Connect POS, payments, reputation, staff, stock, and finance" },
+  { value: "Actions", label: "Ask BRC AI what changed, why it changed, and what to do next" },
+  { value: "Hardware", label: "Use your phones, tablets, laptops, and displays" },
 ];
 
 function StatsBar() {
@@ -467,18 +467,83 @@ function StatsBar() {
   );
 }
 
+const AI_OS_PILLARS = [
+  {
+    title: "Make profit visible",
+    body: "BRC connects sales, tenders, stock, staffing, finance, rewards, campaigns, and item performance so owners can see what is actually driving margin, repeat visits, and wasted spend.",
+  },
+  {
+    title: "Prevent avoidable losses",
+    body: "Low ratings, negative feedback, slow-service themes, stock gaps, closeout variance, offline devices, failed campaigns, and suspicious reviews become owner actions before they quietly damage revenue.",
+  },
+  {
+    title: "Predict shortages and demand",
+    body: "The AI operations layer forecasts orders, prep needs, reorder pressure, and labor cover from real business signals so managers can plan before the rush instead of reacting after it.",
+  },
+  {
+    title: "Advise like a business operator",
+    body: "Instead of only saying revenue is down, BRC AI can connect the drop to reviews, lunch traffic, item performance, rota cover, stock movement, competitor changes, and the next practical move.",
+  },
+];
+
+function AiBusinessOS() {
+  const trialHref = trialSignupUrl();
+
+  return (
+    <section className="ai-os-section">
+      <div className="container ai-os-inner">
+        <div className="ai-os-copy">
+          <div className="section-tag">What makes BRC different</div>
+          <h2>
+            Not another POS.
+            <br />
+            <span className="grad-text">An AI business OS that understands your operation.</span>
+          </h2>
+          <p>
+            Toast, Square, Clover, review tools, campaign tools, stock tools,
+            and payroll tools all show pieces of the business. BRC&apos;s edge is
+            connecting those pieces into one owner brain: what is making money,
+            what is leaking money, what will run short, and what needs action
+            today.
+          </p>
+          <div className="ai-os-example">
+            <span>Example BRC AI answer</span>
+            <strong>
+              Revenue is down because lunch traffic dipped after three slow-service
+              reviews. Reduce tomorrow&apos;s prep on low-demand items, add one
+              staff member Friday lunch, and run a win-back campaign for customers
+              who have not returned in 30 days.
+            </strong>
+          </div>
+          <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+            Start with BRC AI <span className="arrow">→</span>
+          </a>
+        </div>
+        <div className="ai-os-grid">
+          {AI_OS_PILLARS.map((item) => (
+            <article className="ai-os-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const OWNER_REASONS = [
   {
-    title: "Replace disconnected tools",
-    body: "POS, table QR management, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription instead of separate dashboards and bills.",
+    title: "Replace disconnected tools with context",
+    body: "POS, table QR management, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription so AI can read the whole business picture.",
   },
   {
-    title: "Use the hardware you already have",
+    title: "Let AI explain what changed",
+    body: "Ask why sales moved, what sentiment may create loss, which items need reordering, whether rota cover is right, and what campaign or operating change should happen next.",
+  },
+  {
+    title: "Use your own hardware",
     body: "Run counter, kitchen, manager, customer display, and owner screens on the devices your team already uses, then add more screens as the operation grows.",
-  },
-  {
-    title: "Know what is making money",
-    body: "BRC ties sales, tenders, stock, staff, finances, redemptions, repeat visits, campaigns, reviews, competitor movement, and brand mentions together so owners can see what deserves attention.",
   },
 ];
 
@@ -489,9 +554,9 @@ function OwnerReasons() {
         <div className="owner-reasons-copy">
           <div className="section-tag">Why Owners Subscribe</div>
           <h2>
-            BRC OS runs the work
+            BRC OS turns daily work
             <br />
-            those tools split apart.
+            into business decisions.
           </h2>
         </div>
         {OWNER_REASONS.map((item) => (
@@ -586,16 +651,18 @@ function OperationsStack() {
         <div className="operations-stack-copy">
           <div className="section-tag">All-In-One Operations</div>
           <h2 className="section-h2">
-            POS, tables, QR, back office, finance, staff, and reputation
+            Every feature still matters.
             <br />
-            <span className="grad-text">wired into the same workspace</span>
+            <span className="grad-text">AI is what makes the stack smarter.</span>
           </h2>
           <p className="section-p">
             BRC OS is designed for operators who want fewer subscriptions and
             less hardware lock-in. Start with the screens you need today, then
             add table QR management, ordering, inventory, vendors, payroll,
             finances, competitor tracking, social signals, brand mentions,
-            rewards, and reputation recovery without rebuilding the stack.
+            rewards, and reputation recovery. BRC AI sits above those modules
+            to find profit opportunities, loss risks, stock shortages, staffing
+            gaps, and customer issues before they become expensive.
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -7779,6 +7846,7 @@ export default function App({ initialRoute = null }) {
       <main>
         <Hero />
         <StatsBar />
+        <AiBusinessOS />
         <BusinessFitStrip />
         <OwnerReasons />
         <OperationsStack />
