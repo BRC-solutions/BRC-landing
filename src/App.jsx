@@ -443,87 +443,40 @@ function Hero() {
   );
 }
 
-// ─── STATS BAR ────────────────────────────────────────────────────────────────
-
-const STATS = [
-  { value: "Profit", label: "See which sales, items, offers, and service periods deserve attention" },
-  { value: "Loss", label: "Spot review, stock, staffing, closeout, and campaign risks earlier" },
-  { value: "Demand", label: "Forecast orders, prep, reorders, and target labor cover" },
-  { value: "Context", label: "Connect POS, payments, reputation, staff, stock, and finance" },
-  { value: "Actions", label: "Ask BRC AI what changed, why it changed, and what to do next" },
-  { value: "Hardware", label: "Use your phones, tablets, laptops, and displays" },
-];
-
-function StatsBar() {
-  return (
-    <div className="stats-bar">
-      <div className="container stats-inner">
-        {STATS.map((s) => (
-          <div key={s.label} className="stat-item">
-            <div className="stat-value">{s.value}</div>
-            <div className="stat-label">{s.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-const AI_OS_PILLARS = [
+const DIFFERENCE_CARDS = [
   {
-    title: "Make profit visible",
-    body: "BRC connects sales, tenders, stock, staffing, finance, rewards, campaigns, and item performance so owners can see what is actually driving margin, repeat visits, and wasted spend.",
+    kicker: "Complete OS",
+    title: "One system for the work",
+    body: "POS, reviews, reputation, catalogues, orders, stock, purchasing, rota, payroll, finance, loyalty, campaigns, analytics, and hardware screens in one connected subscription.",
   },
   {
-    title: "Prevent avoidable losses",
-    body: "Low ratings, negative feedback, slow-service themes, stock gaps, closeout variance, offline devices, failed campaigns, and suspicious reviews become owner actions before they quietly damage revenue.",
+    kicker: "BRC AI",
+    title: "One AI for the decisions",
+    body: "Ask why profit dropped, what needs reordering, which service issue is hurting reviews, or what should change before tomorrow's rush.",
   },
   {
-    title: "Predict shortages and demand",
-    body: "The AI operations layer forecasts orders, prep needs, reorder pressure, and labor cover from real business signals so managers can plan before the rush instead of reacting after it.",
-  },
-  {
-    title: "Advise like a business operator",
-    body: "Instead of only saying revenue is down, BRC AI can connect the drop to reviews, lunch traffic, item performance, rota cover, stock movement, competitor changes, and the next practical move.",
+    kicker: "Owner view",
+    title: "One view of what costs money",
+    body: "BRC connects sales, staff, stock, reputation, payments, and customer activity so owners can see where profit is leaking and what deserves attention.",
   },
 ];
 
-function AiBusinessOS() {
-  const trialHref = trialSignupUrl();
-
+function WhyBrcDifferent() {
   return (
-    <section className="ai-os-section">
-      <div className="container ai-os-inner">
-        <div className="ai-os-copy">
-          <div className="section-tag">What makes BRC different</div>
+    <section className="why-brc-section">
+      <div className="container why-brc-inner">
+        <div className="why-brc-header">
+          <div className="section-tag">Why BRC is different</div>
           <h2>
-            Not another POS.
+            The tools run the business.
             <br />
-            <span className="grad-text">An AI business OS that understands your operation.</span>
+            <span className="grad-text">The AI explains what to do next.</span>
           </h2>
-          <p>
-            Traditional POS systems, review tools, campaign tools, stock tools,
-            payroll tools, and finance tools all show pieces of the business.
-            BRC&apos;s edge is connecting those pieces into one owner brain: what is
-            making money, what is leaking money, what will run short, and what
-            needs action today.
-          </p>
-          <div className="ai-os-example">
-            <span>Example BRC AI answer</span>
-            <strong>
-              Revenue is down because lunch traffic dipped after three slow-service
-              reviews. Reduce tomorrow&apos;s prep on low-demand items, add one
-              staff member Friday lunch, and run a win-back campaign for customers
-              who have not returned in 30 days.
-            </strong>
-          </div>
-          <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-            Start with BRC AI <span className="arrow">→</span>
-          </a>
         </div>
-        <div className="ai-os-grid">
-          {AI_OS_PILLARS.map((item) => (
-            <article className="ai-os-card" key={item.title}>
+        <div className="why-brc-grid">
+          {DIFFERENCE_CARDS.map((item) => (
+            <article className="why-brc-card" key={item.title}>
+              <span>{item.kicker}</span>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </article>
@@ -622,44 +575,6 @@ function AskBrcDemo() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-const OWNER_REASONS = [
-  {
-    title: "Replace disconnected tools with context",
-    body: "POS, table QR management, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription so AI can read the whole business picture.",
-  },
-  {
-    title: "Let AI explain what changed",
-    body: "Ask why sales moved, what sentiment may create loss, which items need reordering, whether rota cover is right, and what campaign or operating change should happen next.",
-  },
-  {
-    title: "Use your own hardware",
-    body: "Run counter, kitchen, manager, customer display, and owner screens on the devices your team already uses, then add more screens as the operation grows.",
-  },
-];
-
-function OwnerReasons() {
-  return (
-    <section className="owner-reasons">
-      <div className="container owner-reasons-grid">
-        <div className="owner-reasons-copy">
-          <div className="section-tag">Why Owners Subscribe</div>
-          <h2>
-            BRC OS turns daily work
-            <br />
-            into business decisions.
-          </h2>
-        </div>
-        {OWNER_REASONS.map((item) => (
-          <div key={item.title} className="owner-reason-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </div>
-        ))}
       </div>
     </section>
   );
@@ -7941,10 +7856,8 @@ export default function App({ initialRoute = null }) {
       <main>
         <Hero />
         <AskBrcDemo />
-        <AiBusinessOS />
+        <WhyBrcDifferent />
         <BusinessFitStrip />
-        <OwnerReasons />
-        <StatsBar />
         <OperationsStack />
         <Features />
         <Platforms />
