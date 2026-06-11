@@ -354,11 +354,12 @@ function Hero() {
             AI business OS plus one complete operating system
           </div>
           <h1 className="hero-h1">
-            One AI business OS
-            <span className="grad-text"> for your whole business.</span>
+            Run your business with AI
+            <span className="grad-text"> that understands it.</span>
           </h1>
           <p className="hero-subtitle">
-            Manage reviews, reputation, catalogues, orders, purchasing, staff rota, payroll, finance, POS, payments, loyalty, and customer follow-up without paying for a stack of separate subscriptions.
+            Replace separate tools with one connected system for sales, reputation,
+            stock, staff, finance, and customer growth.
           </p>
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
