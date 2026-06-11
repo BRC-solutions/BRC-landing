@@ -354,9 +354,8 @@ function Hero() {
             AI business OS plus one complete operating system
           </div>
           <h1 className="hero-h1">
-            BRC replaces scattered tools with
-            <br />
-            <span className="grad-text">one AI business OS.</span>
+            One AI business OS
+            <span className="grad-text"> for your whole business.</span>
           </h1>
           <p className="hero-subtitle">
             Manage reviews, reputation, catalogues, orders, purchasing, staff rota, payroll, finance, POS, payments, loyalty, and customer follow-up without paying for a stack of separate subscriptions.
@@ -541,6 +540,99 @@ function AiBusinessOS() {
               <p>{item.body}</p>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const AI_QUESTION_PROMPTS = [
+  "Why was profit low yesterday?",
+  "What should I reorder today?",
+  "Which menu item is wasting stock?",
+  "Do I need more staff tomorrow?",
+];
+
+function AskBrcDemo() {
+  return (
+    <section className="ask-brc-section">
+      <div className="container ask-brc-inner">
+        <div className="ask-brc-copy">
+          <div className="section-tag">Ask BRC</div>
+          <h2>
+            Ask business questions.
+            <br />
+            <span className="grad-text">Get operator answers.</span>
+          </h2>
+          <p>
+            Owners should not have to open ten dashboards to understand yesterday.
+            Ask BRC why profit dropped, what stock is at risk, which staff pattern
+            is hurting service, or what the business needs before the next rush.
+          </p>
+          <div className="ask-brc-prompts">
+            {AI_QUESTION_PROMPTS.map((prompt) => (
+              <span key={prompt}>{prompt}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="ask-brc-graphic" aria-label="Example BRC AI business answer">
+          <div className="ask-window">
+            <div className="ask-window-top">
+              <div>
+                <span>BRC AI</span>
+                <strong>Business question</strong>
+              </div>
+              <b>Live context</b>
+            </div>
+            <div className="ask-question">
+              Why was profit low yesterday?
+            </div>
+            <div className="ask-answer">
+              <div className="ask-answer-head">
+                <span>Answer</span>
+                <strong>Profit was squeezed by 3 connected issues.</strong>
+              </div>
+              <div className="ask-cause-grid">
+                <div>
+                  <span>Revenue</span>
+                  <strong>-8%</strong>
+                  <small>Lunch traffic fell after slow-service feedback.</small>
+                </div>
+                <div>
+                  <span>Stock</span>
+                  <strong>+14%</strong>
+                  <small>Prep waste rose on two low-demand items.</small>
+                </div>
+                <div>
+                  <span>Labour</span>
+                  <strong>+2.5h</strong>
+                  <small>Rota cover was high for actual demand.</small>
+                </div>
+              </div>
+              <div className="ask-action-list">
+                <div>
+                  <b>Today</b>
+                  Reduce prep on margherita slices and reorder mozzarella before noon.
+                </div>
+                <div>
+                  <b>Tomorrow</b>
+                  Move one staff member from 3pm to Friday lunch cover.
+                </div>
+                <div>
+                  <b>Recovery</b>
+                  Send a win-back offer to customers who have not returned in 30 days.
+                </div>
+              </div>
+            </div>
+            <div className="ask-signal-row">
+              {["POS", "Reviews", "Stock", "Rota", "Finance"].map((item, index) => (
+                <span key={item} style={{ "--delay": `${index * 0.08}s` }}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -7862,6 +7954,7 @@ export default function App({ initialRoute = null }) {
         <Hero />
         <StatsBar />
         <AiBusinessOS />
+        <AskBrcDemo />
         <BusinessFitStrip />
         <OwnerReasons />
         <OperationsStack />
