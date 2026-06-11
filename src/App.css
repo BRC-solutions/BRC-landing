@@ -1606,31 +1606,6 @@ img { max-width: 100%; }
   margin-bottom: 22px;
 }
 
-.ai-os-example {
-  display: grid;
-  gap: 8px;
-  max-width: 620px;
-  margin: 26px 0;
-  padding: 18px;
-  border: 1px solid rgba(5,150,105,.24);
-  border-radius: var(--r-sm);
-  background: rgba(5,150,105,.07);
-}
-
-.ai-os-example span {
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.ai-os-example strong {
-  color: var(--text);
-  font-size: 15px;
-  line-height: 1.65;
-}
-
 .ai-os-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4536,8 +4511,7 @@ img { max-width: 100%; }
   .ai-os-inner,
   .ai-os-grid { grid-template-columns: 1fr; }
   .ai-os-copy { text-align: center; }
-  .ai-os-copy p,
-  .ai-os-example { margin-left: auto; margin-right: auto; }
+  .ai-os-copy p { margin-left: auto; margin-right: auto; }
   .ai-os-card { min-height: 0; }
   .ask-brc-inner,
   .ask-cause-grid { grid-template-columns: 1fr; }

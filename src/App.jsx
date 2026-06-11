@@ -524,15 +524,6 @@ function AiBusinessOS() {
             making money, what is leaking money, what will run short, and what
             needs action today.
           </p>
-          <div className="ai-os-example">
-            <span>Example BRC AI answer</span>
-            <strong>
-              Revenue is down because lunch traffic dipped after three slow-service
-              reviews. Reduce tomorrow&apos;s prep on low-demand items, add one
-              staff member Friday lunch, and run a win-back campaign for customers
-              who have not returned in 30 days.
-            </strong>
-          </div>
           <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
             Start with BRC AI <span className="arrow">→</span>
           </a>
