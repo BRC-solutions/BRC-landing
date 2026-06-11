@@ -351,44 +351,46 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            AI business OS plus one complete operating system
+            One system for the work. One AI for the decisions.
           </div>
           <h1 className="hero-h1">
-            Run your business with AI
-            <span className="grad-text"> that understands it.</span>
+            Know what to fix
+            <span className="grad-text"> before it costs you money.</span>
           </h1>
           <p className="hero-subtitle">
-            Replace separate tools with one connected system for sales, reputation,
-            stock, staff, finance, and customer growth.
+            BRC connects your sales, reviews, stock, staff, finance, orders,
+            and customer activity into one AI business OS, then tells you where
+            profit is leaking, what needs attention, and what to do next.
           </p>
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
+              "POS",
               "Reviews",
               "Reputation",
-              "Catalogues",
               "Orders",
+              "Stock",
               "Purchasing",
-              "Staff rota",
+              "Rota",
               "Payroll",
               "Finance",
+              "Loyalty",
+              "Campaigns",
+              "Analytics",
             ].map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
           <p className="hero-p">
-            BRC learns your business context across the full operating stack:
-            POS, payments, table tabs, table and QR code management, catalog,
-            inventory, vendors, feedback, campaigns, competitors, social signals,
-            brand mentions, rewards, and analytics. Then BRC AI turns those moving
-            parts into plain owner actions: make profit, prevent avoidable losses,
-            and predict shortages before they hurt service.
+            Replace scattered subscriptions with a complete operating layer for
+            daily work, and an AI layer that helps owners make profit, prevent
+            avoidable losses, and predict shortages before they hurt service.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
               Start 7-Day Trial <span className="arrow">→</span>
             </a>
-            <a href="#features" className="btn btn-outline btn-lg">
-              Explore BRC OS
+            <a href="#ask-brc" className="btn btn-outline btn-lg">
+              See How BRC Thinks
             </a>
           </div>
           <div className="hero-social-proof">
@@ -556,7 +558,7 @@ const AI_QUESTION_PROMPTS = [
 
 function AskBrcDemo() {
   return (
-    <section className="ask-brc-section">
+    <section className="ask-brc-section" id="ask-brc">
       <div className="container ask-brc-inner">
         <div className="ask-brc-copy">
           <div className="section-tag">Ask BRC</div>
@@ -7953,9 +7955,9 @@ export default function App({ initialRoute = null }) {
       <Nav theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />
+        <AskBrcDemo />
         <StatsBar />
         <AiBusinessOS />
-        <AskBrcDemo />
         <BusinessFitStrip />
         <OwnerReasons />
         <OperationsStack />
