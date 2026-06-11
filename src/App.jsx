@@ -393,21 +393,6 @@ function Hero() {
               See How BRC Thinks
             </a>
           </div>
-          <div className="hero-social-proof">
-            <div className="sp-avatars">
-              {["M", "J", "S", "A", "R"].map((l) => (
-                <div key={l} className="sp-avatar">
-                  {l}
-                </div>
-              ))}
-            </div>
-            <div className="sp-text">
-              <span className="sp-stars">★★★★★</span>
-              <span>
-                One subscription to <strong>manage the business and guide the next move</strong>
-              </span>
-            </div>
-          </div>
         </div>
 
         <div className="hero-visual">
@@ -7956,10 +7941,10 @@ export default function App({ initialRoute = null }) {
       <main>
         <Hero />
         <AskBrcDemo />
-        <StatsBar />
         <AiBusinessOS />
         <BusinessFitStrip />
         <OwnerReasons />
+        <StatsBar />
         <OperationsStack />
         <Features />
         <Platforms />
