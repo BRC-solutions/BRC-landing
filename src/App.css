@@ -1957,63 +1957,6 @@ img { max-width: 100%; }
 
 /* ─── FEATURES ───────────────────────────────────────────────────────────────── */
 
-.owner-reasons {
-  padding: 74px 0;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.56)),
-    radial-gradient(circle at 12% 0%, rgba(91,33,182,.06), transparent 32%);
-  border-bottom: 1px solid var(--border);
-}
-
-:root[data-theme="dark"] .owner-reasons {
-  background: var(--bg-1);
-}
-
-.owner-reasons-grid {
-  display: grid;
-  grid-template-columns: 1.15fr repeat(3, 1fr);
-  gap: 18px;
-  align-items: stretch;
-}
-
-.owner-reasons-copy,
-.owner-reason-card {
-  background: rgba(255,255,255,.82);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 26px;
-  box-shadow: var(--shadow-sm);
-}
-
-:root[data-theme="dark"] .owner-reasons-copy,
-:root[data-theme="dark"] .owner-reason-card {
-  background: rgba(255,255,255,.045);
-  box-shadow: none;
-}
-
-.owner-reasons-copy {
-  background: linear-gradient(160deg, rgba(139,92,246,.14), rgba(6,182,212,.06));
-  border-color: rgba(139,92,246,.28);
-}
-
-.owner-reasons-copy h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  line-height: 1.12;
-  letter-spacing: -.02em;
-}
-
-.owner-reason-card h3 {
-  font-size: 17px;
-  line-height: 1.25;
-  margin-bottom: 12px;
-}
-
-.owner-reason-card p {
-  color: var(--text-2);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
 .operations-stack-section {
   background:
     linear-gradient(180deg, rgba(255,255,255,.74), rgba(255,255,255,.94)),
@@ -4515,7 +4458,6 @@ img { max-width: 100%; }
   .operations-stack-copy { position: static; text-align: center; }
   .operations-stack-copy .section-p { text-align: center; margin-left: auto; margin-right: auto; }
   .operations-stack-actions { justify-content: center; }
-  .owner-reasons-grid { grid-template-columns: 1fr 1fr; }
   .business-fit-inner { align-items: flex-start; flex-direction: column; }
   .feature-use-grid { grid-template-columns: 1fr; }
   .feature-howto-grid { grid-template-columns: repeat(2, 1fr); }
@@ -4591,7 +4533,6 @@ img { max-width: 100%; }
   .hero-social-proof { flex-wrap: wrap; }
   .hero-btns { justify-content: center; }
   .hero-social-proof { justify-content: center; }
-  .owner-reasons-grid { grid-template-columns: 1fr; }
   .ai-os-inner,
   .ai-os-grid { grid-template-columns: 1fr; }
   .ai-os-copy { text-align: center; }

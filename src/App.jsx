@@ -643,44 +643,6 @@ function AskBrcDemo() {
   );
 }
 
-const OWNER_REASONS = [
-  {
-    title: "Replace disconnected tools with context",
-    body: "POS, table QR management, ordering, bookings, inventory, purchasing, vendors, rota, payroll, finance, feedback, reviews, social signals, rewards, campaigns, and analytics sit in one subscription so AI can read the whole business picture.",
-  },
-  {
-    title: "Let AI explain what changed",
-    body: "Ask why sales moved, what sentiment may create loss, which items need reordering, whether rota cover is right, and what campaign or operating change should happen next.",
-  },
-  {
-    title: "Use your own hardware",
-    body: "Run counter, kitchen, manager, customer display, and owner screens on the devices your team already uses, then add more screens as the operation grows.",
-  },
-];
-
-function OwnerReasons() {
-  return (
-    <section className="owner-reasons">
-      <div className="container owner-reasons-grid">
-        <div className="owner-reasons-copy">
-          <div className="section-tag">Why Owners Subscribe</div>
-          <h2>
-            BRC OS turns daily work
-            <br />
-            into business decisions.
-          </h2>
-        </div>
-        {OWNER_REASONS.map((item) => (
-          <div key={item.title} className="owner-reason-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 const BUSINESS_FITS = [
   "Restaurants",
   "Cafes",
@@ -8001,9 +7963,8 @@ export default function App({ initialRoute = null }) {
         <AskBrcDemo />
         <AiBusinessOS />
         <BusinessFitStrip />
-        <OwnerReasons />
-        <StatsBar />
         <OperationsStack />
+        <StatsBar />
         <Platforms />
         <Campaigns />
         <Analytics />
