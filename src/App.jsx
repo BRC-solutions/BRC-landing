@@ -2115,10 +2115,10 @@ const PLANS = [
     desc: "For one location starting with reputation recovery, ordering, bookings, catalog setup, competitor tracking, and daily operations.",
     cta: "Start 7-Day Trial",
     highlight: false,
-    badge: null,
+    badge: "Best value",
     features: [
       "1 location",
-      "1% BRC platform fee on BRC-powered payments",
+      "0.5% BRC platform fee on BRC-powered payments",
       "Google reviews with up to 50 previous reviews fetched",
       "Daily sync, AI summaries, and reply drafts",
       "Positive review requests and negative feedback recovery",
@@ -2141,11 +2141,11 @@ const PLANS = [
     desc: "For growing teams that need BRC OS across POS, orders, tables, inventory, vendors, staff, finance, and market insights.",
     cta: "Start 7-Day Trial",
     highlight: false,
-    badge: null,
+    badge: "Multi-location",
     features: [
       "Up to 3 locations",
       "Everything in Growth",
-      "Reduced BRC platform fee: 0.5% on BRC-powered payments",
+      "Reduced BRC platform fee: 0.25% on BRC-powered payments",
       "Yelp and TripAdvisor with up to 500 previous reviews fetched",
       "Review dispute context and advanced recovery reporting",
       "Menu, product, staff, and campaign performance insights",
@@ -2169,11 +2169,11 @@ const PLANS = [
     desc: "For multi-location brands that need OS-wide views across POS, staff, stock, finance, fulfilment, reputation, and reporting.",
     cta: "Start Enterprise",
     highlight: false,
-    badge: "Multi-location",
+    badge: "AI powered",
     features: [
       "Up to 10 locations, then custom",
       "Everything in Pro",
-      "Reduced BRC platform fee: 0.25% or custom volume terms",
+      "No BRC platform fee on BRC-powered payments",
       "Up to 1,000 previous reviews fetched",
       "BRC AI and location comparison",
       "Brand-level reputation recovery reports and alerts",
@@ -2198,6 +2198,8 @@ const PLANS = [
     cta: "Talk to Us",
     highlight: false,
     badge: "Enterprise",
+    contactHref: "/contact",
+    spanFull: true,
     features: [
       "More than 10 locations",
       "Custom Public Signal scan volume",
@@ -2247,38 +2249,40 @@ function Pricing() {
           {PLANS.map((p) => (
             <div
               key={p.name}
-              className={`plan-card ${p.highlight ? "plan-highlight" : ""}`}
+              className={`plan-card ${p.highlight ? "plan-highlight" : ""} ${p.spanFull ? "plan-card-wide" : ""}`}
             >
-              {p.badge && <div className="plan-badge">{p.badge}</div>}
-              <div className="plan-name">{p.name}</div>
-              <div className="plan-price">
-                {typeof p.monthly === "number" && (
-                  <span className="plan-curr">£</span>
-                )}
-                <span className="plan-num">
-                  {annual ? p.annual : p.monthly}
-                </span>
-                {typeof p.monthly === "number" && p.monthly > 0 && (
-                  <span className="plan-per">/mo</span>
-                )}
-              </div>
-              {annual && typeof p.monthly === "number" && p.monthly > 0 && (
-                <div className="plan-billed">
-                  Billed annually · Save £{(p.monthly - p.annual) * 12}/yr
+              <div className="plan-main">
+                {p.badge && <div className="plan-badge">{p.badge}</div>}
+                <div className="plan-name">{p.name}</div>
+                <div className="plan-price">
+                  {typeof p.monthly === "number" && (
+                    <span className="plan-curr">£</span>
+                  )}
+                  <span className="plan-num">
+                    {annual ? p.annual : p.monthly}
+                  </span>
+                  {typeof p.monthly === "number" && p.monthly > 0 && (
+                    <span className="plan-per">/mo</span>
+                  )}
                 </div>
-              )}
-              <p className="plan-desc">{p.desc}</p>
-              <a
-                href={signupUrl({
-                  plan: p.name.toLowerCase() === "custom" ? "business" : p.name.toLowerCase(),
-                  billing: annual ? "annual" : "monthly",
-                })}
-                className={`btn ${p.highlight ? "btn-primary" : "btn-outline"} btn-block`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {p.cta}
-              </a>
+                {annual && typeof p.monthly === "number" && p.monthly > 0 && (
+                  <div className="plan-billed">
+                    Billed annually · Save £{(p.monthly - p.annual) * 12}/yr
+                  </div>
+                )}
+                <p className="plan-desc">{p.desc}</p>
+                <a
+                  href={p.contactHref || signupUrl({
+                    plan: p.name.toLowerCase(),
+                    billing: annual ? "annual" : "monthly",
+                  })}
+                  className={`btn ${p.highlight ? "btn-primary" : "btn-outline"} btn-block`}
+                  target={p.contactHref ? undefined : "_blank"}
+                  rel={p.contactHref ? undefined : "noopener noreferrer"}
+                >
+                  {p.cta}
+                </a>
+              </div>
               <ul className="plan-features">
                 {p.features.map((f) => (
                   <li key={f} className="plan-feature">
