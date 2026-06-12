@@ -77,7 +77,7 @@ function signupUrl({
 }
 
 function trialSignupUrl() {
-  return signupUrl({ plan: "growth", billing: "monthly" });
+  return signupUrl({ plan: "free", billing: "monthly" });
 }
 
 function safeStorageGet(key) {
@@ -239,7 +239,7 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
             Sign In
           </a>
           <a href={trialHref} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Start Trial
+            Start Free
           </a>
         </div>
         <button
@@ -271,7 +271,7 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
           style={{ marginTop: 8 }}
           onClick={() => setMobileOpen(false)}
         >
-          Start Trial
+          Start Free
         </a>
         <button
           className="theme-toggle theme-toggle-mobile"
@@ -388,7 +388,7 @@ function Hero() {
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-              Start 7-Day Trial <span className="arrow">→</span>
+              Start Free <span className="arrow">→</span>
             </a>
             <a href="#ask-brc" className="btn btn-outline btn-lg">
               See How BRC Thinks
@@ -715,7 +715,7 @@ function OperationsStack() {
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-              Start 7-Day Trial <span className="arrow">→</span>
+              Start Free <span className="arrow">→</span>
             </a>
             <a href="/features/pos" className="btn btn-outline btn-lg">
               Explore POS Module
@@ -1314,7 +1314,7 @@ const FEATURE_GUIDES = {
       "Kitchen, floor, customer display, and manager screens can stay live on separate devices.",
       "Owners can review completed orders, closeout, payments, stock impact, feedback, and campaign follow-up from the same workspace.",
     ],
-    planNote: "The POS story is strongest for Pro and Business operators that need multiple screens, controls, tables, stock, staff, and reporting together.",
+    planNote: "The POS story is strongest for Pro and Enterprise operators that need multiple screens, controls, tables, stock, staff, and reporting together.",
   },
   "tables-qr": {
     setup: [
@@ -1343,7 +1343,7 @@ const FEATURE_GUIDES = {
       "Staff can move orders from submitted to accepted, ready, completed, cancelled, or refunded.",
       "Owners can review item performance and use order history for feedback, review requests, rewards, and campaigns.",
     ],
-    planNote: "Basic ordering belongs in the entry story, while advanced order management, catalog pickup, and table ordering are positioned as Pro and Business value.",
+    planNote: "Basic ordering belongs in the entry story, while advanced order management, catalog pickup, and table ordering are positioned as Pro and Enterprise value.",
   },
   delivery: {
     setup: [
@@ -1371,7 +1371,7 @@ const FEATURE_GUIDES = {
       "Customers can manage relevant booking actions through the public flow.",
       "Completed bookings can feed feedback, review follow-up, customer profiles, campaigns, and analytics.",
     ],
-    planNote: "Service bookings and table ordering are strong Pro and Business plan reasons because they replace a standalone scheduling product.",
+    planNote: "Service bookings and table ordering are strong Pro and Enterprise plan reasons because they replace a standalone scheduling product.",
   },
   feedback: {
     setup: [
@@ -1401,7 +1401,7 @@ const FEATURE_GUIDES = {
       "Positive review requests can be triggered after real customer activity instead of asking everyone at random.",
       "Suspicious public reviews can be gathered into dispute-ready context for the relevant platform.",
     ],
-    planNote: "Growth sells Google review recovery and positive review building; Pro and Business expand the story with multi-platform, competitors, public signals, and dispute context.",
+    planNote: "Growth sells Google review recovery and positive review building; Pro and Enterprise expand the story with multi-platform, competitors, public signals, and dispute context.",
   },
   campaigns: {
     setup: [
@@ -1415,7 +1415,7 @@ const FEATURE_GUIDES = {
       "Customer consent and do-not-contact rules keep messaging cleaner.",
       "Campaign results connect back to rewards, feedback, customers, and revenue-influenced reporting.",
     ],
-    planNote: "Campaign basics support Growth; customer segments, advanced campaigns, and automations make Pro and Business easier to justify.",
+    planNote: "Campaign basics support Growth; customer segments, advanced campaigns, and automations make Pro and Enterprise easier to justify.",
   },
   rewards: {
     setup: [
@@ -1435,20 +1435,20 @@ const FEATURE_GUIDES = {
     setup: [
       "Connect reviews, feedback, campaigns, ordering, bookings, competitors, and public signals so data lands in one owner view.",
       "Enable owner digest and alerts for risk, review volume, campaign results, and operational issues.",
-      "Use plan-level reporting: Growth for core insights, Pro for deeper monitoring, Business for organisation reporting.",
+      "Use plan-level reporting: Growth for core insights, Pro for deeper monitoring, Enterprise for organisation reporting.",
       "Review staff, item, location, campaign, and competitor patterns before changing operations or offers.",
     ],
     dailyUse: [
       "Owners check what changed this week: reviews, low ratings, redemptions, campaign performance, and competitor movement.",
       "Managers can identify which staff, services, menu items, or locations need attention.",
-      "Business plans can roll up location performance and scheduled reporting.",
+      "Enterprise plans can roll up location performance and scheduled reporting.",
     ],
     planNote: "Analytics is the subscription proof layer: it shows the owner where BRC is saving time, protecting reputation, and influencing revenue.",
   },
   "ai-intelligence": {
     setup: [
       "Upload a menu photo or PDF when catalogue setup is the first job; AI can draft menu items, prices, variations, modifiers, and options before the team reviews them.",
-      "Enable BRC AI on the Business plan so AI operations can read the organisation scope instead of a single isolated location.",
+      "Enable BRC AI on the Enterprise plan so AI operations can read the organisation scope instead of a single isolated location.",
       "Connect the signals that make the AI manager useful: orders, POS revenue, reviews, feedback sentiment, stock, recipes, rota, time off, campaigns, devices, closeout, and finance.",
       "Open the AI operations panel and review the owner brief, health score, revenue trend, forecast demand, stock alerts, labor gaps, and digital twin simulations.",
       "Use the Ask box for questions such as why sales changed, which sentiment trend may cause revenue loss, what to prep, what to reorder, or whether to adjust staffing.",
@@ -1460,7 +1460,7 @@ const FEATURE_GUIDES = {
       "Teams use demand forecasts to plan prep, reorders, and labor cover before the next rush instead of reacting after sales or sentiment has already moved.",
       "Review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup remain useful supporting tools, with human approval before anything customer-facing changes.",
     ],
-    planNote: "BRC AI is the Business plan story. Growth and Pro can still benefit from AI summaries, reply drafts, and other supporting AI features, but the main loss-risk and Ask workflow belongs in BRC AI.",
+    planNote: "BRC AI is the Enterprise plan story. Growth and Pro can still benefit from AI summaries, reply drafts, and other supporting AI features, but the main loss-risk and Ask workflow belongs in BRC AI.",
   },
   team: {
     setup: [
@@ -1517,7 +1517,7 @@ const FEATURE_GUIDES = {
       "Staff work from focused screens while owner-only billing, controls, and location settings remain restricted.",
       "Owners can see labor, service, bookings, orders, recovery, and reporting in the same operating layer.",
     ],
-    planNote: "Rota, payroll, and team controls make Pro and Business more compelling for operators with regular staff or multiple locations.",
+    planNote: "Rota, payroll, and team controls make Pro and Enterprise more compelling for operators with regular staff or multiple locations.",
   },
   "register-controls": {
     setup: [
@@ -2088,15 +2088,37 @@ function Campaigns() {
 
 const PLANS = [
   {
+    name: "Free",
+    monthly: 0,
+    annual: 0,
+    desc: "For new or small operators who want to start with BRC POS, catalog, ordering, bookings, payments, and private feedback without a subscription.",
+    cta: "Start Free",
+    highlight: true,
+    badge: "Start free",
+    features: [
+      "1 location",
+      "£0 monthly subscription",
+      "1% BRC platform fee on BRC-powered payments",
+      "Basic POS/register workflow",
+      "Basic catalog or service setup",
+      "Simple pickup, booking, and table request workflows",
+      "Private feedback capture",
+      "Basic fulfilment status",
+      "Own web and mobile hardware screens",
+      "BRC branding included",
+    ],
+  },
+  {
     name: "Growth",
     monthly: 49,
     annual: 44,
     desc: "For one location starting with reputation recovery, ordering, bookings, catalog setup, competitor tracking, and daily operations.",
     cta: "Start 7-Day Trial",
-    highlight: true,
-    badge: "Most Popular",
+    highlight: false,
+    badge: null,
     features: [
       "1 location",
+      "1% BRC platform fee on BRC-powered payments",
       "Google reviews with up to 50 previous reviews fetched",
       "Daily sync, AI summaries, and reply drafts",
       "Positive review requests and negative feedback recovery",
@@ -2123,6 +2145,7 @@ const PLANS = [
     features: [
       "Up to 3 locations",
       "Everything in Growth",
+      "Reduced BRC platform fee: 0.5% on BRC-powered payments",
       "Yelp and TripAdvisor with up to 500 previous reviews fetched",
       "Review dispute context and advanced recovery reporting",
       "Menu, product, staff, and campaign performance insights",
@@ -2140,16 +2163,17 @@ const PLANS = [
     ],
   },
   {
-    name: "Business",
+    name: "Enterprise",
     monthly: 249,
     annual: 224,
     desc: "For multi-location brands that need OS-wide views across POS, staff, stock, finance, fulfilment, reputation, and reporting.",
-    cta: "Start Business",
+    cta: "Start Enterprise",
     highlight: false,
     badge: "Multi-location",
     features: [
       "Up to 10 locations, then custom",
       "Everything in Pro",
+      "Reduced BRC platform fee: 0.25% or custom volume terms",
       "Up to 1,000 previous reviews fetched",
       "BRC AI and location comparison",
       "Brand-level reputation recovery reports and alerts",
@@ -2197,13 +2221,13 @@ function Pricing() {
         <div className="section-header">
           <div className="section-tag">Pricing</div>
           <h2 className="section-h2">
-            Simple, transparent
+            Start free, then scale into
             <br />
             <span className="grad-text">pricing</span>
           </h2>
           <p className="section-p">
-            Start with a 7-day Growth trial. Upgrade when your team needs more
-            locations or deeper monitoring.
+            Start with the free plan. Paid trials unlock review sync,
+            campaigns, AI, deeper operations, and lower BRC platform fees.
           </p>
           <div className="billing-toggle">
             <span className={!annual ? "tgl-active" : "tgl-dim"}>Monthly</span>
@@ -2229,7 +2253,7 @@ function Pricing() {
               <div className="plan-name">{p.name}</div>
               <div className="plan-price">
                 {typeof p.monthly === "number" && (
-                  <span className="plan-curr">$</span>
+                  <span className="plan-curr">£</span>
                 )}
                 <span className="plan-num">
                   {annual ? p.annual : p.monthly}
@@ -2240,7 +2264,7 @@ function Pricing() {
               </div>
               {annual && typeof p.monthly === "number" && p.monthly > 0 && (
                 <div className="plan-billed">
-                  Billed annually · Save ${(p.monthly - p.annual) * 12}/yr
+                  Billed annually · Save £{(p.monthly - p.annual) * 12}/yr
                 </div>
               )}
               <p className="plan-desc">{p.desc}</p>
@@ -2273,7 +2297,7 @@ function Pricing() {
             <strong>Need more review SMS credits?</strong>
             <span className="addon-text">
               {" "}
-              Add-on packs: 100 credits for $9 · 500 credits for $39
+              Add-on packs: 100 credits for £9 · 500 credits for £39
             </span>
           </div>
         </div>
@@ -2397,7 +2421,7 @@ function CTA({ trialHref = trialSignupUrl() } = {}) {
           </p>
           <div className="cta-btns">
             <a href={trialHref} className="btn btn-primary btn-xl" target={trialHref.startsWith("http") ? "_blank" : undefined} rel={trialHref.startsWith("http") ? "noopener noreferrer" : undefined}>
-              Start 7-Day Trial <span className="arrow">→</span>
+              Start Free <span className="arrow">→</span>
             </a>
             <div className="store-btns">
               <a href={IOS_APP_URL} className="store-btn" target="_blank" rel="noopener noreferrer">
@@ -2966,7 +2990,7 @@ function MigrationMockup() {
       <div className="migration-console-top">
         <span />
         <strong>Menu import draft</strong>
-        <em>Business plan</em>
+        <em>Enterprise plan</em>
       </div>
       <div className="migration-upload">
         <div>
@@ -3016,7 +3040,7 @@ function MigrationMockup() {
 
 function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
   const businessTrialHref = signupUrl({
-    plan: "business",
+    plan: "enterprise",
     billing: "monthly",
     source: "pos_migration",
   });
@@ -3038,7 +3062,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
               </p>
               <div className="hero-btns">
                 <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-                  Start Business Trial <span className="arrow">→</span>
+                  Start Enterprise Trial <span className="arrow">→</span>
                 </a>
                 <a href="/contact" className="btn btn-outline btn-lg">
                   Plan My Migration
@@ -3268,7 +3292,7 @@ function PosMigrationPage({ onNavigate, theme, onToggleTheme }) {
             </div>
             <div className="hero-btns">
               <a href={businessTrialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-                Start Business Trial <span className="arrow">→</span>
+                Start Enterprise Trial <span className="arrow">→</span>
               </a>
               <a href="/features/inventory" className="btn btn-outline btn-lg">
                 See Inventory & Catalogue
@@ -3315,7 +3339,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
               <p className="feature-page-subhead">{detail.subhead}</p>
               <div className="hero-btns">
                 <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-                  Start 7-Day Trial <span className="arrow">→</span>
+                  Start Free <span className="arrow">→</span>
                 </a>
                 <a href={WEB_APP_URL} className="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">
                   Open Web App
@@ -3378,7 +3402,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
               </h2>
               <p className="section-p">
                 This is the operational path an owner or manager follows after
-                starting the trial. The details change by business type, but
+                starting free. The details change by business type, but
                 the setup logic stays consistent.
               </p>
             </div>
@@ -5359,23 +5383,30 @@ function PublicAuditPage() {
   ];
   const planCards = [
     {
+      plan: "free",
+      label: "Free",
+      price: "£0/mo",
+      bestFor: "Start without risk",
+      items: ["Basic POS and catalog", "Simple ordering", "1% platform fee"],
+    },
+    {
       plan: "growth",
       label: "Growth",
-      price: "$49/mo",
+      price: "£49/mo",
       bestFor: "Best first step",
-      items: ["Private feedback capture", "Review follow-up", "Basic campaign tracking"],
+      items: ["Review sync", "AI reply drafts", "Basic campaign tracking"],
     },
     {
       plan: "pro",
       label: "Pro",
-      price: "$99/mo",
+      price: "£99/mo",
       bestFor: "For deeper monitoring",
       items: ["More review platforms", "Competitor tracking", "Public signals"],
     },
     {
-      plan: "business",
+      plan: "enterprise",
       label: "Business",
-      price: "$249/mo",
+      price: "£249/mo",
       bestFor: "For teams and locations",
       items: ["Scheduled campaigns", "Automations", "Brand-level workflows"],
     },
@@ -5390,12 +5421,12 @@ function PublicAuditPage() {
             BRC
           </a>
           <a
-            href={signupUrl(signupBase)}
+            href={signupUrl({ ...signupBase, plan: "free" })}
             className="btn btn-primary"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Start trial
+            Start Free
           </a>
         </div>
 
@@ -5611,12 +5642,12 @@ function PublicAuditPage() {
               </p>
             </div>
             <a
-              href={signupUrl({ ...signupBase, plan: "growth" })}
+              href={signupUrl({ ...signupBase, plan: "free" })}
               className="btn btn-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Start the 7-day trial
+              Start Free
             </a>
           </div>
           <div className="audit-timeline">
@@ -6235,7 +6266,7 @@ const HELP_ARTICLES = [
       "If payment fails or is disputed, paid features can be restricted until billing is resolved.",
     ],
     details: [
-      "Growth, Pro, Business, or custom arrangements can expose different feature sets, usage levels, locations, onboarding options, and support levels.",
+      "Growth, Pro, Enterprise, or custom arrangements can expose different feature sets, usage levels, locations, onboarding options, and support levels.",
       "Some features can show upgrade gates when the business is not subscribed, expired, suspended, or outside plan limits.",
       "Billing emails and account notices should be watched by an owner or finance contact.",
       "For app-store or external billing providers, cancellation and refund handling can depend on that provider’s terms.",
