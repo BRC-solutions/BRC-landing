@@ -2197,7 +2197,7 @@ const PLANS = [
     desc: "For franchises, agencies, and teams with heavier operating, finance, reputation, or signal-monitoring needs.",
     cta: "Talk to Us",
     highlight: false,
-    badge: "Enterprise",
+    badge: "Scale",
     contactHref: "/contact",
     spanFull: true,
     features: [
