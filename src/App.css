@@ -1276,6 +1276,8 @@ img { max-width: 100%; }
 }
 
 .product-screen-register img {
+  height: auto;
+  min-height: 100%;
   object-position: 50% 22%;
 }
 
@@ -1289,6 +1291,8 @@ img { max-width: 100%; }
 }
 
 .product-screen-kitchen img {
+  height: auto;
+  min-height: 100%;
   object-position: 52% 40%;
 }
 
@@ -1302,6 +1306,8 @@ img { max-width: 100%; }
 }
 
 .product-screen-reviews img {
+  height: auto;
+  min-height: 100%;
   object-position: 50% 0%;
 }
 
@@ -1527,7 +1533,8 @@ img { max-width: 100%; }
 
 .ask-ai-screen img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   display: block;
   object-fit: cover;
   object-position: 50% 9%;
