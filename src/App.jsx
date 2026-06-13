@@ -291,47 +291,36 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
 
-function PhoneMockup() {
+const HERO_SCREENSHOTS = {
+  register: "https://cdn.brcapp.io/platform/assets/screenshots/register.png",
+  ai: "https://cdn.brcapp.io/platform/assets/screenshots/AI.png",
+  reviews: "https://cdn.brcapp.io/platform/assets/screenshots/google%20reviews.png",
+};
+
+function HeroScreenshots() {
   return (
-    <div className="phone">
-      <div className="phone-notch" />
-      <div className="phone-screen">
-        <div className="phone-header">
-          <div className="phone-header-logo">
-            <img src="/logo-mark.svg" width="14" height="14" alt="" aria-hidden="true" style={{ verticalAlign: "middle", marginRight: 4 }} />
-            {BRAND_SHORT} AI
-          </div>
-          <div className="phone-header-sub">Marco&apos;s Bistro</div>
-        </div>
-        <div className="phone-body">
-          <div className="phone-order-tag">AI owner brief</div>
-          <div className="phone-biz">Protect Friday profit</div>
-          <div className="phone-pos-total">
-            <span>Forecast revenue</span>
-            <strong>$4,280</strong>
-          </div>
-          <div className="phone-divider" />
-          <div className="phone-metrics">
-            {[
-              ["Stock cover", 46],
-              ["Rota cover", 74],
-              ["Review risk", 68],
-            ].map(([label, pct]) => (
-              <div key={label} className="metric-row">
-                <span className="metric-label">{label}</span>
-                <div className="metric-track">
-                  <div className="metric-fill" style={{ width: `${pct}%` }} />
-                </div>
-              </div>
-            ))}
-          </div>
-          <textarea
-            className="phone-comment"
-            readOnly
-            value="Sales risk: lunch traffic dipped after slow-service reviews. Prep less dough, add one server, and reorder mozzarella before noon."
-          />
-          <button className="phone-cta">Ask what to do next →</button>
-        </div>
+    <div className="hero-screens" aria-label="BRC POS, AI, and review management product screenshots">
+      <div className="product-screen product-screen-register">
+        <img
+          src={HERO_SCREENSHOTS.register}
+          alt="BRC register showing POS categories, product cards, tables, and payment actions"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div className="product-screen product-screen-ai">
+        <img
+          src={HERO_SCREENSHOTS.ai}
+          alt="BRC AI showing operating analysis and recommended actions"
+          loading="eager"
+        />
+      </div>
+      <div className="product-screen product-screen-reviews">
+        <img
+          src={HERO_SCREENSHOTS.reviews}
+          alt="BRC customer inbox showing Google reviews with AI-ready reply status"
+          loading="eager"
+        />
       </div>
     </div>
   );
@@ -396,43 +385,7 @@ function Hero() {
         </div>
 
         <div className="hero-visual">
-          <PhoneMockup />
-
-          <div className="float-card fc-review">
-            <div className="fc-platform">
-              <span className="fc-discount-tag">AI</span>
-              <span className="fc-platform-name">Business context</span>
-            </div>
-            <div className="fc-stars-sm">Orders · reviews · stock · staff</div>
-            <div className="fc-quote">
-              "Revenue changed because the business changed. Here is why."
-            </div>
-          </div>
-
-          <div className="float-card fc-sms">
-            <div className="fc-sms-icon">RISK</div>
-            <div className="fc-sms-body">
-              <div className="fc-sms-title">Loss prevention</div>
-              <div className="fc-sms-sub">
-                Slow service trend before it hits rating
-              </div>
-            </div>
-            <div className="fc-sms-check">✓</div>
-          </div>
-
-          <div className="float-card fc-stat">
-            <div className="fc-stat-val">15%</div>
-            <div className="fc-stat-label">stock reduction suggested</div>
-            <div className="fc-stat-spark">
-              {[30, 50, 40, 70, 60, 90, 80].map((h, i) => (
-                <div
-                  key={i}
-                  className="spark-bar"
-                  style={{ height: `${h}%` }}
-                />
-              ))}
-            </div>
-          </div>
+          <HeroScreenshots />
         </div>
       </div>
 
