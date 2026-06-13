@@ -3559,6 +3559,50 @@ img { max-width: 100%; }
   background: var(--bg-1);
 }
 
+.screenshot-section {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(8,145,178,.08), transparent 34%),
+    linear-gradient(180deg, #fff, #f6fbfc);
+}
+
+:root[data-theme="dark"] .screenshot-section {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(6,182,212,.08), transparent 34%),
+    var(--bg-1);
+}
+
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.screenshot-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: 0 18px 44px rgba(28,18,51,.1);
+  aspect-ratio: 4 / 3;
+}
+
+:root[data-theme="dark"] .screenshot-card {
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 24px 64px rgba(0,0,0,.24);
+}
+
+.screenshot-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: color-mix(in srgb, var(--bg) 70%, #fff);
+}
+
+:root[data-theme="dark"] .screenshot-card img {
+  background: rgba(255,255,255,.035);
+}
+
 /* ─── PLATFORMS ──────────────────────────────────────────────────────────────── */
 
 .platforms-grid {
@@ -5024,6 +5068,37 @@ img { max-width: 100%; }
   background: color-mix(in srgb, var(--bg) 54%, transparent);
 }
 
+.help-screenshot-section {
+  background: color-mix(in srgb, var(--bg) 34%, transparent);
+}
+
+.help-screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.help-screenshot-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-sm);
+}
+
+.help-screenshot-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: color-mix(in srgb, var(--bg) 70%, #fff);
+}
+
+:root[data-theme="dark"] .help-screenshot-card img {
+  background: rgba(255,255,255,.035);
+}
+
 .help-article ol {
   counter-reset: help-step;
   display: grid;
@@ -5159,6 +5234,10 @@ img { max-width: 100%; }
   }
 
   .help-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .help-screenshot-gallery {
     grid-template-columns: 1fr;
   }
 

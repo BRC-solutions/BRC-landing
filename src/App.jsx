@@ -298,6 +298,16 @@ const HERO_SCREENSHOTS = {
   reviews: "https://cdn.brcapp.io/platform/assets/screenshots/google-reviews.webp",
 };
 
+const SCREENSHOT_CDN_BASE = "https://cdn.brcapp.io/platform/assets/screenshots/";
+
+function screenshotUrl(name) {
+  return `${SCREENSHOT_CDN_BASE}${encodeURIComponent(name)}.webp`;
+}
+
+function productScreenshot(name, alt) {
+  return { name, src: screenshotUrl(name), alt };
+}
+
 function HeroScreenshots() {
   return (
     <div className="hero-screens" aria-label="BRC POS, kitchen, and review management product screenshots">
@@ -1665,6 +1675,190 @@ const FEATURE_APP_LOCATIONS = {
     { area: "Feedback / Boost", detail: "Turn reputation risks into private recovery, review requests, rewards, and campaigns." },
   ],
 };
+
+const FEATURE_SCREENSHOTS = {
+  pos: [
+    productScreenshot("register", "BRC register with product grid, cart, table controls, and checkout actions"),
+    productScreenshot("register2", "BRC register with order controls and service workflow actions"),
+    productScreenshot("POS tools", "BRC POS tools for operational register actions"),
+    productScreenshot("POS scanner", "BRC POS scanner for product and code entry"),
+    productScreenshot("customer display", "BRC customer display showing customer-facing order totals"),
+    productScreenshot("Kitchen1", "BRC kitchen display for active preparation tickets"),
+    productScreenshot("kitchen2", "BRC kitchen workflow with live order status"),
+    productScreenshot("KDS", "BRC kitchen display system for production routing"),
+    productScreenshot("cash drawer", "BRC cash drawer controls and cash movement context"),
+    productScreenshot("manager closeout", "BRC manager closeout with shift-end operational checks"),
+    productScreenshot("receipt", "BRC receipt settings and customer receipt workflow"),
+  ],
+  "tables-qr": [
+    productScreenshot("tables", "BRC table management showing venue tables and service context"),
+    productScreenshot("tables 2", "BRC table view with table service controls"),
+    productScreenshot("table setting 1", "BRC table settings for table configuration"),
+    productScreenshot("table setting 2", "BRC table settings for QR and table setup"),
+  ],
+  ordering: [
+    productScreenshot("orders1", "BRC live orders view with order details and status actions"),
+    productScreenshot("orders 2", "BRC order management screen for customer order workflows"),
+    productScreenshot("order history", "BRC order history for completed and past orders"),
+    productScreenshot("operations", "BRC operations workspace for live service management"),
+    productScreenshot("catalouge 1", "BRC catalogue setup supporting customer ordering"),
+    productScreenshot("catalouge 2", "BRC catalogue item management for ordering"),
+  ],
+  delivery: [
+    productScreenshot("delivery", "BRC delivery settings and fulfilment controls"),
+    productScreenshot("delivery 2", "BRC delivery workflow with order fulfilment context"),
+  ],
+  bookings: [
+    productScreenshot("booking 1", "BRC booking setup for services and reservations"),
+    productScreenshot("booking 2", "BRC booking settings with availability and service detail"),
+    productScreenshot("booking3", "BRC booking workflow for customer reservations"),
+    productScreenshot("booking4", "BRC booking screen showing scheduling and service controls"),
+  ],
+  feedback: [
+    productScreenshot("feedback_screen", "BRC private feedback inbox showing customer feedback context"),
+    productScreenshot("review_screen", "BRC review and feedback detail screen"),
+    productScreenshot("boost 1", "BRC Boost feedback session setup"),
+    productScreenshot("boost 2", "BRC Boost workflow for review and feedback prompts"),
+  ],
+  reputation: [
+    productScreenshot("review_home", "BRC reputation home with review activity"),
+    productScreenshot("review channels", "BRC review channel settings for connected platforms"),
+    productScreenshot("review_screen", "BRC review detail screen with recovery context"),
+  ],
+  campaigns: [
+    productScreenshot("campaign 1", "BRC campaign list and customer follow-up workflow"),
+    productScreenshot("campaign 2", "BRC campaign setup for customer messaging"),
+    productScreenshot("campaign 3", "BRC campaign performance and automation workflow"),
+    productScreenshot("campaign 4", "BRC campaign details for scheduled follow-up"),
+  ],
+  rewards: [
+    productScreenshot("loyality points", "BRC loyalty points and customer reward tracking"),
+    productScreenshot("loyality and accounts", "BRC loyalty and customer account settings"),
+    productScreenshot("gift cards", "BRC gift card management for customer rewards"),
+  ],
+  inventory: [
+    productScreenshot("inventory", "BRC inventory dashboard for stock and item availability"),
+    productScreenshot("inventory 2", "BRC inventory screen for stock management"),
+    productScreenshot("inventory 3", "BRC inventory item detail with operational controls"),
+    productScreenshot("inventory 4", "BRC inventory setup for catalog-linked stock"),
+    productScreenshot("inventory 5", "BRC inventory workflow for stock and replenishment"),
+    productScreenshot("Purchasing 1", "BRC purchasing screen for supplier workflows"),
+    productScreenshot("Purchasing 2", "BRC purchasing detail for vendor and stock needs"),
+    productScreenshot("Purchasing 3", "BRC purchasing workflow for back-office stock planning"),
+    productScreenshot("catalouge 3", "BRC catalogue screen connected to inventory"),
+    productScreenshot("catalouge 4", "BRC catalogue item setup for menu and stock"),
+    productScreenshot("catalouge 5", "BRC catalogue management with item details"),
+    productScreenshot("catalouge 6", "BRC catalogue workflow for publish-ready items"),
+  ],
+  "staff-ops": [
+    productScreenshot("staff training", "BRC staff training area for team onboarding and operational learning"),
+    productScreenshot("staff permissions", "BRC staff permissions and role access controls"),
+    productScreenshot("staff shifts", "BRC staff shifts screen for team operations"),
+    productScreenshot("staff rota", "BRC rota view for staff scheduling"),
+    productScreenshot("staff rota 2", "BRC rota planning with staff coverage context"),
+    productScreenshot("payroll 1", "BRC payroll screen for pay workflow management"),
+    productScreenshot("payroll 2", "BRC payroll detail with staff pay context"),
+    productScreenshot("payroll 3", "BRC payroll workflow for operational teams"),
+    productScreenshot("payroll 4", "BRC payroll settings and team finance controls"),
+  ],
+  finance: [
+    productScreenshot("finance 1", "BRC finance overview with money movement context"),
+    productScreenshot("finance 2", "BRC finance screen for owner reporting"),
+    productScreenshot("finance 3", "BRC finance ledger and transaction workflow"),
+    productScreenshot("finance 4", "BRC finance detail with operational records"),
+    productScreenshot("finance 5", "BRC finance reporting connected to orders and closeout"),
+    productScreenshot("finance 6", "BRC finance settings and payout context"),
+    productScreenshot("finance 7", "BRC finance screen for daily money review"),
+    productScreenshot("finance 8", "BRC finance chart and reporting screen"),
+    productScreenshot("manager closeout", "BRC manager closeout with end-of-shift finance checks"),
+  ],
+  "register-controls": [
+    productScreenshot("offline sync", "BRC offline sync queue for service resilience"),
+    productScreenshot("devices and printers 1", "BRC devices and printers setup for local operations"),
+    productScreenshot("devices and printers 2", "BRC device and printer workflow for hardware readiness"),
+    productScreenshot("cash drawer", "BRC cash drawer controls for register accountability"),
+    productScreenshot("manager closeout", "BRC manager closeout with controlled actions"),
+    productScreenshot("receipt", "BRC receipt settings for controlled customer records"),
+  ],
+  "market-signals": [
+    productScreenshot("review_home", "BRC review home showing reputation and market context"),
+    productScreenshot("review channels", "BRC review channel settings for reputation monitoring"),
+    productScreenshot("analytics 8", "BRC analytics screen with market and performance signals"),
+    productScreenshot("complaince", "BRC compliance screen for operational governance"),
+  ],
+  analytics: [
+    productScreenshot("analytics 1", "BRC analytics overview for owner reporting"),
+    productScreenshot("analytics 2", "BRC analytics chart with business performance signals"),
+    productScreenshot("analytics3", "BRC analytics dashboard with connected operational data"),
+    productScreenshot("analytics 4", "BRC analytics screen for customer and revenue insights"),
+    productScreenshot("analytics 5", "BRC analytics trend view for performance review"),
+    productScreenshot("analytics 6", "BRC analytics reporting screen for operational decisions"),
+    productScreenshot("analytics 7", "BRC analytics detail for owner insight"),
+    productScreenshot("analytics 8", "BRC analytics workflow for market and business signals"),
+    productScreenshot("analytics 9", "BRC analytics report with multi-signal context"),
+  ],
+  "ai-intelligence": [
+    productScreenshot("AI 1", "BRC AI owner brief with operational recommendations"),
+    productScreenshot("AI 2", "BRC AI screen showing business intelligence and next actions"),
+    productScreenshot("AI 3", "BRC AI forecast and operations panel"),
+    productScreenshot("AI 4", "BRC AI Ask workflow for manager questions"),
+    productScreenshot("AI 5", "BRC AI analysis screen for demand and risk signals"),
+  ],
+  team: [
+    productScreenshot("business profile 1", "BRC business profile setup for organisation settings"),
+    productScreenshot("business profile 2", "BRC business profile screen with company details"),
+    productScreenshot("business profile 3", "BRC business profile settings for operators"),
+    productScreenshot("business profile 4", "BRC business profile workflow for setup completion"),
+    productScreenshot("multilocations", "BRC multi-location management for growing teams"),
+    productScreenshot("House accoutns", "BRC house accounts screen for account-based operations"),
+    productScreenshot("notifiaction", "BRC notification settings for owner and staff alerts"),
+    productScreenshot("public page 1", "BRC public page settings for customer-facing workflows"),
+    productScreenshot("public page 2", "BRC public page setup with brand and ordering context"),
+    productScreenshot("public page 3", "BRC public page workflow for customer publishing"),
+    productScreenshot("public page 4", "BRC public page controls for business information"),
+    productScreenshot("public page 5", "BRC public page preview and publishing settings"),
+  ],
+};
+
+function ScreenshotGallery({ eyebrow = "Product Screenshots", title, body, screenshots = [], compact = false }) {
+  if (!screenshots.length) return null;
+
+  return (
+    <section className={`section screenshot-section ${compact ? "screenshot-section-compact" : ""}`}>
+      <div className="container">
+        <div className="section-header feature-left-header">
+          <div className="section-tag">{eyebrow}</div>
+          <h2 className="section-h2">{title}</h2>
+          {body ? <p className="section-p">{body}</p> : null}
+        </div>
+        <div className="screenshot-gallery">
+          {screenshots.map((shot) => (
+            <figure className="screenshot-card" key={shot.name}>
+              <img src={shot.src} alt={shot.alt} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HelpScreenshotStrip({ screenshots = [] }) {
+  if (!screenshots.length) return null;
+
+  return (
+    <section className="help-article-section help-screenshot-section">
+      <h3>Related screenshots</h3>
+      <div className="help-screenshot-gallery">
+        {screenshots.map((shot) => (
+          <figure className="help-screenshot-card" key={shot.name}>
+            <img src={shot.src} alt={shot.alt} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 function Features() {
   return (
@@ -3223,6 +3417,7 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
   const guide = FEATURE_GUIDES[feature.slug] || FEATURE_GUIDES.ordering;
   const surfaces = FEATURE_SURFACES[feature.slug] || FEATURE_SURFACES.ordering;
   const appLocations = FEATURE_APP_LOCATIONS[feature.slug] || FEATURE_APP_LOCATIONS.ordering;
+  const featureScreenshots = FEATURE_SCREENSHOTS[feature.slug] || [];
   const related = FEATURES.filter((item) => item.slug !== feature.slug).slice(0, 3);
 
   return (
@@ -3294,6 +3489,12 @@ function FeatureDetailPage({ slug = "ordering", onNavigate, theme, onToggleTheme
             </div>
           </div>
         </section>
+
+        <ScreenshotGallery
+          title={`${feature.title} in BRC`}
+          body="These screenshots show the corresponding BRC screens for this feature area, using the same CDN assets prepared for upload."
+          screenshots={featureScreenshots}
+        />
 
         {feature.slug === "analytics" ? <Analytics /> : null}
         {feature.slug === "campaigns" ? <Campaigns /> : null}
@@ -6160,6 +6361,33 @@ const HELP_ARTICLES = [
     related: ["Staff", "Locations", "Billing", "Security"],
   },
   {
+    id: "staff-training",
+    category: "Admin",
+    title: "Staff training area",
+    summary: "Use the staff training area to keep onboarding, daily workflows, and operating standards visible to the team.",
+    overview:
+      "The staff training area gives operators a shared place for practical team guidance: how to use service screens, where manager approvals are needed, what to check before a shift, and how staff should handle customer workflows without exposing owner-only controls.",
+    steps: [
+      "Open the staff training area from the team or operations workspace.",
+      "Review training items for the workflows the staff member will use, such as orders, bookings, register actions, feedback, table service, or closeout support.",
+      "Pair training with role permissions so staff can practise only the screens they are allowed to use.",
+      "Use manager notes and operating standards to explain when a staff member should escalate rather than force an action.",
+      "Update training whenever modules, policies, devices, table layouts, or service procedures change.",
+    ],
+    details: [
+      "Training works best when it is specific to the business workflow rather than a generic product manual.",
+      "Sensitive actions such as refunds, discounts, manager PIN overrides, billing, finance, and public page publishing should remain role-gated.",
+      "New staff should be walked through live order, booking, feedback, and table scenarios before customer-facing service.",
+      "Training should be reviewed after rota, payroll, permissions, or closeout processes change.",
+    ],
+    tips: [
+      "Keep the first training pass focused on the screens used during a normal shift.",
+      "Review permissions immediately after training so access matches responsibility.",
+      "Use the staff training area as part of onboarding and seasonal refreshers.",
+    ],
+    related: ["Team roles", "Rota", "Payroll", "Manager controls"],
+  },
+  {
     id: "billing",
     category: "Billing",
     title: "Plans, billing, trials, and cancellation",
@@ -6814,6 +7042,140 @@ const HELP_ARTICLES = [
   },
 ];
 
+const HELP_SCREENSHOTS_BY_ID = {
+  "getting-started": [
+    productScreenshot("business profile 1", "BRC business profile setup for first-time configuration"),
+    productScreenshot("setup", "BRC setup screen for business onboarding"),
+    productScreenshot("setup 2", "BRC setup workflow for configuring modules"),
+    productScreenshot("public page 1", "BRC public page setup for customer-facing launch"),
+    productScreenshot("staff permissions", "BRC staff permissions during setup"),
+  ],
+  dashboard: [
+    productScreenshot("analytics 1", "BRC dashboard and analytics overview"),
+    productScreenshot("operations", "BRC operations workspace for daily work"),
+    productScreenshot("review_home", "BRC review home for reputation activity"),
+  ],
+  "ai-intelligence": FEATURE_SCREENSHOTS["ai-intelligence"],
+  "reputation-recovery": [
+    productScreenshot("feedback_screen", "BRC private feedback screen for customer recovery"),
+    productScreenshot("review_screen", "BRC review detail screen for recovery context"),
+    productScreenshot("boost 2", "BRC Boost workflow for follow-up prompts"),
+  ],
+  "positive-reviews": [
+    productScreenshot("review_home", "BRC review home for public reputation work"),
+    productScreenshot("review channels", "BRC review channel settings"),
+  ],
+  "fake-review-disputes": [
+    productScreenshot("review_screen", "BRC review detail for suspicious review context"),
+    productScreenshot("review channels", "BRC connected review platforms"),
+  ],
+  ordering: FEATURE_SCREENSHOTS.ordering,
+  bookings: FEATURE_SCREENSHOTS.bookings,
+  "campaigns-rewards": [
+    ...FEATURE_SCREENSHOTS.campaigns,
+    productScreenshot("loyality points", "BRC loyalty points reward screen"),
+    productScreenshot("gift cards", "BRC gift card reward workflow"),
+  ],
+  analytics: FEATURE_SCREENSHOTS.analytics,
+  "team-roles": [
+    productScreenshot("staff permissions", "BRC staff permission settings"),
+    productScreenshot("multilocations", "BRC multi-location staff access context"),
+    productScreenshot("notifiaction", "BRC notification settings for team alerts"),
+  ],
+  "staff-training": [
+    productScreenshot("staff training", "BRC staff training area"),
+    productScreenshot("staff shifts", "BRC staff shifts for daily team workflow"),
+    productScreenshot("staff rota", "BRC rota screen for team scheduling"),
+    productScreenshot("staff permissions", "BRC permissions connected to staff training"),
+  ],
+  billing: [
+    productScreenshot("finance 1", "BRC finance overview connected to billing context"),
+    productScreenshot("finance 8", "BRC finance reporting screen"),
+  ],
+  "catalog-menu": [
+    productScreenshot("catalouge 1", "BRC catalogue setup for menu items"),
+    productScreenshot("catalouge 4", "BRC catalogue detail for item setup"),
+    productScreenshot("AI 1", "BRC AI support for catalogue setup"),
+  ],
+  "inventory-availability": FEATURE_SCREENSHOTS.inventory.slice(0, 5),
+  "tables-qr": FEATURE_SCREENSHOTS["tables-qr"],
+  "kitchen-display": [
+    productScreenshot("KDS", "BRC kitchen display system"),
+    productScreenshot("Kitchen1", "BRC kitchen ticket screen"),
+    productScreenshot("kitchen2", "BRC kitchen workflow screen"),
+  ],
+  "delivery-dispatch": FEATURE_SCREENSHOTS.delivery,
+  pickup: [
+    productScreenshot("orders1", "BRC order screen for pickup workflows"),
+    productScreenshot("order history", "BRC order history for pickup tracking"),
+  ],
+  "finance-payouts": FEATURE_SCREENSHOTS.finance,
+  "refunds-disputes": [
+    productScreenshot("finance 4", "BRC finance detail for refund context"),
+    productScreenshot("manager closeout", "BRC manager closeout for exceptions"),
+    productScreenshot("review_screen", "BRC review detail for dispute context"),
+  ],
+  locations: [
+    productScreenshot("multilocations", "BRC multi-location settings"),
+    productScreenshot("business profile 2", "BRC business profile location context"),
+  ],
+  "review-channels": [
+    productScreenshot("review channels", "BRC review channel settings"),
+    productScreenshot("review_home", "BRC review home"),
+  ],
+  competitors: FEATURE_SCREENSHOTS["market-signals"],
+  "crm-customers": [
+    productScreenshot("loyality and accounts", "BRC loyalty and customer account context"),
+    productScreenshot("House accoutns", "BRC house accounts for customer records"),
+    productScreenshot("order history", "BRC customer order history"),
+  ],
+  "staff-services": [
+    ...FEATURE_SCREENSHOTS.bookings,
+    productScreenshot("staff permissions", "BRC staff access for service workflows"),
+  ],
+  "owner-digest": [
+    productScreenshot("analytics 5", "BRC analytics trend screen for owner digest"),
+    productScreenshot("notifiaction", "BRC notification and owner digest settings"),
+  ],
+  "upgrade-gates": [
+    productScreenshot("business profile 4", "BRC business profile and plan readiness"),
+    productScreenshot("finance 6", "BRC finance settings connected to access readiness"),
+  ],
+  "business-verification": [
+    productScreenshot("business profile 3", "BRC business profile verification context"),
+    productScreenshot("complaince", "BRC compliance and verification screen"),
+  ],
+  "local-hub": [
+    productScreenshot("devices and printers 1", "BRC devices and printers for local operations"),
+    productScreenshot("devices and printers 2", "BRC hardware setup for local workflows"),
+    productScreenshot("customer display", "BRC customer display as a local operations screen"),
+  ],
+  "offline-sync": FEATURE_SCREENSHOTS["register-controls"].slice(0, 1),
+  "hardware-discovery": [
+    productScreenshot("devices and printers 1", "BRC device discovery settings"),
+    productScreenshot("devices and printers 2", "BRC devices and printers setup"),
+  ],
+  "public-page": [
+    productScreenshot("public page 1", "BRC public page settings"),
+    productScreenshot("public page 2", "BRC public page setup"),
+    productScreenshot("public page 3", "BRC customer-facing page workflow"),
+    productScreenshot("public page 4", "BRC public page controls"),
+    productScreenshot("public page 5", "BRC public page publishing settings"),
+  ],
+  notifications: [
+    productScreenshot("notifiaction", "BRC notification settings"),
+    productScreenshot("review_home", "BRC review alert context"),
+  ],
+  "security-privacy": [
+    productScreenshot("staff permissions", "BRC staff permissions for secure access"),
+    productScreenshot("complaince", "BRC compliance screen"),
+  ],
+  support: [
+    productScreenshot("operations", "BRC operations screen context for support requests"),
+    productScreenshot("business profile 1", "BRC business profile context for support"),
+  ],
+};
+
 function MarketingContentPage({ slug, articleId, theme, onToggleTheme, onNavigate }) {
   const normalizedSlug = slug === "api-docs" ? "api" : slug;
   if (normalizedSlug === "help") {
@@ -6920,6 +7282,7 @@ function HelpCentrePage({ initialArticleId, theme, onToggleTheme, onNavigate }) 
     HELP_ARTICLES.find((article) => article.id === initialArticleId) ||
     filteredArticles[0] ||
     HELP_ARTICLES[0];
+  const activeArticleScreenshots = HELP_SCREENSHOTS_BY_ID[activeArticle?.id] || [];
 
   useEffect(() => {
     if (initialArticleId && HELP_ARTICLES.some((article) => article.id === initialArticleId)) {
@@ -7031,6 +7394,8 @@ function HelpCentrePage({ initialArticleId, theme, onToggleTheme, onNavigate }) 
                     <p>{activeArticle.overview}</p>
                   </section>
                 ) : null}
+
+                <HelpScreenshotStrip screenshots={activeArticleScreenshots} />
 
                 <section className="help-article-section">
                   <h3>How to use it</h3>
