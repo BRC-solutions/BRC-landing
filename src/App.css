@@ -1271,14 +1271,32 @@ img { max-width: 100%; }
   z-index: 1;
   width: 92%;
   aspect-ratio: 4 / 3;
-  border-radius: 24px;
+  border-radius: 22px;
+  padding: 28px 10px 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4efff 100%);
   transform: rotate(1deg);
+}
+
+.product-screen-register::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 14px;
+  width: 42px;
+  height: 8px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 4px 50%, rgba(220,38,38,.72) 0 3px, transparent 3.5px),
+    radial-gradient(circle at 18px 50%, rgba(217,119,6,.72) 0 3px, transparent 3.5px),
+    radial-gradient(circle at 32px 50%, rgba(5,150,105,.72) 0 3px, transparent 3.5px);
+  z-index: 2;
 }
 
 .product-screen-register img {
   height: auto;
   min-height: 100%;
   object-position: 50% 22%;
+  border-radius: 14px;
 }
 
 .product-screen-kitchen {
@@ -1287,13 +1305,16 @@ img { max-width: 100%; }
   z-index: 3;
   width: 58%;
   aspect-ratio: 1.55;
-  border-radius: 18px;
+  border-radius: 26px;
+  padding: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f2ff 100%);
 }
 
 .product-screen-kitchen img {
   height: auto;
   min-height: 100%;
   object-position: 52% 40%;
+  border-radius: 16px;
 }
 
 .product-screen-reviews {
@@ -1302,13 +1323,29 @@ img { max-width: 100%; }
   z-index: 4;
   width: 28%;
   aspect-ratio: .46;
-  border-radius: 30px;
+  border-radius: 34px;
+  padding: 17px 7px 9px;
+  background: #170f28;
+}
+
+.product-screen-reviews::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  z-index: 2;
+  width: 38%;
+  height: 8px;
+  border-radius: 999px;
+  background: #05030a;
+  transform: translateX(-50%);
 }
 
 .product-screen-reviews img {
   height: auto;
   min-height: 100%;
   object-position: 50% 0%;
+  border-radius: 24px;
 }
 
 /* ─── SCROLL HINT ────────────────────────────────────────────────────────────── */
