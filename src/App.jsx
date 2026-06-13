@@ -294,12 +294,13 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
 const HERO_SCREENSHOTS = {
   register: "https://cdn.brcapp.io/platform/assets/screenshots/register.png",
   ai: "https://cdn.brcapp.io/platform/assets/screenshots/AI.png",
+  kitchen: "https://cdn.brcapp.io/platform/assets/screenshots/kitchen.png",
   reviews: "https://cdn.brcapp.io/platform/assets/screenshots/google%20reviews.png",
 };
 
 function HeroScreenshots() {
   return (
-    <div className="hero-screens" aria-label="BRC POS, AI, and review management product screenshots">
+    <div className="hero-screens" aria-label="BRC POS, kitchen, and review management product screenshots">
       <div className="product-screen product-screen-register">
         <img
           src={HERO_SCREENSHOTS.register}
@@ -308,10 +309,10 @@ function HeroScreenshots() {
           fetchpriority="high"
         />
       </div>
-      <div className="product-screen product-screen-ai">
+      <div className="product-screen product-screen-kitchen">
         <img
-          src={HERO_SCREENSHOTS.ai}
-          alt="BRC AI showing operating analysis and recommended actions"
+          src={HERO_SCREENSHOTS.kitchen}
+          alt="BRC kitchen display showing live tickets, prep stations, handoff, and ready orders"
           loading="eager"
         />
       </div>
@@ -508,62 +509,13 @@ function AskBrcDemo() {
           </div>
         </div>
 
-        <div className="ask-brc-graphic" aria-label="Example BRC AI business answer">
-          <div className="ask-window">
-            <div className="ask-window-top">
-              <div>
-                <span>BRC AI</span>
-                <strong>Business question</strong>
-              </div>
-              <b>Live context</b>
-            </div>
-            <div className="ask-question">
-              Why was profit low yesterday?
-            </div>
-            <div className="ask-answer">
-              <div className="ask-answer-head">
-                <span>Answer</span>
-                <strong>Profit was squeezed by 3 connected issues.</strong>
-              </div>
-              <div className="ask-cause-grid">
-                <div>
-                  <span>Revenue</span>
-                  <strong>-8%</strong>
-                  <small>Lunch traffic fell after slow-service feedback.</small>
-                </div>
-                <div>
-                  <span>Stock</span>
-                  <strong>+14%</strong>
-                  <small>Prep waste rose on two low-demand items.</small>
-                </div>
-                <div>
-                  <span>Labour</span>
-                  <strong>+2.5h</strong>
-                  <small>Rota cover was high for actual demand.</small>
-                </div>
-              </div>
-              <div className="ask-action-list">
-                <div>
-                  <b>Today</b>
-                  Reduce prep on margherita slices and reorder mozzarella before noon.
-                </div>
-                <div>
-                  <b>Tomorrow</b>
-                  Move one staff member from 3pm to Friday lunch cover.
-                </div>
-                <div>
-                  <b>Recovery</b>
-                  Send a win-back offer to customers who have not returned in 30 days.
-                </div>
-              </div>
-            </div>
-            <div className="ask-signal-row">
-              {["POS", "Reviews", "Stock", "Rota", "Finance"].map((item, index) => (
-                <span key={item} style={{ "--delay": `${index * 0.08}s` }}>
-                  {item}
-                </span>
-              ))}
-            </div>
+        <div className="ask-brc-graphic" aria-label="BRC AI product screenshot">
+          <div className="ask-ai-screen">
+            <img
+              src={HERO_SCREENSHOTS.ai}
+              alt="BRC AI showing current operating read, generated actions, manager copilot, and AI response"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
