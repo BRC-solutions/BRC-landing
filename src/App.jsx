@@ -359,9 +359,8 @@ function Hero() {
             <span className="grad-text"> before it costs you money.</span>
           </h1>
           <p className="hero-subtitle">
-            BRC connects your sales, reviews, stock, staff, finance, orders,
-            and customer activity into one AI business OS, then tells you where
-            profit is leaking, what needs attention, and what to do next.
+            BRC combines a complete POS system and reputation management,
+            layering AI across every part of your operation.
           </p>
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
