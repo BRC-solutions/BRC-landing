@@ -292,10 +292,10 @@ function Nav({ theme = "dark", onToggleTheme, onDarkHero = false }) {
 // ─── HERO ─────────────────────────────────────────────────────────────────────
 
 const HERO_SCREENSHOTS = {
-  register: "https://cdn.brcapp.io/platform/assets/screenshots/register.png",
-  ai: "https://cdn.brcapp.io/platform/assets/screenshots/AI.png",
-  kitchen: "https://cdn.brcapp.io/platform/assets/screenshots/kitchen.png",
-  reviews: "https://cdn.brcapp.io/platform/assets/screenshots/google%20reviews.png",
+  register: "https://cdn.brcapp.io/platform/assets/screenshots/register.webp",
+  ai: "https://cdn.brcapp.io/platform/assets/screenshots/ai.webp",
+  kitchen: "https://cdn.brcapp.io/platform/assets/screenshots/kitchen.webp",
+  reviews: "https://cdn.brcapp.io/platform/assets/screenshots/google-reviews.webp",
 };
 
 function HeroScreenshots() {
