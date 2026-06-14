@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import "./App.css?v=2224";
 
 // ─── ROUTING ──────────────────────────────────────────────────────────────────
@@ -337,6 +337,13 @@ function HeroScreenshots() {
   );
 }
 
+const HERO_SIGNALS = [
+  { label: "Revenue", value: "Sales and margin" },
+  { label: "Reviews", value: "Public and private recovery" },
+  { label: "Orders", value: "Live service flow" },
+  { label: "AI insights", value: "Owner brief" },
+];
+
 function Hero() {
   const trialHref = trialSignupUrl();
 
@@ -355,25 +362,28 @@ function Hero() {
             Built for busy local operators, not software teams.
           </div>
           <h1 className="hero-h1">
-            Run your business from
-            <span className="grad-text"> one AI operating system.</span>
+            The AI Operating System for
+            <span className="grad-text"> Local Businesses.</span>
           </h1>
           <p className="hero-subtitle">
-            POS, reviews, stock, staff, orders, finance, and customer recovery, all connected.
+            Reviews, POS, bookings, inventory, staff, finance, and customer recovery in one platform.
           </p>
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
-              "Make more profit",
-              "Prevent losses",
-              "Run daily operations",
+              "Restaurants",
+              "Retail",
+              "Salons",
+              "Clinics",
+              "Gyms",
+              "Service businesses",
             ].map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
           <p className="hero-p">
-            BRC tells owners why money is leaking and what to do next, then gives
-            managers the tools to fix it in the same system they use for service,
-            stock, staffing, orders, reviews, and cash control.
+            BRC gives owners one place to see trading, customer sentiment,
+            orders, stock, staffing, and daily priorities, then gives managers
+            the tools to act during service.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -387,6 +397,14 @@ function Hero() {
 
         <div className="hero-visual">
           <HeroScreenshots />
+          <div className="hero-signal-panel" aria-label="BRC first-screen product signals">
+            {HERO_SIGNALS.map((signal) => (
+              <div className="hero-signal" key={signal.label}>
+                <strong>{signal.label}</strong>
+                <span>{signal.value}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -420,6 +438,12 @@ const TRUST_QUOTES = [
   },
 ];
 
+const PROOF_POINTS = [
+  { value: "1,000", label: "previous reviews fetched on Enterprise plans" },
+  { value: "0%", label: "BRC platform fee on Enterprise payments" },
+  { value: "Unlimited", label: "supported operator screens on Pro and above" },
+];
+
 function TrustProof() {
   return (
     <section className="trust-proof-section">
@@ -427,6 +451,14 @@ function TrustProof() {
         <div className="trust-proof-copy">
           <span>Built for hands-on local operators</span>
           <strong>No hardware lock-in. Cancel anytime. Data access controlled by role and location.</strong>
+          <div className="trust-proof-metrics" aria-label="BRC proof points">
+            {PROOF_POINTS.map((point) => (
+              <div key={point.label}>
+                <b>{point.value}</b>
+                <small>{point.label}</small>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="trust-quote-grid">
           {TRUST_QUOTES.map((item) => (
@@ -448,9 +480,10 @@ function TrustProof() {
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "Profit clarity", label: "See which items, offers, shifts, customers, and channels deserve attention." },
-  { value: "Risk control", label: "Spot review trouble, stock gaps, closeout variance, and failed recovery earlier." },
-  { value: "Daily flow", label: "Keep sales, orders, tables, stock, staff, finance, campaigns, and customers moving." },
+  { value: "Increase Revenue", label: "POS, orders, campaigns, rewards, offers, finance, and item performance." },
+  { value: "Recover Customers", label: "Private feedback, review replies, suspicious-review context, and follow-up." },
+  { value: "Run Operations", label: "Register, bookings, tables, KDS, stock, purchasing, rota, payroll, and closeout." },
+  { value: "Understand Your Business", label: "AI owner brief, analytics, market signals, forecasts, and reporting." },
 ];
 
 function StatsBar() {
@@ -583,19 +616,19 @@ function ScreenshotLightbox({ shot, onClose }) {
 
 const AI_OS_PILLARS = [
   {
-    title: "Make profit visible",
+    title: "Increase revenue",
     body: "BRC connects sales, tenders, stock, staffing, finance, rewards, campaigns, and item performance so owners can see what is actually driving margin, repeat visits, and wasted spend.",
   },
   {
-    title: "Prevent avoidable losses",
+    title: "Recover customers",
     body: "Low ratings, negative feedback, slow-service themes, stock gaps, closeout variance, offline devices, failed campaigns, and suspicious reviews become owner actions before they quietly damage revenue.",
   },
   {
-    title: "Predict shortages and demand",
+    title: "Run operations",
     body: "The AI operations layer forecasts orders, prep needs, reorder pressure, and labor cover from real business signals so managers can plan before the rush instead of reacting after it.",
   },
   {
-    title: "Advise like a business operator",
+    title: "Understand the business",
     body: "Instead of only saying revenue is down, BRC AI can connect the drop to reviews, lunch traffic, item performance, rota cover, stock movement, competitor changes, and the next practical move.",
   },
 ];
@@ -710,22 +743,28 @@ function BusinessFitStrip() {
 
 const OPERATIONS_STACK = [
   {
-    eyebrow: "Revenue lift",
-    title: "Know what to promote, price, staff, or stop selling",
-    body: "Connect sales, orders, customer recovery, offers, finance, and item performance so the owner sees where margin is created and where effort is wasted.",
-    items: ["POS", "Finance", "Campaigns", "Analytics"],
+    eyebrow: "Increase Revenue",
+    title: "Make every sale easier to understand and repeat",
+    body: "Connect sales, orders, offers, rewards, finance, and item performance so owners can see what deserves promotion, pricing changes, or tighter control.",
+    items: ["POS", "Orders", "Finance", "Campaigns"],
   },
   {
-    eyebrow: "Leak prevention",
-    title: "Catch problems before they become expensive",
-    body: "Bring together negative reviews, private feedback, low stock, closeout variance, slow service themes, suspicious reviews, and failed follow-up in one action list.",
-    items: ["Reviews", "Recovery", "Stock", "Controls"],
+    eyebrow: "Recover Customers",
+    title: "Turn bad moments into a managed recovery workflow",
+    body: "Bring together private feedback, public reviews, reply drafts, suspicious-review context, rewards, and follow-up so unhappy customers are not left drifting.",
+    items: ["Feedback", "Reviews", "Rewards", "Recovery"],
   },
   {
-    eyebrow: "Shift control",
-    title: "Operate sales, staff, stock, orders, and service from one place",
-    body: "Give managers the day-to-day tools: register, tables, orders, bookings, inventory, purchasing, rota, payroll, fulfilment, kitchen display, and customer workflows.",
-    items: ["Register", "Orders", "Rota", "Inventory"],
+    eyebrow: "Run Operations",
+    title: "Give managers the tools for service, staff, and stock",
+    body: "Run register, tables, bookings, fulfilment, kitchen display, inventory, purchasing, rota, payroll, permissions, and closeout from the same operating layer.",
+    items: ["Register", "Tables", "Stock", "Payroll"],
+  },
+  {
+    eyebrow: "Understand Your Business",
+    title: "See the story behind the numbers",
+    body: "Use owner briefs, analytics, forecasts, market signals, competitor context, and reporting to understand what changed and where the next manager minute should go.",
+    items: ["AI brief", "Analytics", "Forecasts", "Reports"],
   },
 ];
 
@@ -738,15 +777,16 @@ function OperationsStack() {
         <div className="operations-stack-copy">
           <div className="section-tag">All-In-One Operations</div>
           <h2 className="section-h2">
-            The modules are grouped around three owner outcomes.
+            The modules sit under four owner outcomes.
             <br />
             <span className="grad-text">No feature maze required.</span>
           </h2>
           <p className="section-p">
             BRC still gives operators POS, reviews, stock, rota, payroll,
             finance, loyalty, campaigns, analytics, orders, and controls. The
-            homepage story is simpler: make more profit, prevent losses, and run
-            the day without stitching together another stack of subscriptions.
+            homepage story is simpler: increase revenue, recover customers, run
+            operations, and understand the business without stitching together
+            another stack of subscriptions.
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -2428,6 +2468,46 @@ const PLANS = [
   },
 ];
 
+const PLAN_DETAIL_GROUPS = [
+  {
+    title: "Locations and screens",
+    rows: [
+      ["Locations", "1", "1", "Up to 3", "Up to 10, then custom", "Custom"],
+      ["Operator screens", "Own devices", "Own devices", "Unlimited supported screens", "Unlimited supported screens", "Custom estate"],
+      ["Hardware lock-in", "No", "No", "No", "No", "No"],
+    ],
+  },
+  {
+    title: "Reviews and customer recovery",
+    rows: [
+      ["Private feedback", "Basic", "Included", "Advanced reporting", "Brand-level reports", "Custom"],
+      ["Google reviews", "Manual setup", "Daily sync and up to 50 previous reviews", "Included", "Included", "Custom allowance"],
+      ["Yelp and TripAdvisor", "Not included", "Not included", "Up to 500 previous reviews", "Up to 1,000 previous reviews", "Custom allowance"],
+      ["Suspicious review support", "Not included", "Flags and context", "Dispute context", "Brand alerts", "Custom workflow"],
+    ],
+  },
+  {
+    title: "Operations modules",
+    rows: [
+      ["POS/register", "Basic", "Basic", "Register, tabs, tenders, customer display, KDS", "Multi-location queues", "Custom"],
+      ["Orders, bookings, pickup, delivery", "Simple workflows", "Simple workflows", "Advanced configuration", "Multi-location views", "Custom"],
+      ["Tables and QR codes", "Basic requests", "Basic setup", "Table maps, areas, dine-in scan flows", "Multi-location controls", "Custom"],
+      ["Stock, purchasing, vendors", "Basic catalog", "Basic catalog", "Available by module setup", "Inventory, recipes, vendors, purchasing", "Custom"],
+      ["Rota, payroll, permissions", "Basic access", "Staff ratings", "Rota, shifts, payroll, permissions", "Rollups and controls", "Custom"],
+    ],
+  },
+  {
+    title: "Money, AI, and reporting",
+    rows: [
+      ["BRC platform fee", "1%", "0.5%", "0.25%", "0%", "Custom"],
+      ["Finance and closeout", "Basic payments context", "Basic reporting", "Payouts, tenders, profitability", "Multi-location reporting", "Custom"],
+      ["BRC AI", "Not included", "AI summaries and reply drafts", "Operational insights", "Owner brief and location comparison", "Custom"],
+      ["Campaigns and segments", "Not included", "Email basics", "Advanced campaigns and segments", "Multi-location campaigns", "Custom"],
+      ["Onboarding", "Self-serve", "Self-serve", "Priority support", "Onboarding support", "Dedicated onboarding"],
+    ],
+  },
+];
+
 function Pricing() {
   const [annual, setAnnual] = useState(false);
 
@@ -2505,7 +2585,7 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="/pricing" className="plan-details-link">
+              <a href="/#plan-details" className="plan-details-link">
                 See full plan details <span>→</span>
               </a>
             </div>
@@ -2520,6 +2600,60 @@ function Pricing() {
               Add-on packs: 100 credits for £9 · 500 credits for £39
             </span>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PlanDetails() {
+  return (
+    <section className="section plan-details-section" id="plan-details">
+      <div className="container">
+        <div className="section-header">
+          <div className="section-tag">Full Plan Details</div>
+          <h2 className="section-h2">
+            Compare the details before you choose.
+          </h2>
+          <p className="section-p">
+            The cards above stay short. This section shows the practical limits,
+            modules, review coverage, AI, payment fees, and onboarding differences.
+          </p>
+        </div>
+
+        <div className="plan-details-table-wrap" aria-label="Full BRC plan comparison">
+          <table className="plan-details-table">
+            <thead>
+              <tr>
+                <th scope="col">Plan area</th>
+                {PLANS.map((plan) => (
+                  <th scope="col" key={plan.name}>{plan.name}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {PLAN_DETAIL_GROUPS.map((group) => (
+                <Fragment key={group.title}>
+                  <tr className="plan-details-group-row" key={`${group.title}-heading`}>
+                    <th scope="row" colSpan={PLANS.length + 1}>{group.title}</th>
+                  </tr>
+                  {group.rows.map((row) => (
+                    <tr key={`${group.title}-${row[0]}`}>
+                      <th scope="row">{row[0]}</th>
+                      {row.slice(1).map((value, index) => (
+                        <td key={`${row[0]}-${PLANS[index].name}`}>{value}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </Fragment>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="plan-details-notes">
+          <span>Review SMS credit packs, specialist onboarding, higher usage, and custom integrations may be charged separately.</span>
+          <span>Plan packaging can vary by region, promotion, payment setup, enabled modules, and written agreement.</span>
         </div>
       </div>
     </section>
@@ -5978,8 +6112,11 @@ const CONTENT_PAGES = {
     sections: [
       {
         title: "Current plans",
-        body: "Pricing is shown on the main landing page so the plan cards stay in one place. Plans may vary by region, trial, billing period, promotion, and enabled modules.",
-        links: [{ label: "View Pricing", href: "/#pricing" }],
+        body: "Pricing and full plan details are shown on the main landing page so the short plan cards and detailed comparison stay together.",
+        links: [
+          { label: "View Pricing", href: "/#pricing" },
+          { label: "See Full Plan Details", href: "/#plan-details" },
+        ],
       },
       {
         title: "Billing notes",
@@ -8370,6 +8507,7 @@ export default function App({ initialRoute = null }) {
         <BusinessFitStrip />
         <OperationsStack />
         <Pricing />
+        <PlanDetails />
         <FAQ />
         <CTA />
       </main>
