@@ -341,7 +341,7 @@ const HERO_COMMAND_STATES = [
       { className: "hero-signal-revenue", label: "Storefront", value: "Live", detail: "Styled public page ready" },
       { className: "hero-signal-reviews", label: "Ordering", value: "On", detail: "Pickup, table, and delivery flows" },
       { className: "hero-signal-staff", label: "Bookings", value: "Ready", detail: "Services and availability set" },
-      { className: "hero-signal-competitor", label: "Domain", value: "Custom", detail: "Use BRC URL or own domain" },
+      { className: "hero-signal-competitor", label: "Public page", value: "Ready", detail: "Share a customer-facing ordering link" },
     ],
     ai: "Publish the lunch menu, hide two unavailable items, and turn on pickup ordering for today.",
   },
@@ -2431,7 +2431,7 @@ const PLANS = [
     features: [
       "1 location with basic POS/register",
       "£0 monthly subscription",
-      "Customer storefront with BRC subdomain",
+      "Customer storefront and public page setup",
       "Catalog, pickup ordering, bookings, and table requests",
       "Private feedback and review capture",
       "Use your own web, mobile, and tablet screens",
