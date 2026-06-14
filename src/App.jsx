@@ -7809,7 +7809,7 @@ function Footer({ onNavigate }) {
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="container footer-top">
         <div className="footer-brand">
           <a href="/" className="nav-logo">
