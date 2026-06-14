@@ -420,7 +420,7 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            Built for busy local operators, not software teams.
+            Built for restaurants, cafes, retailers, salons and service businesses.
           </div>
           <h1 className="hero-h1">
             The AI Operating System for Local Businesses
@@ -431,13 +431,10 @@ function Hero() {
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
               "POS",
+              "Orders",
+              "Staff",
               "Inventory",
-              "Staff & payroll",
-              "Finance",
-              "Bookings",
-              "Ordering",
-              "Reputation",
-              "Competitor monitoring",
+              "AI",
             ].map((item) => (
               <span key={item}>{item}</span>
             ))}
@@ -469,21 +466,35 @@ function Hero() {
 
 // ─── TRUST PROOF ──────────────────────────────────────────────────────────────
 
-const TRUST_PROOF = [
+const DISCONNECTED_SYSTEMS = [
+  "POS",
+  "Reviews",
+  "Bookings",
+  "Stock",
+  "Payroll",
+  "Finance",
+];
+
+const BRC_ARCHITECTURE = [
   {
-    value: "Storefront",
-    label: "Live in minutes",
-    detail: "Create your own customer storefront with your styling, public pages, and a BRC subdomain or custom domain.",
+    label: "Customer",
+    detail: "Visits, buys, books, reviews, pays, and comes back.",
   },
   {
-    value: "10+ areas",
-    label: "One operating system",
-    detail: "POS, storefront, online ordering, bookings, delivery, inventory, staff, finance, reputation, and competitor monitoring.",
+    label: "Orders, bookings, reviews, payments",
+    detail: "Every interaction becomes operational data, not another disconnected record.",
   },
   {
-    value: "No lock-in",
-    label: "Use your own devices",
-    detail: "Run BRC on web, mobile, tablet, desktop, and supported operator screens without hardware hostage pricing.",
+    label: "BRC OS",
+    detail: "POS, storefront, ordering, stock, staff, finance, reputation, and market signals.",
+  },
+  {
+    label: "AI",
+    detail: "Reads the full business context instead of one isolated dashboard.",
+  },
+  {
+    label: "Owner actions",
+    detail: "Reorder, staff, recover customers, publish offers, and fix service before it costs money.",
   },
 ];
 
@@ -492,15 +503,26 @@ function TrustProof() {
     <section className="trust-proof-section">
       <div className="container trust-proof-inner">
         <div className="trust-proof-copy">
-          <span>Built for customer-facing local businesses</span>
-          <strong>Create the public storefront and run the operation behind it from one place.</strong>
+          <span>Why we are building BRC</span>
+          <strong>Most local businesses run the work across 5-10 disconnected systems.</strong>
+          <p>
+            BRC combines the storefront, POS, operations, reputation, staff, stock,
+            finance, and AI layer into one operating system.
+          </p>
+          <div className="trust-system-list" aria-label="Common disconnected systems BRC replaces or connects">
+            {DISCONNECTED_SYSTEMS.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
         </div>
-        <div className="trust-proof-grid">
-          {TRUST_PROOF.map((item) => (
-            <article className="trust-proof-card" key={item.label}>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-              <p>{item.detail}</p>
+        <div className="architecture-flow" aria-label="How customer activity becomes owner actions in BRC">
+          {BRC_ARCHITECTURE.map((item, index) => (
+            <article className="architecture-step" key={item.label}>
+              <div className="architecture-index">{index + 1}</div>
+              <div>
+                <strong>{item.label}</strong>
+                <p>{item.detail}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -2406,54 +2428,46 @@ const PLANS = [
     highlight: true,
     badge: "Start free",
     features: [
-      "1 location",
+      "1 location with basic POS/register",
       "£0 monthly subscription",
-      "1% BRC platform fee on BRC-powered payments",
-      "Basic POS/register workflow",
-      "Basic catalog or service setup",
-      "Pickup, booking, and table request workflows",
-      "Private feedback capture",
-      "Own web and mobile hardware screens",
+      "Customer storefront with BRC subdomain",
+      "Catalog, pickup ordering, bookings, and table requests",
+      "Private feedback and review capture",
+      "Use your own web, mobile, and tablet screens",
     ],
   },
   {
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one location starting with reputation recovery, ordering, bookings, catalog setup, competitor tracking, and daily operations.",
+    desc: "For one location ready to run POS, storefront, ordering, bookings, AI prompts, recovery, and daily operations.",
     cta: "Start 7-day trial",
     highlight: false,
     badge: "Best value",
     features: [
-      "1 location",
+      "1 location with POS, storefront, orders, and bookings",
       "0.5% BRC platform fee on BRC-powered payments",
-      "Google reviews with up to 50 previous reviews fetched",
-      "Daily sync, AI summaries, and reply drafts",
-      "Positive review requests and negative feedback recovery",
-      "Suspicious review flags and competitor tracking up to 3",
-      "Private feedback and staff ratings",
-      "Own web and mobile hardware screens",
+      "AI summaries, review replies, and daily owner prompts",
+      "Private feedback, recovery flows, and staff ratings",
+      "Competitor tracking up to 3 businesses",
+      "Customer follow-up and reputation workflows",
     ],
   },
   {
     name: "Pro",
     monthly: 99,
     annual: 89,
-    desc: "For growing teams that need BRC OS across POS, orders, tables, staff, finance, and market insights.",
+    desc: "For growing teams that need the full operating layer across POS, orders, staff, inventory, finance, AI, and market insights.",
     cta: "Start 7-day trial",
     highlight: false,
     badge: "Multi-location",
     features: [
       "Up to 3 locations",
-      "Everything in Growth",
-      "Reduced BRC platform fee: 0.25% on BRC-powered payments",
-      "Yelp and TripAdvisor with up to 500 previous reviews fetched",
-      "Review dispute context and advanced recovery reporting",
       "POS register, table tabs, tenders, customer display, and KDS",
-      "Table maps, areas, QR code management, and dine-in scan flows",
+      "Online ordering, QR/table flows, pickup, and delivery",
       "Staff rota, shifts, payroll, permissions, and closeout",
       "Finance, payouts, tender visibility, and profitability reporting",
-      "Unlimited operator screens and supported offline sync",
+      "Advanced AI, analytics, inventory, and market insights",
     ],
   },
   {
@@ -2466,14 +2480,11 @@ const PLANS = [
     badge: "AI powered",
     features: [
       "Up to 10 locations, then custom",
-      "Everything in Pro",
       "No BRC platform fee on BRC-powered payments",
-      "Up to 1,000 previous reviews fetched",
-      "BRC AI and location comparison",
-      "Brand-level reputation recovery reports and alerts",
-      "Multi-location campaigns and customer segments",
       "Multi-location ordering, booking, pickup, and delivery views",
       "Inventory, stock, recipes, vendors, and purchasing workflows",
+      "BRC AI owner brief and location comparison",
+      "Brand-level recovery, campaigns, reports, and alerts",
       "Scheduled reports, exports, and onboarding support",
     ],
   },
@@ -2481,7 +2492,7 @@ const PLANS = [
     name: "Custom",
     monthly: "Custom",
     annual: "Custom",
-    desc: "For franchises, agencies, and teams with heavier operating, finance, reputation, or signal-monitoring needs.",
+    desc: "For franchises, agencies, and teams with heavier POS, ordering, finance, AI, recovery, or signal-monitoring needs.",
     cta: "Talk to us",
     highlight: false,
     badge: "Scale",
@@ -2489,10 +2500,9 @@ const PLANS = [
     spanFull: true,
     features: [
       "More than 10 locations",
-      "Custom Public Signal scan volume",
-      "Custom brand mention and competitor monitoring",
-      "Custom review sync allowance",
-      "Custom previous review fetching allowance",
+      "Custom POS, ordering, storefront, and finance setup",
+      "Custom AI, brand mention, and competitor monitoring",
+      "Custom review, recovery, and public signal allowance",
       "Custom operating, finance, and recovery reporting",
       "SLA, priority sync, and dedicated onboarding",
     ],
@@ -2609,7 +2619,7 @@ function Pricing() {
                 </a>
               </div>
               <ul className="plan-features">
-                {p.features.map((f) => (
+                {p.features.slice(0, 5).map((f) => (
                   <li key={f} className="plan-feature">
                     <span className="plan-check">✓</span>
                     {f}
@@ -2617,7 +2627,7 @@ function Pricing() {
                 ))}
               </ul>
               <a href="/pricing" className="plan-details-link">
-                See full plan details <span>→</span>
+                View all features <span>→</span>
               </a>
             </div>
           ))}
