@@ -2027,7 +2027,7 @@ img { max-width: 100%; }
 }
 
 .ask-brc-section {
-  padding: 68px 0 94px;
+  padding: 96px 0 110px;
   background:
     linear-gradient(180deg, rgba(247,252,250,.96), rgba(255,255,255,.92)),
     radial-gradient(circle at 18% 16%, rgba(37,99,235,.08), transparent 32%),
@@ -2043,32 +2043,33 @@ img { max-width: 100%; }
 
 .ask-brc-inner {
   display: grid;
-  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
-  gap: 52px;
+  grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr);
+  gap: 64px;
   align-items: center;
   max-width: 1280px;
 }
 
 .ask-brc-copy h2 {
-  font-size: clamp(32px, 5vw, 52px);
-  line-height: 1.12;
+  font-size: clamp(32px, 4.4vw, 48px);
+  line-height: 1.16;
   letter-spacing: -.02em;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+  max-width: 430px;
 }
 
 .ask-brc-copy p {
   color: var(--text-2);
-  font-size: 17px;
-  line-height: 1.75;
-  max-width: 500px;
-  margin-bottom: 24px;
+  font-size: 18px;
+  line-height: 1.82;
+  max-width: 520px;
+  margin-bottom: 30px;
 }
 
 .ask-brc-prompts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-width: 560px;
+  display: grid;
+  grid-template-columns: minmax(0, max-content);
+  gap: 12px;
+  max-width: 520px;
 }
 
 .ask-brc-prompts span {
@@ -2087,7 +2088,7 @@ img { max-width: 100%; }
 
 .ask-brc-graphic {
   position: relative;
-  width: min(820px, 100%);
+  width: min(860px, 100%);
   justify-self: end;
 }
 
@@ -2104,7 +2105,7 @@ img { max-width: 100%; }
 .ask-ai-screen {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1.55;
+  aspect-ratio: 1.28;
   border: 1px solid var(--border-s);
   border-radius: 20px;
   background: #fbf8ff;
@@ -2127,7 +2128,7 @@ img { max-width: 100%; }
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: 50% 4%;
+  object-position: 50% 0%;
 }
 
 .ask-window {
@@ -5201,15 +5202,16 @@ img { max-width: 100%; }
   .ask-brc-inner,
   .ask-cause-grid { grid-template-columns: 1fr; }
   .ask-brc-copy { text-align: center; }
+  .ask-brc-copy h2 { margin-left: auto; margin-right: auto; }
   .ask-brc-copy p,
   .ask-brc-prompts { margin-left: auto; margin-right: auto; }
-  .ask-brc-prompts { justify-content: center; }
+  .ask-brc-prompts { justify-content: center; grid-template-columns: minmax(0, 1fr); }
   .ask-brc-graphic {
     width: 100%;
     justify-self: center;
   }
   .ask-ai-screen {
-    aspect-ratio: 1.28;
+    aspect-ratio: 1.16;
   }
   .ask-window { padding: 16px; }
   .ask-question { max-width: 100%; }
