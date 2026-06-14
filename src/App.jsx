@@ -337,13 +337,6 @@ function HeroScreenshots() {
   );
 }
 
-const HERO_SIGNALS = [
-  { label: "Revenue", value: "Sales and margin" },
-  { label: "Reviews", value: "Public and private recovery" },
-  { label: "Orders", value: "Live service flow" },
-  { label: "AI insights", value: "Owner brief" },
-];
-
 function Hero() {
   const trialHref = trialSignupUrl();
 
@@ -397,14 +390,6 @@ function Hero() {
 
         <div className="hero-visual">
           <HeroScreenshots />
-          <div className="hero-signal-panel" aria-label="BRC first-screen product signals">
-            {HERO_SIGNALS.map((signal) => (
-              <div className="hero-signal" key={signal.label}>
-                <strong>{signal.label}</strong>
-                <span>{signal.value}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -438,12 +423,6 @@ const TRUST_QUOTES = [
   },
 ];
 
-const PROOF_POINTS = [
-  { value: "1,000", label: "previous reviews fetched on Enterprise plans" },
-  { value: "0%", label: "BRC platform fee on Enterprise payments" },
-  { value: "Unlimited", label: "supported operator screens on Pro and above" },
-];
-
 function TrustProof() {
   return (
     <section className="trust-proof-section">
@@ -451,14 +430,6 @@ function TrustProof() {
         <div className="trust-proof-copy">
           <span>Built for hands-on local operators</span>
           <strong>No hardware lock-in. Cancel anytime. Data access controlled by role and location.</strong>
-          <div className="trust-proof-metrics" aria-label="BRC proof points">
-            {PROOF_POINTS.map((point) => (
-              <div key={point.label}>
-                <b>{point.value}</b>
-                <small>{point.label}</small>
-              </div>
-            ))}
-          </div>
         </div>
         <div className="trust-quote-grid">
           {TRUST_QUOTES.map((item) => (
@@ -480,10 +451,10 @@ function TrustProof() {
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "Increase Revenue", label: "POS, orders, campaigns, rewards, offers, finance, and item performance." },
-  { value: "Recover Customers", label: "Private feedback, review replies, suspicious-review context, and follow-up." },
-  { value: "Run Operations", label: "Register, bookings, tables, KDS, stock, purchasing, rota, payroll, and closeout." },
-  { value: "Understand Your Business", label: "AI owner brief, analytics, market signals, forecasts, and reporting." },
+  { value: "Revenue", label: "Sell through POS, ordering, campaigns, rewards, and customer records." },
+  { value: "Customer recovery", label: "Catch unhappy customers early with feedback, review workflows, and follow-up." },
+  { value: "Operations", label: "Run bookings, tables, stock, staff, payroll, kitchen display, and closeout." },
+  { value: "Owner clarity", label: "See sales, reviews, orders, stock, finance, and AI summaries together." },
 ];
 
 function StatsBar() {
@@ -546,13 +517,12 @@ function ProductProof() {
           <div>
             <div className="section-tag">Product proof</div>
             <h2 className="section-h2">
-              See the system owners and managers actually use.
+              The core screens in one place.
             </h2>
           </div>
           <p>
-            These are the real surfaces behind the pitch: service screens,
-            owner views, recovery workflows, and stock tools your team can open
-            when the day is moving fast.
+            Register, owner dashboard, AI answers, review recovery, and stock
+            control are part of the same operating system.
           </p>
         </div>
         <div className="product-proof-grid">
@@ -2585,7 +2555,7 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="/#plan-details" className="plan-details-link">
+              <a href="/pricing" className="plan-details-link">
                 See full plan details <span>→</span>
               </a>
             </div>
@@ -2616,7 +2586,7 @@ function PlanDetails() {
             Compare the details before you choose.
           </h2>
           <p className="section-p">
-            The cards above stay short. This section shows the practical limits,
+            The homepage cards stay short. This page shows the practical limits,
             modules, review coverage, AI, payment fees, and onboarding differences.
           </p>
         </div>
@@ -2657,6 +2627,18 @@ function PlanDetails() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PricingDetailsPage({ theme, onToggleTheme, onNavigate }) {
+  return (
+    <div className="content-page pricing-details-page">
+      <Nav theme={theme} onToggleTheme={onToggleTheme} />
+      <main className="content-page-main">
+        <PlanDetails />
+      </main>
+      <Footer onNavigate={onNavigate} />
+    </div>
   );
 }
 
@@ -6107,15 +6089,15 @@ const CONTENT_PAGES = {
     ],
   },
   pricing: {
-    title: "Pricing",
-    subtitle: "Plan packaging for local teams, growing operators, and multi-location businesses.",
+    title: "Full Plan Details",
+    subtitle: "Compare BRC plan limits, modules, review coverage, AI, payment fees, and onboarding.",
     sections: [
       {
-        title: "Current plans",
-        body: "Pricing and full plan details are shown on the main landing page so the short plan cards and detailed comparison stay together.",
+        title: "Plan comparison",
+        body: "The dedicated pricing page compares BRC plan limits, modules, review coverage, AI, payment fees, onboarding, and billing notes.",
         links: [
           { label: "View Pricing", href: "/#pricing" },
-          { label: "See Full Plan Details", href: "/#plan-details" },
+          { label: "See Full Plan Details", href: "/pricing" },
         ],
       },
       {
@@ -7443,6 +7425,15 @@ function MarketingContentPage({ slug, articleId, theme, onToggleTheme, onNavigat
       />
     );
   }
+  if (normalizedSlug === "pricing") {
+    return (
+      <PricingDetailsPage
+        theme={theme}
+        onToggleTheme={onToggleTheme}
+        onNavigate={onNavigate}
+      />
+    );
+  }
   const page = CONTENT_PAGES[normalizedSlug] || CONTENT_PAGES.help;
 
   return (
@@ -8507,7 +8498,6 @@ export default function App({ initialRoute = null }) {
         <BusinessFitStrip />
         <OperationsStack />
         <Pricing />
-        <PlanDetails />
         <FAQ />
         <CTA />
       </main>
