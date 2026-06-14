@@ -421,24 +421,21 @@ function Hero() {
 
 // ─── TRUST PROOF ──────────────────────────────────────────────────────────────
 
-const TRUST_QUOTES = [
+const TRUST_PROOF = [
   {
-    quote: "BRC shows the reason behind the numbers, not just another chart to interpret.",
-    name: "Maya K.",
-    role: "Restaurant owner",
-    business: "Independent dining",
+    value: "8",
+    label: "operating areas",
+    detail: "POS, inventory, staff, finance, bookings, ordering, reputation, and competitor monitoring.",
   },
   {
-    quote: "The useful part is seeing reviews, stock, orders, and staff pressure in the same place.",
-    name: "Elliot R.",
-    role: "Cafe manager",
-    business: "High-street cafe",
+    value: "0",
+    label: "hardware lock-in",
+    detail: "Run BRC on your own web, mobile, tablet, desktop, and supported operator screens.",
   },
   {
-    quote: "We wanted one system for the shift, the team, and the owner view.",
-    name: "Priya S.",
-    role: "Salon operator",
-    business: "Local services",
+    value: "1",
+    label: "owner command center",
+    detail: "Revenue, customer recovery, staff, stock, finance, reviews, and market signals in one view.",
   },
 ];
 
@@ -448,18 +445,15 @@ function TrustProof() {
       <div className="container trust-proof-inner">
         <div className="trust-proof-copy">
           <span>Built for hands-on local operators</span>
-          <strong>No hardware lock-in. Cancel anytime. Data access controlled by role and location.</strong>
+          <strong>One operating system for the work that affects revenue, service, and reputation.</strong>
         </div>
-        <div className="trust-quote-grid">
-          {TRUST_QUOTES.map((item) => (
-            <figure className="trust-quote-card" key={item.name}>
-              <div className="trust-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote>{item.quote}</blockquote>
-              <figcaption>
-                <span>{item.name}</span>
-                <small>{item.role} · {item.business}</small>
-              </figcaption>
-            </figure>
+        <div className="trust-proof-grid">
+          {TRUST_PROOF.map((item) => (
+            <article className="trust-proof-card" key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+              <p>{item.detail}</p>
+            </article>
           ))}
         </div>
       </div>
@@ -2567,7 +2561,7 @@ function Pricing() {
                 </a>
               </div>
               <ul className="plan-features">
-                {p.features.map((f) => (
+                {p.features.slice(0, 4).map((f) => (
                   <li key={f} className="plan-feature">
                     <span className="plan-check">✓</span>
                     {f}
