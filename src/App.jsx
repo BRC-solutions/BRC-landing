@@ -308,30 +308,50 @@ function productScreenshot(name, alt) {
   return { name, src: screenshotUrl(name), alt };
 }
 
-function HeroScreenshots() {
+function HeroCommandCenter() {
   return (
-    <div className="hero-screens" aria-label="BRC POS, kitchen, and review management product screenshots">
-      <div className="product-screen product-screen-register">
+    <div className="hero-command" aria-label="BRC AI operating system dashboard preview">
+      <div className="hero-command-top">
+        <div>
+          <span>BRC OS</span>
+          <strong>Owner command center</strong>
+        </div>
+        <div className="hero-command-status">
+          <span />
+          Live signals
+        </div>
+      </div>
+      <div className="hero-command-screen">
         <img
-          src={HERO_SCREENSHOTS.register}
-          alt="BRC register showing POS categories, product cards, tables, and payment actions"
+          src={screenshotUrl("analytics 1")}
+          alt="BRC dashboard showing connected analytics, owner reporting, and business signals"
           loading="eager"
           fetchpriority="high"
         />
       </div>
-      <div className="product-screen product-screen-kitchen">
-        <img
-          src={HERO_SCREENSHOTS.kitchen}
-          alt="BRC kitchen display showing live tickets, prep stations, handoff, and ready orders"
-          loading="eager"
-        />
+      <div className="hero-signal hero-signal-revenue">
+        <span>Revenue</span>
+        <strong>+18%</strong>
+        <small>Lunch recovery vs last week</small>
       </div>
-      <div className="product-screen product-screen-reviews">
-        <img
-          src={HERO_SCREENSHOTS.reviews}
-          alt="BRC customer inbox showing Google reviews with AI-ready reply status"
-          loading="eager"
-        />
+      <div className="hero-signal hero-signal-reviews">
+        <span>Reviews recovered</span>
+        <strong>12</strong>
+        <small>Private follow-ups closed</small>
+      </div>
+      <div className="hero-signal hero-signal-staff">
+        <span>Staff performance</span>
+        <strong>4.8/5</strong>
+        <small>Fastest table turn: Maya</small>
+      </div>
+      <div className="hero-signal hero-signal-competitor">
+        <span>Competitor watch</span>
+        <strong>-0.2</strong>
+        <small>Nearby rating movement</small>
+      </div>
+      <div className="hero-ai-card">
+        <span>AI recommendation</span>
+        <strong>Reorder oat milk, add one runner 12-2pm, and reply to 3 service-delay reviews.</strong>
       </div>
     </div>
   );
@@ -355,28 +375,27 @@ function Hero() {
             Built for busy local operators, not software teams.
           </div>
           <h1 className="hero-h1">
-            The AI Operating System for
-            <span className="grad-text"> Local Businesses.</span>
+            The AI Operating System for Local Businesses
           </h1>
           <p className="hero-subtitle">
-            Reviews, POS, bookings, inventory, staff, finance, and customer recovery in one platform.
+            Manage reviews, orders, bookings, inventory, staff and finance from one platform.
           </p>
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
-              "Restaurants",
-              "Retail",
-              "Salons",
-              "Clinics",
-              "Gyms",
-              "Service businesses",
+              "POS",
+              "Inventory",
+              "Staff & payroll",
+              "Finance",
+              "Bookings",
+              "Ordering",
+              "Reputation",
+              "Competitor monitoring",
             ].map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
           <p className="hero-p">
-            BRC gives owners one place to see trading, customer sentiment,
-            orders, stock, staffing, and daily priorities, then gives managers
-            the tools to act during service.
+            Know what to fix before it costs you money.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
@@ -389,7 +408,7 @@ function Hero() {
         </div>
 
         <div className="hero-visual">
-          <HeroScreenshots />
+          <HeroCommandCenter />
         </div>
       </div>
 
