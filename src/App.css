@@ -2043,9 +2043,10 @@ img { max-width: 100%; }
 
 .ask-brc-inner {
   display: grid;
-  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
-  gap: 34px;
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  gap: 52px;
   align-items: center;
+  max-width: 1280px;
 }
 
 .ask-brc-copy h2 {
@@ -2059,7 +2060,7 @@ img { max-width: 100%; }
   color: var(--text-2);
   font-size: 17px;
   line-height: 1.75;
-  max-width: 560px;
+  max-width: 500px;
   margin-bottom: 24px;
 }
 
@@ -2086,7 +2087,7 @@ img { max-width: 100%; }
 
 .ask-brc-graphic {
   position: relative;
-  width: min(760px, 110%);
+  width: min(820px, 100%);
   justify-self: end;
 }
 
