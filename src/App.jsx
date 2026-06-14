@@ -2443,12 +2443,12 @@ const PLANS = [
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one location ready to run POS, storefront, pickup ordering, bookings, AI review help, recovery, and daily operations.",
+    desc: "For one location ready to run POS, storefront, simple pickup ordering, bookings, Google reviews, AI review help, and recovery.",
     cta: "Start 7-day trial",
     highlight: false,
     badge: "Best value",
     features: [
-      "1 location with POS, storefront, orders, and bookings",
+      "1 location with POS, storefront, pickup, and bookings",
       "BRC platform fee: 0.5% · card processing fees apply separately",
       "AI review summaries and reply drafts",
       "Private feedback, recovery flows, and staff ratings",
@@ -2484,7 +2484,7 @@ const PLANS = [
     badge: "AI powered",
     features: [
       "Up to 10 locations, then custom",
-      "No BRC platform fee · card processing fees apply separately",
+      "No BRC fee + card processing fees",
       "Multi-location ordering, booking, pickup, and delivery views",
       "Inventory, stock, recipes, vendors, and purchasing workflows",
       "BRC AI owner brief and location comparison",
@@ -2519,7 +2519,9 @@ const PLAN_DETAIL_GROUPS = [
     title: "Locations and screens",
     rows: [
       ["Locations", "1", "1", "Up to 3", "Up to 10, then custom", "Custom"],
-      ["Operator screens", "Own devices", "Own devices", "Unlimited supported screens", "Unlimited supported screens", "Custom estate"],
+      ["Public storefront", "go.brcapp.io page", "go.brcapp.io page", "brcapp.io business subdomain", "Custom domain support", "Custom domain setup"],
+      ["Operator screens", "Own compatible devices", "Own compatible devices", "Own compatible devices", "Own compatible devices", "Custom estate"],
+      ["Device and printer management", "Included", "Included", "Included", "Included", "Custom"],
       ["Hardware lock-in", "No", "No", "No", "No", "No"],
     ],
   },
@@ -2527,28 +2529,39 @@ const PLAN_DETAIL_GROUPS = [
     title: "Reviews and customer recovery",
     rows: [
       ["Private feedback", "Basic", "Included", "Advanced reporting", "Brand-level reports", "Custom"],
-      ["Google reviews", "Not included", "Daily sync and shared historical import up to 50 reviews", "Daily sync and shared historical import up to 500 reviews", "Daily sync and shared historical import up to 1,000 reviews", "Custom allowance"],
-      ["Yelp and TripAdvisor", "Not included", "Not included", "Daily sync and shared Pro import allowance", "Daily sync and shared Enterprise import allowance", "Custom allowance"],
-      ["Suspicious review support", "Not included", "Low-rating review flags and AI context", "Low-rating review flags across connected platforms", "Brand-level flags, alerts, and reports", "Custom workflow"],
+      ["Review platforms", "Private feedback only", "Google reviews", "Google, Yelp, and TripAdvisor", "Google, Yelp, and TripAdvisor", "Custom platform mix"],
+      ["Daily review sync", "Not included", "Google only", "Google, Yelp, and TripAdvisor", "Google, Yelp, and TripAdvisor", "Custom"],
+      ["Previous review import", "Not included", "Up to 50 reviews", "Up to 500 reviews", "Up to 1,000 reviews", "Custom allowance"],
+      ["Review SMS prompts", "Not included", "Credits paid separately", "Credits paid separately", "Credits paid separately", "Custom"],
+      ["Competitor tracking", "Not included", "Up to 3 competitors", "Up to 10 competitors", "Larger multi-location allowance", "Custom"],
+      ["Suspicious review support", "Not included", "AI flags for low-rating reviews", "AI flags across connected platforms", "Brand-level flags and alerts", "Custom workflow"],
     ],
   },
   {
     title: "Operations modules",
     rows: [
-      ["POS/register", "Basic", "Basic", "Register, tabs, tenders, customer display, KDS", "Multi-location queues", "Custom"],
-      ["Orders, bookings, pickup, delivery", "Simple pickup, booking, and table workflows", "Simple pickup, booking, and table workflows", "Full ordering, table, pickup, and delivery configuration", "Multi-location ordering, booking, pickup, and delivery views", "Custom"],
-      ["Tables and QR codes", "Basic table ordering", "Basic table ordering", "Table maps, areas, and dynamic QR targets", "Multi-location controls", "Custom"],
+      ["POS/register", "Basic register", "Basic register", "Register, tabs, tenders, customer display, KDS", "Multi-location POS views", "Custom"],
+      ["KDS, cash drawer, closeout", "Included", "Included", "Included", "Included", "Custom"],
+      ["Pickup, bookings, table ordering", "Simple workflows", "Simple workflows", "Advanced booking, table, and QR setup", "Multi-location views", "Custom"],
+      ["Delivery operations", "Not included", "Not included", "Delivery rules, fees, fulfilment, and availability", "Multi-location delivery reporting", "Custom"],
+      ["Customer display, gift cards, house accounts", "Not included", "Not included", "Included", "Included", "Custom"],
+      ["Tipping pools", "Not included", "Not included", "Included", "Included", "Custom"],
       ["Inventory, vendors, purchasing", "Not included", "Not included", "Not included", "Inventory, recipes, vendors, and purchasing", "Custom"],
-      ["Rota, payroll, permissions", "Basic access", "Staff ratings", "Rota, shifts, payroll, permissions", "Rollups and controls", "Custom"],
+      ["Team, rota, payroll", "Basic team access", "Staff ratings and team insights", "Rota, shifts, payroll, permissions", "Multi-location team controls", "Custom"],
     ],
   },
   {
     title: "Money, AI, and reporting",
     rows: [
       ["BRC fees + card processing fees", "1% BRC fee + card processing fees", "0.5% BRC fee + card processing fees", "0.25% BRC fee + card processing fees", "No BRC fee + card processing fees", "Custom BRC fee + card processing fees"],
-      ["Finance and closeout", "Basic payments context", "Basic reporting", "Payouts, tenders, profitability", "Multi-location reporting", "Custom"],
-      ["AI features", "Not included", "AI review summaries and reply drafts", "Review AI, menu insights, and public signals", "BRC AI owner brief, location comparison, and AI catalogue setup", "Custom"],
-      ["Campaigns and segments", "Not included", "Email basics", "Advanced campaigns, segments, and win-back flows", "Multi-location, brand-wide, and scheduled campaigns", "Custom"],
+      ["Finance and closeout", "Basic finance context", "Basic finance reporting", "Payouts, tenders, profitability", "Multi-location reporting", "Custom"],
+      ["Review AI", "Not included", "AI summaries and reply drafts", "AI summaries and reply drafts", "AI summaries and reply drafts", "Custom"],
+      ["Menu insights and public signals", "Not included", "Not included", "Included", "Included", "Custom"],
+      ["BRC AI owner brief", "Not included", "Not included", "Not included", "Included", "Custom"],
+      ["AI catalogue setup", "Not included", "Not included", "Not included", "Included", "Custom"],
+      ["Campaigns, rewards, segments", "Not included", "Email basics, rewards, and review requests", "Advanced campaigns, segments, and win-back flows", "Multi-location and brand-wide campaigns", "Custom"],
+      ["Scheduled campaigns and automations", "Not included", "Not included", "Not included", "Included", "Custom"],
+      ["Scheduled reports and exports", "Not included", "Not included", "Not included", "Included", "Custom"],
       ["Onboarding", "Self-serve", "Self-serve", "Priority support", "Onboarding support", "Dedicated onboarding"],
     ],
   },
@@ -2699,6 +2712,7 @@ function PlanDetails() {
         </div>
 
         <div className="plan-details-notes">
+          <span>Historical review imports are shared across connected review platforms on each plan.</span>
           <span>Review SMS credit packs, specialist onboarding, higher usage, and custom integrations may be charged separately.</span>
           <span>Card processing fees apply alongside any BRC fee where payments are processed.</span>
           <span>Plan packaging can vary by region, promotion, payment setup, enabled modules, and written agreement.</span>
