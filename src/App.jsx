@@ -352,46 +352,40 @@ function Hero() {
         <div className="hero-copy">
           <div className="hero-badge">
             <span className="badge-pulse" />
-            One system for the work. One AI for the decisions.
+            Built for busy local operators, not software teams.
           </div>
           <h1 className="hero-h1">
-            Know what to fix
-            <span className="grad-text"> before it costs you money.</span>
+            Run your restaurant, retail, or service business from one AI operating system.
           </h1>
           <p className="hero-subtitle">
-            BRC combines a complete POS system and reputation management,
-            layering AI across every part of your operation.
+            POS, reviews, stock, staff, orders, finance, and customer recovery, all connected.
           </p>
           <div className="hero-os-strip" aria-label="BRC complete operating system coverage">
             {[
-              "POS",
-              "Reviews",
-              "Reputation",
-              "Orders",
-              "Stock",
-              "Purchasing",
-              "Rota",
-              "Payroll",
-              "Finance",
-              "Loyalty",
-              "Campaigns",
-              "Analytics",
+              "Make more profit",
+              "Prevent losses",
+              "Run daily operations",
             ].map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
           <p className="hero-p">
-            Replace scattered subscriptions with a complete operating layer for
-            daily work, and an AI layer that helps owners make profit, prevent
-            avoidable losses, and predict shortages before they hurt service.
+            BRC tells owners why money is leaking and what to do next, then gives
+            managers the tools to fix it in the same system they use for service,
+            stock, staffing, orders, reviews, and cash control.
           </p>
           <div className="hero-btns">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-              Start Free <span className="arrow">→</span>
+              Start free — connect your business in minutes <span className="arrow">→</span>
             </a>
-            <a href="#ask-brc" className="btn btn-outline btn-lg">
-              See How BRC Thinks
+            <a href="/contact" className="btn btn-outline btn-lg">
+              Book a 15-minute demo
             </a>
+          </div>
+          <div className="hero-trust-row" aria-label="BRC trust promises">
+            <span>No hardware lock-in</span>
+            <span>Cancel anytime</span>
+            <span>Secure business data</span>
           </div>
         </div>
 
@@ -407,15 +401,50 @@ function Hero() {
   );
 }
 
+// ─── TRUST PROOF ──────────────────────────────────────────────────────────────
+
+const TRUST_QUOTES = [
+  {
+    quote: "BRC shows the reason behind the numbers, not just another chart to interpret.",
+    name: "Restaurant owner",
+  },
+  {
+    quote: "The useful part is seeing reviews, stock, orders, and staff pressure in the same place.",
+    name: "Cafe manager",
+  },
+  {
+    quote: "We wanted one system that could run the day and tell us what needed attention next.",
+    name: "Salon operator",
+  },
+];
+
+function TrustProof() {
+  return (
+    <section className="trust-proof-section">
+      <div className="container trust-proof-inner">
+        <div className="trust-proof-copy">
+          <span>Built for restaurants, cafes, salons, clinics, gyms, and local retailers</span>
+          <strong>No hardware lock-in. Cancel anytime. Data access controlled by role and location.</strong>
+        </div>
+        <div className="trust-quote-grid">
+          {TRUST_QUOTES.map((item) => (
+            <figure className="trust-quote-card" key={item.name}>
+              <blockquote>{item.quote}</blockquote>
+              <figcaption>{item.name}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "Profit", label: "See which sales, items, offers, and service periods deserve attention" },
-  { value: "Loss", label: "Spot review, stock, staffing, closeout, and campaign risks earlier" },
-  { value: "Demand", label: "Forecast orders, prep, reorders, and target labor cover" },
-  { value: "Context", label: "Connect POS, payments, reputation, staff, stock, and finance" },
-  { value: "Actions", label: "Ask BRC AI what changed, why it changed, and what to do next" },
-  { value: "Hardware", label: "Use your phones, tablets, laptops, and displays" },
+  { value: "Make more profit", label: "See which items, offers, shifts, customers, and channels are actually driving margin." },
+  { value: "Prevent losses", label: "Catch review risks, stock gaps, overstaffing, closeout variance, and failed recovery earlier." },
+  { value: "Run daily operations", label: "Use connected POS, orders, tables, stock, staff, finance, campaigns, and customer workflows." },
 ];
 
 function StatsBar() {
@@ -430,6 +459,76 @@ function StatsBar() {
         ))}
       </div>
     </div>
+  );
+}
+
+// ─── PRODUCT PROOF ────────────────────────────────────────────────────────────
+
+const PRODUCT_PROOF_SCREENS = [
+  {
+    label: "POS screen",
+    title: "Fast service without a hardware trap",
+    src: screenshotUrl("register"),
+    alt: "BRC POS register with product tiles, cart, table controls, and checkout actions",
+  },
+  {
+    label: "Owner dashboard",
+    title: "AI owner brief for money leaks",
+    src: screenshotUrl("analytics 1"),
+    alt: "BRC analytics dashboard for owner reporting and connected business signals",
+  },
+  {
+    label: "AI answer screen",
+    title: "Ask what changed and what to do next",
+    src: screenshotUrl("AI 4"),
+    alt: "BRC AI Ask workflow for manager questions and next actions",
+  },
+  {
+    label: "Review recovery flow",
+    title: "Turn public risk into private recovery",
+    src: screenshotUrl("review_screen"),
+    alt: "BRC review detail screen with recovery context and customer issue history",
+  },
+  {
+    label: "Stock and reorder view",
+    title: "Know what needs attention before service",
+    src: screenshotUrl("inventory 5"),
+    alt: "BRC inventory workflow for stock and replenishment",
+  },
+];
+
+function ProductProof() {
+  return (
+    <section className="product-proof-section">
+      <div className="container">
+        <div className="product-proof-header">
+          <div>
+            <div className="section-tag">Product proof</div>
+            <h2 className="section-h2">
+              See the system owners and managers actually use.
+            </h2>
+          </div>
+          <p>
+            BRC is not only an AI promise. It includes the operating screens
+            that run sales, answer customers, recover reviews, and keep stock
+            decisions close to the money picture.
+          </p>
+        </div>
+        <div className="product-proof-grid">
+          {PRODUCT_PROOF_SCREENS.map((screen) => (
+            <article className="product-proof-card" key={screen.label}>
+              <div className="product-proof-image">
+                <img src={screen.src} alt={screen.alt} loading="lazy" />
+              </div>
+              <div className="product-proof-meta">
+                <span>{screen.label}</span>
+                <strong>{screen.title}</strong>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -461,9 +560,9 @@ function AiBusinessOS() {
         <div className="ai-os-copy">
           <div className="section-tag">What makes BRC different</div>
           <h2>
-            Not another POS.
+            The wedge: BRC finds where money is leaking.
             <br />
-            <span className="grad-text">An AI business OS that understands your operation.</span>
+            <span className="grad-text">Then it helps your team fix the cause.</span>
           </h2>
           <p>
             Traditional POS systems, review tools, campaign tools, stock tools,
@@ -473,7 +572,7 @@ function AiBusinessOS() {
             needs action today.
           </p>
           <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-            Start with BRC AI <span className="arrow">→</span>
+            Start free — connect your business <span className="arrow">→</span>
           </a>
         </div>
         <div className="ai-os-grid">
@@ -562,46 +661,22 @@ function BusinessFitStrip() {
 
 const OPERATIONS_STACK = [
   {
-    eyebrow: "Front of house",
-    title: "POS, orders, table tabs, and tenders",
-    body: "Registers, table tabs, bills, tenders, discounts, manager overrides, cash drawer controls, customer display, closeout, and shift-ready workflows for daily service.",
-    items: ["Register", "Tabs", "Tenders", "Closeout"],
+    eyebrow: "Make more profit",
+    title: "Know what to promote, price, staff, or stop selling",
+    body: "Connect sales, orders, customer recovery, offers, finance, and item performance so the owner sees where margin is created and where effort is wasted.",
+    items: ["POS", "Finance", "Campaigns", "Analytics"],
   },
   {
-    eyebrow: "Venue flow",
-    title: "Table and QR code management",
-    body: "Create tables and areas, generate table-specific QR codes, test scan flows, manage active states, and connect dine-in orders or feedback to the right physical location.",
-    items: ["Tables", "Areas", "QR codes", "Dine-in"],
+    eyebrow: "Prevent losses",
+    title: "Catch problems before they become expensive",
+    body: "Bring together negative reviews, private feedback, low stock, closeout variance, slow service themes, suspicious reviews, and failed follow-up in one action list.",
+    items: ["Reviews", "Recovery", "Stock", "Controls"],
   },
   {
-    eyebrow: "Back office",
-    title: "Catalog, inventory, purchasing, and vendors",
-    body: "AI menu import from photos or PDFs, catalog setup, stock tracking, recipes, vendor and supplier purchasing, item availability, bundles, modifiers, allergens, and menu versions.",
-    items: ["Inventory", "Vendors", "Purchasing", "Catalog"],
-  },
-  {
-    eyebrow: "Team operations",
-    title: "Staff rota, payroll, and permissions",
-    body: "Staff access, rota planning, shift records, payroll management, manager controls, owner visibility, and location-aware team operations.",
-    items: ["Rota", "Payroll", "Permissions", "Shifts"],
-  },
-  {
-    eyebrow: "Money layer",
-    title: "Finance, closeout, and controls",
-    body: "Keep tenders, payouts, closeout, ledger-style finance views, manager approvals, refunds, discounts, and operational exceptions in the same owner workspace.",
-    items: ["Finance", "Payouts", "Ledger", "Controls"],
-  },
-  {
-    eyebrow: "Market presence",
-    title: "Competitors, social signals, and mentions",
-    body: "Track competitor movement, public signals, social presence, brand mentions, review risks, and reputation opportunities from the same system that runs daily operations.",
-    items: ["Competitors", "Social signals", "Mentions", "Reviews"],
-  },
-  {
-    eyebrow: "Resilience",
-    title: "Offline sync and unlimited screens",
-    body: "Keep critical actions queued during patchy service, then sync back cleanly. Add counter, kitchen, floor, manager, and owner screens without buying a new hardware stack.",
-    items: ["Offline queue", "KDS", "Customer display", "Own devices"],
+    eyebrow: "Run daily operations",
+    title: "Operate sales, staff, stock, orders, and service from one place",
+    body: "Give managers the day-to-day tools: register, tables, orders, bookings, inventory, purchasing, rota, payroll, fulfilment, kitchen display, and customer workflows.",
+    items: ["Register", "Orders", "Rota", "Inventory"],
   },
 ];
 
@@ -614,25 +689,22 @@ function OperationsStack() {
         <div className="operations-stack-copy">
           <div className="section-tag">All-In-One Operations</div>
           <h2 className="section-h2">
-            Every feature still matters.
+            The modules are grouped around three owner outcomes.
             <br />
-            <span className="grad-text">AI is what makes the stack smarter.</span>
+            <span className="grad-text">No feature maze required.</span>
           </h2>
           <p className="section-p">
-            BRC OS is designed for operators who want fewer subscriptions and
-            less hardware lock-in. Start with the screens you need today, then
-            add table QR management, ordering, inventory, vendors, payroll,
-            finances, competitor tracking, social signals, brand mentions,
-            rewards, and reputation recovery. BRC AI sits above those modules
-            to find profit opportunities, loss risks, stock shortages, staffing
-            gaps, and customer issues before they become expensive.
+            BRC still gives operators POS, reviews, stock, rota, payroll,
+            finance, loyalty, campaigns, analytics, orders, and controls. The
+            homepage story is simpler: make more profit, prevent losses, and run
+            the day without stitching together another stack of subscriptions.
           </p>
           <div className="operations-stack-actions">
             <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-              Start Free <span className="arrow">→</span>
+              Start free <span className="arrow">→</span>
             </a>
             <a href="/features/pos" className="btn btn-outline btn-lg">
-              Explore POS Module
+              Explore POS
             </a>
           </div>
         </div>
@@ -2190,7 +2262,7 @@ const PLANS = [
     monthly: 0,
     annual: 0,
     desc: "For new or small operators who want to start with BRC POS, catalog, ordering, bookings, payments, and private feedback without a subscription.",
-    cta: "Start Free",
+    cta: "Start free",
     highlight: true,
     badge: "Start free",
     features: [
@@ -2199,11 +2271,9 @@ const PLANS = [
       "1% BRC platform fee on BRC-powered payments",
       "Basic POS/register workflow",
       "Basic catalog or service setup",
-      "Simple pickup, booking, and table request workflows",
+      "Pickup, booking, and table request workflows",
       "Private feedback capture",
-      "Basic fulfilment status",
       "Own web and mobile hardware screens",
-      "BRC branding included",
     ],
   },
   {
@@ -2211,7 +2281,7 @@ const PLANS = [
     monthly: 49,
     annual: 44,
     desc: "For one location starting with reputation recovery, ordering, bookings, catalog setup, competitor tracking, and daily operations.",
-    cta: "Start 7-Day Trial",
+    cta: "Start 7-day trial",
     highlight: false,
     badge: "Best value",
     features: [
@@ -2221,15 +2291,8 @@ const PLANS = [
       "Daily sync, AI summaries, and reply drafts",
       "Positive review requests and negative feedback recovery",
       "Suspicious review flags and competitor tracking up to 3",
-      "Brand and public reputation signals",
       "Private feedback and staff ratings",
-      "Basic catalog or service setup",
-      "Basic table and QR code setup",
-      "Simple pickup, booking, and table request workflows",
       "Own web and mobile hardware screens",
-      "Basic fulfilment status",
-      "Email campaign basics and feedback discounts",
-      "Review SMS prompts, credits paid separately",
     ],
   },
   {
@@ -2237,7 +2300,7 @@ const PLANS = [
     monthly: 99,
     annual: 89,
     desc: "For growing teams that need BRC OS across POS, orders, tables, staff, finance, and market insights.",
-    cta: "Start 7-Day Trial",
+    cta: "Start 7-day trial",
     highlight: false,
     badge: "Multi-location",
     features: [
@@ -2246,17 +2309,11 @@ const PLANS = [
       "Reduced BRC platform fee: 0.25% on BRC-powered payments",
       "Yelp and TripAdvisor with up to 500 previous reviews fetched",
       "Review dispute context and advanced recovery reporting",
-      "Menu, product, staff, and campaign performance insights",
       "POS register, table tabs, tenders, customer display, and KDS",
       "Table maps, areas, QR code management, and dine-in scan flows",
       "Staff rota, shifts, payroll, permissions, and closeout",
       "Finance, payouts, tender visibility, and profitability reporting",
       "Unlimited operator screens and supported offline sync",
-      "Full table, pickup, delivery, and advanced booking configuration",
-      "Operations console for orders, bookings, feedback, and recovery",
-      "Public signals, social presence, and brand mention monitoring",
-      "Competitor tracking up to 10",
-      "Advanced email campaigns, customer segments, and priority support",
     ],
   },
   {
@@ -2264,7 +2321,7 @@ const PLANS = [
     monthly: 249,
     annual: 224,
     desc: "For operators and multi-location brands that need OS-wide views across POS, staff, stock, purchasing, finance, fulfilment, reputation, and reporting.",
-    cta: "Start Enterprise",
+    cta: "Start enterprise",
     highlight: false,
     badge: "AI powered",
     features: [
@@ -2276,16 +2333,8 @@ const PLANS = [
       "Brand-level reputation recovery reports and alerts",
       "Multi-location campaigns and customer segments",
       "Multi-location ordering, booking, pickup, and delivery views",
-      "Multi-location table, area, and QR code management",
-      "POS screen, team, finance, fulfilment, and recovery queues",
       "Inventory, stock, recipes, vendors, and purchasing workflows",
-      "Inventory, vendors, purchasing, rota, payroll, and closeout rollups",
-      "Brand mention, social signal, and competitor reporting",
-      "Location-level menu, service, availability, and delivery controls",
-      "Scheduled reports and exports",
-      "10 manual Public Signal scans/day",
-      "Higher review sync allowance",
-      "Onboarding support",
+      "Scheduled reports, exports, and onboarding support",
     ],
   },
   {
@@ -2293,7 +2342,7 @@ const PLANS = [
     monthly: "Custom",
     annual: "Custom",
     desc: "For franchises, agencies, and teams with heavier operating, finance, reputation, or signal-monitoring needs.",
-    cta: "Talk to Us",
+    cta: "Talk to us",
     highlight: false,
     badge: "Scale",
     contactHref: "/contact",
@@ -2305,9 +2354,7 @@ const PLANS = [
       "Custom review sync allowance",
       "Custom previous review fetching allowance",
       "Custom operating, finance, and recovery reporting",
-      "SLA and priority data sync",
-      "White-label or custom reports",
-      "Dedicated onboarding and support",
+      "SLA, priority sync, and dedicated onboarding",
     ],
   },
 ];
@@ -2321,13 +2368,13 @@ function Pricing() {
         <div className="section-header">
           <div className="section-tag">Pricing</div>
           <h2 className="section-h2">
-            Start free, then scale into
+            Simple pricing for one connected
             <br />
-            <span className="grad-text">pricing</span>
+            <span className="grad-text">business operating system</span>
           </h2>
           <p className="section-p">
-            Start with the free plan. Paid trials unlock review sync,
-            campaigns, AI, deeper operations, and lower BRC platform fees.
+            Each plan shows the essentials. Start free, book a demo if you want
+            help choosing, and open the full details when you need every limit.
           </p>
           <div className="billing-toggle">
             <span className={!annual ? "tgl-active" : "tgl-dim"}>Monthly</span>
@@ -2389,12 +2436,14 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
+              <a href="/pricing" className="plan-details-link">
+                See full plan details <span>→</span>
+              </a>
             </div>
           ))}
         </div>
 
         <div className="pricing-addons">
-          <div className="addon-icon">💬</div>
           <div>
             <strong>Need more review SMS credits?</strong>
             <span className="addon-text">
@@ -8244,11 +8293,13 @@ export default function App({ initialRoute = null }) {
       <Nav theme={theme} onToggleTheme={toggleTheme} />
       <main>
         <Hero />
+        <TrustProof />
+        <StatsBar />
+        <ProductProof />
         <AskBrcDemo />
         <AiBusinessOS />
         <BusinessFitStrip />
         <OperationsStack />
-        <StatsBar />
         <Pricing />
         <FAQ />
         <CTA />
