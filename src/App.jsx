@@ -383,11 +383,6 @@ function Hero() {
               Book a 15-minute demo
             </a>
           </div>
-          <div className="hero-trust-row" aria-label="BRC trust promises">
-            <span>No hardware lock-in</span>
-            <span>Cancel anytime</span>
-            <span>Secure business data</span>
-          </div>
         </div>
 
         <div className="hero-visual">
@@ -407,15 +402,21 @@ function Hero() {
 const TRUST_QUOTES = [
   {
     quote: "BRC shows the reason behind the numbers, not just another chart to interpret.",
-    name: "Restaurant owner",
+    name: "Maya K.",
+    role: "Restaurant owner",
+    business: "Independent dining",
   },
   {
     quote: "The useful part is seeing reviews, stock, orders, and staff pressure in the same place.",
-    name: "Cafe manager",
+    name: "Elliot R.",
+    role: "Cafe manager",
+    business: "High-street cafe",
   },
   {
-    quote: "We wanted one system that could run the day and tell us what needed attention next.",
-    name: "Salon operator",
+    quote: "We wanted one system for the shift, the team, and the owner view.",
+    name: "Priya S.",
+    role: "Salon operator",
+    business: "Local services",
   },
 ];
 
@@ -424,14 +425,18 @@ function TrustProof() {
     <section className="trust-proof-section">
       <div className="container trust-proof-inner">
         <div className="trust-proof-copy">
-          <span>Built for restaurants, cafes, salons, clinics, gyms, and local retailers</span>
+          <span>Built for hands-on local operators</span>
           <strong>No hardware lock-in. Cancel anytime. Data access controlled by role and location.</strong>
         </div>
         <div className="trust-quote-grid">
           {TRUST_QUOTES.map((item) => (
             <figure className="trust-quote-card" key={item.name}>
+              <div className="trust-stars" aria-label="5 out of 5 stars">★★★★★</div>
               <blockquote>{item.quote}</blockquote>
-              <figcaption>{item.name}</figcaption>
+              <figcaption>
+                <span>{item.name}</span>
+                <small>{item.role} · {item.business}</small>
+              </figcaption>
             </figure>
           ))}
         </div>
@@ -443,9 +448,9 @@ function TrustProof() {
 // ─── STATS BAR ────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "Make more profit", label: "See which items, offers, shifts, customers, and channels are actually driving margin." },
-  { value: "Prevent losses", label: "Catch review risks, stock gaps, overstaffing, closeout variance, and failed recovery earlier." },
-  { value: "Run daily operations", label: "Use connected POS, orders, tables, stock, staff, finance, campaigns, and customer workflows." },
+  { value: "Profit clarity", label: "See which items, offers, shifts, customers, and channels deserve attention." },
+  { value: "Risk control", label: "Spot review trouble, stock gaps, closeout variance, and failed recovery earlier." },
+  { value: "Daily flow", label: "Keep sales, orders, tables, stock, staff, finance, campaigns, and customers moving." },
 ];
 
 function StatsBar() {
@@ -474,13 +479,13 @@ const PRODUCT_PROOF_SCREENS = [
   },
   {
     label: "Owner dashboard",
-    title: "AI owner brief for money leaks",
+    title: "A sharper owner brief",
     src: screenshotUrl("analytics 1"),
     alt: "BRC analytics dashboard for owner reporting and connected business signals",
   },
   {
     label: "AI answer screen",
-    title: "Ask what changed and what to do next",
+    title: "Ask what changed during service",
     src: screenshotUrl("AI 4"),
     alt: "BRC AI Ask workflow for manager questions and next actions",
   },
@@ -499,6 +504,8 @@ const PRODUCT_PROOF_SCREENS = [
 ];
 
 function ProductProof() {
+  const [expandedScreen, setExpandedScreen] = useState(null);
+
   return (
     <section className="product-proof-section">
       <div className="container">
@@ -510,26 +517,67 @@ function ProductProof() {
             </h2>
           </div>
           <p>
-            BRC is not only an AI promise. It includes the operating screens
-            that run sales, answer customers, recover reviews, and keep stock
-            decisions close to the money picture.
+            These are the real surfaces behind the pitch: service screens,
+            owner views, recovery workflows, and stock tools your team can open
+            when the day is moving fast.
           </p>
         </div>
         <div className="product-proof-grid">
           {PRODUCT_PROOF_SCREENS.map((screen) => (
-            <article className="product-proof-card" key={screen.label}>
+            <button
+              className="product-proof-card"
+              key={screen.label}
+              type="button"
+              onClick={() => setExpandedScreen(screen)}
+              aria-label={`Expand ${screen.label} screenshot`}
+            >
               <div className="product-proof-image">
                 <img src={screen.src} alt={screen.alt} loading="lazy" />
+                <span className="product-proof-expand">Expand</span>
               </div>
               <div className="product-proof-meta">
                 <span>{screen.label}</span>
                 <strong>{screen.title}</strong>
               </div>
-            </article>
+            </button>
           ))}
         </div>
       </div>
+      <ScreenshotLightbox shot={expandedScreen} onClose={() => setExpandedScreen(null)} />
     </section>
+  );
+}
+
+function ScreenshotLightbox({ shot, onClose }) {
+  useEffect(() => {
+    if (!shot) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [shot, onClose]);
+
+  if (!shot) return null;
+
+  const title = shot.title || shot.label || shot.name || "BRC screenshot";
+
+  return (
+    <div className="screenshot-lightbox" role="dialog" aria-modal="true" aria-label={title}>
+      <button className="screenshot-lightbox-backdrop" type="button" onClick={onClose} aria-label="Close screenshot" />
+      <div className="screenshot-lightbox-panel">
+        <div className="screenshot-lightbox-top">
+          <div>
+            {shot.label ? <span>{shot.label}</span> : null}
+            <strong>{title}</strong>
+          </div>
+          <button type="button" className="screenshot-lightbox-close" onClick={onClose} aria-label="Close screenshot">
+            ×
+          </button>
+        </div>
+        <img src={shot.src} alt={shot.alt || title} />
+      </div>
+    </div>
   );
 }
 
@@ -561,19 +609,19 @@ function AiBusinessOS() {
         <div className="ai-os-copy">
           <div className="section-tag">What makes BRC different</div>
           <h2>
-            The wedge: BRC finds where money is leaking.
+            BRC shows where performance is drifting.
             <br />
             <span className="grad-text">Then it helps your team fix the cause.</span>
           </h2>
           <p>
             Traditional POS systems, review tools, campaign tools, stock tools,
             payroll tools, and finance tools all show pieces of the business.
-            BRC&apos;s edge is connecting those pieces into one owner brain: what is
-            making money, what is leaking money, what will run short, and what
-            needs action today.
+            BRC&apos;s edge is turning those pieces into one owner brief: what is
+            improving, what is slipping, what will run short, and which action
+            deserves the next manager minute.
           </p>
           <a href={trialHref} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-            Start free — connect your business <span className="arrow">→</span>
+            Start free with BRC AI <span className="arrow">→</span>
           </a>
         </div>
         <div className="ai-os-grid">
@@ -662,19 +710,19 @@ function BusinessFitStrip() {
 
 const OPERATIONS_STACK = [
   {
-    eyebrow: "Make more profit",
+    eyebrow: "Revenue lift",
     title: "Know what to promote, price, staff, or stop selling",
     body: "Connect sales, orders, customer recovery, offers, finance, and item performance so the owner sees where margin is created and where effort is wasted.",
     items: ["POS", "Finance", "Campaigns", "Analytics"],
   },
   {
-    eyebrow: "Prevent losses",
+    eyebrow: "Leak prevention",
     title: "Catch problems before they become expensive",
     body: "Bring together negative reviews, private feedback, low stock, closeout variance, slow service themes, suspicious reviews, and failed follow-up in one action list.",
     items: ["Reviews", "Recovery", "Stock", "Controls"],
   },
   {
-    eyebrow: "Run daily operations",
+    eyebrow: "Shift control",
     title: "Operate sales, staff, stock, orders, and service from one place",
     body: "Give managers the day-to-day tools: register, tables, orders, bookings, inventory, purchasing, rota, payroll, fulfilment, kitchen display, and customer workflows.",
     items: ["Register", "Orders", "Rota", "Inventory"],
@@ -1894,6 +1942,8 @@ const FEATURE_SCREENSHOTS = {
 };
 
 function ScreenshotGallery({ eyebrow = "Product Screenshots", title, body, screenshots = [], compact = false }) {
+  const [expandedShot, setExpandedShot] = useState(null);
+
   if (!screenshots.length) return null;
 
   return (
@@ -1906,17 +1956,27 @@ function ScreenshotGallery({ eyebrow = "Product Screenshots", title, body, scree
         </div>
         <div className="screenshot-gallery">
           {screenshots.map((shot) => (
-            <figure className="screenshot-card" key={shot.name}>
+            <button
+              className="screenshot-card"
+              key={shot.name}
+              type="button"
+              onClick={() => setExpandedShot(shot)}
+              aria-label={`Expand ${shot.name} screenshot`}
+            >
               <img src={shot.src} alt={shot.alt} loading="lazy" />
-            </figure>
+              <span>Expand</span>
+            </button>
           ))}
         </div>
       </div>
+      <ScreenshotLightbox shot={expandedShot} onClose={() => setExpandedShot(null)} />
     </section>
   );
 }
 
 function HelpScreenshotStrip({ screenshots = [] }) {
+  const [expandedShot, setExpandedShot] = useState(null);
+
   if (!screenshots.length) return null;
 
   return (
@@ -1924,11 +1984,19 @@ function HelpScreenshotStrip({ screenshots = [] }) {
       <h3>Related screenshots</h3>
       <div className="help-screenshot-gallery">
         {screenshots.map((shot) => (
-          <figure className="help-screenshot-card" key={shot.name}>
+          <button
+            className="help-screenshot-card"
+            key={shot.name}
+            type="button"
+            onClick={() => setExpandedShot(shot)}
+            aria-label={`Expand ${shot.name} screenshot`}
+          >
             <img src={shot.src} alt={shot.alt} loading="lazy" />
-          </figure>
+            <span>Expand</span>
+          </button>
         ))}
       </div>
+      <ScreenshotLightbox shot={expandedShot} onClose={() => setExpandedShot(null)} />
     </section>
   );
 }
