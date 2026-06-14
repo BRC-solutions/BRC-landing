@@ -1273,59 +1273,53 @@ img { max-width: 100%; }
   line-height: 1.35;
 }
 
-.trust-quote-grid {
+.trust-proof-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-.trust-quote-card {
+.trust-proof-card {
   background:
     linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.78));
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
-  padding: 15px;
+  padding: 16px;
   min-width: 0;
   box-shadow: 0 12px 34px rgba(28,18,51,.07);
 }
 
-:root[data-theme="dark"] .trust-quote-card {
+:root[data-theme="dark"] .trust-proof-card {
   background: rgba(255,255,255,.055);
   box-shadow: none;
 }
 
-.trust-stars {
-  color: var(--yellow);
-  font-size: 13px;
-  letter-spacing: 1px;
+.trust-proof-card strong {
+  color: var(--text);
+  display: block;
+  font-size: 24px;
+  font-weight: 950;
+  letter-spacing: 0;
   line-height: 1;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.trust-quote-card blockquote {
+.trust-proof-card span {
   color: var(--text);
-  font-size: 13px;
-  font-weight: 750;
-  line-height: 1.55;
-}
-
-.trust-quote-card figcaption {
-  display: grid;
-  gap: 2px;
-  font-weight: 800;
-  margin-top: 12px;
-}
-
-.trust-quote-card figcaption span {
-  color: var(--text);
-  font-size: 13px;
-}
-
-.trust-quote-card figcaption small {
-  color: var(--text-3);
-  font-size: 11px;
-  font-weight: 750;
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
   line-height: 1.35;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.trust-proof-card p {
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.5;
 }
 
 /* ─── HERO VISUAL ────────────────────────────────────────────────────────────── */
@@ -4968,7 +4962,7 @@ img { max-width: 100%; }
   .trust-proof-inner,
   .product-proof-header { grid-template-columns: 1fr; }
   .trust-proof-copy { text-align: center; }
-  .trust-quote-grid,
+  .trust-proof-grid,
   .product-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stats-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .feature-use-grid { grid-template-columns: 1fr; }
@@ -5100,7 +5094,7 @@ img { max-width: 100%; }
   .ai-os-copy { text-align: center; }
   .ai-os-copy p { margin-left: auto; margin-right: auto; }
   .ai-os-card { min-height: 0; }
-  .trust-quote-grid,
+  .trust-proof-grid,
   .product-proof-grid { grid-template-columns: 1fr; }
   .product-proof-section { padding: 64px 0; }
   .product-proof-header { text-align: center; }

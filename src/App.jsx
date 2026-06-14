@@ -421,24 +421,21 @@ function Hero() {
 
 // ─── TRUST PROOF ──────────────────────────────────────────────────────────────
 
-const TRUST_QUOTES = [
+const TRUST_PROOF = [
   {
-    quote: "BRC shows the reason behind the numbers, not just another chart to interpret.",
-    name: "Maya K.",
-    role: "Restaurant owner",
-    business: "Independent dining",
+    value: "Early access",
+    label: "Launch stage",
+    detail: "BRC is preparing for launch with onboarding for operators who want to set up before their tools sprawl.",
   },
   {
-    quote: "The useful part is seeing reviews, stock, orders, and staff pressure in the same place.",
-    name: "Elliot R.",
-    role: "Cafe manager",
-    business: "High-street cafe",
+    value: "8 areas",
+    label: "One operating system",
+    detail: "POS, inventory, staff, finance, bookings, ordering, reputation, and competitor monitoring.",
   },
   {
-    quote: "We wanted one system for the shift, the team, and the owner view.",
-    name: "Priya S.",
-    role: "Salon operator",
-    business: "Local services",
+    value: "No lock-in",
+    label: "Use your own devices",
+    detail: "Run BRC on web, mobile, tablet, desktop, and supported operator screens without hardware hostage pricing.",
   },
 ];
 
@@ -447,19 +444,16 @@ function TrustProof() {
     <section className="trust-proof-section">
       <div className="container trust-proof-inner">
         <div className="trust-proof-copy">
-          <span>Built for hands-on local operators</span>
-          <strong>No hardware lock-in. Cancel anytime. Data access controlled by role and location.</strong>
+          <span>Pre-launch, built in public</span>
+          <strong>Honest early access for operators who want one system for daily work.</strong>
         </div>
-        <div className="trust-quote-grid">
-          {TRUST_QUOTES.map((item) => (
-            <figure className="trust-quote-card" key={item.name}>
-              <div className="trust-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote>{item.quote}</blockquote>
-              <figcaption>
-                <span>{item.name}</span>
-                <small>{item.role} · {item.business}</small>
-              </figcaption>
-            </figure>
+        <div className="trust-proof-grid">
+          {TRUST_PROOF.map((item) => (
+            <article className="trust-proof-card" key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+              <p>{item.detail}</p>
+            </article>
           ))}
         </div>
       </div>
