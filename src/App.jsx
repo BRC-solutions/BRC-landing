@@ -2432,6 +2432,7 @@ const PLANS = [
     features: [
       "1 location with basic POS/register",
       "£0 monthly subscription",
+      "BRC platform fee: 1% · card processing fees apply separately",
       "Customer storefront and public page setup",
       "Catalog, pickup ordering, bookings, and table requests",
       "Private feedback and review capture",
@@ -2448,7 +2449,7 @@ const PLANS = [
     badge: "Best value",
     features: [
       "1 location with POS, storefront, orders, and bookings",
-      "0.5% BRC platform fee on BRC-powered payments",
+      "BRC platform fee: 0.5% · card processing fees apply separately",
       "AI summaries, review replies, and daily owner prompts",
       "Private feedback, recovery flows, and staff ratings",
       "Competitor tracking up to 3 businesses",
@@ -2465,6 +2466,7 @@ const PLANS = [
     badge: "Multi-location",
     features: [
       "Up to 3 locations",
+      "BRC platform fee: 0.25% · card processing fees apply separately",
       "POS register, table tabs, tenders, customer display, and KDS",
       "Online ordering, QR/table flows, pickup, and delivery",
       "Staff rota, shifts, payroll, permissions, and closeout",
@@ -2482,7 +2484,7 @@ const PLANS = [
     badge: "AI powered",
     features: [
       "Up to 10 locations, then custom",
-      "No BRC platform fee on BRC-powered payments",
+      "No BRC platform fee · card processing fees apply separately",
       "Multi-location ordering, booking, pickup, and delivery views",
       "Inventory, stock, recipes, vendors, and purchasing workflows",
       "BRC AI owner brief and location comparison",
@@ -2502,6 +2504,7 @@ const PLANS = [
     spanFull: true,
     features: [
       "More than 10 locations",
+      "Custom BRC platform fee · card processing fees apply separately",
       "Custom POS, ordering, storefront, and finance setup",
       "Custom AI, brand mention, and competitor monitoring",
       "Custom review, recovery, and public signal allowance",
@@ -2542,7 +2545,7 @@ const PLAN_DETAIL_GROUPS = [
   {
     title: "Money, AI, and reporting",
     rows: [
-      ["BRC platform fee", "1%", "0.5%", "0.25%", "0%", "Custom"],
+      ["BRC fees + card processing fees", "1% BRC fee + card processing fees", "0.5% BRC fee + card processing fees", "0.25% BRC fee + card processing fees", "No BRC fee + card processing fees", "Custom BRC fee + card processing fees"],
       ["Finance and closeout", "Basic payments context", "Basic reporting", "Payouts, tenders, profitability", "Multi-location reporting", "Custom"],
       ["BRC AI", "Not included", "AI summaries and reply drafts", "Operational insights", "Owner brief and location comparison", "Custom"],
       ["Campaigns and segments", "Not included", "Email basics", "Advanced campaigns and segments", "Multi-location campaigns", "Custom"],
@@ -2640,7 +2643,8 @@ function Pricing() {
             <strong>Need more review SMS credits?</strong>
             <span className="addon-text">
               {" "}
-              Add-on packs: 100 credits for £9 · 500 credits for £39
+              Add-on packs start at 100 credits for £9.99. Larger packs may be
+              enabled by account policy.
             </span>
           </div>
         </div>
@@ -2696,6 +2700,7 @@ function PlanDetails() {
 
         <div className="plan-details-notes">
           <span>Review SMS credit packs, specialist onboarding, higher usage, and custom integrations may be charged separately.</span>
+          <span>Card processing fees apply alongside any BRC fee where payments are processed.</span>
           <span>Plan packaging can vary by region, promotion, payment setup, enabled modules, and written agreement.</span>
         </div>
       </div>
