@@ -538,6 +538,7 @@ const STATS = [
   { value: "Customer recovery", label: "Catch unhappy customers early with feedback, review workflows, and follow-up." },
   { value: "Operations", label: "Run bookings, tables, stock, staff, payroll, kitchen display, and closeout." },
   { value: "Owner clarity", label: "See sales, reviews, orders, stock, finance, and AI summaries together." },
+  { value: "Hardware freedom", label: "Use your own devices, take payments on your phone, and add screens without extra hardware fees." },
 ];
 
 function StatsBar() {
@@ -8562,9 +8563,9 @@ export default function App({ initialRoute = null }) {
       <main>
         <Hero />
         <TrustProof />
+        <AskBrcDemo />
         <StatsBar />
         <ProductProof />
-        <AskBrcDemo />
         <AiBusinessOS />
         <BusinessFitStrip />
         <OperationsStack />
