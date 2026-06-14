@@ -308,6 +308,57 @@ function productScreenshot(name, alt) {
   return { name, src: screenshotUrl(name), alt };
 }
 
+const HERO_COMMAND_STATES = [
+  {
+    title: "Owner insight",
+    src: screenshotUrl("analytics 1"),
+    alt: "BRC analytics dashboard showing connected owner reporting and business signals",
+    signals: [
+      { className: "hero-signal-revenue", label: "Revenue", value: "+18%", detail: "Lunch recovery vs last week" },
+      { className: "hero-signal-reviews", label: "Reviews recovered", value: "12", detail: "Private follow-ups closed" },
+      { className: "hero-signal-staff", label: "Staff performance", value: "4.8/5", detail: "Fastest table turn: Maya" },
+      { className: "hero-signal-competitor", label: "Competitor watch", value: "-0.2", detail: "Nearby rating movement" },
+    ],
+    ai: "Reorder oat milk, add one runner 12-2pm, and reply to 3 service-delay reviews.",
+  },
+  {
+    title: "Live operations",
+    src: screenshotUrl("operations"),
+    alt: "BRC operations workspace showing live orders and service management",
+    signals: [
+      { className: "hero-signal-revenue", label: "Orders", value: "24", detail: "Active across pickup and tables" },
+      { className: "hero-signal-reviews", label: "Kitchen load", value: "7", detail: "Tickets need prep now" },
+      { className: "hero-signal-staff", label: "Shift cover", value: "3/4", detail: "One gap before lunch rush" },
+      { className: "hero-signal-competitor", label: "Closeout risk", value: "Low", detail: "Cash and devices healthy" },
+    ],
+    ai: "Accept two pickup orders, move a runner to packing, and prepare the next table batch before 12:30.",
+  },
+  {
+    title: "Storefront and ordering",
+    src: screenshotUrl("public page 1"),
+    alt: "BRC public page settings for a customer storefront and ordering setup",
+    signals: [
+      { className: "hero-signal-revenue", label: "Storefront", value: "Live", detail: "Styled public page ready" },
+      { className: "hero-signal-reviews", label: "Ordering", value: "On", detail: "Pickup, table, and delivery flows" },
+      { className: "hero-signal-staff", label: "Bookings", value: "Ready", detail: "Services and availability set" },
+      { className: "hero-signal-competitor", label: "Domain", value: "Custom", detail: "Use BRC URL or own domain" },
+    ],
+    ai: "Publish the lunch menu, hide two unavailable items, and turn on pickup ordering for today.",
+  },
+  {
+    title: "Stock and finance",
+    src: screenshotUrl("inventory"),
+    alt: "BRC inventory dashboard showing stock and item availability",
+    signals: [
+      { className: "hero-signal-revenue", label: "Stock risk", value: "4", detail: "Items near reorder point" },
+      { className: "hero-signal-reviews", label: "Waste", value: "-9%", detail: "Better than last week" },
+      { className: "hero-signal-staff", label: "Margin", value: "31%", detail: "Menu mix improving" },
+      { className: "hero-signal-competitor", label: "Payouts", value: "Clear", detail: "No finance blockers" },
+    ],
+    ai: "Reorder mozzarella, keep margherita available, and review the low-margin lunch bundle.",
+  },
+];
+
 function HeroCommandCenter() {
   return (
     <div className="hero-command" aria-label="BRC AI operating system dashboard preview">
@@ -321,37 +372,34 @@ function HeroCommandCenter() {
           Live signals
         </div>
       </div>
-      <div className="hero-command-screen">
-        <img
-          src={screenshotUrl("analytics 1")}
-          alt="BRC dashboard showing connected analytics, owner reporting, and business signals"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
-      <div className="hero-signal hero-signal-revenue">
-        <span>Revenue</span>
-        <strong>+18%</strong>
-        <small>Lunch recovery vs last week</small>
-      </div>
-      <div className="hero-signal hero-signal-reviews">
-        <span>Reviews recovered</span>
-        <strong>12</strong>
-        <small>Private follow-ups closed</small>
-      </div>
-      <div className="hero-signal hero-signal-staff">
-        <span>Staff performance</span>
-        <strong>4.8/5</strong>
-        <small>Fastest table turn: Maya</small>
-      </div>
-      <div className="hero-signal hero-signal-competitor">
-        <span>Competitor watch</span>
-        <strong>-0.2</strong>
-        <small>Nearby rating movement</small>
-      </div>
-      <div className="hero-ai-card">
-        <span>AI recommendation</span>
-        <strong>Reorder oat milk, add one runner 12-2pm, and reply to 3 service-delay reviews.</strong>
+      <div className="hero-command-stage">
+        {HERO_COMMAND_STATES.map((state, index) => (
+          <div
+            className="hero-command-layer"
+            key={state.title}
+            style={{ "--layer-delay": `${index * 6}s` }}
+          >
+            <div className="hero-command-screen">
+              <img
+                src={state.src}
+                alt={state.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : undefined}
+              />
+            </div>
+            {state.signals.map((signal) => (
+              <div className={`hero-signal ${signal.className}`} key={`${state.title}-${signal.label}`}>
+                <span>{signal.label}</span>
+                <strong>{signal.value}</strong>
+                <small>{signal.detail}</small>
+              </div>
+            ))}
+            <div className="hero-ai-card">
+              <span>{state.title} · AI recommendation</span>
+              <strong>{state.ai}</strong>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
