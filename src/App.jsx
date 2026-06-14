@@ -759,7 +759,8 @@ function AskBrcDemo() {
             <img
               src={HERO_SCREENSHOTS.ai}
               alt="BRC AI showing current operating read, generated actions, manager copilot, and AI response"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
             />
           </div>
         </div>
