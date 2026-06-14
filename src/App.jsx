@@ -355,7 +355,8 @@ function Hero() {
             Built for busy local operators, not software teams.
           </div>
           <h1 className="hero-h1">
-            Run your restaurant, retail, or service business from one AI operating system.
+            Run your business from
+            <span className="grad-text"> one AI operating system.</span>
           </h1>
           <p className="hero-subtitle">
             POS, reviews, stock, staff, orders, finance, and customer recovery, all connected.
