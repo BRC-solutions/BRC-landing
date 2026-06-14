@@ -423,14 +423,14 @@ function Hero() {
 
 const TRUST_PROOF = [
   {
-    value: "Early access",
-    label: "Launch stage",
-    detail: "BRC is preparing for launch with onboarding for operators who want to set up before their tools sprawl.",
+    value: "Storefront",
+    label: "Live in minutes",
+    detail: "Create your own customer storefront with your styling, public pages, and a BRC subdomain or custom domain.",
   },
   {
-    value: "8 areas",
+    value: "10+ areas",
     label: "One operating system",
-    detail: "POS, inventory, staff, finance, bookings, ordering, reputation, and competitor monitoring.",
+    detail: "POS, storefront, online ordering, bookings, delivery, inventory, staff, finance, reputation, and competitor monitoring.",
   },
   {
     value: "No lock-in",
@@ -444,8 +444,8 @@ function TrustProof() {
     <section className="trust-proof-section">
       <div className="container trust-proof-inner">
         <div className="trust-proof-copy">
-          <span>Pre-launch, built in public</span>
-          <strong>Honest early access for operators who want one system for daily work.</strong>
+          <span>Built for customer-facing local businesses</span>
+          <strong>Create the public storefront and run the operation behind it from one place.</strong>
         </div>
         <div className="trust-proof-grid">
           {TRUST_PROOF.map((item) => (
