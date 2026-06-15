@@ -5541,7 +5541,22 @@ img { max-width: 100%; }
 @media (max-width: 480px) {
   .stats-inner { grid-template-columns: 1fr; gap: 12px; }
   .billing-toggle { flex-wrap: wrap; justify-content: center; }
-  .store-btns { flex-direction: column; }
+  .store-btns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 342px;
+  }
+  .store-btn {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+    padding: 11px 8px;
+  }
+  .store-os { font-size: 21px; }
+  .store-btn small { font-size: 9px; }
+  .store-btn strong { font-size: 14px; }
   .footer-top {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px 18px;
@@ -5557,7 +5572,13 @@ img { max-width: 100%; }
   .footer-link {
     overflow-wrap: anywhere;
   }
-  .footer-app-links { flex-wrap: wrap; gap: 12px; }
+  .footer-app-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+  .footer-app-link { min-width: 0; }
   .cta-trust { flex-direction: column; gap: 12px; }
   .hero-badge {
     max-width: 282px;
