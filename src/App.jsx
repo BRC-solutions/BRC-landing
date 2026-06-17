@@ -1519,7 +1519,7 @@ const FEATURE_GUIDES = {
   },
   reputation: {
     setup: [
-      "Connect the business profile and fetch previous reviews within the plan allowance.",
+      "Connect the business profile and fetch older reviews within the monthly plan allowance.",
       "Choose which review platforms matter for the plan, from the primary review profile to additional platforms on higher tiers.",
       "Set alerts for new reviews, low ratings, suspicious patterns, and owner attention.",
       "Configure private recovery steps for low-rating feedback and complaint patterns.",
