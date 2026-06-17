@@ -1255,7 +1255,7 @@ const FEATURE_DETAIL = {
       "BRC monitors your public reputation, helps your team respond faster, routes unhappy customers into private recovery, and sends natural follow-ups after genuine positive activity.",
     bullets: [
       "Google, Yelp, and TripAdvisor monitoring by plan",
-      "AI review summaries and reply draft support",
+      "Enterprise AI review summaries and reply draft support",
       "Positive review follow-ups after orders, bookings, or visits",
       "Low-rating recovery workflows before problems become public",
       "Suspicious or fake review flags with dispute-ready context",
@@ -1523,7 +1523,7 @@ const FEATURE_GUIDES = {
       "Choose which review platforms matter for the plan, from the primary review profile to additional platforms on higher tiers.",
       "Set alerts for new reviews, low ratings, suspicious patterns, and owner attention.",
       "Configure private recovery steps for low-rating feedback and complaint patterns.",
-      "Use AI summaries and reply drafts so managers can respond faster without starting from a blank page.",
+      "On Enterprise, use AI summaries and reply drafts so managers can respond faster without starting from a blank page.",
     ],
     dailyUse: [
       "Owners monitor review volume, average rating, unresolved replies, recovery cases, and urgent review risks.",
@@ -1590,7 +1590,7 @@ const FEATURE_GUIDES = {
       "Teams use demand forecasts to plan prep, reorders, and labor cover before the next rush instead of reacting after sales or sentiment has already moved.",
       "Review summaries, reply drafts, suspicious-review analysis, and AI catalogue setup remain useful supporting tools, with human approval before anything customer-facing changes.",
     ],
-    planNote: "BRC AI is the Enterprise plan story. Growth and Pro can still benefit from AI summaries, reply drafts, and other supporting AI features, but the main loss-risk and Ask workflow belongs in BRC AI.",
+    planNote: "BRC AI is the Enterprise plan story. Review summaries, reply drafts, suspicious-review analysis, and other supporting AI workflows also belong in Enterprise.",
   },
   team: {
     setup: [
@@ -2443,14 +2443,14 @@ const PLANS = [
     name: "Growth",
     monthly: 49,
     annual: 44,
-    desc: "For one location ready to run POS, storefront, simple pickup ordering, bookings, Google reviews, AI review help, and recovery.",
+    desc: "For one location ready to run POS, storefront, simple pickup ordering, bookings, Google reviews, and recovery.",
     cta: "Start 7-day trial",
     highlight: false,
     badge: "Best value",
     features: [
       "1 location with POS, storefront, pickup, and bookings",
       "BRC platform fee: 0.5% · card processing fees apply separately",
-      "AI review summaries and reply drafts",
+      "Google review sync and recovery workflows",
       "Private feedback, recovery flows, and staff ratings",
       "Competitor tracking up to 3 businesses",
       "Customer follow-up and reputation workflows",
@@ -2488,6 +2488,7 @@ const PLANS = [
       "Multi-location ordering, booking, pickup, and delivery views",
       "Inventory, stock, recipes, vendors, and purchasing workflows",
       "BRC AI owner brief and location comparison",
+      "AI review summaries, reply drafts, and fraud signals",
       "Brand-level recovery, campaigns, reports, and alerts",
       "Scheduled reports, exports, and onboarding support",
     ],
@@ -2534,7 +2535,7 @@ const PLAN_DETAIL_GROUPS = [
       ["Previous review import", "Not included", "Up to 50 reviews", "Up to 500 reviews", "Up to 1,000 reviews", "Custom allowance"],
       ["Review SMS prompts", "Not included", "Credits paid separately", "Credits paid separately", "Credits paid separately", "Custom"],
       ["Competitor tracking", "Not included", "Up to 3 competitors", "Up to 10 competitors", "Larger multi-location allowance", "Custom"],
-      ["Suspicious review support", "Not included", "AI flags for low-rating reviews", "AI flags across connected platforms", "Brand-level flags and alerts", "Custom workflow"],
+      ["Suspicious review support", "Not included", "Not included", "Not included", "AI flags, brand-level alerts, and dispute context", "Custom workflow"],
     ],
   },
   {
@@ -2555,7 +2556,7 @@ const PLAN_DETAIL_GROUPS = [
     rows: [
       ["BRC fees + card processing fees", "1% BRC fee + card processing fees", "0.5% BRC fee + card processing fees", "0.25% BRC fee + card processing fees", "No BRC fee + card processing fees", "Custom BRC fee + card processing fees"],
       ["Finance and closeout", "Basic finance context", "Basic finance reporting", "Payouts, tenders, profitability", "Multi-location reporting", "Custom"],
-      ["Review AI", "Not included", "AI summaries and reply drafts", "AI summaries and reply drafts", "AI summaries and reply drafts", "Custom"],
+      ["Review AI", "Not included", "Not included", "Not included", "AI summaries, reply drafts, and fraud signals", "Custom"],
       ["Menu insights and public signals", "Not included", "Not included", "Included", "Included", "Custom"],
       ["BRC AI owner brief", "Not included", "Not included", "Not included", "Included", "Custom"],
       ["AI catalogue setup", "Not included", "Not included", "Not included", "Included", "Custom"],
@@ -5829,7 +5830,7 @@ function PublicAuditPage() {
       label: "Growth",
       price: "£49/mo",
       bestFor: "Best first step",
-      items: ["Review sync", "AI reply drafts", "Basic campaign tracking"],
+      items: ["Review sync", "Review recovery", "Basic campaign tracking"],
     },
     {
       plan: "pro",
@@ -5843,7 +5844,7 @@ function PublicAuditPage() {
       label: "Business",
       price: "£249/mo",
       bestFor: "For teams and locations",
-      items: ["Scheduled campaigns", "Automations", "Brand-level workflows"],
+      items: ["Review AI", "Automations", "Brand-level workflows"],
     },
   ];
 
