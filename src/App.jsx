@@ -2532,7 +2532,7 @@ const PLAN_DETAIL_GROUPS = [
       ["Private feedback", "Basic", "Included", "Advanced reporting", "Brand-level reports", "Custom"],
       ["Review platforms", "Private feedback only", "Google reviews", "Google, Yelp, and TripAdvisor", "Google, Yelp, and TripAdvisor", "Custom platform mix"],
       ["Daily review sync", "Not included", "Google only", "Google, Yelp, and TripAdvisor", "Google, Yelp, and TripAdvisor", "Custom"],
-      ["Previous review import", "Not included", "Up to 50 reviews", "Up to 500 reviews", "Up to 1,000 reviews", "Custom allowance"],
+      ["Manual older review import", "10 reviews monthly", "50 reviews monthly", "500 reviews monthly", "1,000 reviews monthly", "Custom allowance"],
       ["Review SMS prompts", "Not included", "Credits paid separately", "Credits paid separately", "Credits paid separately", "Custom"],
       ["Competitor tracking", "Not included", "Up to 3 competitors", "Up to 10 competitors", "Larger multi-location allowance", "Custom"],
       ["Suspicious review support", "Not included", "Not included", "Not included", "AI flags, brand-level alerts, and dispute context", "Custom workflow"],
@@ -2713,7 +2713,7 @@ function PlanDetails() {
         </div>
 
         <div className="plan-details-notes">
-          <span>Historical review imports are shared across connected review platforms on each plan.</span>
+          <span>Monthly manual older-review imports are shared across connected review platforms on each plan.</span>
           <span>Review SMS credit packs, specialist onboarding, higher usage, and custom integrations may be charged separately.</span>
           <span>Card processing fees apply alongside any BRC fee where payments are processed.</span>
           <span>Plan packaging can vary by region, promotion, payment setup, enabled modules, and written agreement.</span>
