@@ -4332,8 +4332,8 @@ function TermsOfService() {
                 Review platforms (Yelp, TripAdvisor) for review
                 aggregation
               </li>
-              <li>External providers for SMS messaging services</li>
-              <li>External providers for AI-powered analysis</li>
+              <li>Providers for SMS messaging services</li>
+              <li>Providers for AI-powered analysis</li>
               <li>App marketplace or purchase providers where needed for purchase status</li>
             </ul>
             <p>
@@ -5234,7 +5234,7 @@ function EnhancedTermsOfService() {
           <section className="legal-section">
             <h2>11. Third-party services</h2>
             <p>
-              The Services connect to or rely on external providers for
+              The Services connect to or rely on third-party providers for
               hosting, databases, authentication, purchase processing,
               messaging, email delivery, AI processing, error monitoring,
               security checks, maps, business listings, review platforms,
@@ -5567,7 +5567,7 @@ function EnhancedPrivacyPolicy() {
               the Services.
             </p>
             <p>
-              Our public contact form uses an external bot-prevention provider
+              Our public contact form uses a bot-prevention provider
               to distinguish genuine users from automated abuse. That provider
               may process client-side signals such as IP address, browser data,
               TLS fingerprint, user-agent, site key, and origin for bot
