@@ -5021,7 +5021,6 @@ function LegalCloseButton() {
 function EnhancedTermsOfService() {
   return (
     <div className="legal-page">
-      <LegalCloseButton />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Terms of Service</h1>
@@ -5430,8 +5429,6 @@ function EnhancedTermsOfService() {
             </p>
           </section>
         </div>
-
-        <LegalBackLink />
       </div>
     </div>
   );
@@ -5440,7 +5437,6 @@ function EnhancedTermsOfService() {
 function EnhancedPrivacyPolicy() {
   return (
     <div className="legal-page">
-      <LegalCloseButton />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Privacy Policy</h1>
@@ -5695,8 +5691,6 @@ function EnhancedPrivacyPolicy() {
             </p>
           </section>
         </div>
-
-        <LegalBackLink />
       </div>
     </div>
   );
