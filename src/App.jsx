@@ -41,7 +41,7 @@ const BRAND_ALSO_KNOWN_AS = [
   "BRC Business OS",
   "Business Reputation & Customer Operations",
 ];
-const LEGAL_LAST_UPDATED = "May 19, 2026";
+const LEGAL_LAST_UPDATED = "July 2, 2026";
 const LEGAL_COMPANY_ADDRESS =
   "BRC Labs LTD, Unit A, 82 James Carter Road, Mildenhall, IP28 7DE, United Kingdom";
 
@@ -4334,7 +4334,7 @@ function TermsOfService() {
               </li>
               <li>External providers for SMS messaging services</li>
               <li>External providers for AI-powered analysis</li>
-              <li>External providers for subscription management</li>
+              <li>App marketplace or purchase providers where needed for purchase status</li>
             </ul>
             <p>
               Your use of these integrations is subject to the respective
@@ -4375,8 +4375,12 @@ function TermsOfService() {
           </section>
 
           <section className="legal-section">
-            <h2>9. Payment Terms</h2>
-            <p>Some services require payment through subscription plans:</p>
+            <h2>9. Purchase Terms</h2>
+            <p>
+              Some BRC software features require an active subscription or
+              in-app purchase. Creating an account is free and does not start a
+              subscription.
+            </p>
             <ul>
               <li>
                 <strong>Growth Plan:</strong> Advanced features for growing
@@ -4394,11 +4398,16 @@ function TermsOfService() {
             <p>By subscribing, you agree to:</p>
             <ul>
               <li>Pay all applicable fees</li>
-              <li>Automatic billing for recurring subscriptions</li>
+              <li>Automatic renewal according to the purchase flow used</li>
               <li>30-day notice for price changes</li>
               <li>No refunds for partial months except as required by law</li>
-              <li>Additional charges for review SMS credits and overages</li>
+              <li>Additional charges for review SMS credits and overages where purchased</li>
             </ul>
+            <p>
+              In the iOS app, paid BRC digital features and review SMS credit
+              packs available in the app are offered through Apple in-app
+              purchase.
+            </p>
           </section>
 
           <section className="legal-section">
@@ -4592,8 +4601,9 @@ function PrivacyPolicy() {
                 and customer feedback from connected platforms
               </li>
               <li>
-                <strong>Payment Processors:</strong> Billing information and
-                transaction data from payment and subscription providers
+                <strong>Purchase and payment providers:</strong> subscription
+                state, billing information, and transaction data from the
+                applicable app marketplace or payment provider
               </li>
               <li>
                 <strong>Analytics Services:</strong> Usage analytics and
@@ -4664,7 +4674,7 @@ function PrivacyPolicy() {
                 <strong>AI providers:</strong> AI-powered analysis and processing
               </li>
               <li>
-                <strong>Payment providers:</strong> Subscription and payment processing
+                <strong>Purchase and payment providers:</strong> purchase state and customer payment processing
               </li>
               <li>
                 <strong>Google Maps API:</strong> Business verification and
@@ -4819,15 +4829,15 @@ function PrivacyPolicy() {
                 their policies
               </li>
               <li>
-                <strong>Payment services:</strong> External providers process payment
-                information according to their privacy policy
+                <strong>Payment services:</strong> Payment providers process customer
+                transaction information according to their privacy policy
               </li>
               <li>
-                <strong>Communication services:</strong> External providers handle SMS
+                <strong>Communication services:</strong> Providers handle SMS
                 delivery according to their privacy policy
               </li>
               <li>
-                <strong>AI services:</strong> External providers process data for analysis
+                <strong>AI services:</strong> Providers process data for analysis
                 according to their privacy policy
               </li>
             </ul>
@@ -5030,10 +5040,10 @@ function EnhancedTermsOfService() {
               Services.
             </p>
             <p>
-              By creating an account, starting a trial, paying for a plan,
-              using the Services, or authorising someone to use the Services on
-              your behalf, you agree to these Terms and our Privacy Policy. If
-              you use the Services for a company, you confirm that you have
+              By creating an account, accepting a plan or subscription, using
+              the Services, or authorising someone to use the Services on your
+              behalf, you agree to these Terms and our Privacy Policy. If you
+              use the Services for a company, you confirm that you have
               authority to bind that company.
             </p>
           </section>
@@ -5077,6 +5087,14 @@ function EnhancedTermsOfService() {
               <li>Notify us immediately if you suspect unauthorised access.</li>
               <li>Do not share, sell, lease, or sublicense your account.</li>
             </ul>
+            <p>
+              Creating an account or joining a business workspace is free and
+              does not start a BRC subscription. Staff users such as servers,
+              cashiers, kitchen staff, managers, and other authorised team
+              members may need accounts to use assigned workflows, but staff
+              accounts do not give those users billing authority unless a
+              business owner grants it.
+            </p>
           </section>
 
           <section className="legal-section">
@@ -5131,7 +5149,7 @@ function EnhancedTermsOfService() {
             <ul>
               <li>You are responsible for accepting, rejecting, preparing, delivering, refunding, and supporting orders and bookings.</li>
               <li>You must keep prices, fees, deposits, availability, delivery areas, opening hours, allergens, restrictions, and terms accurate.</li>
-              <li>Payments may be handled through external payment, subscription, banking, card network, marketplace, or checkout providers, and their terms also apply.</li>
+              <li>Customer payments for the business's own orders, bookings, deposits, or refunds may be processed by payment, banking, card network, marketplace, or fulfilment providers chosen for those customer-facing transactions. Those customer transactions are separate from BRC subscriptions and app feature purchases.</li>
               <li>Delivery quotes, driver details, tracking, or third-party fulfilment integrations are operational tools, not guarantees.</li>
               <li>BRC may show payment, payout, refund, and fee information based on provider data, but payment providers and banks control settlement timing.</li>
             </ul>
@@ -5189,23 +5207,27 @@ function EnhancedTermsOfService() {
           </section>
 
           <section className="legal-section">
-            <h2>10. Plans, trials, billing, and taxes</h2>
+            <h2>10. Plans, in-app purchases, billing, and taxes</h2>
             <p>
-              Paid features require an active plan, trial, add-on, or usage
-              allowance. Prices, plan limits, modules, overages, review SMS credits,
-              storage limits, and included features may vary by plan, region,
-              sales channel, promotion, or written agreement.
+              Paid BRC software features require an active plan, App Store
+              in-app subscription, trial, add-on, or usage allowance. Prices,
+              plan limits, modules, overages, review SMS credits, storage
+              limits, and included features may vary by plan, region, purchase
+              channel, promotion, or written agreement.
             </p>
             <ul>
-              <li>Subscriptions renew automatically for the selected billing period unless cancelled before the renewal date through the BRC billing page, an external billing portal, marketplace subscription settings, or another channel we make available.</li>
-              <li>Cancellation stops future renewals; it does not create a refund or credit for the current billing period unless required by law or expressly agreed in writing.</li>
-              <li>You authorise BRC and its external payment, subscription, banking, card network, and marketplace providers to charge fees, taxes, overages, add-ons, review SMS credits, renewal amounts, and failed-payment retries.</li>
-              <li>Trials may expire, convert to paid subscriptions, be limited, or be withdrawn if abused. You are responsible for cancelling before a trial converts if you do not want paid access.</li>
+              <li>In the iOS app, paid BRC digital features and review SMS credit packs available in the app are offered through Apple in-app purchase. Apple handles App Store purchase confirmation, renewal management, cancellation, and refund rules for those purchases.</li>
+              <li>The iOS app registration flow is free. It does not collect payment, show checkout, link to pricing, or direct users to a non-Apple purchase method for BRC digital features.</li>
+              <li>Only users with owner or billing permission can manage a business workspace subscription. Staff users can access assigned workflows but cannot purchase subscriptions or manage billing unless granted billing permission by an owner.</li>
+              <li>Subscriptions renew automatically for the selected billing period unless cancelled before the renewal date according to the terms shown in the purchase flow. App Store subscriptions are managed through Apple's App Store subscription controls.</li>
+              <li>Cancellation stops future renewals; it does not create a refund or credit for the current billing period unless required by law, Apple App Store rules for App Store purchases, or expressly agreed in writing.</li>
+              <li>You authorise the applicable purchase or payment provider to charge fees, taxes, overages, add-ons, review SMS credits, renewal amounts, and failed-payment retries according to the purchase terms shown at the time of purchase.</li>
+              <li>Trials may expire, convert to paid access, be limited, or be withdrawn if abused. App Store trials and renewals are managed under Apple's App Store purchase flow.</li>
               <li>Fees, setup charges, review SMS credits, add-ons, overages, and partial billing periods are non-refundable and non-transferable except where required by law or expressly stated in your plan, order form, or written agreement.</li>
               <li>Downgrades, cancelled modules, unused credits, unused capacity, unused time, or reduced usage do not entitle you to a refund, cash credit, or carried-forward allowance unless we expressly say otherwise.</li>
-              <li>If payment fails, is reversed, charged back, disputed, or becomes overdue, we may retry payment, suspend paid features, restrict messaging, pause public checkout or booking tools, downgrade access, recover collection costs, or terminate the account.</li>
+              <li>If payment fails, is reversed, charged back, disputed, or becomes overdue, we may retry payment, suspend paid features, restrict messaging, pause customer-facing ordering or booking tools, downgrade access, recover collection costs, or terminate the account.</li>
               <li>We may change prices or plan packaging with reasonable notice for paid renewals. Continued use after the effective date means you accept the new pricing.</li>
-              <li>You are responsible for taxes, chargebacks, payment disputes, accurate billing details, and any fees charged by banks, marketplaces, payment processors, subscription providers, or card networks.</li>
+              <li>You are responsible for taxes, chargebacks, payment disputes, accurate billing details, and any fees charged by the applicable bank, marketplace, payment processor, app marketplace, or card network.</li>
             </ul>
           </section>
 
@@ -5213,7 +5235,7 @@ function EnhancedTermsOfService() {
             <h2>11. Third-party services</h2>
             <p>
               The Services connect to or rely on external providers for
-              hosting, databases, authentication, payments, subscriptions,
+              hosting, databases, authentication, purchase processing,
               messaging, email delivery, AI processing, error monitoring,
               security checks, maps, business listings, review platforms,
               analytics, app marketplaces, infrastructure, and other
@@ -5224,7 +5246,7 @@ function EnhancedTermsOfService() {
             <ul>
               <li>We are not responsible for third-party services we do not control.</li>
               <li>You must keep connected accounts authorised and compliant.</li>
-              <li>Features may change or stop working if a third party changes its service, terms, API, pricing, permissions, or availability.</li>
+              <li>Features may change or stop working if a third party changes its service, terms, API, permissions, or availability.</li>
             </ul>
           </section>
 
@@ -5254,7 +5276,7 @@ function EnhancedTermsOfService() {
             <p>
               No online service is perfectly secure or always available.
               Maintenance, outages, provider failures, hosting issues, database
-              issues, payment provider downtime, review platform changes,
+              issues, provider downtime, review platform changes,
               telecoms disruption, marketplace disruption, internet disruption,
               malicious activity, data corruption, data loss, force majeure,
               emergencies, or beta features may affect availability, data
@@ -5315,7 +5337,8 @@ function EnhancedTermsOfService() {
           <section className="legal-section">
             <h2>16. Suspension and termination</h2>
             <p>
-              You may cancel according to your plan or billing provider rules.
+              You may cancel according to your plan or applicable purchase
+              rules.
               We may suspend or terminate access if you breach these Terms,
               create security or legal risk, fail to pay, misuse messaging or
               review tools, harm the Services, or if continued service would
@@ -5466,7 +5489,7 @@ function EnhancedPrivacyPolicy() {
               <li><strong>Account and business data:</strong> name, email, phone, password or login method, business name, address, website, profile links, staff roles, permissions, verification material, plan, billing status, and settings.</li>
               <li><strong>Customer and operational data:</strong> customer names, email addresses, phone numbers, order details, booking details, delivery addresses, table numbers, notes, receipts, feedback, rewards, campaign history, support tickets, and communication preferences.</li>
               <li><strong>Review and public signal data:</strong> public reviews, ratings, reviewer names or handles, review text, platform metadata, public listing details, competitor signals, and dispute notes.</li>
-              <li><strong>Payment and billing data:</strong> subscription state, invoices, plan changes, credits, payment provider identifiers, payout status, connected payout account status, and transaction metadata. Full card details are handled by payment providers, not stored by BRC.</li>
+              <li><strong>Purchase, payment, and billing data:</strong> subscription state, invoices, plan changes, credits, App Store transaction identifiers where applicable, payment provider identifiers for customer-facing transactions, payout status, connected payout account status, and transaction metadata. Full card details are handled by the applicable purchase or payment provider, not stored by BRC.</li>
               <li><strong>Support and contact data:</strong> messages, attachments, requester details, admin replies, email metadata, issue history, and internal notes.</li>
               <li><strong>Device, usage, and security data:</strong> IP address, browser, device, app version, pages viewed, feature events, logs, crash data, identifiers, cookie data, bot-prevention challenge data, and fraud or abuse signals.</li>
             </ul>
@@ -5477,8 +5500,9 @@ function EnhancedPrivacyPolicy() {
             <p>
               We collect data directly from you, from businesses using BRC,
               from customers interacting with BRC-powered pages, from authorised
-              users and team members, from connected payment and communication
-              providers, from support messages, from device and usage events,
+              users and team members, from App Store subscription events where
+              applicable, from connected payment and communication providers,
+              from support messages, from device and usage events,
               and from public or connected review, map, place, and business
               listing sources.
             </p>
@@ -5489,7 +5513,7 @@ function EnhancedPrivacyPolicy() {
             <ul>
               <li>provide, operate, secure, troubleshoot, and improve the Services;</li>
               <li>create accounts, authenticate users, manage roles, and verify businesses;</li>
-              <li>process orders, bookings, receipts, deposits, payments, payouts, refunds, and billing events;</li>
+              <li>process orders, bookings, receipts, deposits, customer payments, payouts, refunds, App Store subscription events where applicable, and billing events;</li>
               <li>send transactional messages, service updates, reminders, review requests, support replies, owner digests, and permitted campaigns;</li>
               <li>collect feedback, monitor reputation, analyse reviews, identify suspicious review patterns, draft replies, and prepare dispute materials;</li>
               <li>generate analytics, reporting, insights, recommendations, plan gates, and product diagnostics;</li>
@@ -5560,8 +5584,8 @@ function EnhancedPrivacyPolicy() {
               permitted or required by law.
             </p>
             <ul>
-              <li><strong>Service providers and subprocessors:</strong> hosting, database, authentication, email, SMS, payment, app subscription, support, analytics, monitoring, AI, fraud prevention, and security providers.</li>
-              <li><strong>Connected platforms:</strong> payment providers, marketplaces, review platforms, map and place services, delivery or fulfilment tools, and integrations you connect or use.</li>
+              <li><strong>Service providers and subprocessors:</strong> hosting, database, authentication, email, SMS, purchase processing, customer payment, support, analytics, monitoring, AI, fraud prevention, and security providers.</li>
+              <li><strong>Connected platforms:</strong> customer payment providers, marketplaces, review platforms, map and place services, delivery or fulfilment tools, and integrations you connect or use.</li>
               <li><strong>Businesses and their users:</strong> data shown to the business account that collected or manages it, subject to roles and permissions.</li>
               <li><strong>Legal and safety recipients:</strong> courts, regulators, law enforcement, advisers, insurers, banks, payment networks, or others where necessary to protect rights, safety, security, or compliance.</li>
               <li><strong>Business transfers:</strong> in connection with a merger, acquisition, financing, restructuring, or sale of assets, subject to appropriate safeguards.</li>
@@ -6735,7 +6759,7 @@ const HELP_ARTICLES = [
       "Growth, Pro, Enterprise, or custom arrangements can expose different feature sets, usage levels, locations, onboarding options, and support levels.",
       "Some features can show upgrade gates when the business is not subscribed, expired, suspended, or outside plan limits.",
       "Billing emails and account notices should be watched by an owner or finance contact.",
-      "For app-store or external billing providers, cancellation and refund handling can depend on that provider’s terms.",
+      "For App Store purchases, cancellation and refund handling follows Apple's App Store terms. Other purchase channels may have their own cancellation and refund terms.",
     ],
     tips: [
       "Review plan access before relying on a module for a live launch.",
@@ -8083,6 +8107,7 @@ export function seoForRoute(route) {
 
 export function buildStructuredData(route, seo) {
   const canonical = absoluteUrl(seo.path);
+  const isLegalRoute = route.page === PAGES.TERMS || route.page === PAGES.PRIVACY;
   const breadcrumbs = seo.path
     .split("/")
     .filter(Boolean)
@@ -8125,7 +8150,20 @@ export function buildStructuredData(route, seo) {
         "query-input": "required name=search_term_string",
       },
     },
-    {
+  ];
+
+  if (isLegalRoute) {
+    graph.push({
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      name: seo.title,
+      description: seo.description,
+      url: canonical,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    });
+  } else {
+    graph.push({
       "@type": "SoftwareApplication",
       "@id": `${SITE_URL}/#software`,
       name: "BRC OS",
@@ -8144,8 +8182,8 @@ export function buildStructuredData(route, seo) {
         url: absoluteUrl("/pricing"),
       })),
       publisher: { "@id": `${SITE_URL}/#organization` },
-    },
-    {
+    });
+    graph.push({
       "@type": "MobileApplication",
       "@id": `${SITE_URL}/#ios-app`,
       name: "BRC",
@@ -8157,8 +8195,8 @@ export function buildStructuredData(route, seo) {
       installUrl: IOS_APP_URL,
       isPartOf: { "@id": `${SITE_URL}/#software` },
       publisher: { "@id": `${SITE_URL}/#organization` },
-    },
-    {
+    });
+    graph.push({
       "@type": "MobileApplication",
       "@id": `${SITE_URL}/#android-app`,
       name: "BRC",
@@ -8170,12 +8208,13 @@ export function buildStructuredData(route, seo) {
       installUrl: ANDROID_APP_URL,
       isPartOf: { "@id": `${SITE_URL}/#software` },
       publisher: { "@id": `${SITE_URL}/#organization` },
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: breadcrumbs,
-    },
-  ];
+    });
+  }
+
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs,
+  });
 
   if (route.page === PAGES.CONTENT && route.slug === "help" && route.articleId) {
     const article = HELP_ARTICLES.find((item) => item.id === route.articleId);
